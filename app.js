@@ -1048,6 +1048,6 @@ function openCourseUnit(unit) {
 }
 
 /* Load CPH levels when the page opens */
-document.addEventListener("DOMContentLoaded", function() {
+window.addEventListener("load", function () {
   renderCPHLevels();
 });
