@@ -889,3 +889,165 @@ if (quote) {
     ];
 
 }
+/* =========================
+   CPH LEVELS
+========================= */
+
+const cphLevels = [
+  {
+    name: "CPH Year 1",
+    icon: "📘",
+    description: "Foundation courses for Community Pharmacy.",
+    units: [
+      "Anatomy and Physiology",
+      "Pharmaceutical Chemistry",
+      "Pharmaceutics",
+      "Pharmacology",
+      "Pharmaceutical Calculations"
+    ]
+  },
+  {
+    name: "CPH Year 2",
+    icon: "📗",
+    description: "Intermediate pharmacy knowledge and practice.",
+    units: [
+      "Pharmacology",
+      "Pharmaceutics",
+      "Medicinal Chemistry",
+      "Microbiology",
+      "Community Pharmacy Practice"
+    ]
+  },
+  {
+    name: "CPH Year 3",
+    icon: "📕",
+    description: "Advanced pharmacy and clinical preparation.",
+    units: [
+      "Clinical Pharmacy",
+      "Pharmacotherapy",
+      "Pharmacy Law and Ethics",
+      "Public Health",
+      "Pharmaceutical Management"
+    ]
+  },
+  {
+    name: "CPH Revision",
+    icon: "🎓",
+    description: "Revision resources, examinations and practice.",
+    units: [
+      "MCQ Practice",
+      "Structured Questions",
+      "Pharmaceutical Calculations",
+      "Past Paper Revision",
+      "Final Examination Preparation"
+    ]
+  }
+];
+
+function renderCPHLevels() {
+  const container = document.getElementById("levels");
+
+  if (!container) return;
+
+  container.innerHTML = cphLevels.map((level, index) => `
+    <div class="card">
+      <div style="font-size:38px;">${level.icon}</div>
+
+      <h3>${level.name}</h3>
+
+      <p>${level.description}</p>
+
+      <ul style="text-align:left;margin:15px 0;padding-left:20px;">
+        ${level.units.map(unit => `
+          <li style="margin:7px 0;">${unit}</li>
+        `).join("")}
+      </ul>
+
+      <button onclick="openCPHLevel(${index})">
+        📖 Open Level
+      </button>
+    </div>
+  `).join("");
+}
+
+function openCPHLevel(index) {
+  const level = cphLevels[index];
+
+  if (!level || !results) return;
+
+  results.innerHTML = `
+    <div class="card">
+
+      <h2>${level.icon} ${level.name}</h2>
+
+      <p>${level.description}</p>
+
+      <hr style="margin:15px 0;">
+
+      <h3>📚 Course Units</h3>
+
+      <div style="margin-top:15px;">
+        ${level.units.map((unit, i) => `
+          <button
+            onclick="openCourseUnit('${unit.replace(/'/g, "\\'")}')"
+            style="display:block;width:100%;text-align:left;margin:8px 0;"
+          >
+            ${i + 1}. ${unit}
+          </button>
+        `).join("")}
+      </div>
+
+      <br>
+
+      <button onclick="renderCPHLevels()">
+        ← Back to CPH Levels
+      </button>
+
+    </div>
+  `;
+
+  results.scrollIntoView({
+    behavior: "smooth"
+  });
+}
+
+function openCourseUnit(unit) {
+  if (!results) return;
+
+  results.innerHTML = `
+    <div class="card">
+
+      <h2>📚 ${unit}</h2>
+
+      <p>
+        This course unit is part of CPH STUDY.
+        Detailed notes, revision questions and examinations
+        will be organized here.
+      </p>
+
+      <hr style="margin:15px 0;">
+
+      <h3>📖 Study</h3>
+      <p>Detailed learning materials will appear here.</p>
+
+      <h3 style="margin-top:20px;">📝 Practice</h3>
+      <p>MCQs and structured questions will be linked here.</p>
+
+      <br>
+
+      <button onclick="renderCPHLevels()">
+        ← Back to CPH Levels
+      </button>
+
+    </div>
+  `;
+
+  results.scrollIntoView({
+    behavior: "smooth"
+  });
+}
+
+/* Load CPH levels when the page opens */
+document.addEventListener("DOMContentLoaded", function() {
+  renderCPHLevels();
+});
