@@ -2,379 +2,399 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#0757a0">
+<meta name="description" content="CPH STUDY - Certificate in Pharmacy study platform">
 <title>CPH STUDY</title>
 
 <style>
 *{box-sizing:border-box}
 
+:root{
+  --primary:#0757a0;
+  --secondary:#168ee5;
+  --bg:#f4f7fb;
+  --card:#fff;
+  --text:#172033;
+  --muted:#687386;
+  --border:#dce4ed;
+  --soft:#eef6ff;
+  --success:#198754;
+  --danger:#dc3545;
+}
+
 body{
-margin:0;
-font-family:Arial,Helvetica,sans-serif;
-background:#f4f7fb;
-color:#172033;
-line-height:1.6;
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.6;
+}
+
+body.dark{
+  --bg:#101722;
+  --card:#1b2635;
+  --text:#f1f5f9;
+  --muted:#aab5c5;
+  --border:#46546a;
+  --soft:#243144;
 }
 
 header{
-background:linear-gradient(135deg,#064b9b,#087bd3);
-color:#fff;
-padding:14px;
-display:flex;
-align-items:center;
-justify-content:space-between;
-position:sticky;
-top:0;
-z-index:100;
+  background:linear-gradient(135deg,#064b9b,#087bd3);
+  color:white;
+  padding:13px 15px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  position:sticky;
+  top:0;
+  z-index:100;
+  box-shadow:0 2px 8px #0002;
 }
 
 .brand{
-display:flex;
-align-items:center;
-gap:10px;
+  display:flex;
+  align-items:center;
+  gap:10px;
 }
 
 .logo{
-font-size:32px;
+  width:43px;
+  height:43px;
+  background:white;
+  color:#0757a0;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:25px;
+  font-weight:bold;
 }
 
 .brand-title{
-font-size:20px;
-font-weight:bold;
+  font-size:20px;
+  font-weight:bold;
 }
 
 .brand-sub{
-font-size:12px;
-opacity:.9;
+  font-size:11px;
+  opacity:.9;
 }
 
 header button{
-background:rgba(255,255,255,.15);
-color:#fff;
-border:0;
-font-size:20px;
-padding:9px 12px;
-border-radius:9px;
+  background:#ffffff22;
+  color:white;
+  border:0;
+  font-size:21px;
+  padding:9px 12px;
+  border-radius:10px;
 }
 
 main{
-max-width:1050px;
-margin:auto;
-padding:16px 14px 100px;
+  max-width:1100px;
+  margin:auto;
+  padding:15px 13px 95px;
 }
 
 .hero{
-background:linear-gradient(135deg,#0757a0,#1596e8);
-color:#fff;
-padding:24px;
-border-radius:18px;
-margin-bottom:18px;
+  background:linear-gradient(135deg,#0757a0,#1596e8);
+  color:white;
+  padding:22px;
+  border-radius:18px;
+  margin-bottom:16px;
 }
 
 .hero h1{
-margin:0 0 5px;
-font-size:27px;
+  margin:0;
+  font-size:27px;
+}
+
+.hero p{
+  margin:5px 0;
 }
 
 .quote{
-margin-top:15px;
-padding:12px;
-background:rgba(255,255,255,.16);
-border-radius:10px;
+  margin-top:14px;
+  padding:12px;
+  background:#ffffff22;
+  border-radius:10px;
 }
 
 .search{
-margin-bottom:18px;
+  margin-bottom:17px;
 }
 
 .search input{
-width:100%;
-padding:15px;
-border:1px solid #ccd5df;
-border-radius:12px;
-font-size:16px;
-outline:none;
-}
-
-h2,h3,h4{
-margin-top:0;
+  width:100%;
+  padding:14px;
+  border:1px solid var(--border);
+  border-radius:12px;
+  font-size:16px;
+  outline:none;
+  background:var(--card);
+  color:var(--text);
 }
 
 .card{
-background:#fff;
-border-radius:14px;
-padding:18px;
-margin-bottom:14px;
-box-shadow:0 3px 12px rgba(0,0,0,.07);
+  background:var(--card);
+  border-radius:14px;
+  padding:17px;
+  margin-bottom:13px;
+  box-shadow:0 3px 12px #00000012;
 }
 
 .grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
-gap:12px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+  gap:12px;
+}
+
+.class-card,
+.unit-card{
+  cursor:pointer;
+  transition:.15s;
 }
 
 .class-card{
-border-left:5px solid #0757a0;
-cursor:pointer;
+  border-left:5px solid var(--primary);
 }
 
 .unit-card{
-border-left:5px solid #168ee5;
+  border-left:5px solid var(--secondary);
 }
 
-.tool{
-width:100%;
-min-height:95px;
-font-size:27px;
-}
-
-.tool span{
-display:block;
-font-size:14px;
-margin-top:5px;
+.class-card:hover,
+.unit-card:hover{
+  transform:translateY(-2px);
 }
 
 button{
-border:0;
-border-radius:9px;
-padding:11px 14px;
-margin:4px;
-background:#0757a0;
-color:#fff;
-cursor:pointer;
-font-size:14px;
+  border:0;
+  border-radius:9px;
+  padding:11px 14px;
+  margin:4px;
+  background:var(--primary);
+  color:white;
+  cursor:pointer;
+  font-size:14px;
 }
 
 button:hover{
-opacity:.9;
-}
-
-button:disabled{
-opacity:.55;
-cursor:not-allowed;
+  opacity:.9;
 }
 
 .secondary{
-background:#eaf1f8;
-color:#0757a0;
+  background:#eaf1f8;
+  color:var(--primary);
 }
 
-.success{
-background:#198754;
+.dark .secondary{
+  background:#29394d;
+  color:#fff;
 }
 
-.danger{
-background:#dc3545;
+.success{background:var(--success)}
+.danger{background:var(--danger)}
+.warning{background:#d98b00}
+
+.tool{
+  width:100%;
+  min-height:95px;
+  font-size:27px;
 }
 
-.warning{
-background:#d98b00;
+.tool span{
+  display:block;
+  font-size:14px;
+  margin-top:5px;
 }
 
 .unit-actions{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:8px;
-margin-top:12px;
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:7px;
+  margin-top:12px;
 }
 
 .unit-actions button{
-margin:0;
+  margin:0;
 }
 
 .notes{
-background:#f8fbff;
-border-left:4px solid #0757a0;
-padding:15px;
-border-radius:8px;
-margin-top:12px;
-}
-
-.notes h4{
-margin-top:18px;
-margin-bottom:6px;
-}
-
-.notes ul,.notes ol{
-padding-left:22px;
+  background:var(--soft);
+  border-left:4px solid var(--primary);
+  padding:15px;
+  border-radius:8px;
 }
 
 .topic{
-background:#fff;
-border:1px solid #dce4ed;
-border-radius:9px;
-padding:12px;
-margin:10px 0;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:9px;
+  padding:13px;
+  margin:10px 0;
+}
+
+.topic h4{
+  margin:0 0 7px;
 }
 
 .question{
-font-size:18px;
-font-weight:bold;
-margin:15px 0;
+  font-size:18px;
+  font-weight:bold;
+  margin:16px 0;
 }
 
 .answer{
-display:block;
-width:100%;
-text-align:left;
-background:#f1f5f9;
-color:#172033;
-border:2px solid #d8e0e8;
-margin:8px 0;
-}
-
-.answer.correct{
-border-color:#198754;
-background:#e9f8ef;
-}
-
-.answer.wrong{
-border-color:#dc3545;
-background:#fff0f0;
-}
-
-.explanation{
-background:#eef6ff;
-border-left:4px solid #0757a0;
-padding:13px;
-border-radius:8px;
-margin-top:12px;
-}
-
-.paper{
-border-left:4px solid #168ee5;
-padding:14px;
-background:#f8fafc;
-margin:10px 0;
-border-radius:8px;
-}
-
-.post{
-background:#f5f8fb;
-padding:13px;
-border-left:4px solid #168ee5;
-border-radius:8px;
-margin:10px 0;
-}
-
-.post small{
-color:#687386;
-}
-
-textarea{
-width:100%;
-min-height:120px;
-padding:12px;
-border:1px solid #ccd5df;
-border-radius:9px;
-font:inherit;
-resize:vertical;
-}
-
-.stat-grid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:10px;
-}
-
-.stat{
-background:#eef3f8;
-padding:15px;
-border-radius:10px;
-text-align:center;
-}
-
-.stat strong{
-display:block;
-font-size:26px;
-color:#0757a0;
-}
-
-.badge{
-display:inline-block;
-background:#eaf1f8;
-color:#0757a0;
-padding:5px 9px;
-border-radius:20px;
-font-size:12px;
-margin:3px;
-}
-
-.hidden{
-display:none!important;
-}
-
-.empty{
-text-align:center;
-padding:25px;
-color:#687386;
-}
-
-nav{
-position:fixed;
-bottom:0;
-left:0;
-right:0;
-background:#fff;
-border-top:1px solid #ddd;
-display:grid;
-grid-template-columns:repeat(4,1fr);
-padding:6px;
-z-index:200;
-}
-
-nav button{
-background:transparent;
-color:#172033;
-margin:0;
-border-radius:0;
-font-size:18px;
-}
-
-nav span{
-display:block;
-font-size:11px;
-}
-
-.dark{
-background:#101722;
-color:#f1f5f9;
-}
-
-.dark .card,
-.dark nav{
-background:#1b2635;
-color:#f1f5f9;
-}
-
-.dark .notes,
-.dark .topic,
-.dark .paper,
-.dark .post,
-.dark .stat{
-background:#243144;
-color:#f1f5f9;
-}
-
-.dark .search input,
-.dark textarea{
-background:#1b2635;
-color:#fff;
-border-color:#46546a;
+  display:block;
+  width:100%;
+  text-align:left;
+  background:#f1f5f9;
+  color:#172033;
+  border:2px solid #d8e0e8;
+  margin:8px 0;
 }
 
 .dark .answer{
-background:#243144;
-color:#fff;
-border-color:#46546a;
+  background:#243144;
+  color:white;
+  border-color:#46546a;
+}
+
+.answer.correct{
+  border-color:var(--success);
+  background:#e9f8ef;
+}
+
+.answer.wrong{
+  border-color:var(--danger);
+  background:#fff0f0;
+}
+
+.explanation{
+  background:var(--soft);
+  border-left:4px solid var(--primary);
+  padding:13px;
+  border-radius:8px;
+  margin-top:12px;
+}
+
+.paper{
+  border-left:4px solid var(--secondary);
+  padding:14px;
+  background:var(--soft);
+  margin:10px 0;
+  border-radius:8px;
+}
+
+.badge{
+  display:inline-block;
+  background:#eaf1f8;
+  color:var(--primary);
+  padding:5px 9px;
+  border-radius:20px;
+  font-size:12px;
+  margin:3px;
+}
+
+.dark .badge{
+  background:#29394d;
+  color:#fff;
+}
+
+.stat-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+}
+
+.stat{
+  background:var(--soft);
+  padding:15px;
+  border-radius:10px;
+  text-align:center;
+}
+
+.stat strong{
+  display:block;
+  font-size:25px;
+  color:var(--primary);
+}
+
+.progress{
+  height:12px;
+  background:#dce4ed;
+  border-radius:20px;
+  overflow:hidden;
+}
+
+.progress-bar{
+  height:100%;
+  background:var(--secondary);
+  width:0%;
+}
+
+textarea{
+  width:100%;
+  min-height:110px;
+  padding:12px;
+  border:1px solid var(--border);
+  border-radius:9px;
+  font:inherit;
+  resize:vertical;
+  background:var(--card);
+  color:var(--text);
+}
+
+.empty{
+  text-align:center;
+  padding:30px;
+  color:var(--muted);
+}
+
+nav{
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  background:var(--card);
+  border-top:1px solid var(--border);
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  padding:6px;
+  z-index:200;
+}
+
+nav button{
+  background:transparent;
+  color:var(--text);
+  margin:0;
+  border-radius:0;
+  font-size:18px;
+}
+
+nav span{
+  display:block;
+  font-size:11px;
+}
+
+.notice{
+  padding:12px;
+  border-radius:9px;
+  background:#fff7df;
+  border-left:4px solid #d98b00;
+  margin:10px 0;
+}
+
+.dark .notice{
+  background:#3b321f;
 }
 
 @media(max-width:600px){
-.hero h1{font-size:23px}
-.unit-actions{grid-template-columns:1fr}
-.stat-grid{grid-template-columns:1fr}
+  .hero h1{font-size:23px}
+  .unit-actions{grid-template-columns:1fr}
+  .stat-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -382,30 +402,32 @@ border-color:#46546a;
 <body>
 
 <header>
-<div class="brand">
-<div class="logo">✚</div>
-<div>
-<div class="brand-title">CPH STUDY</div>
-<div class="brand-sub">Learn • Practice • Master</div>
-</div>
-</div>
+  <div class="brand">
+    <div class="logo">✚</div>
+    <div>
+      <div class="brand-title">CPH STUDY</div>
+      <div class="brand-sub">Learn • Practice • Master</div>
+    </div>
+  </div>
 
-<button onclick="enableNotifications()">🔔</button>
+  <button onclick="toggleDark()" aria-label="Toggle dark mode">🌙</button>
 </header>
 
 <main>
 
 <section class="hero">
-<h1>Welcome to CPH STUDY</h1>
-<p>Your organized Certificate in Pharmacy study platform.</p>
-<div class="quote" id="quote">Welcome to CPH STUDY.</div>
+  <h1>Welcome to CPH STUDY</h1>
+  <p>Your organized Certificate in Pharmacy study platform.</p>
+  <div class="quote" id="quote">📚 Study consistently, not occasionally.</div>
 </section>
 
 <div class="search">
-<input id="search"
-type="search"
-placeholder="🔎 Search classes, course units or topics..."
-oninput="searchCourses()">
+  <input
+    id="search"
+    type="search"
+    placeholder="🔎 Search classes, units or topics..."
+    oninput="searchCourses()"
+  >
 </div>
 
 <div id="app"></div>
@@ -413,569 +435,463 @@ oninput="searchCourses()">
 </main>
 
 <nav>
-<button onclick="home()">🏠<span>Home</span></button>
-<button onclick="focusSearch()">🔎<span>Search</span></button>
-<button onclick="showSaved()">🔖<span>Saved</span></button>
-<button onclick="showSettings()">⚙️<span>Settings</span></button>
+  <button onclick="home()">🏠<span>Home</span></button>
+  <button onclick="focusSearch()">🔎<span>Search</span></button>
+  <button onclick="showSaved()">🔖<span>Saved</span></button>
+  <button onclick="showSettings()">⚙️<span>Settings</span></button>
 </nav>
 
 
 <script>
+"use strict";
 
 /* =========================================================
-   CPH STUDY — SINGLE FILE VERSION
+   CPH STUDY — STABLE SINGLE-FILE VERSION
    ========================================================= */
 
-
-/* =========================
+/* -------------------------
    CURRICULUM
-========================= */
+------------------------- */
 
-const curriculum={
+const curriculum = {
+  "CPH 1.1":[
+    "Microbiology",
+    "Anatomy & Physiology 1",
+    "Pharmaceutical Chemistry 1",
+    "First Aid",
+    "PHC",
+    "Computer Applications"
+  ],
 
-"CPH 1.1":[
-"Microbiology",
-"Anatomy & Physiology 1",
-"Pharmaceutical Chemistry 1",
-"First Aid",
-"PHC",
-"Computer Applications"
-],
+  "CPH 1.2":[
+    "Anatomy & Physiology 2",
+    "Pharmaceutical Chemistry 2",
+    "Pharmaceutical Calculations",
+    "Pharmacognosy",
+    "Pharmacology 1",
+    "Medical Psychology",
+    "Communication Skills",
+    "Pharmaceutical Practicals"
+  ],
 
-"CPH 1.2":[
-"Anatomy & Physiology 2",
-"Pharmaceutical Chemistry 2",
-"Pharmaceutical Calculations",
-"Pharmacognosy",
-"Pharmacology 1",
-"Medical Psychology",
-"Communication Skills",
-"Pharmaceutical Practicals"
-],
+  "CPH 2.1":[
+    "Pharmaceutics 1",
+    "Pharmacy Laws & Regulations",
+    "Pharmacy Practice 1",
+    "Therapeutics 1",
+    "Pharmacology 2",
+    "Stores & Inventory Management"
+  ],
 
-"CPH 2.1":[
-"Pharmaceutics 1",
-"Pharmacy Laws & Regulations",
-"Pharmacy Practice 1",
-"Therapeutics 1",
-"Pharmacology 2",
-"Stores & Inventory Management"
-],
-
-"CPH 2.2":[
-"Pharmaceutics 2",
-"Quality Assurance of Pharmaceuticals",
-"Pharmacy Practice 2",
-"Therapeutics 2",
-"Entrepreneurship"
-]
-
+  "CPH 2.2":[
+    "Pharmaceutics 2",
+    "Quality Assurance of Pharmaceuticals",
+    "Pharmacy Practice 2",
+    "Therapeutics 2",
+    "Entrepreneurship"
+  ]
 };
 
 
-/* =========================
-   APP VARIABLES
-========================= */
+/* -------------------------
+   VARIABLES
+------------------------- */
 
-let activeLevel="";
-let activeUnit="";
-let quizQuestions=[];
-let quizIndex=0;
-let quizScore=0;
-let quizAnswered=false;
+let activeLevel = "";
+let activeUnit = "";
+let quizQuestions = [];
+let quizIndex = 0;
+let quizScore = 0;
+let quizAnswered = false;
 
 
-/* =========================
-   MOTIVATION
-========================= */
+/* -------------------------
+   QUOTES
+------------------------- */
 
-const quotes=[
-
-"📚 Study consistently, not occasionally.",
-
-"🧠 Understand first. Memorize second.",
-
-"🎯 Every topic mastered is one step forward.",
-
-"💊 Good pharmacy practice begins with good knowledge.",
-
-"🔬 Learn the science behind the medicine.",
-
-"📖 Read. Recall. Practise. Improve.",
-
-"🏆 Your effort today builds your professional future.",
-
-"💡 Ask questions whenever a concept is unclear.",
-
-"🚀 Small daily progress produces major results.",
-
-"🌟 Your knowledge is an investment in your future."
-
+const quotes = [
+  "📚 Study consistently, not occasionally.",
+  "🧠 Understand first. Memorize second.",
+  "🎯 Every topic mastered is one step forward.",
+  "💊 Good pharmacy practice begins with good knowledge.",
+  "🔬 Learn the science behind the medicine.",
+  "📖 Read. Recall. Practise. Improve.",
+  "🏆 Your effort today builds your professional future.",
+  "💡 Ask questions whenever a concept is unclear.",
+  "🚀 Small daily progress produces major results.",
+  "🌟 Your knowledge is an investment in your future."
 ];
 
 function updateQuote(){
+  const quote = document.getElementById("quote");
 
-const hour=new Date().getHours();
+  if(!quote) return;
 
-document.getElementById("quote").textContent=
-quotes[hour%quotes.length];
+  const hour = new Date().getHours();
 
+  quote.textContent = quotes[hour % quotes.length];
 }
 
-updateQuote();
 
-setInterval(updateQuote,60000);
+/* -------------------------
+   STORAGE
+------------------------- */
+
+function loadStorage(key, fallback){
+  try{
+    const data = localStorage.getItem(key);
+
+    if(data === null) return fallback;
+
+    return JSON.parse(data);
+
+  }catch(error){
+    console.warn("Storage read error:",error);
+    return fallback;
+  }
+}
+
+function saveStorage(key,value){
+  try{
+    localStorage.setItem(key,JSON.stringify(value));
+  }catch(error){
+    console.warn("Storage save error:",error);
+  }
+}
 
 
-/* =========================
-   SAFE TEXT
-========================= */
+/* -------------------------
+   ESCAPE TEXT
+------------------------- */
 
 function esc(value){
-
-return String(value)
-.replace(/&/g,"&amp;")
-.replace(/</g,"&lt;")
-.replace(/>/g,"&gt;")
-.replace(/"/g,"&quot;")
-.replace(/'/g,"&#039;");
-
+  return String(value)
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
 }
 
 
-/* =========================
-   HOME
-========================= */
+/* =========================================================
+   NOTES
+========================================================= */
 
-function home(){
-
-document.getElementById("search").value="";
-
-const app=document.getElementById("app");
-
-app.innerHTML=`
-
-<div class="card">
-<h2>🎓 Select Your CPH Class</h2>
-
-<p>
-Choose your class level first. CPH STUDY keeps
-course units, notes, quizzes and discussions
-separated by level.
-</p>
-</div>
-
-<div class="grid">
-
-${Object.keys(curriculum).map(level=>`
-
-<div class="card class-card"
-onclick="openClass('${esc(level)}')">
-
-<h3>📚 ${esc(level)}</h3>
-
-<p>
-${curriculum[level].length} course units
-</p>
-
-<span class="badge">Curriculum restricted</span>
-<span class="badge">Notes</span>
-<span class="badge">MCQs</span>
-<span class="badge">Structured</span>
-
-</div>
-
-`).join("")}
-
-</div>
-
-<h2>🛠️ Study Tools</h2>
-
-<div class="grid">
-
-<button class="tool"
-onclick="quizClasses()">
-📝
-<span>MCQ Quizzes</span>
-</button>
-
-<button class="tool"
-onclick="structuredClasses()">
-📄
-<span>Structured Papers</span>
-</button>
-
-<button class="tool"
-onclick="discussionClasses()">
-💬
-<span>Live Discussions</span>
-</button>
-
-<button class="tool"
-onclick="showProgress()">
-📊
-<span>Progress</span>
-</button>
-
-</div>
-
-<br>
-
-<div class="card">
-
-<h3>📌 How to use CPH STUDY</h3>
-
-<ol>
-<li>Select your class.</li>
-<li>Select a course unit.</li>
-<li>Read the notes.</li>
-<li>Attempt MCQs.</li>
-<li>Practise structured questions.</li>
-<li>Discuss difficult topics.</li>
-<li>Track your progress.</li>
-</ol>
-
-</div>
-`;
-
-}
-
-
-/* =========================
-   CLASS
-========================= */
-
-function openClass(level){
-
-activeLevel=level;
-
-document.getElementById("app").innerHTML=`
-
-<div class="card">
-
-<button class="secondary" onclick="home()">← Home</button>
-
-<h2>📚 ${esc(level)}</h2>
-
-<p>
-Only course units belonging to <b>${esc(level)}</b>
-are displayed here.
-</p>
-
-</div>
-
-<div class="grid">
-
-${curriculum[level].map(unit=>`
-
-<div class="card unit-card">
-
-<h3>📖 ${esc(unit)}</h3>
-
-<p>
-Complete learning area for ${esc(level)}.
-</p>
-
-<div class="unit-actions">
-
-<button onclick="showNotes('${esc(level)}','${esc(unit)}')">
-📖 Notes
-</button>
-
-<button onclick="startQuiz('${esc(level)}','${esc(unit)}')">
-📝 MCQ
-</button>
-
-<button onclick="structured('${esc(level)}','${esc(unit)}')">
-📄 Structured
-</button>
-
-<button onclick="discussion('${esc(level)}','${esc(unit)}')">
-💬 Discussion
-</button>
-
-<button class="secondary"
-onclick="saveUnit('${esc(level)}','${esc(unit)}')">
-🔖 Save
-</button>
-
-</div>
-
-</div>
-
-`).join("")}
-
-</div>
-`;
-
-}
-
-
-/* =========================
-   NOTES ENGINE
-========================= */
-
-const noteTopics={
+const noteTopics = {
 
 "Microbiology":[
-["Introduction to microbiology",
-"Microbiology is the study of microorganisms. In pharmacy and healthcare, microbiology is important because microorganisms may cause disease, contaminate pharmaceutical products and influence infection-control practices."],
-["Bacteria",
-"Bacteria are microscopic single-celled organisms. Important concepts include bacterial shape, arrangement, growth requirements, identification and their relationship with human disease."],
-["Sterilization and disinfection",
-"Sterilization aims to eliminate all forms of viable microorganisms. Disinfection reduces or eliminates many pathogenic microorganisms on non-living surfaces. The method selected depends on the material and intended use."],
-["Infection control",
-"Basic infection-control principles include hand hygiene, appropriate protective measures, safe handling of contaminated materials and correct disposal of waste."]
+[
+"Introduction to Microbiology",
+"Microbiology is the study of microorganisms. In pharmacy and healthcare, microbiology is important because microorganisms can cause disease, contaminate pharmaceutical products and influence infection-control practices."
+],
+[
+"Bacteria",
+"Bacteria are microscopic single-celled organisms. Important areas include bacterial shape, arrangement, growth requirements, identification and their relationship with human disease."
+],
+[
+"Sterilization and Disinfection",
+"Sterilization is a process designed to eliminate viable microorganisms. Disinfection reduces or eliminates many harmful microorganisms on non-living surfaces. The method selected depends on the material and intended use."
+],
+[
+"Infection Control",
+"Important principles include hand hygiene, appropriate protective measures, safe handling of contaminated materials and correct disposal of waste."
+]
 ],
 
 "Anatomy & Physiology 1":[
-["Introduction",
-"Anatomy studies body structure while physiology studies body function. Understanding normal structure and function provides a foundation for understanding disease and drug effects."],
-["Cells and tissues",
-"The cell is the basic structural and functional unit of the body. Major tissue categories include epithelial, connective, muscle and nervous tissue."],
-["Skeletal system",
-"The skeletal system provides support, protection, movement and mineral storage. Bones also contain marrow involved in blood-cell formation."],
-["Muscular system",
-"Muscle tissue produces movement. Skeletal muscle is generally under voluntary control, while smooth and cardiac muscle have specialized involuntary functions."]
+[
+"Introduction",
+"Anatomy is the study of body structure while physiology is the study of body function. Both provide the foundation for understanding disease and drug effects."
+],
+[
+"Cells and Tissues",
+"The cell is the basic structural and functional unit of the body. Major tissue categories include epithelial, connective, muscle and nervous tissue."
+],
+[
+"Skeletal System",
+"The skeletal system provides support, protection, movement and mineral storage. Bone marrow is also involved in blood-cell formation."
+],
+[
+"Muscular System",
+"Muscle tissue produces movement. Skeletal muscle is generally voluntary, while smooth and cardiac muscle perform specialized involuntary functions."
+]
 ],
 
 "Pharmaceutical Calculations":[
-["Units and measurements",
-"Pharmaceutical calculations require careful handling of units. Common quantities include mass, volume, concentration, amount, dose and percentage strength."],
-["Ratio and proportion",
-"Ratio and proportion can be used to determine unknown quantities when relationships between quantities are known. Always write units and check whether the resulting answer is reasonable."],
-["Dilution",
-"A common dilution relationship is C₁V₁ = C₂V₂, where concentration and volume before and after dilution are related. Units must be compatible."],
-["Percentage strength",
-"Percentage strength expresses the amount of active ingredient in relation to the preparation. The exact interpretation depends on whether the preparation is expressed as mass/mass, mass/volume or volume/volume."],
-["Dose calculations",
-"Drug-dose calculations require identifying the prescribed dose, available strength and quantity needed. Unit conversion should be completed carefully before the final calculation."]
+[
+"Units and Measurements",
+"Pharmaceutical calculations require careful handling of units. Common quantities include mass, volume, concentration, amount and dose."
+],
+[
+"Ratio and Proportion",
+"Ratio and proportion can be used to determine unknown quantities when relationships between quantities are known. Always write units and check whether the answer is reasonable."
+],
+[
+"Dilution",
+"A common dilution relationship is C₁V₁ = C₂V₂. Concentration and volume before and after dilution are related. Units must be compatible."
+],
+[
+"Percentage Strength",
+"Percentage strength expresses the amount of active ingredient in relation to a preparation. The interpretation depends on whether the expression is mass/mass, mass/volume or volume/volume."
+],
+[
+"Dose Calculations",
+"Drug-dose calculations require identifying the prescribed dose, available strength and quantity needed. Complete unit conversions before the final calculation."
+]
 ],
 
 "Pharmacology 1":[
-["Introduction to pharmacology",
-"Pharmacology studies drugs and their effects on living systems. Important areas include pharmacodynamics, pharmacokinetics, therapeutic effects and adverse effects."],
-["Pharmacodynamics",
-"Pharmacodynamics describes what a drug does to the body, including receptor interactions, mechanisms of action and resulting physiological effects."],
-["Pharmacokinetics",
-"Pharmacokinetics describes what the body does to a drug. Major processes are absorption, distribution, metabolism and excretion."],
-["Adverse drug reactions",
-"Adverse drug reactions are unwanted and potentially harmful responses associated with medicines when used appropriately. Recognition and reporting support medicine safety."]
+[
+"Introduction to Pharmacology",
+"Pharmacology studies drugs and their effects on living systems. Important areas include pharmacodynamics, pharmacokinetics, therapeutic effects and adverse effects."
+],
+[
+"Pharmacodynamics",
+"Pharmacodynamics describes what a drug does to the body, including receptor interactions, mechanisms of action and physiological effects."
+],
+[
+"Pharmacokinetics",
+"Pharmacokinetics describes what the body does to a drug. The major processes are absorption, distribution, metabolism and excretion."
+],
+[
+"Adverse Drug Reactions",
+"Adverse drug reactions are unwanted and potentially harmful responses associated with medicines. Recognition and reporting support medicine safety."
+]
 ],
 
 "Pharmacognosy":[
-["Introduction",
-"Pharmacognosy concerns medicinal substances obtained from natural sources, especially plants, and includes identification, constituents, preparation and uses."],
-["Medicinal plants",
-"Medicinal plants contain biologically active constituents. Correct identification and quality control are important because natural products may vary in composition."],
-["Crude drugs",
-"Crude drugs are natural substances used medicinally in relatively unrefined forms. Their evaluation may include identity, purity, quality and storage."]
+[
+"Introduction",
+"Pharmacognosy concerns medicinal substances obtained from natural sources, particularly plants, and includes identification, constituents, preparation, quality and uses."
+],
+[
+"Medicinal Plants",
+"Medicinal plants contain biologically active constituents. Correct identification and quality control are important because natural products may vary in composition."
+],
+[
+"Crude Drugs",
+"Crude drugs are natural substances used medicinally in relatively unrefined forms. Evaluation may include identity, purity, quality and storage."
+]
 ],
 
 "Pharmaceutics 1":[
-["Introduction to pharmaceutics",
-"Pharmaceutics is concerned with converting active pharmaceutical ingredients into suitable dosage forms that can be administered safely and effectively."],
-["Dosage forms",
-"Dosage forms include tablets, capsules, solutions, suspensions, creams and other preparations. Each dosage form has characteristics affecting administration, stability and patient use."],
-["Excipients",
-"Excipients are ingredients other than the active pharmaceutical ingredient. They may assist formulation, stability, appearance, preservation or administration."]
+[
+"Introduction to Pharmaceutics",
+"Pharmaceutics is concerned with converting active pharmaceutical ingredients into suitable dosage forms that can be administered safely and effectively."
+],
+[
+"Dosage Forms",
+"Dosage forms include tablets, capsules, solutions, suspensions, creams and other preparations. Each has characteristics affecting administration, stability and patient use."
+],
+[
+"Excipients",
+"Excipients are ingredients other than the active pharmaceutical ingredient. They may assist formulation, stability, appearance, preservation or administration."
+]
 ],
 
 "Pharmacy Laws & Regulations":[
-["Purpose of pharmacy regulation",
-"Pharmacy laws and regulations establish standards for the safe handling, storage, dispensing and distribution of medicines and define professional responsibilities."],
-["Professional responsibility",
-"Pharmacy personnel should work within their legal scope, maintain appropriate records, protect patients and follow applicable professional and regulatory requirements."],
-["Medicine control",
-"Controlled and restricted medicines require additional safeguards. Proper documentation, storage and accountability are essential."]
+[
+"Purpose of Pharmacy Regulation",
+"Pharmacy laws and regulations establish standards for safe handling, storage, dispensing and distribution of medicines and define professional responsibilities."
+],
+[
+"Professional Responsibility",
+"Pharmacy personnel should work within their legal scope, maintain appropriate records, protect patients and follow applicable professional requirements."
+],
+[
+"Medicine Control",
+"Controlled and restricted medicines require additional safeguards. Proper documentation, storage and accountability are essential."
+]
 ],
 
 "Entrepreneurship":[
-["Introduction",
-"Entrepreneurship involves identifying opportunities, organizing resources, taking calculated decisions and creating value."],
-["Business planning",
-"A business plan normally considers the product or service, target customers, resources, costs, revenue model, risks and implementation strategy."],
-["Customer service",
-"Good customer service involves communication, reliability, ethical conduct, understanding customer needs and appropriate follow-up."]
+[
+"Introduction",
+"Entrepreneurship involves identifying opportunities, organizing resources, making calculated decisions and creating value."
+],
+[
+"Business Planning",
+"A business plan normally considers the product or service, target customers, resources, costs, revenue model, risks and implementation."
+],
+[
+"Customer Service",
+"Good customer service involves communication, reliability, ethical conduct, understanding customer needs and appropriate follow-up."
+]
 ]
 
 };
 
 
-/* =========================
-   GENERIC NOTE BUILDER
-========================= */
+/* -------------------------
+   GENERIC NOTES
+------------------------- */
 
 function getTopics(unit){
 
-if(noteTopics[unit]) return noteTopics[unit];
+  if(noteTopics[unit]){
+    return noteTopics[unit];
+  }
 
-return [
-
-["Introduction to "+unit,
-unit+" should be studied systematically by beginning with definitions, scope, basic terminology and the relationship of the subject to pharmacy practice."],
-
-["Core concepts",
-"Focus on major principles, classifications, terminology, processes and relationships. Do not rely only on memorization; understand why each concept matters."],
-
-["Pharmacy application",
-"Relate the theory to pharmaceutical practice, patient care, medicine use, safety, quality assurance or other relevant professional activities."],
-
-["Examination focus",
-"Revise definitions, comparisons, classifications, mechanisms, procedures, advantages and disadvantages, examples and applications."],
-
-["Revision strategy",
-"Create short summaries, practise recall, answer examination questions and revisit areas where mistakes occur."]
-
-];
-
+  return [
+    [
+      "Introduction to " + unit,
+      unit + " should be studied systematically by beginning with definitions, scope, terminology and the relationship of the subject to pharmacy practice."
+    ],
+    [
+      "Core Concepts",
+      "Focus on major principles, classifications, terminology, processes and relationships. Do not rely only on memorization; understand why each concept matters."
+    ],
+    [
+      "Pharmacy Application",
+      "Relate the theory to pharmaceutical practice, patient care, medicine use, safety, quality assurance or other relevant professional activities."
+    ],
+    [
+      "Examination Focus",
+      "Revise definitions, comparisons, classifications, mechanisms, procedures, advantages, disadvantages, examples and applications."
+    ],
+    [
+      "Revision Strategy",
+      "Create short summaries, practise recall, answer examination questions and revisit areas where mistakes occur."
+    ]
+  ];
 }
 
 
-/* =========================
-   NOTES
-========================= */
-
-function showNotes(level,unit){
-
-activeLevel=level;
-activeUnit=unit;
-
-const topics=getTopics(unit);
-
-document.getElementById("app").innerHTML=`
-
-<div class="card">
-
-<button class="secondary"
-onclick="openClass('${esc(level)}')">
-← ${esc(level)}
-</button>
-
-<h2>📖 ${esc(unit)}</h2>
-
-<p>
-<b>${esc(level)}</b> → <b>${esc(unit)}</b>
-</p>
-
-<div class="notes">
-
-<h3>📚 Comprehensive Study Notes</h3>
-
-<p>
-These notes are organized specifically under
-${esc(level)} → ${esc(unit)}.
-No material from another class is intentionally
-loaded into this unit.
-</p>
-
-${topics.map((t,i)=>`
-
-<div class="topic">
-
-<h4>${i+1}. ${esc(t[0])}</h4>
-
-<p>${esc(t[1])}</p>
-
-</div>
-
-`).join("")}
-
-<h3>🧠 Master Revision Checklist</h3>
-
-<ul>
-<li>Know important definitions.</li>
-<li>Understand classifications.</li>
-<li>Understand major principles.</li>
-<li>Know important examples.</li>
-<li>Understand practical applications.</li>
-<li>Practise explaining concepts in your own words.</li>
-<li>Attempt both MCQs and structured questions.</li>
-</ul>
-
-<h3>✍️ Exam Technique</h3>
-
-<p>
-For structured questions, read the command word carefully.
-For example, “define” requires a concise definition,
-while “explain” requires the concept and relevant reasoning.
-For calculations, show the formula, substitution, units
-and final answer.
-</p>
-
-</div>
-
-<br>
-
-<button onclick="startQuiz('${esc(level)}','${esc(unit)}')">
-📝 Start MCQ Quiz
-</button>
-
-<button onclick="structured('${esc(level)}','${esc(unit)}')">
-📄 Structured Questions
-</button>
-
-</div>
-`;
-
-}
-
-
-/* =========================
+/* =========================================================
    QUESTION BANK
-========================= */
+========================================================= */
 
-const questionBank={
+const questionBank = {
 
 "Microbiology":[
 {
-q:"Microbiology is primarily the study of:",
-a:["Microorganisms","Bones","Business","Buildings"],
-c:0,
-e:"Microbiology is the scientific study of microorganisms."
+ q:"Microbiology is primarily the study of:",
+ a:["Microorganisms","Bones","Business","Buildings"],
+ c:0,
+ e:"Microbiology is the scientific study of microorganisms."
 },
 {
-q:"Which is a microorganism?",
-a:["Bacterium","Femur","Kidney","Heart"],
-c:0,
-e:"Bacteria are microorganisms."
+ q:"Which is a microorganism?",
+ a:["Bacterium","Femur","Kidney","Heart"],
+ c:0,
+ e:"Bacteria are microorganisms."
 },
 {
-q:"Sterilization is intended to:",
-a:["Eliminate viable microorganisms","Increase contamination","Add microorganisms","Change drug colour"],
-c:0,
-e:"Sterilization is intended to eliminate viable microorganisms."
+ q:"Sterilization is intended to:",
+ a:["Eliminate viable microorganisms","Increase contamination","Add microorganisms","Change drug colour"],
+ c:0,
+ e:"Sterilization is intended to eliminate viable microorganisms."
 }
 ],
 
 "Anatomy & Physiology 1":[
 {
-q:"Anatomy primarily concerns:",
-a:["Body structure","Drug pricing","Accounting","Communication"],
-c:0,
-e:"Anatomy is concerned with body structure."
+ q:"Anatomy primarily concerns:",
+ a:["Body structure","Drug pricing","Accounting","Hospital buildings"],
+ c:0,
+ e:"Anatomy is concerned with body structure."
 },
 {
-q:"Physiology primarily concerns:",
-a:["Body function","Drug packaging","Business plans","Hospital buildings"],
-c:0,
-e:"Physiology is concerned with how the body functions."
+ q:"Physiology primarily concerns:",
+ a:["Body function","Drug packaging","Business plans","Hospital buildings"],
+ c:0,
+ e:"Physiology is concerned with how the body functions."
+},
+{
+ q:"The basic structural and functional unit of the body is the:",
+ a:["Cell","Organ","Bone","System"],
+ c:0,
+ e:"The cell is the basic structural and functional unit of the body."
 }
 ],
 
 "Pharmaceutical Calculations":[
 {
-q:"Which equation is commonly used for dilution calculations?",
-a:["C₁V₁=C₂V₂","F=ma","E=mc²","P=IV"],
-c:0,
-e:"C₁V₁=C₂V₂ is commonly used for dilution calculations."
+ q:"Which equation is commonly used for dilution calculations?",
+ a:["C₁V₁ = C₂V₂","F = ma","E = mc²","P = IV"],
+ c:0,
+ e:"C₁V₁ = C₂V₂ is commonly used for dilution calculations."
 },
 {
-q:"500 mg in 5 mL equals:",
-a:["50 mg/mL","100 mg/mL","250 mg/mL","500 mg/mL"],
-c:1,
-e:"500 mg ÷ 5 mL = 100 mg/mL."
+ q:"500 mg in 5 mL equals:",
+ a:["50 mg/mL","100 mg/mL","250 mg/mL","500 mg/mL"],
+ c:1,
+ e:"500 mg ÷ 5 mL = 100 mg/mL."
 },
 {
-q:"What should be done before performing a pharmaceutical calculation?",
-a:["
+ q:"What should be done before performing a pharmaceutical calculation?",
+ a:[
+   "Identify the quantities and units",
+   "Ignore the units",
+   "Guess the answer",
+   "Change the prescription"
+ ],
+ c:0,
+ e:"First identify the known quantities, required quantity and units."
+},
+{
+ q:"A 10% w/v preparation contains:",
+ a:[
+   "10 g in 100 mL",
+   "10 mg in 100 mL",
+   "100 g in 10 mL",
+   "1 g in 1000 mL"
+ ],
+ c:0,
+ e:"10% w/v means 10 g of substance in 100 mL of preparation."
+}
+],
+
+"Pharmacology 1":[
+{
+ q:"Pharmacodynamics describes:",
+ a:["What the drug does to the body","What the body does to the drug","Drug packaging","Drug pricing"],
+ c:0,
+ e:"Pharmacodynamics concerns the effects and mechanisms of drugs in the body."
+},
+{
+ q:"Which is part of pharmacokinetics?",
+ a:["Absorption","Marketing","Packaging","Labelling"],
+ c:0,
+ e:"ADME—absorption, distribution, metabolism and excretion—are major pharmacokinetic processes."
+},
+{
+ q:"ADME stands for:",
+ a:[
+   "Absorption, Distribution, Metabolism, Excretion",
+   "Administration, Dose, Medicine, Effect",
+   "Analysis, Drug, Measurement, Evaluation",
+   "Action, Distribution, Medicine, Elimination"
+ ],
+ c:0,
+ e:"ADME stands for absorption, distribution, metabolism and excretion."
+}
+],
+
+"Pharmacognosy":[
+{
+ q:"Pharmacognosy is strongly associated with:",
+ a:["Natural medicinal substances","Hospital construction","Accounting","Computer repair"],
+ c:0,
+ e:"Pharmacognosy focuses particularly on medicinal substances from natural sources."
+},
+{
+ q:"Correct identification of a medicinal plant is important because:",
+ a:[
+   "Plant materials can vary and may be confused",
+   "All plants are identical",
+   "It changes the weather",
+   "It eliminates all medicines"
+ ],
+ c:0,
+ e:"Correct identification supports safety, quality and appropriate use."
+}
+],
+
+"Pharmaceutics 1":[
+{
+ q:"Pharmaceutics is mainly concerned with:",
+ a:[
+   "Formulation and dosage forms",
+   "Hospital construct
