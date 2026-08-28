@@ -1,198 +1,637 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CPH STUDY - Study Materials</title>
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0b5cab">
 
-    body {
-      font-family: Arial, sans-serif;
-      background: #f4f7fb;
-      color: #172033;
-    }
+<title>CPH STUDY | Materials</title>
 
-    header {
-      background: #0b5ed7;
-      color: white;
-      padding: 22px 18px;
-      text-align: center;
-    }
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
 
-    header h1 {
-      font-size: 28px;
-      margin-bottom: 6px;
-    }
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:#f4f7fb;
+  color:#172033;
+  line-height:1.6;
+}
 
-    header p {
-      opacity: 0.9;
-    }
+header{
+  background:linear-gradient(135deg,#064b9b,#0b78d0);
+  color:white;
+  padding:24px 18px;
+  text-align:center;
+}
 
-    .container {
-      max-width: 900px;
-      margin: auto;
-      padding: 20px;
-    }
+header .icon{
+  font-size:42px;
+}
 
-    .search {
-      width: 100%;
-      padding: 14px;
-      border: 1px solid #ccd4df;
-      border-radius: 10px;
-      font-size: 16px;
-      margin-bottom: 20px;
-    }
+header h1{
+  font-size:28px;
+  margin:4px 0;
+}
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 16px;
-    }
+header p{
+  opacity:.9;
+}
 
-    .card {
-      background: white;
-      padding: 20px;
-      border-radius: 14px;
-      box-shadow: 0 3px 12px rgba(0,0,0,0.08);
-    }
+.container{
+  max-width:1000px;
+  margin:auto;
+  padding:20px;
+}
 
-    .card h2 {
-      color: #0b5ed7;
-      margin-bottom: 10px;
-      font-size: 20px;
-    }
+.back{
+  display:inline-block;
+  margin-bottom:18px;
+  text-decoration:none;
+  color:#075db5;
+  font-weight:bold;
+}
 
-    .card p {
-      line-height: 1.5;
-      color: #555;
-      margin-bottom: 15px;
-    }
+.search{
+  width:100%;
+  padding:15px;
+  border:1px solid #ccd5df;
+  border-radius:12px;
+  font-size:16px;
+  margin-bottom:25px;
+  outline:none;
+}
 
-    .btn {
-      display: inline-block;
-      background: #0b5ed7;
-      color: white;
-      text-decoration: none;
-      padding: 10px 15px;
-      border-radius: 8px;
-    }
+.search:focus{
+  border-color:#0b5cab;
+}
 
-    .btn:hover {
-      background: #084298;
-    }
+.section-title{
+  margin:25px 0 15px;
+  color:#0b5cab;
+}
 
-    .back {
-      display: inline-block;
-      margin-bottom: 18px;
-      color: #0b5ed7;
-      text-decoration: none;
-      font-weight: bold;
-    }
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:16px;
+}
 
-    footer {
-      text-align: center;
-      padding: 25px;
-      color: #777;
-    }
-  </style>
+.card{
+  background:white;
+  padding:20px;
+  border-radius:15px;
+  box-shadow:0 3px 12px rgba(0,0,0,.08);
+  transition:.2s;
+}
+
+.card:hover{
+  transform:translateY(-2px);
+}
+
+.card h3{
+  color:#0b5cab;
+  margin-bottom:8px;
+}
+
+.card p{
+  color:#5b6470;
+  margin-bottom:15px;
+}
+
+.open{
+  border:0;
+  background:#0b5cab;
+  color:white;
+  padding:11px 15px;
+  border-radius:8px;
+  cursor:pointer;
+  font-size:14px;
+}
+
+.open:hover{
+  background:#063e79;
+}
+
+.content{
+  display:none;
+  margin-top:15px;
+  padding-top:15px;
+  border-top:1px solid #e1e6ec;
+}
+
+.content.active{
+  display:block;
+}
+
+.content h4{
+  margin:15px 0 6px;
+  color:#172033;
+}
+
+.content ul{
+  padding-left:20px;
+}
+
+.note{
+  background:#eef6ff;
+  padding:12px;
+  border-left:4px solid #0b5cab;
+  border-radius:6px;
+  margin:12px 0;
+}
+
+.formula{
+  background:#f1f1f1;
+  padding:12px;
+  border-radius:8px;
+  font-family:monospace;
+  margin:10px 0;
+}
+
+.quiz{
+  background:#fff8df;
+  padding:15px;
+  border-radius:10px;
+  margin-top:15px;
+}
+
+footer{
+  text-align:center;
+  padding:30px 15px;
+  color:#69727e;
+}
+
+.hidden{
+  display:none!important;
+}
+</style>
 </head>
 
 <body>
 
 <header>
-  <h1>📚 CPH STUDY</h1>
-  <p>Study Materials</p>
+  <div class="icon">✚</div>
+  <h1>CPH STUDY</h1>
+  <p>Study Materials • Learn • Practice • Master</p>
 </header>
 
 <div class="container">
 
-  <a href="index.html" class="back">← Back to Home</a>
+<a href="index.html" class="back">← Back to Home</a>
 
-  <input
-    type="text"
-    id="search"
-    class="search"
-    placeholder="🔎 Search study materials..."
-    onkeyup="searchMaterials()"
-  >
+<input
+  type="search"
+  id="search"
+  class="search"
+  placeholder="🔎 Search subjects, topics or keywords..."
+  oninput="searchMaterials()"
+>
 
-  <div class="grid" id="materials">
+<h2 class="section-title">📚 Core CPH Materials</h2>
 
-    <div class="card">
-      <h2>💊 Pharmacology</h2>
-      <p>Study drug classes, mechanisms of action, therapeutic uses, adverse effects and important examples.</p>
-      <a href="#" class="btn">Open Materials</a>
-    </div>
+<div class="grid" id="materials">
 
-    <div class="card">
-      <h2>🧪 Pharmaceutics</h2>
-      <p>Learn dosage forms, formulations, pharmaceutical technology and principles of drug preparation.</p>
-      <a href="#" class="btn">Open Materials</a>
-    </div>
+<!-- PHARMACOLOGY -->
 
-    <div class="card">
-      <h2>🧮 Pharmaceutical Calculations</h2>
-      <p>Practice dilution, percentage strength, ratio, proportion, allegation, dose calculations and conversions.</p>
-      <a href="#" class="btn">Open Materials</a>
-    </div>
+<div class="card material">
+<h3>💊 Pharmacology</h3>
+<p>Study drugs, their actions, uses, adverse effects and important interactions.</p>
 
-    <div class="card">
-      <h2>🦠 Microbiology</h2>
-      <p>Learn microorganisms, infection, sterilization, laboratory principles and antimicrobial concepts.</p>
-      <a href="#" class="btn">Open Materials</a>
-    </div>
+<button class="open" onclick="toggle('pharmacology')">
+Open Notes
+</button>
 
-    <div class="card">
-      <h2>🫀 Anatomy & Physiology</h2>
-      <p>Study the structure and functions of the human body and its major organ systems.</p>
-      <a href="#" class="btn">Open Materials</a>
-    </div>
+<div class="content" id="pharmacology">
 
-    <div class="card">
-      <h2>🧬 Biochemistry</h2>
-      <p>Understand carbohydrates, proteins, lipids, enzymes, metabolism and biochemical processes.</p>
-      <a href="#" class="btn">Open Materials</a>
-    </div>
+<h4>What is Pharmacology?</h4>
 
-    <div class="card">
-      <h2>🩺 Clinical Pharmacy</h2>
-      <p>Explore patient care, medication safety, drug interactions and rational medicine use.</p>
-      <a href="#" class="btn">Open Materials</a>
-    </div>
+<p>
+Pharmacology is the science concerned with drugs and their interactions
+with living systems.
+</p>
 
-    <div class="card">
-      <h2>📖 CPH Revision</h2>
-      <p>Revision materials designed to help you prepare effectively for CPH examinations.</p>
-      <a href="#" class="btn">Open Materials</a>
-    </div>
+<h4>Major Areas</h4>
 
-  </div>
+<ul>
+<li>Pharmacodynamics – what the drug does to the body.</li>
+<li>Pharmacokinetics – what the body does to the drug.</li>
+<li>Clinical pharmacology – application of drugs in patients.</li>
+<li>Pharmacotherapeutics – use of drugs to prevent and treat disease.</li>
+</ul>
+
+<div class="note">
+<b>Remember:</b> Pharmacokinetics can be summarized as
+ADME — Absorption, Distribution, Metabolism and Excretion.
+</div>
+
+<h4>Drug Administration Routes</h4>
+
+<ul>
+<li>Oral</li>
+<li>Intravenous</li>
+<li>Intramuscular</li>
+<li>Subcutaneous</li>
+<li>Topical</li>
+<li>Inhalational</li>
+</ul>
+
+<div class="quiz">
+<b>Quick Check:</b>
+What are the four major processes represented by ADME?
+</div>
+
+</div>
+</div>
+
+
+<!-- PHARMACEUTICS -->
+
+<div class="card material">
+<h3>🧪 Pharmaceutics</h3>
+<p>Understand dosage forms, formulation principles and pharmaceutical technology.</p>
+
+<button class="open" onclick="toggle('pharmaceutics')">
+Open Notes
+</button>
+
+<div class="content" id="pharmaceutics">
+
+<h4>What is Pharmaceutics?</h4>
+
+<p>
+Pharmaceutics is the branch of pharmacy concerned with converting
+active pharmaceutical ingredients into suitable dosage forms.
+</p>
+
+<h4>Common Dosage Forms</h4>
+
+<ul>
+<li>Tablets</li>
+<li>Capsules</li>
+<li>Solutions</li>
+<li>Suspensions</li>
+<li>Emulsions</li>
+<li>Creams and ointments</li>
+<li>Suppositories</li>
+</ul>
+
+<h4>Important Concepts</h4>
+
+<ul>
+<li>Stability</li>
+<li>Solubility</li>
+<li>Bioavailability</li>
+<li>Drug release</li>
+<li>Preservation</li>
+<li>Packaging</li>
+</ul>
+
+<div class="quiz">
+<b>Quick Check:</b>
+What is the difference between a solution and a suspension?
+</div>
+
+</div>
+</div>
+
+
+<!-- PHARMACEUTICAL CALCULATIONS -->
+
+<div class="card material">
+<h3>🧮 Pharmaceutical Calculations</h3>
+<p>Master the calculations commonly encountered in pharmacy practice and examinations.</p>
+
+<button class="open" onclick="toggle('calculations')">
+Open Notes
+</button>
+
+<div class="content" id="calculations">
+
+<h4>1. Percentage Strength</h4>
+
+<p>
+Percentage strength expresses the amount of active ingredient in
+100 parts of the preparation.
+</p>
+
+<div class="formula">
+% strength = amount of solute / amount of preparation × 100
+</div>
+
+<h4>2. Dilution</h4>
+
+<div class="formula">
+C₁V₁ = C₂V₂
+</div>
+
+<p>
+Where C₁ is the initial concentration, V₁ is the volume taken,
+C₂ is the required concentration and V₂ is the final volume.
+</p>
+
+<h4>3. Ratio and Proportion</h4>
+
+<p>
+A ratio compares two quantities. Cross multiplication can be used
+to solve many pharmaceutical proportion problems.
+</p>
+
+<h4>4. Allegation</h4>
+
+<p>
+Allegation is a method used to determine the quantities of two
+different strengths required to prepare a mixture of an intermediate
+strength.
+</p>
+
+<div class="note">
+<b>Example concept:</b> To prepare a strength between a high-strength
+preparation and a low-strength preparation, the differences between
+each strength and the desired strength determine the mixing ratio.
+</div>
+
+<h4>5. Dose Calculations</h4>
+
+<div class="formula">
+Volume required =
+Dose required / Dose available × Volume containing available dose
+</div>
+
+<div class="quiz">
+<b>Practice:</b><br>
+A patient requires 250 mg of a medicine. The available preparation
+contains 500 mg in 5 mL. What volume should be administered?
+</div>
+
+</div>
+</div>
+
+
+<!-- MICROBIOLOGY -->
+
+<div class="card material">
+<h3>🦠 Microbiology</h3>
+<p>Learn microorganisms, infection, sterilization and antimicrobial principles.</p>
+
+<button class="open" onclick="toggle('microbiology')">
+Open Notes
+</button>
+
+<div class="content" id="microbiology">
+
+<h4>Microbiology</h4>
+
+<p>
+Microbiology is the study of microorganisms including bacteria,
+viruses, fungi and protozoa.
+</p>
+
+<h4>Important Topics</h4>
+
+<ul>
+<li>Bacterial structure</li>
+<li>Gram staining</li>
+<li>Bacterial growth</li>
+<li>Sterilization</li>
+<li>Disinfection</li>
+<li>Antimicrobial agents</li>
+<li>Infection control</li>
+</ul>
+
+<h4>Gram Staining</h4>
+
+<p>
+Gram staining differentiates bacteria according to differences in
+their cell-wall structure.
+</p>
+
+<div class="note">
+<b>Exam Tip:</b> Know the basic differences between Gram-positive and
+Gram-negative bacteria, including cell-wall structure and staining
+reaction.
+</div>
+
+</div>
+</div>
+
+
+<!-- ANATOMY -->
+
+<div class="card material">
+<h3>🫀 Anatomy & Physiology</h3>
+<p>Study the structure and normal functions of the human body.</p>
+
+<button class="open" onclick="toggle('anatomy')">
+Open Notes
+</button>
+
+<div class="content" id="anatomy">
+
+<h4>Major Body Systems</h4>
+
+<ul>
+<li>Cardiovascular system</li>
+<li>Respiratory system</li>
+<li>Digestive system</li>
+<li>Nervous system</li>
+<li>Urinary system</li>
+<li>Endocrine system</li>
+<li>Musculoskeletal system</li>
+<li>Reproductive system</li>
+</ul>
+
+<h4>Homeostasis</h4>
+
+<p>
+Homeostasis is the maintenance of a relatively stable internal
+environment despite changes in external or internal conditions.
+</p>
+
+<div class="quiz">
+<b>Quick Check:</b>
+Which system is primarily responsible for transporting oxygen,
+nutrients and hormones around the body?
+</div>
+
+</div>
+</div>
+
+
+<!-- BIOCHEMISTRY -->
+
+<div class="card material">
+<h3>🧬 Biochemistry</h3>
+<p>Understand biomolecules, enzymes and important metabolic pathways.</p>
+
+<button class="open" onclick="toggle('biochemistry')">
+Open Notes
+</button>
+
+<div class="content" id="biochemistry">
+
+<h4>Major Biomolecules</h4>
+
+<ul>
+<li>Carbohydrates</li>
+<li>Proteins</li>
+<li>Lipids</li>
+<li>Nucleic acids</li>
+</ul>
+
+<h4>Enzymes</h4>
+
+<p>
+Enzymes are biological catalysts that increase the rate of
+biochemical reactions without being consumed in the reaction.
+</p>
+
+<h4>Important Topics</h4>
+
+<ul>
+<li>Enzyme activity</li>
+<li>Protein structure</li>
+<li>Carbohydrate metabolism</li>
+<li>Lipid metabolism</li>
+<li>Energy metabolism</li>
+</ul>
+
+</div>
+</div>
+
+
+<!-- CLINICAL PHARMACY -->
+
+<div class="card material">
+<h3>🩺 Clinical Pharmacy</h3>
+<p>Focus on safe and effective use of medicines in patient care.</p>
+
+<button class="open" onclick="toggle('clinical')">
+Open Notes
+</button>
+
+<div class="content" id="clinical">
+
+<h4>Clinical Pharmacy</h4>
+
+<p>
+Clinical pharmacy focuses on optimizing medication therapy and
+supporting safe, effective and appropriate medicine use.
+</p>
+
+<h4>Key Areas</h4>
+
+<ul>
+<li>Medication history</li>
+<li>Patient counselling</li>
+<li>Adverse drug reactions</li>
+<li>Drug interactions</li>
+<li>Medication adherence</li>
+<li>Patient monitoring</li>
+</ul>
+
+<div class="note">
+<b>Patient Safety:</b> Always verify the patient, medicine, dose,
+route and relevant instructions before medicine administration.
+</div>
+
+</div>
+</div>
+
+
+<!-- CPH REVISION -->
+
+<div class="card material">
+<h3>📖 CPH Revision</h3>
+<p>Use structured revision to identify weak areas and prepare for examinations.</p>
+
+<button class="open" onclick="toggle('revision')">
+Open Revision Guide
+</button>
+
+<div class="content" id="revision">
+
+<h4>Effective Revision Cycle</h4>
+
+<ol>
+<li>Learn the concept.</li>
+<li>Make short notes.</li>
+<li>Test yourself without looking at the answer.</li>
+<li>Mark your work.</li>
+<li>Review mistakes.</li>
+<li>Repeat difficult topics.</li>
+</ol>
+
+<h4>High-Yield Revision</h4>
+
+<ul>
+<li>Definitions</li>
+<li>Classifications</li>
+<li>Mechanisms</li>
+<li>Indications</li>
+<li>Contraindications</li>
+<li>Adverse effects</li>
+<li>Calculations</li>
+<li>Short-answer questions</li>
+<li>MCQs</li>
+</ul>
+
+<div class="note">
+<b>Study Principle:</b> Active recall and spaced revision are generally
+more effective for long-term retention than repeatedly reading the
+same notes.
+</div>
+
+</div>
+</div>
+
+</div>
+
 </div>
 
 <footer>
-  © 2026 CPH STUDY — Learn • Practice • Master
+© 2026 CPH STUDY<br>
+Learn • Practice • Master
 </footer>
 
+
 <script>
-function searchMaterials() {
-  const input = document.getElementById("search").value.toLowerCase();
-  const cards = document.querySelectorAll(".card");
 
-  cards.forEach(card => {
-    const text = card.innerText.toLowerCase();
+function toggle(id){
 
-    if (text.includes(input)) {
-      card.style.display = "";
-    } else {
-      card.style.display = "none";
-    }
-  });
+  const element=document.getElementById(id);
+
+  element.classList.toggle("active");
+
 }
+
+function searchMaterials(){
+
+  const query=document
+    .getElementById("search")
+    .value
+    .toLowerCase()
+    .trim();
+
+  const cards=document.querySelectorAll(".material");
+
+  cards.forEach(card=>{
+
+    const text=card.innerText.toLowerCase();
+
+    if(text.includes(query)){
+      card.classList.remove("hidden");
+    }else{
+      card.classList.add("hidden");
+    }
+
+  });
+
+}
+
 </script>
 
 </body>
