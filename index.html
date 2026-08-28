@@ -1,1064 +1,786 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#0757a0">
-<title>CPH STUDY</title><style>
-*{box-sizing:border-box}
-body{
- margin:0;
- font-family:Arial,sans-serif;
- background:#f4f7fb;
- color:#172033;
-}
-header{
- background:linear-gradient(135deg,#0757a0,#168ee5);
- color:white;
- padding:15px;
- display:flex;
- justify-content:space-between;
- align-items:center;
- position:sticky;
- top:0;
- z-index:10;
-}
-.brand{display:flex;gap:10px;align-items:center}
-.icon{font-size:30px}
-.title{font-size:20px;font-weight:bold}
-.small{font-size:12px}
-main{max-width:1000px;margin:auto;padding:16px 14px 90px}
-.hero{
- background:linear-gradient(135deg,#0757a0,#168ee5);
- color:white;
- padding:22px;
- border-radius:17px;
- margin-bottom:18px;
-}
-.quote{
- margin-top:15px;
- padding:12px;
- background:rgba(255,255,255,.16);
- border-radius:10px;
-}
-.search input{
- width:100%;
- padding:15px;
- border:1px solid #ccd5df;
- border-radius:11px;
- font-size:16px;
- margin-bottom:18px;
-}
-.grid{
- display:grid;
- grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
- gap:12px;
-}
-.card{
- background:white;
- padding:17px;
- border-radius:14px;
- box-shadow:0 3px 12px rgba(0,0,0,.07);
- margin-bottom:12px;
-}
-.class-card{
- border-left:5px solid #0757a0;
-}
-.unit-card{
- border-left:5px solid #168ee5;
-}
-button{
- border:0;
- border-radius:9px;
- padding:11px 14px;
- margin:4px;
- background:#0757a0;
- color:white;
- cursor:pointer;
-}
-.secondary{
- background:#eaf1f8;
- color:#0757a0;
-}
-.tool{
- width:100%;
- min-height:90px;
- font-size:25px;
-}
-.tool span{
- display:block;
- font-size:14px;
- margin-top:5px;
-}
-.unit-buttons{
- display:grid;
- grid-template-columns:1fr 1fr;
- gap:7px;
-}
-.unit-buttons button{margin:0}
-.notes{
- background:#f7faff;
- padding:15px;
- border-left:4px solid #0757a0;
- border-radius:8px;
-}
-.notes h3{color:#0757a0}
-.answer{
- display:block;
- width:100%;
- text-align:left;
- background:#f0f4f8;
- color:#172033;
-}
-.correct{border:3px solid #198754}
-.wrong{border:3px solid #dc3545}
-.post{
- background:#f5f8fb;
- padding:12px;
- border-left:4px solid #168ee5;
- border-radius:8px;
- margin-top:10px;
-}
-textarea{
- width:100%;
- min-height:110px;
- padding:12px;
- border:1px solid #ccd5df;
- border-radius:9px;
- font:inherit;
-}
-.stat{
- text-align:center;
- background:#eef5fb;
- padding:15px;
- border-radius:10px;
-}
-.stat b{
- display:block;
- font-size:25px;
- color:#0757a0;
-}
-nav{
- position:fixed;
- bottom:0;
- left:0;
- right:0;
- background:white;
- border-top:1px solid #ddd;
- display:grid;
- grid-template-columns:repeat(4,1fr);
- z-index:20;
-}
-nav button{
- background:white;
- color:#172033;
- margin:0;
- border-radius:0;
-}
-nav span{
- display:block;
- font-size:11px;
-}
-.hidden{display:none}
-@media(max-width:600px){
- .unit-buttons{grid-template-columns:1fr}
-}
-</style></head><body><header>
-<div class="brand">
-<div class="icon">✚</div>
-<div>
-<div class="title">CPH STUDY</div>
-<div class="small">Learn • Practice • Master</div>
-</div>
-</div>
-<button onclick="enableNotifications()">🔔</button>
-</header><main><section class="hero">
-<h1>Welcome to CPH STUDY</h1>
-<p>Certificate in Pharmacy Study Platform</p>
-<div class="quote" id="quote">Loading motivation...</div>
-</section><div class="search">
-<input id="search"
-placeholder="🔎 Search classes, units and topics..."
-oninput="searchCourses()">
-</div><div id="content"></div></main><nav>
-<button onclick="home()">🏠<span>Home</span></button>
-<button onclick="focusSearch()">🔎<span>Search</span></button>
-<button onclick="saved()">🔖<span>Saved</span></button>
-<button onclick="settings()">⚙️<span>Settings</span></button>
-</nav><script>
+<title>CPH STUDY — Learn • Practice • Master</title>
 
-/* ================================
-   CPH CURRICULUM
-================================ */
+<style>
+*{box-sizing:border-box}
+
+html{scroll-behavior:smooth}
+
+body{
+margin:0;
+font-family:Arial,Helvetica,sans-serif;
+background:#f4f7fb;
+color:#172033;
+line-height:1.6
+}
+
+button,input,textarea{font:inherit}
+
+button{cursor:pointer}
+
+.app{
+max-width:1100px;
+margin:auto;
+min-height:100vh
+}
+
+header{
+position:sticky;
+top:0;
+z-index:100;
+background:linear-gradient(135deg,#064b9b,#168ee5);
+color:white;
+padding:14px 16px;
+box-shadow:0 3px 15px #0003
+}
+
+.brand{
+display:flex;
+align-items:center;
+gap:12px
+}
+
+.logo{
+width:48px;
+height:48px;
+border-radius:14px;
+background:white;
+color:#e21b23;
+display:grid;
+place-items:center;
+font-size:28px;
+font-weight:bold
+}
+
+.brand h1{
+margin:0;
+font-size:21px
+}
+
+.brand small{
+opacity:.9
+}
+
+main{
+padding:16px 14px 100px
+}
+
+.hero{
+background:linear-gradient(135deg,#0757a0,#168ee5);
+color:white;
+border-radius:20px;
+padding:24px;
+margin-bottom:18px;
+box-shadow:0 5px 20px #0757a033
+}
+
+.hero h2{
+margin:0 0 6px;
+font-size:26px
+}
+
+.hero p{
+margin:5px 0
+}
+
+.quote{
+margin-top:16px;
+padding:13px;
+background:#ffffff25;
+border-radius:12px;
+font-weight:bold
+}
+
+.search{
+margin:15px 0
+}
+
+.search input{
+width:100%;
+padding:15px;
+border:1px solid #dbe3ec;
+border-radius:13px;
+background:white;
+outline:none
+}
+
+.search input:focus{
+border-color:#168ee5;
+box-shadow:0 0 0 3px #168ee522
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:12px
+}
+
+.card{
+background:white;
+border:1px solid #dbe3ec;
+border-radius:16px;
+padding:17px;
+margin:10px 0;
+box-shadow:0 3px 12px #0000000a
+}
+
+.level{
+color:white;
+text-align:left;
+min-height:120px;
+border:0;
+transition:.2s
+}
+
+.level:hover{
+transform:translateY(-2px)
+}
+
+.l11{background:#1474d4}
+.l12{background:#15945a}
+.l21{background:#e97916}
+.l22{background:#7541b7}
+
+.level b{
+font-size:20px
+}
+
+.level small{
+opacity:.92
+}
+
+.unit{
+width:100%;
+display:flex;
+align-items:center;
+gap:12px;
+text-align:left;
+background:white;
+border:1px solid #dbe3ec;
+padding:15px;
+border-radius:13px;
+margin:9px 0;
+transition:.15s
+}
+
+.unit:hover{
+border-color:#168ee5;
+background:#f8fbff
+}
+
+.unit .ico{
+font-size:27px;
+min-width:35px
+}
+
+.unit b{
+display:block
+}
+
+.unit small{
+display:block;
+color:#64748b
+}
+
+.btn{
+border:0;
+border-radius:11px;
+padding:11px 15px;
+background:#0757a0;
+color:white;
+margin:4px 3px
+}
+
+.btn:hover{
+opacity:.9
+}
+
+.secondary{
+background:#edf3f8;
+color:#0757a0
+}
+
+.success{
+background:#198754
+}
+
+.danger{
+background:#dc3545
+}
+
+.tabs{
+display:flex;
+gap:7px;
+overflow:auto;
+margin:13px 0
+}
+
+.tabs button{
+white-space:nowrap;
+border:1px solid #dbe3ec;
+background:white;
+padding:10px 14px;
+border-radius:20px
+}
+
+.tabs .active{
+background:#0757a0;
+color:white
+}
+
+.note{
+line-height:1.75
+}
+
+.note h3{
+margin-top:23px;
+color:#0757a0
+}
+
+.note ul,
+.note ol{
+padding-left:23px
+}
+
+.topic{
+border-left:4px solid #0757a0;
+padding:12px 14px;
+background:#f8fbff;
+margin:10px 0;
+border-radius:8px
+}
+
+.topic b{
+color:#0757a0
+}
+
+.pill{
+display:inline-block;
+background:#eaf3ff;
+color:#0757a0;
+padding:4px 10px;
+border-radius:20px;
+font-size:12px;
+font-weight:bold
+}
+
+.option{
+width:100%;
+display:block;
+text-align:left;
+background:white;
+border:1px solid #dbe3ec;
+padding:13px;
+border-radius:10px;
+margin:8px 0
+}
+
+.option:hover{
+background:#f5faff
+}
+
+.option.correct{
+border:3px solid #198754;
+background:#ecfaf2
+}
+
+.option.wrong{
+border:3px solid #dc3545;
+background:#fff0f0
+}
+
+textarea{
+width:100%;
+min-height:130px;
+padding:13px;
+border:1px solid #dbe3ec;
+border-radius:10px;
+resize:vertical
+}
+
+.post{
+padding:13px;
+border-left:4px solid #168ee5;
+background:#f7f9fc;
+border-radius:9px;
+margin:9px 0
+}
+
+.statgrid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:10px
+}
+
+.stat{
+text-align:center;
+background:#f1f5f9;
+border-radius:11px;
+padding:15px
+}
+
+.stat strong{
+display:block;
+font-size:27px;
+color:#0757a0
+}
+
+.empty{
+text-align:center;
+color:#64748b;
+padding:28px
+}
+
+.bottom{
+position:fixed;
+bottom:0;
+left:0;
+right:0;
+max-width:1100px;
+margin:auto;
+background:white;
+border-top:1px solid #dbe3ec;
+display:grid;
+grid-template-columns:repeat(4,1fr);
+z-index:100
+}
+
+.bottom button{
+background:white;
+border:0;
+padding:8px 4px;
+color:#64748b
+}
+
+.bottom b{
+display:block;
+font-size:20px;
+color:#0757a0
+}
+
+.bottom span{
+font-size:11px
+}
+
+hr{
+border:0;
+border-top:1px solid #dbe3ec;
+margin:18px 0
+}
+
+.notice{
+padding:13px;
+border-radius:10px;
+background:#fff8e6;
+border-left:4px solid #e97916;
+margin:10px 0
+}
+
+.answerbox{
+background:#f8fbff;
+border:1px dashed #168ee5;
+padding:14px;
+border-radius:10px;
+margin-top:10px
+}
+
+.hidden{
+display:none!important
+}
+
+@media(max-width:600px){
+.grid{
+grid-template-columns:1fr 1fr
+}
+
+.statgrid{
+grid-template-columns:1fr 1fr 1fr
+}
+
+.hero h2{
+font-size:23px
+}
+
+.card{
+padding:14px
+}
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+<header>
+<div class="brand">
+<div class="logo">⚕</div>
+<div>
+<h1>CPH STUDY</h1>
+<small>Learn • Practice • Master</small>
+</div>
+</div>
+</header>
+
+<main id="main"></main>
+
+<nav class="bottom">
+<button onclick="home()">
+<b>⌂</b>
+<span>Home</span>
+</button>
+
+<button onclick="searchPage()">
+<b>⌕</b>
+<span>Search</span>
+</button>
+
+<button onclick="studyPage()">
+<b>▣</b>
+<span>Study</span>
+</button>
+
+<button onclick="progressPage()">
+<b>◔</b>
+<span>Progress</span>
+</button>
+</nav>
+
+</div>
+
+<script>
+
+/* =========================================================
+   CPH STUDY
+   Uganda Certificate in Pharmacy Curriculum
+   ========================================================= */
 
 const curriculum={
-"CPH 1.1":[
-"Microbiology",
-"Anatomy & Physiology 1",
-"Pharmaceutical Chemistry 1",
-"First Aid",
-"PHC",
-"Computer Applications"
-],
 
-"CPH 1.2":[
-"Anatomy & Physiology 2",
-"Pharmaceutical Chemistry 2",
-"Pharmaceutical Calculations",
-"Pharmacognosy",
-"Pharmacology 1",
-"Medical Psychology",
-"Communication Skills",
-"Pharmaceutical Practicals"
-],
+"CPH 1.1":{
+semester:"Year 1 • Semester 1",
+units:[
 
-"CPH 2.1":[
-"Pharmaceutics 1",
-"Pharmacy Laws & Regulations",
-"Pharmacy Practice 1",
-"Therapeutics 1",
-"Pharmacology 2",
-"Stores & Inventory Management"
-],
-
-"CPH 2.2":[
-"Pharmaceutics 2",
-"Quality Assurance of Pharmaceuticals",
-"Pharmacy Practice 2",
-"Therapeutics 2",
-"Entrepreneurship"
+{
+code:"CPHA 1101",
+name:"Human Anatomy and Physiology I",
+cu:3,
+desc:"Introduces human body structures, their relationships, functions and homeostasis.",
+topics:[
+"Structural organization: cells, tissues, organs and organ systems; membranes and integument.",
+"Overview of human biology, anatomy and physiology terminology, surface and gross anatomy, anatomical planes.",
+"Musculoskeletal system: bones, joints, muscle anatomy, motion and locomotion.",
+"Nervous system: central and peripheral nervous systems, structure, functions and biomedical importance."
 ]
-};
-
-
-/* ================================
-   MOTIVATION
-================================ */
-
-const quotes=[
-"📚 Study consistently, not occasionally.",
-"🧠 Understand first. Memorize second.",
-"🎯 Every topic mastered is one step forward.",
-"💊 Good pharmacy practice begins with good knowledge.",
-"🔬 Learn the science behind the medicine.",
-"📖 Read. Recall. Practise. Improve.",
-"🏆 Your effort today builds your professional future.",
-"💡 Ask questions whenever a concept is unclear.",
-"🚀 Small daily progress creates big results.",
-"🌟 Keep learning. Your future patients depend on your knowledge."
-];
-
-function updateQuote(){
-let hour=new Date().getHours();
-document.getElementById("quote").textContent=
-quotes[hour%quotes.length];
-}
-
-updateQuote();
-setInterval(updateQuote,60000);
-
-
-/* ================================
-   HOME
-================================ */
-
-function home(){
-
-document.getElementById("search").value="";
-
-let html=`
-<h2>🎓 Select Your CPH Class</h2>
-<div class="grid">
-`;
-
-Object.keys(curriculum).forEach(level=>{
-html+=`
-<div class="card class-card">
-<h3>📚 ${level}</h3>
-<p><b>${curriculum[level].length}</b> course units</p>
-<p>Study materials and questions are restricted to this level.</p>
-<button onclick="openClass('${level}')">
-Open ${level}
-</button>
-</div>
-`;
-});
-
-html+=`
-</div>
-
-<h2>🛠️ Study Tools</h2>
-
-<div class="grid">
-
-<button class="tool" onclick="quizClasses()">
-📝<span>Quizzes</span>
-</button>
-
-<button class="tool" onclick="discussionClasses()">
-💬<span>Discussions</span>
-</button>
-
-<button class="tool" onclick="progress()">
-📊<span>Progress</span>
-</button>
-
-<button class="tool" onclick="saved()">
-🔖<span>Saved</span>
-</button>
-
-</div>
-`;
-
-document.getElementById("content").innerHTML=html;
-}
-
-
-/* ================================
-   CLASS
-================================ */
-
-function openClass(level){
-
-let html=`
-<div class="card">
-<button class="secondary" onclick="home()">← Home</button>
-<h2>📚 ${level}</h2>
-<p>Course units available for ${level} only.</p>
-</div>
-
-<div class="grid">
-`;
-
-curriculum[level].forEach(unit=>{
-html+=`
-<div class="card unit-card">
-<h3>📖 ${unit}</h3>
-
-<div class="unit-buttons">
-
-<button onclick="notes('${level}','${unit}')">
-📖 Notes
-</button>
-
-<button onclick="quiz('${level}','${unit}')">
-📝 Quiz
-</button>
-
-<button onclick="discussion('${level}','${unit}')">
-💬 Discussion
-</button>
-
-<button class="secondary"
-onclick="saveUnit('${level}','${unit}')">
-🔖 Save
-</button>
-
-</div>
-</div>
-`;
-});
-
-html+=`</div>`;
-
-document.getElementById("content").innerHTML=html;
-}
-
-
-/* ================================
-   NOTES
-================================ */
-
-const notesData={
-
-"Microbiology":`
-<h3>Introduction to Microbiology</h3>
-<p>
-Microbiology is the study of microorganisms, including their
-structure, classification, growth, reproduction and relationship
-with humans and the environment.
-</p>
-
-<h3>Major Groups</h3>
-<ul>
-<li>Bacteria</li>
-<li>Viruses</li>
-<li>Fungi</li>
-<li>Protozoa</li>
-<li>Some microscopic algae</li>
-</ul>
-
-<h3>Importance in Pharmacy</h3>
-<ul>
-<li>Understanding infectious diseases.</li>
-<li>Understanding contamination of medicines.</li>
-<li>Supporting proper storage and handling.</li>
-<li>Understanding antimicrobial therapy.</li>
-<li>Supporting infection prevention and control.</li>
-</ul>
-
-<h3>Key Revision Points</h3>
-<ul>
-<li>Definitions and terminology.</li>
-<li>Classification of microorganisms.</li>
-<li>Microbial growth.</li>
-<li>Transmission of infection.</li>
-<li>Basic laboratory principles.</li>
-<li>Sterilization and disinfection.</li>
-</ul>
-`,
-
-"Anatomy & Physiology 1":`
-<h3>Introduction</h3>
-<p>
-Anatomy concerns body structure, while physiology concerns
-how body structures function.
-</p>
-
-<h3>Levels of Organization</h3>
-<ul>
-<li>Chemical level</li>
-<li>Cellular level</li>
-<li>Tissue level</li>
-<li>Organ level</li>
-<li>Organ-system level</li>
-<li>Organism level</li>
-</ul>
-
-<h3>Homeostasis</h3>
-<p>
-Homeostasis is the maintenance of a relatively stable internal
-environment despite changes inside or outside the body.
-</p>
-
-<h3>Revision Areas</h3>
-<ul>
-<li>Cells and tissues</li>
-<li>Body systems</li>
-<li>Basic anatomical terminology</li>
-<li>Physiological functions</li>
-<li>Homeostatic mechanisms</li>
-</ul>
-`,
-
-"Pharmaceutical Calculations":`
-<h3>Introduction</h3>
-<p>
-Pharmaceutical calculations involve mathematical methods used
-to prepare, dispense and administer medicines accurately.
-</p>
-
-<h3>Important Areas</h3>
-<ul>
-<li>Units and conversions</li>
-<li>Fractions and decimals</li>
-<li>Percentages</li>
-<li>Ratio and proportion</li>
-<li>Dilution calculations</li>
-<li>Concentration calculations</li>
-<li>Doses and quantities</li>
-<li>Alligation</li>
-</ul>
-
-<h3>Dilution</h3>
-<p>
-A commonly used relationship is:
-<b>C₁V₁ = C₂V₂</b>
-</p>
-
-<h3>Example</h3>
-<p>
-If a stock solution has a concentration of 10% and a final
-solution must be 2%, the relationship can be used to determine
-the volume of stock solution required.
-</p>
-
-<h3>Safety Principle</h3>
-<p>
-Always write units, check whether the units are compatible,
-identify what is required, and verify whether the final answer
-is reasonable.
-</p>
-`,
-
-"Pharmacology 1":`
-<h3>Introduction to Pharmacology</h3>
-<p>
-Pharmacology is the study of drugs and their interactions with
-living organisms.
-</p>
-
-<h3>Core Concepts</h3>
-<ul>
-<li>Drug classification</li>
-<li>Mechanism of action</li>
-<li>Therapeutic effects</li>
-<li>Adverse effects</li>
-<li>Drug interactions</li>
-<li>Routes of administration</li>
-</ul>
-`,
-
-"Pharmacology 2":`
-<h3>Advanced Pharmacology</h3>
-<p>
-This unit builds on basic pharmacological principles and examines
-drug actions, therapeutic effects, adverse effects and mechanisms.
-</p>
-
-<h3>Pharmacodynamics</h3>
-<p>
-Pharmacodynamics describes what a drug does to the body,
-including its effects and mechanisms of action.
-</p>
-`,
-
-"Entrepreneurship":`
-<h3>Introduction</h3>
-<p>
-Entrepreneurship involves identifying opportunities, organizing
-resources and creating value through an enterprise.
-</p>
-
-<h3>Key Areas</h3>
-<ul>
-<li>Business opportunities</li>
-<li>Business planning</li>
-<li>Resource management</li>
-<li>Marketing</li>
-<li>Financial planning</li>
-<li>Risk management</li>
-</ul>
-`
-
-};
-
-
-/* ================================
-   NOTES PAGE
-================================ */
-
-function notes(level,unit){
-
-let material=notesData[unit];
-
-if(!material){
-material=`
-<h3>Unit Introduction</h3>
-<p>
-Detailed study material for <b>${unit}</b> is organized under
-<b>${level}</b>.
-</p>
-
-<h3>Core Study Areas</h3>
-<ul>
-<li>Definitions and terminology</li>
-<li>Fundamental principles</li>
-<li>Classification</li>
-<li>Processes and mechanisms</li>
-<li>Practical applications</li>
-<li>Examination revision</li>
-</ul>
-
-<h3>Important</h3>
-<p>
-This unit is kept separate from other class levels so that
-students study within their curriculum scope.
-</p>
-`;
-}
-
-document.getElementById("content").innerHTML=`
-<div class="card">
-
-<button class="secondary"
-onclick="openClass('${level}')">
-← ${level}
-</button>
-
-<h2>📖 ${unit}</h2>
-<p><b>${level} → ${unit}</b></p>
-
-<div class="notes">
-${material}
-</div>
-
-<br>
-
-<button onclick="quiz('${level}','${unit}')">
-📝 Test Yourself
-</button>
-
-<button onclick="discussion('${level}','${unit}')">
-💬 Discuss
-</button>
-
-</div>
-`;
-}
-
-
-/* ================================
-   QUIZ BANK
-================================ */
-
-const questionBank={
-
-"CPH 1.1|Microbiology":[
-["What is microbiology?",[
-"Study of microorganisms",
-"Study of bones",
-"Study of accounting",
-"Study of buildings"
-],0,"Microbiology is the scientific study of microorganisms."],
-
-["Which is a microorganism?",[
-"Bacterium",
-"Femur",
-"Heart",
-"Kidney"
-],0,"Bacteria are microorganisms."]
-],
-
-"CPH 1.1|Anatomy & Physiology 1":[
-["Anatomy primarily deals with:",[
-"Body structure",
-"Drug pricing",
-"Business",
-"Communication"
-],0,"Anatomy concerns body structure."],
-
-["Physiology primarily deals with:",[
-"How the body functions",
-"Drug packaging",
-"Accounting",
-"Buildings"
-],0,"Physiology concerns body function."]
-],
-
-"CPH 1.2|Pharmaceutical Calculations":[
-["Which equation is commonly used for dilution calculations?",[
-"C₁V₁ = C₂V₂",
-"E = mc²",
-"F = ma",
-"P = IV"
-],0,"C₁V₁ = C₂V₂ is commonly used for dilution calculations."],
-
-["500 mg is contained in 5 mL. How many mg are in 1 mL?",[
-"50 mg",
-"100 mg",
-"250 mg",
-"500 mg"
-],1,"500 ÷ 5 = 100 mg/mL."],
-
-["What should be identified first in a calculation?",[
-"What is required",
-"The answer",
-"A random number",
-"Nothing"
-],0,"First identify what the question requires and what information is available."]
-],
-
-"CPH 1.2|Pharmacology 1":[
-["Pharmacology is the study of:",[
-"Drugs and their effects",
-"Buildings",
-"Accounting",
-"Food preparation"
-],0,"Pharmacology studies drugs and their effects."]
-],
-
-"CPH 2.1|Pharmacology 2":[
-["Pharmacodynamics primarily describes:",[
-"What a drug does to the body",
-"What the body does to a drug",
-"Drug packaging",
-"Drug purchasing"
-],0,"Pharmacodynamics concerns drug effects and mechanisms of action."]
-],
-
-"CPH 2.2|Entrepreneurship":[
-["Entrepreneurship involves:",[
-"Identifying opportunities and creating value",
-"Only memorizing medicines",
-"Only measuring temperature",
-"Only dispensing tablets"
-],0,"Entrepreneurship involves identifying opportunities and creating value."]
+},
+
+{
+code:"CPHA 1102",
+name:"First Aid",
+cu:5,
+desc:"Basic principles of first aid and basic life support, with practical emergency-response skills.",
+topics:[
+"Introduction to first aid, first aid box, PPE and safe scene assessment.",
+"Emergency measures, shock, unconscious casualty care, vital signs, resuscitation and artificial respiration.",
+"Positioning, wounds, bleeding control, burns, electric injuries, rescue and transport.",
+"Fractures, soft-tissue injuries, bandages, dressings and infection prevention.",
+"Stings, bites, oral poisoning, hypothermia, hyperthermia and heat/cold emergencies."
 ]
+},
 
-};
+{
+code:"CPHA 1103",
+name:"Computer Applications",
+cu:5,
+desc:"Computer skills for pharmacy training and daily professional work.",
+topics:[
+"Computer components, input/output devices, peripherals and practical computer use.",
+"Word processing, processors, memory and data-storage units.",
+"Microsoft Excel and spreadsheet skills.",
+"Network computing, email, internet accounts, uploading/downloading and network devices.",
+"PowerPoint and professional document preparation; pharmacy information retrieval, records and reports."
+]
+},
 
-let active=[];
-let currentQuestion=0;
-let currentScore=0;
+{
+code:"CPHA 1104",
+name:"Microbiology and Parasitology",
+cu:3,
+desc:"Microorganisms, parasites, infectious disease, prevention and infection control.",
+topics:[
+"Microbiology and parasitology definitions, history, branches and classification of microbes.",
+"Bacteriology: bacterial structure, classification, disease, reproduction, growth, normal flora, pathogenesis and transmission.",
+"Virology: structure, classification, viral replication and transmission.",
+"Mycology: medically important fungi and fungal infections.",
+"Parasitology: protozoa, helminths, cestodes and trematodes.",
+"Immunology: immunity, immunoglobulins, immunological disorders, vaccination and immunization.",
+"Infection prevention and control: antiseptics, disinfectants, preservatives and factors affecting activity."
+]
+},
 
+{
+code:"CPHA 1105",
+name:"Pharmaceutical Chemistry I",
+cu:4,
+desc:"Basic organic, medicinal, physical and analytical chemistry relevant to pharmacy.",
+topics:[
+"Organic chemistry terminology, reactions, homologous series, nomenclature, bonding, hybridization and isomerism.",
+"Alkanes: nomenclature, physical properties, substitution reactions and official preparations such as paraffins.",
+"Alkenes and alkynes: nomenclature, reactions, epoxidation, ozonolysis and polymerization.",
+"Benzene and aromatic compounds: structure, properties and electrophilic aromatic substitution.",
+"Aliphatic alcohols: primary, secondary and tertiary alcohols, properties, reactions, preparations and uses.",
+"Carbonyl compounds: nomenclature, properties, reactions and selected pharmaceutical examples.",
+"Carboxylic acids and derivatives, including esters, with pharmaceutical examples.",
+"Amines: classification, nomenclature, properties, reactions and pharmaceutical importance."
+]
+},
 
-/* ================================
-   QUIZ
-================================ */
-
-function quiz(level,unit){
-
-let key=level+"|"+unit;
-active=questionBank[key]||[];
-
-if(active.length===0){
-
-document.getElementById("content").innerHTML=`
-<div class="card">
-<button class="secondary"
-onclick="openClass('${level}')">← Back</button>
-<h2>📝 ${unit}</h2>
-<p>
-The question bank for this unit is being prepared.
-</p>
-<p>
-No questions from another class will be mixed into this quiz.
-</p>
-</div>
-`;
-return;
+{
+code:"CPHA 1106",
+name:"Primary Health Care",
+cu:3,
+desc:"Public-health foundations, health promotion, community participation and levels of care.",
+topics:[
+"Definition, concept, pillars/elements and responsibilities in primary health care.",
+"Health information, planning, monitoring, evaluation, community participation and multisectoral collaboration.",
+"Nutrition, food hygiene, healthy lifestyles, malnutrition, water, sanitation and waste disposal.",
+"Health promotion, social mobilization, community leaders and PHC resources.",
+"Levels of health-care delivery, referral systems, community diagnosis and pharmaceutical needs assessment."
+]
 }
 
-currentQuestion=0;
-currentScore=0;
-showQuestion(level,unit);
+]},
+
+"CPH 1.2":{
+semester:"Year 1 • Semester 2",
+units:[
+
+{
+code:"CPHA 1201",
+name:"Human Anatomy and Physiology II",
+cu:3,
+desc:"Elementary anatomy and physiology of major body systems and common physiological disorders.",
+topics:[
+"Cardiovascular system: blood, lymph, fluid compartments, heart, blood vessels, anaemia and heart disorders.",
+"Endocrine system: glands, hormones, endocrine versus exocrine glands and reproductive hormonal functions.",
+"Respiratory system: upper/lower respiratory tract, ventilation, lung volumes, acid-base balance and disorders.",
+"Digestive system: GIT structure/function, phases of digestion, GIT hormones, liver, pancreas and disorders."
+]
+},
+
+{
+code:"CPHA 1202",
+name:"Basic Pharmacognosy",
+cu:3,
+desc:"Medicinal plants, crude drugs, plant-derived active constituents and extraction.",
+topics:[
+"Pharmacognosy terminology, traditional/alternative medicine, medicinal plants and sources of crude drugs.",
+"Plant cells, tissues, tissue culture, metabolism, photosynthesis, respiration and secondary metabolites.",
+"Plant growth regulators, cultivation, fibres, cotton wool, algal products, gums, mucilage and honey.",
+"Collection, cleaning, drying, grinding, preservation, packaging, labelling, storage and deterioration of crude drugs.",
+"Extraction methods including maceration and percolation; advantages and disadvantages.",
+"Homeopathic medicine, aromatherapy and regulation of traditional/herbal medicine in Uganda."
+]
+},
+
+{
+code:"CPHA 1203",
+name:"Communication Skills",
+cu:2,
+desc:"Communication, counselling, negotiation and stress-management skills for health-care practice.",
+topics:[
+"Verbal/non-verbal communication, interviewing, culture, beliefs, attitudes, values and communication barriers.",
+"Effective speaking, public address, persuasion, meetings, minutes, group discussion and non-verbal cues.",
+"GATHER counselling approach: Greet, Ask, Tell/explain, Help, Explain/provide information, Return/follow-up.",
+"Active listening, evidence-based writing, critical thinking and problem solving.",
+"Presentation, adherence counselling, patient involvement, negotiation, advocacy, conflict resolution and stress management."
+]
+},
+
+{
+code:"CPHA 1204",
+name:"Medical Psychology",
+cu:3,
+desc:"Psychology, sociology and anthropology applied to health care and pharmacy practice.",
+topics:[
+"Psychology concepts, personality, emotions, motivation, sensation, perception and perception disorders.",
+"Learning theories, conditioning, social learning, memory, forgetting and learning/memory disorders.",
+"Sociology, family, socialization, health-seeking behaviour, attitudes and the health belief model.",
+"Socioeconomic factors, indigenous African healing, health/environment and societal responses to illness.",
+"Medical anthropology, traditional healers, culture, social systems and acceptable community conduct."
+]
+},
+
+{
+code:"CPHA 1205",
+name:"Pharmaceutical Chemistry II",
+cu:4,
+desc:"Inorganic medicinal chemistry, reactions, preparations, properties, uses and storage of selected compounds.",
+topics:[
+"Inorganic chemistry in life: grouping of inorganic elements and common reactions/equations.",
+"Group VII: halogens, hydrogen halides, chlorinated lime, alkali-metal halides and iodine preparations/uses.",
+"Group VI: oxygen, distilled water, hydrogen peroxide and sulphur compounds.",
+"Group V: nitrous oxide and sodium nitrate.",
+"Group III: boron compounds, boric acid and aluminium.",
+"Group II: magnesium, calcium, barium and zinc compounds.",
+"Group I: silver nitrate, properties, uses and storage."
+]
+},
+
+{
+code:"CPHA 1206",
+name:"Pharmaceutical Calculations",
+cu:3,
+desc:"Basic pharmacy mathematics applied to dosage, concentrations, measurements and data.",
+topics:[
+"Prerequisite mathematics: numbers, fractions, ratios, proportions, decimals and percentages.",
+"Percentage concentrations and expression of strength.",
+"Measurement systems: SI/International Units, metric and household systems, and interconversions.",
+"Scaling formulas, dilution and concentration, two-solution alligation, allegation and parts per million.",
+"Dosage calculations: dose, frequency, duration, unit dose, daily dose and total dose."
+]
 }
 
+]},
 
-function showQuestion(level,unit){
+"CPH 2.1":{
+semester:"Year 2 • Semester 1",
+units:[
 
-let q=active[currentQuestion];
+{
+code:"CPHA 2101",
+name:"Pharmaceutics I",
+cu:4,
+desc:"Pharmaceutical dosage forms, formulation basics, laboratory safety and compounding equipment.",
+topics:[
+"Pharmaceutics, dosage forms and routes of administration.",
+"Excipients, co-solvents, preservatives, flavouring and colouring agents; labelling, storage, mixing and stability.",
+"Laboratory safety, hazards, SOPs, fire safety, chemical safety and emergency response.",
+"Hazard identification, assessment, hazardous-material handling, spill response and waste management.",
+"PPE and workplace clothing.",
+"Pharmaceutical compounding equipment including balances, mortar and pestle, cylinders, pipettes, filtration equipment, water baths and autoclaves."
+]
+},
 
-document.getElementById("content").innerHTML=`
-<div class="card">
+{
+code:"CPHA 2102",
+name:"Pharmacy Laws and Regulations",
+cu:2,
+desc:"Legal and regulatory framework governing medicines and pharmacy practice in Uganda.",
+topics:[
+"Law, statutes, acts, ordinances, courts, treaties and conventions; Uganda medicines licensing system.",
+"Pharmacy profession, ethics and professional bodies.",
+"Legal categories of medicines: prescription-only, controlled and over-the-counter medicines.",
+"Legal requirements for procurement, receipt, storage, custody, distribution, dispensing, records, loss and disposal.",
+"Licensing, medicines inspectorate, drug safety, quality, efficacy, counterfeiting and promotion controls."
+]
+},
 
-<button class="secondary"
-onclick="openClass('${level}')">
-← Back
-</button>
+{
+code:"CPHA 2103",
+name:"Pharmacy Practice I",
+cu:3,
+desc:"Foundations of pharmacy practice, rational medicine use, dispensing and records.",
+topics:[
+"History and development of pharmacy practice in Uganda and worldwide; ethics and professional conduct.",
+"Rational versus irrational medicine use, causes, impacts, antimicrobial resistance and improvement strategies.",
+"Prescriptions: definition, components, abbreviations, common errors and look-alike/sound-alike medicines.",
+"Dispensing environment, equipment, medicine recognition, packaging, labelling and orderly workflow.",
+"Practical dispensing: role play, refills, prescription retention and dispensing records."
+]
+},
 
-<h2>📝 ${unit}</h2>
-<p>${level} • Question ${currentQuestion+1}/${active.length}</p>
+{
+code:"CPHA 2104",
+name:"Therapeutics I",
+cu:3,
+desc:"Common health conditions, recognition, management approaches and rational medicine use.",
+topics:[
+"Introduction to therapeutics, role of pharmacy staff and drug interactions.",
+"Respiratory and gastrointestinal infections and related conditions.",
+"CNS, bone/joint, urinary and sexually transmitted infections; HIV/AIDS and opportunistic infections.",
+"Mycotic and parasitic infections including malaria and schistosomiasis.",
+"Bronchial asthma, COPD, cystic fibrosis and drug-induced pulmonary disease."
+]
+},
 
-<hr>
+{
+code:"CPHA 2105",
+name:"Pharmacology",
+cu:3,
+desc:"Principles of pharmacology, pharmacokinetics, pharmacodynamics and common drug classes.",
+topics:[
+"Pharmacokinetics: plasma concentration, bioavailability, volume of distribution, clearance and routes.",
+"Pharmacodynamics, drug effects, efficacy, interactions, receptors, metabolism and elimination.",
+"Therapeutic drug monitoring and principles of toxicology/acute poisoning.",
+"Analgesics and musculoskeletal agents.",
+"Cardiovascular drugs, digestive-system drugs, anti-infectives and topical agents."
+]
+},
 
-<h3>${q[0]}</h3>
+{
+code:"CPHA 2107",
+name:"Stores and Inventory Management",
+cu:3,
+desc:"Medicine supply management, procurement, receiving, distribution, records and inventory control.",
+topics:[
+"Medicine management cycle, supply objectives, selection, procurement, distribution and information systems.",
+"Procurement methods, requisitions, purchase orders, supplier selection, quantification, VEN and ABC analysis.",
+"Receiving procedures, documentation, cold-chain/special handling, variances, rejection and returns.",
+"Distribution systems including outpatient, ward, inpatient, unit-dose and emergency supply.",
+"Inventory records, stock cards, bin cards, ledgers, stock control, expiry, losses, disposal and audits.",
+"Good storekeeping, storage conditions, security, accountability, cleaning, pest control and reporting."
+]
+},
 
-${q[1].map((answer,i)=>`
-<button class="answer"
-onclick="answerQuestion(${i},${q[2]},'${level}','${unit}')">
-${String.fromCharCode(65+i)}. ${answer}
-</button>
-`).join("")}
-
-<div id="explanation"></div>
-
-</div>
-`;
+{
+code:"CPHA 2106",
+name:"Field Attachment I",
+cu:4,
+desc:"Supervised field-based practical training in health facilities and pharmacies.",
+topics:[
+"Daily logbook recording of activities, lessons, skills and innovations.",
+"On-site preceptor assessment and academic supervisor review.",
+"Application of theory to real pharmacy/health-facility practice.",
+"Work ethics, responsibilities, stakeholder interaction and professional conduct.",
+"Field attachment report based on the approved logbook guidelines."
+]
 }
 
-
-function answerQuestion(selected,correct,level,unit){
-
-let buttons=document.querySelectorAll(".answer");
-
-buttons.forEach(b=>b.disabled=true);
-
-if(selected===correct){
-currentScore++;
-buttons[selected].classList.add("correct");
-}else{
-buttons[selected].classList.add("wrong");
-buttons[correct].classList.add("correct");
-}
-
-let q=active[currentQuestion];
-
-document.getElementById("explanation").innerHTML=`
-<div class="post">
-<b>Explanation</b>
-<p>${q[3]}</p>
-<button onclick="nextQuestion('${level}','${unit}')">
-Next →
-</button>
-</div>
-`;
-}
-
-
-function nextQuestion(level,unit){
-
-currentQuestion++;
-
-if(currentQuestion>=active.length){
-
-let percentage=
-Math.round(currentScore/active.length*100);
-
-let history=
-JSON.parse(localStorage.getItem("cphProgress")||"[]");
-
-history.push({
-level,
-unit,
-score:currentScore,
-total:active.length,
-percentage,
-date:new Date().toLocaleString()
-});
-
-localStorage.setItem("cphProgress",JSON.stringify(history));
-
-document.getElementById("content").innerHTML=`
-<div class="card">
-<h2>🎉 Quiz Complete</h2>
-<h3>${level}</h3>
-<p>${unit}</p>
-<h1>${percentage}%</h1>
-<p>Score: ${currentScore}/${active.length}</p>
-
-<button onclick="quiz('${level}','${unit}')">
-Retry
-</button>
-
-<button onclick="openClass('${level}')">
-Back to Class
-</button>
-</div>
-`;
-
-return;
-}
-
-showQuestion(level,unit);
-}
-
-
-/* ================================
-   QUIZ SELECTOR
-================================ */
-
-function quizClasses(){
-
-let html=`
-<div class="card">
-<h2>📝 Choose Your Class</h2>
-<p>Questions will remain within your selected curriculum level.</p>
-</div>
-<div class="grid">
-`;
-
-Object.keys(curriculum).forEach(level=>{
-html+=`
-<div class="card">
-<h3>📚 ${level}</h3>
-<button onclick="quizUnits('${level}')">
-Choose Course Unit
-</button>
-</div>
-`;
-});
-
-html+=`</div>`;
-
-document.getElementById("content").innerHTML=html;
-}
-
-
-function quizUnits(level){
-
-let html=`
-<div class="card">
-<button class="secondary" onclick="quizClasses()">← Classes</button>
-<h2>📝 ${level} Quizzes</h2>
-</div>
-<div class="grid">
-`;
-
-curriculum[level].forEach(unit=>{
-html+=`
-<div class="card">
-<h3>📖 ${unit}</h3>
-<button onclick="quiz('${level}','${unit}')">
-Start Quiz
-</button>
-</div>
-`;
-});
-
-html+=`</div>`;
-
-document.getElementById("content").innerHTML=html;
-}
-
-
-/* ================================
-   DISCUSSION
-================================ */
-
-function discussionClasses(){
-
-let html=`
-<div class="card">
-<h2>💬 Discussions</h2>
-<p>Select a class.</p>
-</div>
-<div class="grid">
-`;
-
-Object.keys(curriculum).forEach(level=>{
-html+=`
-<div class="card">
-<h3>📚 ${level}</h3>
-<button onclick="discussionUnits('${level}')">
-Course Units
-</button>
-</div>
-`;
-});
-
-html+=`</div>`;
-
-document.getElementById("content").innerHTML=html;
-}
-
-
-function discussionUnits(level){
-
-let html=`
-<div class="card">
-<button class="secondary" onclick="discussionClasses()">
-← Classes
-</button>
-<h2>💬 ${level} Discussions</h2>
-</div>
-<div class="grid">
-`;
-
-curriculum[level].forEach(unit=>{
-html+=`
-<div class="card">
-<h3>📖 ${unit}</h3>
-<button onclick="discussion('${level}','${unit}')">
-Open Discussion
-</button>
-</div>
-`;
-});
-
-html+=`</div>`;
-
-document.getElementById("content").innerHTML=html;
-}
-
-
-function discussion(level,unit){
-
-let key="discussion_"+level+"_"+unit;
-
-let posts=
-JSON.parse(localStorage.getItem(key)||"[]");
-
-document.getElementById("content").innerHTML=`
-
-<div class="card">
-
-<button class="secondary"
-onclick="openClass('${level}')">
-← Back
-</button>
-
-<h2>💬 ${unit}</h2>
-
-<p><b>${level}</b> discussion room</p>
-
-<textarea id="message"
-placeholder="Ask a question or share something useful..."></textarea><button onclick="postDiscussion('${level}','${unit}')">
-📤 Post
-</button></div><div class="card"><h3>Discussion Posts</h3>${
-posts.length
-?
-posts.map(p=>`
-
-<div class="post">
-${escapeHTML(p.text)}
-<br>
-<small>${p.time}</small>
-</div>
-`).join("")
-:
-"<p>No posts yet. Start the discussion.</p>"
-}</div>
-`;
-}function postDiscussion(level,unit){
-
-let box=document.getElementById("message");
-let text=box.value.trim();
-
-if(!text){
-alert("Write a message first.");
-return;
-}
-
-let key="discussion_"+level+"_"+unit;
-
-let posts=
-JSON.parse(localStorage.getItem(key)||"[]");
-
-posts.push({
-text,
-time:new Date().toLocaleString()
-});
-
-localStorage.setItem(key,JSON.stringify(posts));
-
-discussion(level,unit);
-}
-
-/* ================================
-SAVED
-================================ */
-
-function saveUnit(level,unit){
-
-let data=
-JSON.parse(localStorage.getItem("cphSaved")||"[]");
-
-if(!data.some(x=>x.level===level&&x.unit===unit)){
-data.push({level,unit});
-localStorage.setItem("cphSaved",JSON.stringify(data));
-}
-
-alert("🔖 Saved.");
-}
-
-function saved(){
-
-let data=
-JSON.parse(localStorage.getItem("cphSaved")||"[]");
-
-document.getElementById("content").innerHTML=`
-
-<div class="card">
-<h2>🔖 Saved Materials</h2>${
-data.length
-?
-data.map(x=>`
-
-<div class="post">
-<b>${x.level}</b><br>
-${x.unit}<br>
-<button onclick="notes('${x.level}','${x.unit}')">
-Open Notes
-</button>
-</div>
-`).join("")
-:
-"<p>No saved materials yet.</p>"
-}</div>
-`;
-}/* ================================
-PROGRESS
-================================ */
-
-f
+]},
+
+"CPH 2.2":{
+semester:"Year 2 • Semester 2",
+units:[
+
+{
+code:"CPHA 2201",
+name:"Pharmaceutics II",
+cu:4,
+desc:"Dispensing, compounding, pharmaceutical calculations and simple liquid preparations.",
+topics:[
+"Solutions, solutes, solvents, vehicles, solubility and methods of enhancing solubility.",
+"Syrups, elixirs, paints and other simple solutions: formulation, preparation, packaging and labelling.",
+"Production formulae, reference materials, concentration, percentage/ratio strength and parts per million.",
+"Dose calculations, unit/daily/total dose, adult and child calculations, body weight, body surface area, Young's and Field's rules.",
+"Powder reconstitution, measurement, mixing, dosing instructions and storage.",
+"Dilution of antiseptics and disinfectants."
+]
+},
+
+{
+code:"CPHA 2202",
+name:"Quality Assurance of Pharmaceuticals",
+cu:4,
+desc:"Systems and actions that ensure medicines are safe, effective and of standard quality.",
+topics:[
+"Quality assurance, quality control and Good Manufacturing Practices.",
+"Medicine quality: identity, purity, potency, uniformity, bioavailability, stability and pharmacopoeial standards.",
+"Quality assessment through inspection and laboratory testing.",
+"Quality assurance through product selection, suppliers, certification, specifications, storage, distribution and monitoring.",
+"Product problem reporting, r
