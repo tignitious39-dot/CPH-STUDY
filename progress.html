@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0b5cab">
+
+<title>CPH STUDY | Progress</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:#f4f7fb;
+  color:#172033;
+}
+
+header{
+  background:linear-gradient(135deg,#064b9b,#0b78d0);
+  color:white;
+  text-align:center;
+  padding:25px 15px;
+}
+
+header .icon{
+  font-size:42px;
+}
+
+header h1{
+  margin:5px 0;
+}
+
+.container{
+  max-width:850px;
+  margin:auto;
+  padding:20px;
+}
+
+.back{
+  display:inline-block;
+  margin-bottom:20px;
+  color:#0b5cab;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+.card{
+  background:white;
+  padding:22px;
+  border-radius:15px;
+  margin-bottom:18px;
+  box-shadow:0 3px 12px rgba(0,0,0,.08);
+}
+
+.score{
+  font-size:48px;
+  font-weight:bold;
+  color:#0b5cab;
+  text-align:center;
+  margin:10px;
+}
+
+.message{
+  text-align:center;
+  margin-bottom:20px;
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+}
+
+.stat{
+  background:#f4f7fb;
+  padding:16px 8px;
+  border-radius:10px;
+  text-align:center;
+}
+
+.stat strong{
+  display:block;
+  font-size:25px;
+  color:#0b5cab;
+}
+
+.bar{
+  height:14px;
+  background:#e1e6ec;
+  border-radius:20px;
+  overflow:hidden;
+  margin:12px 0;
+}
+
+.fill{
+  height:100%;
+  width:0%;
+  background:#0b5cab;
+  transition:width .5s;
+}
+
+button{
+  border:0;
+  padding:12px 18px;
+  border-radius:9px;
+  cursor:pointer;
+  font-size:15px;
+}
+
+.primary{
+  background:#0b5cab;
+  color:white;
+}
+
+.danger{
+  background:#d9534f;
+  color:white;
+}
+
+.empty{
+  text-align:center;
+  color:#66717d;
+  padding:20px;
+}
+
+footer{
+  text-align:center;
+  padding:30px;
+  color:#68727e;
+}
+
+@media(max-width:600px){
+  .stats{
+    grid-template-columns:1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="icon">📊</div>
+  <h1>CPH STUDY</h1>
+  <p>Your Learning Progress</p>
+</header>
+
+<div class="container">
+
+<a href="index.html" class="back">← Back to Home</a>
+
+<div class="card">
+
+<h2>🏆 Latest Quiz Performance</h2>
+
+<div class="score" id="score">--</div>
+
+<div class="message" id="message">
+No quiz has been completed yet.
+</div>
+
+<div class="bar">
+  <div class="fill" id="progressFill"></div>
+</div>
+
+<div class="stats">
+
+<div class="stat">
+<strong id="correct">0</strong>
+Correct
+</div>
+
+<div class="stat">
+<strong id="wrong">0</strong>
+Wrong
+</div>
+
+<div class="stat">
+<strong id="percentage">0%</strong>
+Score
+</div>
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h2>📚 Study Status</h2>
+
+<p style="margin-top:10px;">
+Use your quiz performance to identify topics that need more revision.
+</p>
+
+<br>
+
+<div id="status" class="empty">
+Complete a quiz to see your study status.
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h2>🎯 Recommended Action</h2>
+
+<p id="recommendation" style="margin-top:10px;">
+Start a CPH revision quiz and test your knowledge.
+</p>
+
+<br>
+
+<button
+class="primary"
+onclick="window.location.href='quizzes.html'">
+📝 Take a Quiz
+</button>
+
+</div>
+
+
+<div class="card">
+
+<h2>🗑️ Reset Progress</h2>
+
+<p style="margin:10px 0 15px;">
+This removes the saved quiz result from this device.
+</p>
+
+<button class="danger" onclick="resetProgress()">
+Reset Progress
+</button>
+
+</div>
+
+</div>
+
+<footer>
+© 2026 CPH STUDY<br>
+Learn • Practice • Master
+</footer>
+
+
+<script>
+
+function loadProgress(){
+
+const savedScore=
+localStorage.getItem("cphLastQuizScore");
+
+if(savedScore===null){
+return;
+}
+
+const percentage=parseInt(savedScore);
+
+document.getElementById("score").textContent=
+percentage+"%";
+
+document.getElementById("percentage").textContent=
+percentage+"%";
+
+document.getElementById("progressFill").style.width=
+percentage+"%";
+
+
+if(percentage>=80){
+
+document.getElementById("message").textContent=
+"Excellent performance. Keep challenging yourself.";
+
+document.getElementById("status").textContent=
+"🌟 Strong performance — continue with harder revision questions.";
+
+document.getElementById("recommendation").textContent=
+"Try a mixed CPH quiz or move to a more difficult topic.";
+
+}else if(percentage>=60){
+
+document.getElementById("message").textContent=
+"Good performance. Review the questions you missed.";
+
+document.getElementById("status").textContent=
+"👍 Good progress — focus on strengthening weaker areas.";
+
+document.getElementById("recommendation").textContent=
+"Review your study materials, then retake the quiz.";
+
+}else{
+
+document.getElementById("message").textContent=
+"Keep practicing. You can improve with focused revision.";
+
+document.getElementById("status").textContent=
+"📖 More revision recommended.";
+
+document.getElementById("recommendation").textContent=
+"Review the relevant materials before attempting another quiz.";
+
+}
+
+}
+
+
+function resetProgress(){
+
+const confirmed=
+confirm("Reset your saved CPH STUDY quiz progress?");
+
+if(!confirmed)return;
+
+localStorage.removeItem("cphLastQuizScore");
+
+location.reload();
+
+}
+
+
+loadProgress();
+
+</script>
+
+</body>
+  </html>
