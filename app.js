@@ -1,211 +1,573 @@
+/* =========================================================
+   CPH STUDY - MAIN APPLICATION
+   ========================================================= */
+
+"use strict";
+
+/* ---------- GLOBAL STATE ---------- */
+
 const app = document.getElementById("app");
 
 let currentPage = "home";
 let selectedCourse = null;
+let selectedTopic = null;
 
-const progress =
+let mcqState = {
+  courseId: null,
+  questions: [],
+  index: 0,
+  score: 0,
+  answered: false
+};
+
+let progress =
   JSON.parse(localStorage.getItem("cphProgress") || "{}");
 
-function saveProgress(){
-  localStorage.setItem("cphProgress", JSON.stringify(progress));
+let scores =
+  JSON.parse(localStorage.getItem("cphScores") || "{}");
+
+let bookmarks =
+  JSON.parse(localStorage.getItem("cphBookmarks") || "[]");
+
+
+/* ---------- STORAGE ---------- */
+
+function saveAll(){
+
+  localStorage.setItem(
+    "cphProgress",
+    JSON.stringify(progress)
+  );
+
+  localStorage.setItem(
+    "cphScores",
+    JSON.stringify(scores)
+  );
+
+  localStorage.setItem(
+    "cphBookmarks",
+    JSON.stringify(bookmarks)
+  );
 }
 
-function courseProgress(id){
-  return progress[id] || 0;
-}
 
-function markComplete(id){
-  progress[id] = 100;
-  saveProgress();
-  render();
-}
+/* ---------- COURSE HELPERS ---------- */
 
-function findCourse(id){
+function getCourse(id){
+
+  if(typeof curriculum === "undefined"){
+    return null;
+  }
+
   return curriculum.find(c => c.id === id);
 }
 
-function render(){
 
-  if(currentPage === "home") renderHome();
-  if(currentPage === "courses") renderCourses();
-  if(currentPage === "study") renderStudy();
-  if(currentPage === "mcqs") renderMCQs();
-  if(currentPage === "papers") renderPapers();
-  if(currentPage === "calculations") renderCalculations();
-  if(currentPage === "progress") renderProgress();
+function getCourseName(id){
+
+  const course = getCourse(id);
+
+  return course ? course.name : id;
 }
 
-function renderHome(){
 
-  app.innerHTML = `
-    <section class="hero">
-      <h1>Welcome to CPH STUDY</h1>
-      <p>
-        A structured Certificate in Pharmacy learning and
-        revision platform.
-      </p>
+function getCourseProgress(id){
 
-      <input
-        id="searchBox"
-        class="search"
-        placeholder="🔎 Search courses, topics and subjects..."
-      >
-    </section>
-
-    <div class="grid">
-
-      <div class="card">
-        <h3>📚 Courses</h3>
-        <p>${curriculum.length} course units available.</p>
-        <button onclick="go('courses')">Open Courses</button>
-      </div>
-
-      <div class="card">
-        <h3>📝 MCQs</h3>
-        <p>Test your understanding with practice questions.</p>
-        <button onclick="go('mcqs')">Start MCQs</button>
-      </div>
-
-      <div class="card">
-        <h3>📄 Mock Papers</h3>
-        <p>Practise structured examination-style questions.</p>
-        <button onclick="go('papers')">Open Papers</button>
-      </div>
-
-      <div class="card">
-        <h3>🧮 Calculations</h3>
-        <p>Study pharmaceutical calculations step by step.</p>
-        <button onclick="go('calculations')">Study Calculations</button>
-      </div>
-
-    </div>
-
-    <section class="section">
-      <h2>🎯 Study workflow</h2>
-      <ol>
-        <li>Select a CPH level.</li>
-        <li>Select a course unit.</li>
-        <li>Study the notes.</li>
-        <li>Test yourself with MCQs.</li>
-        <li>Practise structured questions.</li>
-        <li>Attempt mock papers.</li>
-        <li>Track your progress.</li>
-      </ol>
-    </section>
-  `;
-
-  document.getElementById("searchBox")
-    .addEventListener("input", e => searchCourses(e.target.value));
+  return Number(progress[id] || 0);
 }
 
-function searchCourses(query){
 
-  query = query.toLowerCase().trim();
+function setCourseProgress(id, value){
 
-  if(!query){
-    renderCourses();
-    return;
-  }
-
-  const results = curriculum.filter(c =>
-    `${c.name} ${c.level} ${c.code}`
-      .toLowerCase()
-      .includes(query)
+  progress[id] = Math.max(
+    0,
+    Math.min(100, Number(value))
   );
 
-  app.innerHTML = `
-    <section class="section">
-      <h2>Search results</h2>
-      <div class="grid">
-        ${results.map(courseCard).join("") ||
-          "<p>No matching course found.</p>"}
-      </div>
-    </section>
-  `;
+  saveAll();
 }
 
-function courseCard(c){
 
-  return `
-    <div class="card">
-      <span class="badge">${c.level}</span>
-      <h3>${c.code}</h3>
-      <p>${c.name}</p>
-      <p><strong>${courseProgress(c.id)}%</strong> complete</p>
-      <button onclick="openCourse('${c.id}')">
-        Open Course
-      </button>
-    </div>
-  `;
+/* ---------- NAVIGATION ---------- */
+
+function go(page){
+
+  currentPage = page;
+
+  if(page !== "study"){
+    selectedTopic = null;
+  }
+
+  render();
 }
 
-function renderCourses(){
 
-  const levels =
-    [...new Set(curriculum.map(c => c.level))];
+window.go = go;
 
-  app.innerHTML = `
-    <section class="section">
-      <h1>📚 CPH Curriculum</h1>
-      <p>
-        Select a level and course unit to begin.
-      </p>
-    </section>
-
-    ${levels.map(level => `
-
-      <section class="section">
-        <h2>${level}</h2>
-
-        <div class="grid">
-          ${curriculum
-            .filter(c => c.level === level)
-            .map(courseCard)
-            .join("")}
-        </div>
-      </section>
-
-    `).join("")}
-  `;
-}
 
 function openCourse(id){
 
   selectedCourse = id;
+  selectedTopic = null;
   currentPage = "study";
 
-  renderStudy();
+  render();
 }
 
-function renderStudy(){
 
-  if(!selectedCourse){
+window.openCourse = openCourse;
 
-    app.innerHTML = `
-      <section class="section">
-        <h1>📖 Study Centre</h1>
-        <p>Select a course unit.</p>
-        <button class="primary"
+
+/* ---------- MAIN RENDERER ---------- */
+
+function render(){
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
+  switch(currentPage){
+
+    case "home":
+      renderHome();
+      break;
+
+    case "courses":
+      renderCourses();
+      break;
+
+    case "study":
+      renderStudy();
+      break;
+
+    case "mcqs":
+      renderMCQs();
+      break;
+
+    case "papers":
+      renderPapers();
+      break;
+
+    case "calculations":
+      renderCalculations();
+      break;
+
+    case "progress":
+      renderProgress();
+      break;
+
+    default:
+      renderHome();
+  }
+
+  updateActiveNav();
+}
+
+
+/* ---------- ACTIVE NAV ---------- */
+
+function updateActiveNav(){
+
+  document
+    .querySelectorAll(".nav button")
+    .forEach(button => {
+
+      button.style.fontWeight =
+        button.dataset.page === currentPage
+          ? "700"
+          : "400";
+
+    });
+}
+
+
+/* =========================================================
+   HOME
+   ========================================================= */
+
+function renderHome(){
+
+  const totalCourses =
+    typeof curriculum !== "undefined"
+      ? curriculum.length
+      : 0;
+
+  const completed =
+    typeof curriculum !== "undefined"
+      ? curriculum.filter(
+          c => getCourseProgress(c.id) === 100
+        ).length
+      : 0;
+
+  const totalQuestions =
+    typeof mcqs !== "undefined"
+      ? Object.values(mcqs)
+          .reduce(
+            (sum, arr) =>
+              sum + (Array.isArray(arr) ? arr.length : 0),
+            0
+          )
+      : 0;
+
+  app.innerHTML = `
+
+    <section class="hero">
+
+      <h1>⚕️ CPH STUDY</h1>
+
+      <p>
+        Learn • Practise • Master
+      </p>
+
+      <p>
+        Your Certificate in Pharmacy
+        study and revision platform.
+      </p>
+
+      <input
+        id="globalSearch"
+        class="search"
+        placeholder="🔎 Search a course..."
+        autocomplete="off"
+      >
+
+    </section>
+
+
+    <section class="grid">
+
+      <div class="card">
+        <h3>📚 Courses</h3>
+        <h2>${totalCourses}</h2>
+        <p>Course units</p>
+
+        <button
+          class="primary"
           onclick="go('courses')">
           Browse Courses
         </button>
+      </div>
+
+
+      <div class="card">
+        <h3>📝 MCQs</h3>
+        <h2>${totalQuestions}</h2>
+        <p>Practice questions currently loaded</p>
+
+        <button
+          class="primary"
+          onclick="go('mcqs')">
+          Practise MCQs
+        </button>
+      </div>
+
+
+      <div class="card">
+        <h3>📊 Progress</h3>
+        <h2>${completed}/${totalCourses}</h2>
+        <p>Courses completed</p>
+
+        <button
+          class="primary"
+          onclick="go('progress')">
+          View Progress
+        </button>
+      </div>
+
+
+      <div class="card">
+        <h3>🧮 Calculations</h3>
+        <p>
+          Dilution, percentage strength,
+          ratio strength, alligation and more.
+        </p>
+
+        <button
+          class="primary"
+          onclick="go('calculations')">
+          Open Calculations
+        </button>
+      </div>
+
+    </section>
+
+
+    <section class="section">
+
+      <h2>🚀 Quick Start</h2>
+
+      <div class="grid">
+
+        <div class="card">
+          <h3>1️⃣ Choose a course</h3>
+          <p>
+            Select the CPH level and subject
+            you want to study.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>2️⃣ Study</h3>
+          <p>
+            Read the available notes and topics.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>3️⃣ Test yourself</h3>
+          <p>
+            Attempt MCQs without seeing
+            the answer beforehand.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>4️⃣ Track progress</h3>
+          <p>
+            Record completed courses and
+            your practice scores.
+          </p>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <section class="section">
+
+      <h2>🔖 Bookmarked Courses</h2>
+
+      <div id="homeBookmarks">
+        ${renderBookmarkCards()}
+      </div>
+
+    </section>
+  `;
+
+
+  const search =
+    document.getElementById("globalSearch");
+
+  if(search){
+
+    search.addEventListener(
+      "input",
+      e => searchCourses(e.target.value)
+    );
+
+  }
+}
+
+
+/* ---------- SEARCH ---------- */
+
+function searchCourses(query){
+
+  query =
+    String(query || "")
+      .trim()
+      .toLowerCase();
+
+  if(!query){
+
+    renderHome();
+    return;
+  }
+
+  const results =
+    curriculum.filter(course =>
+      `${course.id} ${course.code} ${course.level} ${course.name}`
+        .toLowerCase()
+        .includes(query)
+    );
+
+  app.innerHTML = `
+
+    <section class="section">
+
+      <button
+        class="secondary"
+        onclick="go('home')">
+        ← Home
+      </button>
+
+      <h1>🔎 Search Results</h1>
+
+      <p>
+        ${results.length} matching course(s)
+      </p>
+
+      <div class="grid">
+
+        ${
+          results.length
+            ? results.map(courseCard).join("")
+            : "<p>No matching course was found.</p>"
+        }
+
+      </div>
+
+    </section>
+  `;
+}
+
+
+window.searchCourses = searchCourses;
+
+
+/* =========================================================
+   COURSES
+   ========================================================= */
+
+function courseCard(course){
+
+  const bookmarked =
+    bookmarks.includes(course.id);
+
+  return `
+
+    <div class="card">
+
+      <span class="badge">
+        ${escapeHTML(course.level)}
+      </span>
+
+      <h3>
+        ${escapeHTML(course.name)}
+      </h3>
+
+      <p>
+        <strong>${escapeHTML(course.code)}</strong>
+      </p>
+
+      <p>
+        Progress:
+        <strong>${getCourseProgress(course.id)}%</strong>
+      </p>
+
+      <div style="margin-top:10px">
+
+        <button
+          class="primary"
+          onclick="openCourse('${course.id}')">
+          📖 Study
+        </button>
+
+        <button
+          class="secondary"
+          onclick="toggleBookmark('${course.id}')">
+          ${bookmarked ? "★ Saved" : "☆ Bookmark"}
+        </button>
+
+      </div>
+
+    </div>
+  `;
+}
+
+
+function renderCourses(){
+
+  if(typeof curriculum === "undefined"){
+
+    app.innerHTML = `
+      <section class="section">
+        <h2>Curriculum unavailable</h2>
+        <p>
+          Check that data/curriculum.js exists
+          and is loaded before app.js.
+        </p>
       </section>
     `;
 
     return;
   }
 
-  const c = findCourse(selectedCourse);
-  const content = notes[selectedCourse];
+  const levels =
+    [...new Set(curriculum.map(c => c.level))];
 
-  if(!content){
+  app.innerHTML = `
+
+    <section class="section">
+
+      <h1>📚 CPH Curriculum</h1>
+
+      <p>
+        Select any course to open its study area.
+      </p>
+
+    </section>
+
+
+    ${levels.map(level => `
+
+      <section class="section">
+
+        <h2>${escapeHTML(level)}</h2>
+
+        <div class="grid">
+
+          ${
+            curriculum
+              .filter(c => c.level === level)
+              .map(courseCard)
+              .join("")
+          }
+
+        </div>
+
+      </section>
+
+    `).join("")}
+  `;
+}
+
+
+/* =========================================================
+   STUDY
+   ========================================================= */
+
+function renderStudy(){
+
+  if(!selectedCourse){
+
+    app.innerHTML = `
+
+      <section class="section">
+
+        <h1>📖 Study Centre</h1>
+
+        <p>
+          Select a course to begin studying.
+        </p>
+
+        <button
+          class="primary"
+          onclick="go('courses')">
+          📚 Browse Courses
+        </button>
+
+      </section>
+    `;
+
+    return;
+  }
+
+  const course =
+    getCourse(selectedCourse);
+
+  const content =
+    typeof notes !== "undefined"
+      ? notes[selectedCourse]
+      : null;
+
+  if(!course){
 
     app.innerHTML = `
       <section class="section">
-        <h1>${c.name}</h1>
-        <p>
-          Content is being prepared for this course.
-        </p>
+        <h2>Course not found.</h2>
         <button onclick="go('courses')">
           Back to Courses
         </button>
@@ -215,372 +577,709 @@ function renderStudy(){
     return;
   }
 
-  app.innerHTML = `
-    <section class="section">
-
-      <span class="badge">${c.level}</span>
-
-      <h1>${c.name}</h1>
-
-      <p>${content.description || ""}</p>
-
-      ${content.topics.map(t => `
-        <article class="topic">
-          <h3>${t.title}</h3>
-          <div>${t.body}</div>
-        </article>
-      `).join("")}
-
-      <br>
-
-      <button class="primary"
-        onclick="markComplete('${c.id}')">
-        ✓ Mark Course Complete
-      </button>
-
-      <button class="secondary"
-        onclick="go('courses')">
-        Back
-      </button>
-
-    </section>
-  `;
-}
-
-function renderMCQs(){
-
-  const available =
-    Object.keys(mcqs || {});
-
-  app.innerHTML = `
-    <section class="section">
-      <h1>📝 MCQ Centre</h1>
-      <p>Select a course to practise.</p>
-
-      <div class="grid">
-        ${available.map(id => {
-
-          const c = findCourse(id);
-
-          if(!c) return "";
-
-          return `
-            <div class="card">
-              <h3>${c.name}</h3>
-              <p>${mcqs[id].length} practice questions</p>
-              <button
-                onclick="startMCQ('${id}')">
-                Start
-              </button>
-            </div>
-          `;
-
-        }).join("")}
-      </div>
-    </section>
-  `;
-}
-
-function startMCQ(id){
-
-  const questions = mcqs[id] || [];
-
-  let score = 0;
-  let current = 0;
-
-  function show(){
-
-    if(current >= questions.length){
-
-      app.innerHTML = `
-        <section class="section">
-          <h1>Result</h1>
-          <h2>${score}/${questions.length}</h2>
-          <button onclick="go('mcqs')">
-            Back to MCQs
-          </button>
-        </section>
-      `;
-
-      return;
-    }
-
-    const q = questions[current];
+  if(!content){
 
     app.innerHTML = `
+
       <section class="section">
 
-        <span class="badge">
-          Question ${current + 1}/${questions.length}
-        </span>
+        <button
+          class="secondary"
+          onclick="go('courses')">
+          ← Courses
+        </button>
 
-        <h2>${q.question}</h2>
+        <h1>${escapeHTML(course.name)}</h1>
 
-        ${q.options.map((o,i) => `
-          <button class="option"
-            onclick="answerMCQ(${i})">
-            ${String.fromCharCode(65+i)}. ${o}
-          </button>
-        `).join("")}
-
-        <div id="feedback"></div>
+        <p>
+          Notes for this course have not yet
+          been added to data/notes.js.
+        </p>
 
       </section>
     `;
 
-    window.answerMCQ = function(i){
-
-      const buttons =
-        document.querySelectorAll(".option");
-
-      buttons.forEach(b => b.disabled = true);
-
-      if(i === q.answer){
-
-        buttons[i].classList.add("correct");
-        score++;
-
-        document.getElementById("feedback").innerHTML =
-          `<div class="answer">
-             <strong>Correct.</strong>
-             ${q.explanation || ""}
-           </div>`;
-
-      }else{
-
-        buttons[i].classList.add("wrong");
-        buttons[q.answer].classList.add("correct");
-
-        document.getElementById("feedback").innerHTML =
-          `<div class="answer">
-             <strong>Incorrect.</strong>
-             Correct answer:
-             ${q.options[q.answer]}.
-             ${q.explanation || ""}
-           </div>`;
-      }
-
-      setTimeout(() => {
-        current++;
-        show();
-      }, 1200);
-    };
+    return;
   }
 
-  show();
-}
 
-function renderPapers(){
+  const topics =
+    Array.isArray(content.topics)
+      ? content.topics
+      : [];
+
 
   app.innerHTML = `
+
     <section class="section">
-      <h1>📄 Mock Examination Papers</h1>
+
+      <button
+        class="secondary"
+        onclick="go('courses')">
+        ← Courses
+      </button>
+
+      <span class="badge">
+        ${escapeHTML(course.level)}
+      </span>
+
+      <h1>
+        ${escapeHTML(course.name)}
+      </h1>
+
       <p>
-        These are revision/mock papers, not official examination papers.
+        ${content.description || ""}
+      </p>
+
+      <p>
+        <strong>
+          Progress: ${getCourseProgress(course.id)}%
+        </strong>
       </p>
 
       <div class="grid">
-        ${curriculum.map(c => `
+
+        ${topics.map((topic,index) => `
+
           <div class="card">
-            <h3>${c.name}</h3>
-            <p>20 practice papers</p>
-            <button onclick="openPapers('${c.id}')">
-              View Papers
+
+            <h3>
+              ${escapeHTML(topic.title)}
+            </h3>
+
+            <button
+              class="primary"
+              onclick="openTopic(${index})">
+              Open Topic
             </button>
+
           </div>
-        `).join("")}
-      </div>
-    </section>
-  `;
-}
 
-function openPapers(id){
-
-  const c = findCourse(id);
-  const data = papers[id];
-
-  app.innerHTML = `
-    <section class="section">
-      <h1>${c.name}</h1>
-
-      ${
-        data
-        ? data.map((p,i) => `
-          <article class="topic">
-            <h3>Paper ${i+1}</h3>
-            ${p.questions.map((q,n) =>
-              `<p><strong>${n+1}.</strong> ${q}</p>`
-            ).join("")}
-          </article>
-        `).join("")
-        : "<p>Practice papers are being prepared.</p>"
-      }
-
-      <button onclick="go('papers')">
-        Back
-      </button>
-    </section>
-  `;
-}
-
-function renderCalculations(){
-
-  app.innerHTML = `
-
-    <section class="section">
-
-      <h1>🧮 Pharmaceutical Calculations</h1>
-
-      <article class="topic">
-        <h2>Dilution</h2>
-
-        <p><strong>C₁V₁ = C₂V₂</strong></p>
-
-        <p>
-          C₁ = initial concentration<br>
-          V₁ = volume of stock required<br>
-          C₂ = desired concentration<br>
-          V₂ = final volume
-        </p>
-
-        <h3>Worked example</h3>
-
-        <p>
-          Prepare 100 mL of a 10% solution from a
-          25% stock solution.
-        </p>
-
-        <p>
-          25 × V₁ = 10 × 100
-        </p>
-
-        <p>
-          V₁ = 40 mL
-        </p>
-
-        <p>
-          Therefore, measure 40 mL of stock and add
-          vehicle to the required final volume.
-        </p>
-      </article>
-
-      <article class="topic">
-        <h2>Percentage strength</h2>
-
-        <p>
-          % w/v = grams of solute per 100 mL solution.
-        </p>
-
-        <p>
-          % w/w = grams of solute per 100 g preparation.
-        </p>
-
-        <p>
-          % v/v = mL of liquid solute per 100 mL solution.
-        </p>
-      </article>
-
-      <article class="topic">
-        <h2>Ratio strength</h2>
-
-        <p>
-          A ratio such as 1:1000 represents
-          1 part of active substance in 1000 parts
-          of the preparation.
-        </p>
-      </article>
-
-      <article class="topic">
-        <h2>Alligation</h2>
-
-        <p>
-          Alligation can be used to determine the
-          relative quantities of two preparations of
-          different strengths required to obtain
-          an intermediate strength.
-        </p>
-      </article>
-
-      <article class="topic">
-        <h2>Further calculation topics</h2>
-
-        <ul>
-          <li>Unit conversions</li>
-          <li>Weights and volumes</li>
-          <li>Concentration calculations</li>
-          <li>Dose calculations</li>
-          <li>Percentage calculations</li>
-          <li>Ratio calculations</li>
-          <li>Dilution calculations</li>
-          <li>Alligation calculations</li>
-          <li>Quantity calculations</li>
-          <li>Reconstitution calculations</li>
-        </ul>
-      </article>
-
-    </section>
-  `;
-}
-
-function renderProgress(){
-
-  const completed =
-    curriculum.filter(c =>
-      courseProgress(c.id) === 100
-    ).length;
-
-  app.innerHTML = `
-    <section class="section">
-
-      <h1>📊 My Progress</h1>
-
-      <h2>
-        ${completed} / ${curriculum.length}
-        courses completed
-      </h2>
-
-      <div class="grid">
-
-        ${curriculum.map(c => `
-          <div class="card">
-            <h3>${c.code}</h3>
-            <p>${c.name}</p>
-            <strong>
-              ${courseProgress(c.id)}%
-            </strong>
-          </div>
         `).join("")}
 
       </div>
 
     </section>
   `;
+
+
+  if(selectedTopic !== null){
+
+    openTopic(selectedTopic);
+  }
 }
 
-function go(page){
 
-  currentPage = page;
+window.openTopic = function(index){
 
-  if(page !== "study")
-    selectedCourse = null;
+  selectedTopic = index;
+
+  const content =
+    notes[selectedCourse];
+
+  const topic =
+    content &&
+    Array.isArray(content.topics)
+      ? content.topics[index]
+      : null;
+
+  if(!topic) return;
+
+
+  const existing =
+    document.getElementById("topicViewer");
+
+  if(existing){
+    existing.remove();
+  }
+
+
+  const section =
+    document.createElement("section");
+
+  section.id = "topicViewer";
+  section.className = "section";
+
+  section.innerHTML = `
+
+    <button
+      class="secondary"
+      onclick="closeTopic()">
+      ← Back to Topics
+    </button>
+
+    <h1>
+      ${escapeHTML(topic.title)}
+    </h1>
+
+    <div class="topic">
+      ${topic.body || ""}
+    </div>
+
+    <br>
+
+    <button
+      class="primary"
+      onclick="completeTopic('${selectedCourse}',${index})">
+      ✓ Mark Topic Complete
+    </button>
+
+    <button
+      class="secondary"
+      onclick="bookmarkTopic('${selectedCourse}',${index})">
+      🔖 Bookmark Topic
+    </button>
+
+  `;
+
+  app.appendChild(section);
+
+  section.scrollIntoView({
+    behavior:"smooth"
+  });
+};
+
+
+window.closeTopic = function(){
+
+  selectedTopic = null;
+
+  renderStudy();
+};
+
+
+window.completeTopic =
+function(courseId,index){
+
+  const content =
+    notes[courseId];
+
+  const total =
+    content &&
+    Array.isArray(content.topics)
+      ? content.topics.length
+      : 1;
+
+  const old =
+    getCourseProgress(courseId);
+
+  const increment =
+    Math.ceil(100 / total);
+
+  setCourseProgress(
+    courseId,
+    Math.min(100, old + increment)
+  );
+
+  renderStudy();
+};
+
+
+/* =========================================================
+   BOOKMARKS
+   ========================================================= */
+
+function toggleBookmark(id){
+
+  const index =
+    bookmarks.indexOf(id);
+
+  if(index === -1){
+
+    bookmarks.push(id);
+
+  }else{
+
+    bookmarks.splice(index,1);
+  }
+
+  saveAll();
 
   render();
 }
 
-document.querySelectorAll(".nav button")
-  .forEach(btn => {
 
-    btn.addEventListener("click", () =>
-      go(btn.dataset.page)
+window.toggleBookmark = toggleBookmark;
+
+
+function bookmarkTopic(courseId,index){
+
+  const key =
+    `${courseId}:topic:${index}`;
+
+  if(!bookmarks.includes(key)){
+
+    bookmarks.push(key);
+    saveAll();
+
+    alert("Topic bookmarked.");
+
+  }else{
+
+    alert("Topic is already bookmarked.");
+  }
+}
+
+
+window.bookmarkTopic = bookmarkTopic;
+
+
+function renderBookmarkCards(){
+
+  const courseBookmarks =
+    bookmarks.filter(id =>
+      typeof id === "string" &&
+      curriculum.some(c => c.id === id)
     );
 
+  if(!courseBookmarks.length){
+
+    return `
+      <p>
+        No bookmarked courses yet.
+      </p>
+    `;
+  }
+
+  return `
+
+    <div class="grid">
+
+      ${courseBookmarks
+        .map(id => courseCard(getCourse(id)))
+        .join("")}
+
+    </div>
+  `;
+}
+
+
+/* =========================================================
+   MCQS
+   ========================================================= */
+
+function renderMCQs(){
+
+  if(typeof mcqs === "undefined"){
+
+    app.innerHTML = `
+      <section class="section">
+        <h2>MCQ data unavailable.</h2>
+        <p>
+          Check data/mcqs.js.
+        </p>
+      </section>
+    `;
+
+    return;
+  }
+
+
+  const available =
+    curriculum.filter(course =>
+      Array.isArray(mcqs[course.id]) &&
+      mcqs[course.id].length > 0
+    );
+
+
+  app.innerHTML = `
+
+    <section class="section">
+
+      <h1>📝 MCQ Centre</h1>
+
+      <p>
+        Choose a course and test yourself.
+        Answers are revealed after you select an option.
+      </p>
+
+    </section>
+
+
+    <section class="section">
+
+      <div class="grid">
+
+        ${available.map(course => `
+
+          <div class="card">
+
+            <h3>
+              ${escapeHTML(course.name)}
+            </h3>
+
+            <p>
+              ${mcqs[course.id].length}
+              questions loaded
+            </p>
+
+            <button
+              class="primary"
+              onclick="startMCQ('${course.id}')">
+              ▶ Start Test
+            </button>
+
+          </div>
+
+        `).join("")}
+
+      </div>
+
+    </section>
+  `;
+}
+
+
+function startMCQ(courseId){
+
+  const source =
+    Array.isArray(mcqs[courseId])
+      ? mcqs[courseId]
+      : [];
+
+  if(!source.length){
+
+    alert("No MCQs are currently loaded for this course.");
+
+    return;
+  }
+
+
+  const shuffled =
+    [...source]
+      .sort(() => Math.random() - 0.5);
+
+
+  mcqState = {
+
+    courseId:courseId,
+
+    questions:shuffled,
+
+    index:0,
+
+    score:0,
+
+    answered:false
+  };
+
+
+  showMCQ();
+}
+
+
+window.startMCQ = startMCQ;
+
+
+function showMCQ(){
+
+  const state = mcqState;
+
+  const q =
+    state.questions[state.index];
+
+  if(!q){
+
+    finishMCQ();
+
+    return;
+  }
+
+
+  app.innerHTML = `
+
+    <section class="section">
+
+      <button
+        class="secondary"
+        onclick="go('mcqs')">
+        ← MCQ Centre
+      </button>
+
+      <p>
+        Question
+        <strong>
+          ${state.index + 1}
+        </strong>
+        of
+        <strong>
+          ${state.questions.length}
+        </strong>
+      </p>
+
+      <h2>
+        ${escapeHTML(q.question)}
+      </h2>
+
+      <div id="mcqOptions">
+
+        ${
+          q.options.map((option,index) => `
+
+            <button
+              class="option"
+              onclick="answerMCQ(${index})">
+
+              <strong>
+                ${String.fromCharCode(65 + index)}.
+              </strong>
+
+              ${escapeHTML(option)}
+
+            </button>
+
+          `).join("")
+        }
+
+      </div>
+
+      <div id="mcqFeedback"></div>
+
+    </section>
+  `;
+}
+
+
+window.answerMCQ = function(choice){
+
+  if(mcqState.answered) return;
+
+  mcqState.answered = true;
+
+  const q =
+    mcqState.questions[mcqState.index];
+
+  const buttons =
+    document.querySelectorAll(".option");
+
+  buttons.forEach(
+    button => button.disabled = true
+  );
+
+
+  if(choice === q.answer){
+
+    mcqState.score++;
+
+    buttons[choice]
+      .classList.add("correct");
+
+  }else{
+
+    buttons[choice]
+      .classList.add("wrong");
+
+    if(buttons[q.answer]){
+
+      buttons[q.answer]
+        .classList.add("correct");
+    }
+  }
+
+
+  const feedback =
+    document.getElementById("mcqFeedback");
+
+
+  feedback.innerHTML = `
+
+    <div class="answer">
+
+      <strong>
+        ${
+          choice === q.answer
+            ? "✓ Correct"
+            : "✗ Incorrect"
+        }
+      </strong>
+
+      <p>
+        <strong>
+          Correct answer:
+        </strong>
+
+        ${escapeHTML(q.options[q.answer])}
+      </p>
+
+      <p>
+        ${q.explanation || ""}
+      </p>
+
+      <button
+        class="primary"
+        onclick="nextMCQ()">
+
+        ${
+          mcqState.index + 1
+          === mcqState.questions.length
+            ? "View Result"
+            : "Next Question →"
+        }
+
+      </button>
+
+    </div>
+  `;
+};
+
+
+window.nextMCQ = function(){
+
+  mcqState.index++;
+
+  mcqState.answered = false;
+
+  showMCQ();
+};
+
+
+function finishMCQ(){
+
+  const courseId =
+    mcqState.courseId;
+
+  const total =
+    mcqState.questions.length;
+
+  const score =
+    mcqState.score;
+
+  const percent =
+    total
+      ? Math.round((score / total) * 100)
+      : 0;
+
+
+  if(!scores[courseId]){
+    scores[courseId] = [];
+  }
+
+  scores[courseId].push({
+
+    date:new Date().toISOString(),
+
+    score:score,
+
+    total:total,
+
+    percent:percent
+
   });
 
-document.getElementById("themeBtn")
-  .addEventListener("click", () => {
 
-    document.body.classList.toggle("dark");
+  saveAll();
 
-  });
 
-render();
+  app.innerHTML = `
+
+    <section class="section">
+
+      <h1>🎉 Test Complete</h1>
+
+      <h2>
+        ${score}/${total}
+      </h2>
+
+      <h2>
+        ${percent}%
+      </h2>
+
+      <p>
+        Course:
+        <strong>
+          ${escapeHTML(getCourseName(courseId))}
+        </strong>
+      </p>
+
+      <button
+        class="primary"
+        onclick="startMCQ('${courseId}')">
+        🔄 Try Again
+      </button>
+
+      <button
+        class="secondary"
+        onclick="go('mcqs')">
+        ← MCQ Centre
+      </button>
+
+    </section>
+  `;
+}
+
+
+/* =========================================================
+   PAPERS
+   ========================================================= */
+
+function renderPapers(){
+
+  app.innerHTML = `
+
+    <section class="section">
+
+      <h1>📄 Mock Paper Centre</h1>
+
+      <p>
+        These are practice/mock papers generated
+        from the question bank. They are not
+        represented as official examination papers.
+      </p>
+
+    </section>
+
+
+    <section class="section">
+
+      <div class="grid">
+
+        ${curriculum.map(course => `
+
+          <div class="card">
+
+            <h3>
+              ${escapeHTML(course.name)}
+            </h3>
+
+            <p>
+              20 practice-paper slots
+            </p>
+
+            <button
+              class="primary"
+              onclick="openPapers('${course.id}')">
+              📄 View Papers
+            </button>
+
+          </div>
+
+        `).join("")}
+
+      </div>
+
+    </section>
+  `;
+}
+
+
+window.openPapers = function(courseId){
+
+  const course =
+    getCourse(courseId);
+
+  const questions =
+    typeof mcqs !== "undefined" &&
+    Array.isArray(mcqs[courseId])
+      ? mcqs[courseId]
+      : [];
+
+
+  if(!questions.length){
+
+    app.innerHTML = `
+
+      <section class="section">
+
+        <button
+          class="secondary"
+          onclick="go('papers'
