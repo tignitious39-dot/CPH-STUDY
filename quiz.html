@@ -1393,13 +1393,27 @@ saveProgress(percentage);
 
 function saveProgress(percentage){
 
+const subject =
+document.getElementById("subject").value;
+
+const total =
+currentQuestions.length;
+
+const result = {
+    subject: subject,
+    correct: score,
+    wrong: total - score,
+    total: total,
+    percentage: percentage,
+    date: new Date().toLocaleString()
+};
+
 localStorage.setItem(
-"cphLastQuizScore",
-percentage
+    "cphStudyQuizResult",
+    JSON.stringify(result)
 );
 
-}
-
+  }
 
 function restartQuiz(){
 
