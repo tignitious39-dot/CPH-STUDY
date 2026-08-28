@@ -8,137 +8,390 @@
 
 <style>
 *{box-sizing:border-box}
+
+:root{
+ --blue:#0757a0;
+ --blue2:#168ee5;
+ --bg:#f4f7fb;
+ --card:#fff;
+ --text:#172033;
+ --muted:#657184;
+ --border:#d9e1ea;
+ --success:#198754;
+ --danger:#dc3545;
+}
+
 body{
  margin:0;
- font-family:Arial,sans-serif;
- background:#f4f7fb;
- color:#172033;
+ font-family:Arial,Helvetica,sans-serif;
+ background:var(--bg);
+ color:var(--text);
+ line-height:1.6;
+ transition:.2s;
 }
+
+body.dark{
+ --bg:#0f172a;
+ --card:#1e293b;
+ --text:#f1f5f9;
+ --muted:#aab5c4;
+ --border:#475569;
+}
+
 header{
- background:#0757a0;
+ background:linear-gradient(135deg,#064b9b,#087bd3);
  color:white;
- padding:16px;
+ padding:14px 16px;
  display:flex;
  justify-content:space-between;
  align-items:center;
  position:sticky;
  top:0;
- z-index:5;
+ z-index:100;
 }
-.brand{display:flex;gap:10px;align-items:center}
-.icon{font-size:30px}
-.title{font-size:20px;font-weight:bold}
-.small{font-size:12px;opacity:.9}
-main{max-width:950px;margin:auto;padding:16px 14px 90px}
+
+.brand{
+ display:flex;
+ gap:10px;
+ align-items:center;
+}
+
+.icon{
+ font-size:32px;
+}
+
+.title{
+ font-size:20px;
+ font-weight:bold;
+}
+
+.small{
+ font-size:12px;
+ opacity:.9;
+}
+
+header button{
+ background:rgba(255,255,255,.16);
+ color:white;
+ border:0;
+ border-radius:9px;
+ padding:9px 12px;
+ font-size:20px;
+}
+
+main{
+ max-width:1050px;
+ margin:auto;
+ padding:16px 14px 100px;
+}
+
 .hero{
  background:linear-gradient(135deg,#0757a0,#168ee5);
  color:white;
- padding:22px;
- border-radius:16px;
+ padding:24px;
+ border-radius:18px;
  margin-bottom:18px;
 }
-.hero h1{margin:0 0 5px}
+
+.hero h1{
+ margin:0 0 5px;
+ font-size:28px;
+}
+
 .quote{
  margin-top:15px;
- padding:12px;
+ padding:13px;
  background:rgba(255,255,255,.15);
- border-radius:9px;
+ border-radius:10px;
 }
-.search input{
+
+.search{
+ margin-bottom:20px;
+}
+
+.search input,
+textarea,
+input[type=text]{
  width:100%;
  padding:14px;
- border:1px solid #ccd5df;
+ border:1px solid var(--border);
  border-radius:10px;
- font-size:16px;
- margin-bottom:18px;
+ font:inherit;
+ background:var(--card);
+ color:var(--text);
+ outline:none;
 }
+
+textarea{
+ min-height:120px;
+ resize:vertical;
+}
+
+h2{
+ margin-top:20px;
+ margin-bottom:14px;
+}
+
+h3{
+ margin-top:0;
+}
+
+.card{
+ background:var(--card);
+ border-radius:14px;
+ padding:17px;
+ margin-bottom:13px;
+ box-shadow:0 3px 12px rgba(0,0,0,.07);
+}
+
 .grid{
  display:grid;
- grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+ grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
  gap:12px;
 }
-.card{
- background:white;
- padding:17px;
- border-radius:13px;
- box-shadow:0 3px 12px rgba(0,0,0,.07);
- margin-bottom:12px;
-}
+
 button{
  border:0;
  border-radius:9px;
  padding:11px 14px;
  margin:4px;
- background:#0757a0;
+ background:var(--blue);
  color:white;
  cursor:pointer;
+ font-size:14px;
 }
+
+button:hover{
+ opacity:.9;
+}
+
+button:disabled{
+ opacity:.6;
+ cursor:not-allowed;
+}
+
 .secondary{
  background:#eaf1f8;
- color:#0757a0;
+ color:var(--blue);
 }
+
+.dark .secondary{
+ background:#334155;
+ color:#dbeafe;
+}
+
+.success{
+ background:var(--success);
+}
+
+.danger{
+ background:var(--danger);
+}
+
 .tool{
  width:100%;
- min-height:85px;
- font-size:24px;
+ min-height:95px;
+ font-size:26px;
 }
+
 .tool span{
  display:block;
  font-size:14px;
  margin-top:5px;
 }
+
+.class-card{
+ border-left:5px solid var(--blue);
+ cursor:pointer;
+}
+
+.unit-card{
+ border-left:5px solid var(--blue2);
+}
+
 .unit-buttons{
  display:grid;
  grid-template-columns:repeat(2,1fr);
  gap:8px;
+ margin-top:12px;
 }
-.unit-buttons button{margin:0}
-textarea,input[type=text]{
- width:100%;
- padding:12px;
- border:1px solid #ccd5df;
- border-radius:9px;
- font:inherit;
+
+.unit-buttons button{
+ margin:0;
 }
-textarea{min-height:110px}
-.post{
- background:#f5f8fb;
- padding:12px;
- border-left:4px solid #168ee5;
+
+.note{
+ background:#f8fbff;
+ color:#172033;
+ border-left:4px solid var(--blue);
+ padding:15px;
  border-radius:8px;
- margin-top:10px;
+ margin:12px 0;
 }
-.answer{
+
+.dark .note{
+ background:#263449;
+ color:#f1f5f9;
+}
+
+.note h4{
+ margin:16px 0 5px;
+}
+
+.note ul{
+ padding-left:22px;
+}
+
+.quiz-answer{
  display:block;
  width:100%;
  text-align:left;
- background:#f0f4f8;
+ background:#eef3f8;
  color:#172033;
+ border:2px solid transparent;
+ margin:8px 0;
 }
-.correct{border:3px solid #198754}
-.wrong{border:3px solid #dc3545}
-.hidden{display:none}
+
+.dark .quiz-answer{
+ background:#334155;
+ color:#f1f5f9;
+}
+
+.quiz-answer.correct{
+ border-color:var(--success);
+}
+
+.quiz-answer.wrong{
+ border-color:var(--danger);
+}
+
+.explanation{
+ background:#edf6ff;
+ color:#172033;
+ border-left:4px solid var(--blue);
+ padding:13px;
+ border-radius:8px;
+ margin-top:12px;
+}
+
+.dark .explanation{
+ background:#263449;
+ color:#f1f5f9;
+}
+
+.post{
+ background:#f5f8fb;
+ color:#172033;
+ padding:13px;
+ border-left:4px solid var(--blue2);
+ border-radius:9px;
+ margin:10px 0;
+}
+
+.dark .post{
+ background:#263449;
+ color:#f1f5f9;
+}
+
+.post small{
+ color:#687386;
+}
+
+.stat-grid{
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:10px;
+}
+
+.stat{
+ background:#eef3f8;
+ color:#172033;
+ padding:15px;
+ border-radius:10px;
+ text-align:center;
+}
+
+.dark .stat{
+ background:#334155;
+ color:#f1f5f9;
+}
+
+.stat strong{
+ display:block;
+ font-size:25px;
+ color:var(--blue);
+}
+
+.empty{
+ text-align:center;
+ padding:30px;
+ color:var(--muted);
+}
+
+.badge{
+ display:inline-block;
+ padding:4px 8px;
+ border-radius:20px;
+ background:#e8f2ff;
+ color:var(--blue);
+ font-size:12px;
+ margin:3px;
+}
+
+.dark .badge{
+ background:#334155;
+ color:#bfdbfe;
+}
+
 nav{
  position:fixed;
  bottom:0;
  left:0;
  right:0;
- background:white;
- border-top:1px solid #ddd;
+ background:var(--card);
+ border-top:1px solid var(--border);
  display:grid;
  grid-template-columns:repeat(4,1fr);
- z-index:10;
+ padding:7px;
+ z-index:200;
 }
+
 nav button{
- background:white;
- color:#172033;
+ background:transparent;
+ color:var(--text);
  margin:0;
- border-radius:0;
+ border-radius:7px;
+ font-size:19px;
 }
-nav span{display:block;font-size:11px}
+
+nav span{
+ display:block;
+ font-size:11px;
+}
+
+.notice{
+ padding:12px;
+ border-radius:9px;
+ background:#fff7df;
+ color:#684f00;
+ margin:10px 0;
+}
+
+.dark .notice{
+ background:#3b3219;
+ color:#ffe9a6;
+}
 
 @media(max-width:600px){
- .unit-buttons{grid-template-columns:1fr}
+ .unit-buttons{
+  grid-template-columns:1fr;
+ }
+ .stat-grid{
+  grid-template-columns:1fr;
+ }
+ .hero h1{
+  font-size:23px;
+ }
 }
 </style>
 </head>
@@ -153,7 +406,8 @@ nav span{display:block;font-size:11px}
    <div class="small">Learn • Practice • Master</div>
   </div>
  </div>
- <button onclick="notifyUser()">🔔</button>
+
+ <button onclick="enableNotifications()">🔔</button>
 </header>
 
 <main>
@@ -161,14 +415,14 @@ nav span{display:block;font-size:11px}
 <section class="hero">
  <h1>Welcome to CPH STUDY</h1>
  <p>Certificate in Pharmacy Study Platform</p>
- <div class="quote" id="quote"></div>
+ <div class="quote" id="quote">Loading motivation...</div>
 </section>
 
 <div class="search">
  <input
   id="search"
   type="text"
-  placeholder="🔎 Search classes and course units..."
+  placeholder="🔎 Search classes, units and topics..."
   oninput="searchCourses()">
 </div>
 
@@ -185,11 +439,17 @@ nav span{display:block;font-size:11px}
 
 <script>
 
-/* =========================
+/* =====================================================
+   CPH STUDY — PHASE 1, 2 & 3
+===================================================== */
+
+
+/* =====================================================
    CURRICULUM
-========================= */
+===================================================== */
 
 const curriculum={
+
  "CPH 1.1":[
   "Microbiology",
   "Anatomy & Physiology 1",
@@ -226,244 +486,155 @@ const curriculum={
   "Therapeutics 2",
   "Entrepreneurship"
  ]
+
 };
 
 
-/* =========================
-   MOTIVATION
-========================= */
+/* =====================================================
+   MOTIVATIONAL QUOTES
+===================================================== */
 
 const quotes=[
  "📚 Study consistently, not occasionally.",
  "🧠 Understand first. Memorize second.",
- "🎯 Every topic mastered is one step forward.",
+ "🎯 Every mastered topic takes you closer to your goal.",
  "💊 Good pharmacy practice begins with good knowledge.",
  "🔬 Learn the science behind the medicine.",
  "📖 Read. Recall. Practise. Improve.",
  "🏆 Your effort today builds your professional future.",
- "💡 Ask questions whenever a concept is unclear."
+ "💡 Ask questions whenever a concept is unclear.",
+ "🚀 Small daily progress produces big results.",
+ "🌟 Discipline turns academic goals into achievements.",
+ "📝 Practice questions reveal what you truly understand.",
+ "🎓 Build knowledge you can use, not knowledge you can only repeat."
 ];
 
 function updateQuote(){
+
  const hour=new Date().getHours();
+
  document.getElementById("quote").textContent=
  quotes[hour%quotes.length];
 }
 
 updateQuote();
+
+/* Updates every minute and therefore changes automatically
+   when the clock enters a new hour. */
+
 setInterval(updateQuote,60000);
 
 
-/* =========================
-   HOME
-========================= */
+/* =====================================================
+   NOTES DATABASE
+===================================================== */
 
-function home(){
-
- document.getElementById("search").value="";
-
- document.getElementById("content").innerHTML=`
-
- <h2>🎓 Select Your Class</h2>
-
- <div class="grid">
-
- ${Object.keys(curriculum).map(level=>`
-
-  <div class="card">
-
-   <h3>📚 ${level}</h3>
-
-   <p>
-    ${curriculum[level].length} course units
-   </p>
-
-   <button onclick="openClass('${level}')">
-    Open Class
-   </button>
-
-  </div>
-
- `).join("")}
-
- </div>
-
- <h2>🛠️ Study Tools</h2>
-
- <div class="grid">
-
-  <button class="tool" onclick="quizClasses()">
-   📝
-   <span>Quizzes</span>
-  </button>
-
-  <button class="tool" onclick="discussionClasses()">
-   💬
-   <span>Live Discussions</span>
-  </button>
-
-  <button class="tool" onclick="progress()">
-   📊
-   <span>Progress</span>
-  </button>
-
-  <button class="tool" onclick="saved()">
-   🔖
-   <span>Saved</span>
-  </button>
-
- </div>
- `;
-}
-
-home();
+const notesDB={};
 
 
-/* =========================
-   CLASS
-========================= */
+/*
+  Default structured notes are generated for every
+  curriculum unit. This prevents empty course pages.
+*/
 
-function openClass(level){
+Object.keys(curriculum).forEach(level=>{
 
- document.getElementById("content").innerHTML=`
+ curriculum[level].forEach(unit=>{
 
- <div class="card">
+  notesDB[level+"|"+unit]=generateNotes(level,unit);
 
-  <button class="secondary" onclick="home()">← Home</button>
+ });
 
-  <h2>📚 ${level}</h2>
+});
 
-  <p>
-   Choose a course unit. Your notes, quizzes and
-   discussions remain separated by class and unit.
-  </p>
 
- </div>
+function generateNotes(level,unit){
 
- <div class="grid">
+ return {
 
- ${curriculum[level].map(unit=>`
+  introduction:
+  `${unit} is studied under ${level} in the CPH STUDY curriculum. This section provides an organized framework for studying the unit, reviewing important concepts and preparing for examination questions.`,
 
-  <div class="card">
+  objectives:[
+   `Define and explain important terminology used in ${unit}.`,
+   `Identify the major principles and concepts in the unit.`,
+   `Explain important relationships, processes or mechanisms.`,
+   `Apply knowledge to pharmacy-related situations.`,
+   `Answer examination-style questions accurately.`
+  ],
 
-   <h3>📖 ${unit}</h3>
+  areas:[
+   "Definitions and terminology",
+   "Classification and categories",
+   "Core principles",
+   "Important processes and mechanisms",
+   "Practical pharmacy applications",
+   "Common examination points",
+   "Revision questions and self-testing"
+  ],
 
-   <div class="unit-buttons">
+  study:
+  `Begin with the basic terminology of ${unit}. Build understanding from simple concepts to more advanced applications. After each topic, close your notes and recall the major points without looking. Finish by testing yourself with questions from this exact class and unit.`,
 
-    <button onclick="notes('${level}','${unit}')">
-     📖 Notes
-    </button>
+  exam:
+  `For examination preparation, pay particular attention to definitions, classifications, comparisons, principles, procedures, applications and questions requiring explanation. Always read the question carefully and answer according to the command word such as define, list, explain, describe, compare or calculate.`
 
-    <button onclick="quiz('${level}','${unit}')">
-     📝 Quiz
-    </button>
+ };
 
-    <button onclick="discussion('${level}','${unit}')">
-     💬 Discussion
-    </button>
-
-    <button class="secondary"
-     onclick="save('${level}','${unit}')">
-     🔖 Save
-    </button>
-
-   </div>
-
-  </div>
-
- `).join("")}
-
- </div>
- `;
 }
 
 
-/* =========================
-   NOTES
-========================= */
-
-function notes(level,unit){
-
- document.getElementById("content").innerHTML=`
-
- <div class="card">
-
- <button class="secondary"
- onclick="openClass('${level}')">
- ← ${level}
- </button>
-
- <h2>📖 ${unit}</h2>
-
- <p><b>${level} → ${unit}</b></p>
-
- <hr>
-
- <h3>Study Notes</h3>
-
- <div class="card">
-
- <h3>Introduction</h3>
-
- <p>
- This section contains the structured study material
- for <b>${unit}</b> under <b>${level}</b>.
- </p>
-
- <h3>Learning objectives</h3>
-
- <ul>
-  <li>Understand the major concepts.</li>
-  <li>Learn important terminology.</li>
-  <li>Relate theory to pharmacy practice.</li>
-  <li>Practise examination questions.</li>
- </ul>
-
- <h3>Key revision points</h3>
-
- <p>
- Important definitions, classifications, principles,
- mechanisms and practical applications for this unit
- will be organized here.
- </p>
-
- </div>
-
- <button onclick="quiz('${level}','${unit}')">
- 📝 Test Yourself
- </button>
-
- <button onclick="discussion('${level}','${unit}')">
- 💬 Discuss This Unit
- </button>
-
- </div>
- `;
-}
-
-
-/* =========================
-   QUIZ BANK
-========================= */
+/* =====================================================
+   QUIZ DATABASE
+===================================================== */
 
 const questions={
 
  "CPH 1.1|Microbiology":[
+
   {
    q:"What is microbiology?",
    a:[
-    "Study of microorganisms",
-    "Study of bones",
-    "Study of accounting",
-    "Study of buildings"
+    "The scientific study of microorganisms",
+    "The study of bones",
+    "The study of accounting",
+    "The study of buildings"
    ],
    correct:0,
    explanation:
    "Microbiology is the scientific study of microorganisms."
+  },
+
+  {
+   q:"Which of the following is a microorganism?",
+   a:[
+    "Bacterium",
+    "Femur",
+    "Heart",
+    "Kidney"
+   ],
+   correct:0,
+   explanation:
+   "Bacteria are microorganisms."
+  },
+
+  {
+   q:"Which group includes bacteria?",
+   a:[
+    "Prokaryotic organisms",
+    "Only mammals",
+    "Only plants",
+    "Only fungi"
+   ],
+   correct:0,
+   explanation:
+   "Bacteria are prokaryotic microorganisms."
   }
+
  ],
 
  "CPH 1.1|Anatomy & Physiology 1":[
+
   {
    q:"Anatomy primarily deals with:",
    a:[
@@ -475,10 +646,127 @@ const questions={
    correct:0,
    explanation:
    "Anatomy concerns the structure of the body."
+  },
+
+  {
+   q:"Physiology is primarily concerned with:",
+   a:[
+    "How the body functions",
+    "Drug packaging",
+    "Accounting",
+    "Building construction"
+   ],
+   correct:0,
+   explanation:
+   "Physiology is the study of how body structures function."
   }
+
+ ],
+
+ "CPH 1.1|Pharmaceutical Chemistry 1":[
+
+  {
+   q:"Pharmaceutical chemistry applies chemistry to:",
+   a:[
+    "Medicinal substances and drugs",
+    "Building construction",
+    "Sports training",
+    "Accounting"
+   ],
+   correct:0,
+   explanation:
+   "Pharmaceutical chemistry involves the chemical study of substances relevant to medicines."
+  }
+
+ ],
+
+ "CPH 1.1|First Aid":[
+
+  {
+   q:"The main purpose of first aid is to:",
+   a:[
+    "Provide immediate assistance until further care is available",
+    "Replace all medical treatment",
+    "Diagnose every disease",
+    "Prescribe every medicine"
+   ],
+   correct:0,
+   explanation:
+   "First aid provides immediate assistance while awaiting appropriate further care."
+  }
+
+ ],
+
+ "CPH 1.1|PHC":[
+
+  {
+   q:"PHC commonly refers to:",
+   a:[
+    "Primary Health Care",
+    "Pharmaceutical Hospital Coding",
+    "Primary Hospital Chemistry",
+    "Public Health Calculation"
+   ],
+   correct:0,
+   explanation:
+   "PHC commonly means Primary Health Care."
+  }
+
+ ],
+
+ "CPH 1.1|Computer Applications":[
+
+  {
+   q:"A computer application is:",
+   a:[
+    "Software designed to perform particular tasks",
+    "A human organ",
+    "A pharmaceutical dosage form",
+    "A laboratory reagent"
+   ],
+   correct:0,
+   explanation:
+   "Computer applications are software programs designed to perform particular tasks."
+  }
+
+ ],
+
+ "CPH 1.2|Anatomy & Physiology 2":[
+
+  {
+   q:"Physiology mainly studies:",
+   a:[
+    "Normal functions of living organisms",
+    "Drug prices",
+    "Business records",
+    "Packaging materials"
+   ],
+   correct:0,
+   explanation:
+   "Physiology focuses on normal functions of living organisms."
+  }
+
+ ],
+
+ "CPH 1.2|Pharmaceutical Chemistry 2":[
+
+  {
+   q:"Pharmaceutical chemistry is relevant to understanding:",
+   a:[
+    "Chemical properties of medicinal substances",
+    "Only hospital buildings",
+    "Only accounting",
+    "Only communication"
+   ],
+   correct:0,
+   explanation:
+   "Pharmaceutical chemistry examines chemical properties and behavior relevant to medicinal substances."
+  }
+
  ],
 
  "CPH 1.2|Pharmaceutical Calculations":[
+
   {
    q:"Which equation is commonly used for dilution calculations?",
    a:[
@@ -489,7 +777,7 @@ const questions={
    ],
    correct:0,
    explanation:
-   "C₁V₁ = C₂V₂ is a standard dilution relationship."
+   "C₁V₁ = C₂V₂ is a standard relationship used in dilution calculations."
   },
 
   {
@@ -503,10 +791,42 @@ const questions={
    correct:1,
    explanation:
    "500 mg ÷ 5 mL = 100 mg/mL."
+  },
+
+  {
+   q:"When solving a pharmaceutical calculation, you should first:",
+   a:[
+    "Identify what is required and the information given",
+    "Guess the answer",
+    "Ignore units",
+    "Round every value immediately"
+   ],
+   correct:0,
+   explanation:
+   "First identify the required quantity, the available information and the appropriate units."
   }
+
+ ],
+
+ "CPH 1.2|Pharmacognosy":[
+
+  {
+   q:"Pharmacognosy is primarily concerned with:",
+   a:[
+    "Medicinal substances obtained from natural sources",
+    "Only accounting",
+    "Hospital construction",
+    "Computer programming"
+   ],
+   correct:0,
+   explanation:
+   "Pharmacognosy traditionally deals with medicinal substances from natural sources."
+  }
+
  ],
 
  "CPH 1.2|Pharmacology 1":[
+
   {
    q:"Pharmacology is primarily concerned with:",
    a:[
@@ -519,9 +839,130 @@ const questions={
    explanation:
    "Pharmacology studies drugs and their effects on living systems."
   }
+
+ ],
+
+ "CPH 1.2|Medical Psychology":[
+
+  {
+   q:"Medical psychology considers:",
+   a:[
+    "Psychological factors relevant to health and illness",
+    "Only drug prices",
+    "Only drug packaging",
+    "Only computer hardware"
+   ],
+   correct:0,
+   explanation:
+   "Medical psychology considers psychological factors relevant to health, illness and patient care."
+  }
+
+ ],
+
+ "CPH 1.2|Communication Skills":[
+
+  {
+   q:"Effective communication in pharmacy practice should be:",
+   a:[
+    "Clear and understandable",
+    "Deliberately confusing",
+    "Always extremely technical",
+    "Limited to written communication"
+   ],
+   correct:0,
+   explanation:
+   "Clear, understandable communication is essential for safe and effective pharmacy practice."
+  }
+
+ ],
+
+ "CPH 1.2|Pharmaceutical Practicals":[
+
+  {
+   q:"A practical session is important because it helps students:",
+   a:[
+    "Apply theoretical knowledge",
+    "Avoid learning theory",
+    "Replace all examinations",
+    "Avoid following procedures"
+   ],
+   correct:0,
+   explanation:
+   "Practicals help students apply theoretical knowledge and develop practical skills."
+  }
+
+ ],
+
+ "CPH 2.1|Pharmaceutics 1":[
+
+  {
+   q:"Pharmaceutics is broadly concerned with:",
+   a:[
+    "Designing and preparing pharmaceutical dosage forms",
+    "Only hospital accounting",
+    "Only anatomy",
+    "Only communication"
+   ],
+   correct:0,
+   explanation:
+   "Pharmaceutics concerns the formulation, preparation and performance of dosage forms."
+  }
+
+ ],
+
+ "CPH 2.1|Pharmacy Laws & Regulations":[
+
+  {
+   q:"Pharmacy laws and regulations primarily help to:",
+   a:[
+    "Regulate safe and lawful pharmacy practice",
+    "Replace all clinical knowledge",
+    "Teach computer games",
+    "Determine sports scores"
+   ],
+   correct:0,
+   explanation:
+   "Pharmacy laws and regulations establish requirements for safe, lawful and professional practice."
+  }
+
+ ],
+
+ "CPH 2.1|Pharmacy Practice 1":[
+
+  {
+   q:"Pharmacy practice focuses on:",
+   a:[
+    "Safe and effective use of medicines and pharmacy services",
+    "Only manufacturing buildings",
+    "Only accounting",
+    "Only computer programming"
+   ],
+   correct:0,
+   explanation:
+   "Pharmacy practice includes activities supporting safe and effective medication use and patient care."
+  }
+
+ ],
+
+ "CPH 2.1|Therapeutics 1":[
+
+  {
+   q:"Therapeutics is concerned with:",
+   a:[
+    "Treatment of disease",
+    "Only drug packaging",
+    "Only accounting",
+    "Only computer hardware"
+   ],
+   correct:0,
+   explanation:
+   "Therapeutics concerns the treatment and management of disease."
+  }
+
  ],
 
  "CPH 2.1|Pharmacology 2":[
+
   {
    q:"Pharmacodynamics primarily describes:",
    a:[
@@ -532,11 +973,98 @@ const questions={
    ],
    correct:0,
    explanation:
-   "Pharmacodynamics concerns drug effects and mechanisms of action."
+   "Pharmacodynamics describes drug effects and mechanisms of action."
   }
+
+ ],
+
+ "CPH 2.1|Stores & Inventory Management":[
+
+  {
+   q:"Inventory management involves:",
+   a:[
+    "Controlling and monitoring stock",
+    "Only diagnosing patients",
+    "Only prescribing medicines",
+    "Only studying anatomy"
+   ],
+   correct:0,
+   explanation:
+   "Inventory management involves controlling, monitoring and maintaining appropriate stock."
+  }
+
+ ],
+
+ "CPH 2.2|Pharmaceutics 2":[
+
+  {
+   q:"A dosage form is:",
+   a:[
+    "The physical form in which a medicine is supplied",
+    "A patient's diagnosis",
+    "A financial record",
+    "A hospital building"
+   ],
+   correct:0,
+   explanation:
+   "A dosage form is the physical pharmaceutical form in which a medicine is presented."
+  }
+
+ ],
+
+ "CPH 2.2|Quality Assurance of Pharmaceuticals":[
+
+  {
+   q:"Quality assurance aims to:",
+   a:[
+    "Ensure pharmaceutical products consistently meet required standards",
+    "Increase confusion",
+    "Replace all regulations",
+    "Eliminate documentation"
+   ],
+   correct:0,
+   explanation:
+   "Quality assurance is concerned with systems that help ensure consistent pharmaceutical quality."
+  }
+
+ ],
+
+ "CPH 2.2|Pharmacy Practice 2":[
+
+  {
+   q:"A major objective of pharmacy practice is:",
+   a:[
+    "Promoting safe and appropriate medicine use",
+    "Selling medicines without regard to safety",
+    "Ignoring patients",
+    "Avoiding documentation"
+   ],
+   correct:0,
+   explanation:
+   "Safe and appropriate medicine use is a central objective of pharmacy practice."
+  }
+
+ ],
+
+ "CPH 2.2|Therapeutics 2":[
+
+  {
+   q:"Therapeutic decisions should be based on:",
+   a:[
+    "Appropriate clinical information and evidence",
+    "Guesswork alone",
+    "Advertising alone",
+    "Patient popularity"
+   ],
+   correct:0,
+   explanation:
+   "Therapeutic decisions should use appropriate clinical information and evidence."
+  }
+
  ],
 
  "CPH 2.2|Entrepreneurship":[
+
   {
    q:"Entrepreneurship involves:",
    a:[
@@ -547,656 +1075,4 @@ const questions={
    ],
    correct:0,
    explanation:
-   "Entrepreneurship involves identifying opportunities and organizing resources to create value."
-  }
- ]
-
-};
-
-
-/* =========================
-   QUIZ
-========================= */
-
-let activeQuestions=[];
-let qIndex=0;
-let score=0;
-
-function quiz(level,unit){
-
- const key=level+"|"+unit;
-
- activeQuestions=questions[key]||[];
-
- if(activeQuestions.length===0){
-
-  document.getElementById("content").innerHTML=`
-
-  <div class="card">
-
-   <button class="secondary"
-   onclick="openClass('${level}')">
-   ← Back
-   </button>
-
-   <h2>📝 ${unit}</h2>
-
-   <p>
-    The question bank for this unit is being prepared.
-   </p>
-
-   <p>
-    CPH STUDY will never mix questions from another
-    class or course unit into this quiz.
-   </p>
-
-  </div>`;
-
-  return;
- }
-
- qIndex=0;
- score=0;
-
- showQuestion(level,unit);
-}
-
-
-function showQuestion(level,unit){
-
- const q=activeQuestions[qIndex];
-
- document.getElementById("content").innerHTML=`
-
- <div class="card">
-
- <button class="secondary"
- onclick="openClass('${level}')">
- ← Back
- </button>
-
- <h2>📝 ${unit}</h2>
-
- <p>${level} • Question ${qIndex+1}/${activeQuestions.length}</p>
-
- <hr>
-
- <h3>${q.q}</h3>
-
- <div>
-
- ${q.a.map((answer,i)=>`
-
-  <button
-   class="answer"
-   onclick="checkAnswer(${i},${q.correct},'${level}','${unit}')">
-
-   ${String.fromCharCode(65+i)}. ${answer}
-
-  </button>
-
- `).join("")}
-
- </div>
-
- <div id="explanation"></div>
-
- </div>
- `;
-}
-
-
-function checkAnswer(selected,correct,level,unit){
-
- const buttons=document.querySelectorAll(".answer");
-
- buttons.forEach(b=>b.disabled=true);
-
- if(selected===correct){
-  score++;
-  buttons[selected].classList.add("correct");
- }else{
-  buttons[selected].classList.add("wrong");
-  buttons[correct].classList.add("correct");
- }
-
- const q=activeQuestions[qIndex];
-
- document.getElementById("explanation").innerHTML=`
-
- <div class="post">
-
- <b>Explanation</b>
-
- <p>${q.explanation}</p>
-
- <button onclick="nextQuestion('${level}','${unit}')">
- Next →
- </button>
-
- </div>
- `;
-}
-
-
-function nextQuestion(level,unit){
-
- qIndex++;
-
- if(qIndex>=activeQuestions.length){
-
-  const percent=
-   Math.round(score/activeQuestions.length*100);
-
-  document.getElementById("content").innerHTML=`
-
-  <div class="card">
-
-   <h2>🎉 Quiz Complete</h2>
-
-   <p>${level}</p>
-
-   <p>${unit}</p>
-
-   <h1>${percent}%</h1>
-
-   <p>
-    Score: ${score}/${activeQuestions.length}
-   </p>
-
-   <button onclick="quiz('${level}','${unit}')">
-    Retry
-   </button>
-
-   <button onclick="openClass('${level}')">
-    Back to Class
-   </button>
-
-  </div>
-  `;
-
-  return;
- }
-
- showQuestion(level,unit);
-}
-
-
-/* =========================
-   QUIZ CLASS SELECTOR
-========================= */
-
-function quizClasses(){
-
- document.getElementById("content").innerHTML=`
-
- <div class="card">
-
- <h2>📝 Choose Class</h2>
-
- <p>
- Select your class before selecting a quiz.
- </p>
-
- </div>
-
- <div class="grid">
-
- ${Object.keys(curriculum).map(level=>`
-
-  <div class="card">
-
-   <h3>${level}</h3>
-
-   <button onclick="quizUnits('${level}')">
-    Choose Unit
-   </button>
-
-  </div>
-
- `).join("")}
-
- </div>
- `;
-}
-
-
-function quizUnits(level){
-
- document.getElementById("content").innerHTML=`
-
- <div class="card">
-
- <button class="secondary"
- onclick="quizClasses()">
- ← Classes
- </button>
-
- <h2>📝 ${level} Quizzes</h2>
-
- </div>
-
- <div class="grid">
-
- ${curriculum[level].map(unit=>`
-
-  <div class="card">
-
-   <h3>${unit}</h3>
-
-   <button onclick="quiz('${level}','${unit}')">
-    Start Quiz
-   </button>
-
-  </div>
-
- `).join("")}
-
- </div>
- `;
-}
-
-
-/* =========================
-   DISCUSSIONS
-========================= */
-
-function discussionClasses(){
-
- document.getElementById("content").innerHTML=`
-
- <div class="card">
-
- <h2>💬 Discussions</h2>
-
- <p>
- Select your class.
- </p>
-
- </div>
-
- <div class="grid">
-
- ${Object.keys(curriculum).map(level=>`
-
-  <div class="card">
-
-   <h3>${level}</h3>
-
-   <button onclick="discussionUnits('${level}')">
-    Course Units
-   </button>
-
-  </div>
-
- `).join("")}
-
- </div>
- `;
-}
-
-
-function discussionUnits(level){
-
- document.getElementById("content").innerHTML=`
-
- <div class="card">
-
- <button class="secondary"
- onclick="discussionClasses()">
- ← Classes
- </button>
-
- <h2>💬 ${level}</h2>
-
- </div>
-
- <div class="grid">
-
- ${curriculum[level].map(unit=>`
-
-  <div class="card">
-
-   <h3>${unit}</h3>
-
-   <button onclick="discussion('${level}','${unit}')">
-    💬 Open Discussion
-   </button>
-
-  </div>
-
- `).join("")}
-
- </div>
- `;
-}
-
-
-function discussion(level,unit){
-
- const key="cphDiscussion_"+level+"_"+unit;
-
- const posts=
- JSON.parse(localStorage.getItem(key)||"[]");
-
- document.getElementById("content").innerHTML=`
-
- <div class="card">
-
- <button class="secondary"
- onclick="openClass('${level}')">
- ← Back
- </button>
-
- <h2>💬 Live Discussion</h2>
-
- <p><b>${level}</b> → ${unit}</p>
-
- <textarea
- id="message"
- placeholder="Ask a question or share something useful...">
- </textarea>
-
- <button onclick="post('${level}','${unit}')">
- 📤 Post
- </button>
-
- </div>
-
- <div id="posts">
-
- ${posts.length
- ?
- posts.map(p=>`
-
-  <div class="post">
-
-   ${escapeHTML(p.text)}
-
-   <small>
-    <br>${p.time}
-   </small>
-
-  </div>
-
- `).join("")
- :
- `<div class="card">
-  No posts yet. Start the discussion.
- </div>`
- }
-
- </div>
- `;
-}
-
-
-function post(level,unit){
-
- const message=
- document.getElementById("message").value.trim();
-
- if(!message){
-  alert("Write a message first.");
-  return;
- }
-
- const key="cphDiscussion_"+level+"_"+unit;
-
- const posts=
- JSON.parse(localStorage.getItem(key)||"[]");
-
- posts.push({
-  text:message,
-  time:new Date().toLocaleString()
- });
-
- localStorage.setItem(key,JSON.stringify(posts));
-
- discussion(level,unit);
-}
-
-
-/* =========================
-   SAVED
-========================= */
-
-function save(level,unit){
-
- const data=
- JSON.parse(localStorage.getItem("cphSaved")||"[]");
-
- if(!data.some(x=>x.level===level&&x.unit===unit)){
-
-  data.push({level,unit});
-
-  localStorage.setItem("cphSaved",JSON.stringify(data));
-
- }
-
- alert("🔖 Saved successfully.");
-}
-
-
-function saved(){
-
- const data=
- JSON.parse(localStorage.getItem("cphSaved")||"[]");
-
- document.getElementById("content").innerHTML=`
-
- <div class="card">
-
- <h2>🔖 Saved Materials</h2>
-
- ${
- data.length
- ?
- data.map(x=>`
-
-  <div class="post">
-
-   <b>${x.level}</b><br>
-   ${x.unit}<br>
-
-   <button onclick="openClass('${x.level}')">
-    Open
-   </button>
-
-  </div>
-
- `).join("")
- :
- "<p>No saved materials yet.</p>"
- }
-
- </div>
- `;
-}
-
-
-/* =========================
-   PROGRESS
-========================= */
-
-function progress(){
-
- document.getElementById("content").innerHTML=`
-
- <div class="card">
-
- <h2>📊 Progress</h2>
-
- <p>
- Quiz progress tracking will appear here as you
- complete unit quizzes.
- </p>
-
- <button onclick="quizClasses()">
- Start a Quiz
- </button>
-
- </div>
- `;
-}
-
-
-/* =========================
-   SEARCH
-========================= */
-
-function focusSearch(){
-
- document.getElementById("search").focus();
-}
-
-
-function searchCourses(){
-
- const q=
- document.getElementById("search").value
- .toLowerCase().trim();
-
- if(!q){
-  home();
-  return;
- }
-
- let results=[];
-
- Object.keys(curriculum).forEach(level=>{
-
-  curriculum[level].forEach(unit=>{
-
-   if(
-    level.toLowerCase().includes(q) ||
-    unit.toLowerCase().includes(q)
-   ){
-
-    results.push({level,unit});
-
-   }
-
-  });
-
- });
-
- document.getElementById("content").innerHTML=`
-
- <div class="card">
-
- <h2>🔎 Search Results</h2>
-
- <p>${results.length} result(s)</p>
-
- </div>
-
- ${
- results.length
- ?
- results.map(x=>`
-
-  <div class="card">
-
-   <h3>${x.level}</h3>
-
-   <p>📖 ${x.unit}</p>
-
-   <button onclick="openClass('${x.level}')">
-    Open
-   </button>
-
-  </div>
-
- `).join("")
- :
- `<div class="card">
-  No matching course found.
- </div>`
- }
- `;
-}
-
-
-/* =========================
-   SETTINGS
-========================= */
-
-function settings(){
-
- document.getElementById("content").innerHTML=`
-
- <div class="card">
-
- <h2>⚙️ Settings</h2>
-
- <button onclick="toggleDark()">
- 🌙 Dark Mode
- </button>
-
- <button onclick="notifyUser()">
- 🔔 Notifications
- </button>
-
- </div>
- `;
-}
-
-
-function toggleDark(){
-
- document.body.style.background=
- document.body.style.background==="rgb(15, 23, 42)"
- ?
- "#f4f7fb"
- :
- "#0f172a";
-
- document.body.style.color=
- document.body.style.color==="white"
- ?
- "#172033"
- :
- "white";
-}
-
-
-function notifyUser(){
-
- if(!("Notification" in window)){
-
-  alert("Notifications are not supported.");
-
-  return;
- }
-
- Notification.requestPermission().then(p=>{
-
-  if(p==="granted"){
-   alert("🔔 Notifications enabled.");
-  }else{
-   alert("Notification permission was not granted.");
-  }
-
- });
-
-}
-
-
-/* =========================
-   SECURITY
-========================= */
-
-function escapeHTML(text){
-
- const div=document.createElement("div");
-
- div.textContent=text;
-
- return div.innerHTML;
-}
-
-</script>
-
-</body>
-   </html>
+   "Entrepreneurship involves ident
