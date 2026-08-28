@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CPH STUDY - Study Materials</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f7fb;
+      color: #172033;
+    }
+
+    header {
+      background: #0b5ed7;
+      color: white;
+      padding: 22px 18px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 28px;
+      margin-bottom: 6px;
+    }
+
+    header p {
+      opacity: 0.9;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .search {
+      width: 100%;
+      padding: 14px;
+      border: 1px solid #ccd4df;
+      border-radius: 10px;
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 14px;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+    }
+
+    .card h2 {
+      color: #0b5ed7;
+      margin-bottom: 10px;
+      font-size: 20px;
+    }
+
+    .card p {
+      line-height: 1.5;
+      color: #555;
+      margin-bottom: 15px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #0b5ed7;
+      color: white;
+      text-decoration: none;
+      padding: 10px 15px;
+      border-radius: 8px;
+    }
+
+    .btn:hover {
+      background: #084298;
+    }
+
+    .back {
+      display: inline-block;
+      margin-bottom: 18px;
+      color: #0b5ed7;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      color: #777;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>📚 CPH STUDY</h1>
+  <p>Study Materials</p>
+</header>
+
+<div class="container">
+
+  <a href="index.html" class="back">← Back to Home</a>
+
+  <input
+    type="text"
+    id="search"
+    class="search"
+    placeholder="🔎 Search study materials..."
+    onkeyup="searchMaterials()"
+  >
+
+  <div class="grid" id="materials">
+
+    <div class="card">
+      <h2>💊 Pharmacology</h2>
+      <p>Study drug classes, mechanisms of action, therapeutic uses, adverse effects and important examples.</p>
+      <a href="#" class="btn">Open Materials</a>
+    </div>
+
+    <div class="card">
+      <h2>🧪 Pharmaceutics</h2>
+      <p>Learn dosage forms, formulations, pharmaceutical technology and principles of drug preparation.</p>
+      <a href="#" class="btn">Open Materials</a>
+    </div>
+
+    <div class="card">
+      <h2>🧮 Pharmaceutical Calculations</h2>
+      <p>Practice dilution, percentage strength, ratio, proportion, allegation, dose calculations and conversions.</p>
+      <a href="#" class="btn">Open Materials</a>
+    </div>
+
+    <div class="card">
+      <h2>🦠 Microbiology</h2>
+      <p>Learn microorganisms, infection, sterilization, laboratory principles and antimicrobial concepts.</p>
+      <a href="#" class="btn">Open Materials</a>
+    </div>
+
+    <div class="card">
+      <h2>🫀 Anatomy & Physiology</h2>
+      <p>Study the structure and functions of the human body and its major organ systems.</p>
+      <a href="#" class="btn">Open Materials</a>
+    </div>
+
+    <div class="card">
+      <h2>🧬 Biochemistry</h2>
+      <p>Understand carbohydrates, proteins, lipids, enzymes, metabolism and biochemical processes.</p>
+      <a href="#" class="btn">Open Materials</a>
+    </div>
+
+    <div class="card">
+      <h2>🩺 Clinical Pharmacy</h2>
+      <p>Explore patient care, medication safety, drug interactions and rational medicine use.</p>
+      <a href="#" class="btn">Open Materials</a>
+    </div>
+
+    <div class="card">
+      <h2>📖 CPH Revision</h2>
+      <p>Revision materials designed to help you prepare effectively for CPH examinations.</p>
+      <a href="#" class="btn">Open Materials</a>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  © 2026 CPH STUDY — Learn • Practice • Master
+</footer>
+
+<script>
+function searchMaterials() {
+  const input = document.getElementById("search").value.toLowerCase();
+  const cards = document.querySelectorAll(".card");
+
+  cards.forEach(card => {
+    const text = card.innerText.toLowerCase();
+
+    if (text.includes(input)) {
+      card.style.display = "";
+    } else {
+      card.style.display = "none";
+    }
+  });
+}
+</script>
+
+</body>
+  </html>
