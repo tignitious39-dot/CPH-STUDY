@@ -4,258 +4,240 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#0757a0">
-<meta name="description" content="CPH STUDY - Community Pharmacy learning platform">
 <title>CPH STUDY</title>
 
 <style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
+*{box-sizing:border-box;margin:0;padding:0}
 
 body{
-  font-family:Arial,Helvetica,sans-serif;
-  background:#f3f7fb;
-  color:#172033;
-  line-height:1.6;
+font-family:Arial,sans-serif;
+background:#f4f7fb;
+color:#172033;
+line-height:1.6;
 }
 
 header{
-  background:#0757a0;
-  color:white;
-  padding:18px;
-  position:sticky;
-  top:0;
-  z-index:10;
-  box-shadow:0 2px 10px #0002;
+background:#0757a0;
+color:white;
+padding:16px;
+position:sticky;
+top:0;
+z-index:100;
 }
 
 .header{
-  max-width:1100px;
-  margin:auto;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
+max-width:1100px;
+margin:auto;
+display:flex;
+justify-content:space-between;
+align-items:center;
 }
 
 .logo{
-  display:flex;
-  align-items:center;
-  gap:10px;
+display:flex;
+align-items:center;
+gap:10px;
 }
 
-.logo-icon{
-  font-size:32px;
-}
+.logo-icon{font-size:32px}
 
-.logo h1{
-  font-size:22px;
-}
+.logo h1{font-size:22px}
 
 .logo small{
-  display:block;
-  opacity:.85;
+display:block;
+opacity:.85;
 }
 
 .menu{
-  background:white;
-  color:#0757a0;
-  border:0;
-  border-radius:8px;
-  padding:9px 12px;
-  font-size:18px;
+background:white;
+color:#0757a0;
+border:0;
+padding:9px 12px;
+border-radius:8px;
+font-size:18px;
 }
 
 nav{
-  display:none;
-  background:white;
-  padding:10px;
-  box-shadow:0 2px 8px #0002;
+display:none;
+background:white;
+box-shadow:0 3px 10px #0002;
+padding:8px;
 }
 
 nav button{
-  display:block;
-  width:100%;
-  background:white;
-  border:0;
-  padding:13px;
-  text-align:left;
-  font-size:15px;
-  border-bottom:1px solid #eee;
+display:block;
+width:100%;
+padding:12px;
+border:0;
+background:white;
+text-align:left;
+font-size:15px;
+border-bottom:1px solid #eee;
 }
 
 main{
-  max-width:1100px;
-  margin:auto;
-  padding:20px;
+max-width:1100px;
+margin:auto;
+padding:18px;
 }
 
 .hero{
-  background:linear-gradient(135deg,#0757a0,#1388d8);
-  color:white;
-  padding:30px 20px;
-  border-radius:16px;
-  margin-bottom:25px;
+background:linear-gradient(135deg,#0757a0,#1288d5);
+color:white;
+padding:28px 20px;
+border-radius:16px;
+margin-bottom:18px;
 }
 
 .hero h2{
-  font-size:30px;
-  margin-bottom:8px;
+font-size:29px;
+margin-bottom:8px;
 }
 
 .search{
-  margin:20px 0;
+margin-bottom:22px;
 }
 
 .search input{
-  width:100%;
-  padding:15px;
-  border:1px solid #ccd6e2;
-  border-radius:10px;
-  font-size:16px;
-}
-
-.section-title{
-  margin:25px 0 12px;
+width:100%;
+padding:14px;
+font-size:16px;
+border:1px solid #ccd7e5;
+border-radius:10px;
 }
 
 .grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-  gap:16px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:16px;
+margin-top:15px;
 }
 
 .card{
-  background:white;
-  padding:20px;
-  border-radius:14px;
-  box-shadow:0 3px 12px #00000012;
+background:white;
+border-radius:14px;
+padding:18px;
+box-shadow:0 3px 12px #0001;
 }
 
-.card h3{
-  color:#0757a0;
-  margin:8px 0;
+.card h2,.card h3{
+color:#0757a0;
 }
 
 .card p{
-  color:#526174;
+color:#526174;
 }
 
 .card button,
 .action{
-  border:0;
-  background:#0757a0;
-  color:white;
-  padding:11px 15px;
-  border-radius:8px;
-  margin-top:12px;
-  cursor:pointer;
+background:#0757a0;
+color:white;
+border:0;
+border-radius:8px;
+padding:11px 14px;
+margin-top:12px;
+cursor:pointer;
 }
 
+.semester{
+border-top:6px solid #0757a0;
+}
+
+.blue{border-top-color:#1677d2}
+.green{border-top-color:#159447}
+.yellow{border-top-color:#d6a800}
+.red{border-top-color:#d52c35}
+
 .unit{
-  border:1px solid #dce5ef;
-  padding:13px;
-  border-radius:9px;
-  margin:8px 0;
-  background:#f8fbff;
-  cursor:pointer;
+background:#f7faff;
+border:1px solid #dce5ef;
+padding:12px;
+margin:8px 0;
+border-radius:9px;
+cursor:pointer;
 }
 
 .unit:hover{
-  background:#eaf4ff;
+background:#e8f3ff;
 }
 
-.feature{
-  text-align:center;
-}
-
-.feature-icon{
-  font-size:35px;
-}
-
-#content{
-  margin-top:25px;
+.topic{
+padding:12px;
+margin:7px 0;
+background:#f7faff;
+border-radius:8px;
+border-left:4px solid #0757a0;
 }
 
 .note{
-  background:#fff;
-  padding:20px;
-  border-radius:14px;
-  box-shadow:0 3px 12px #0001;
+background:white;
+padding:20px;
+border-radius:14px;
+box-shadow:0 3px 12px #0001;
 }
 
-.note h2{
-  color:#0757a0;
-  margin-bottom:12px;
+.note h2,.note h3{
+color:#0757a0;
+margin-bottom:10px;
 }
 
 .note h3{
-  margin-top:18px;
-  color:#0757a0;
+margin-top:20px;
 }
 
 .note li{
-  margin:7px 0 7px 20px;
-}
-
-.question{
-  margin:15px 0;
-  padding:16px;
-  background:#f7faff;
-  border-radius:10px;
-  border:1px solid #dce7f2;
+margin:7px 0 7px 20px;
 }
 
 .option{
-  display:block;
-  width:100%;
-  text-align:left;
-  background:white;
-  color:#172033;
-  border:1px solid #ccd8e5;
-  padding:12px;
-  border-radius:8px;
-  margin:7px 0;
+display:block;
+width:100%;
+text-align:left;
+background:white;
+color:#172033;
+border:1px solid #ccd8e5;
+padding:12px;
+border-radius:8px;
+margin:8px 0;
 }
 
 footer{
-  margin-top:40px;
-  background:#102a43;
-  color:white;
-  text-align:center;
-  padding:25px;
+margin-top:35px;
+background:#102a43;
+color:white;
+text-align:center;
+padding:25px;
 }
 
-.hidden{
-  display:none;
-}
+.hidden{display:none}
 
 .dark{
-  background:#101820;
-  color:#f1f5f9;
+background:#101820;
+color:#eee;
 }
 
 .dark .card,
 .dark .note,
 .dark nav,
+.dark .unit,
+.dark .topic,
 .dark .option{
-  background:#182532;
-  color:#f1f5f9;
+background:#1b2935;
+color:#eee;
 }
 
 .dark .card p{
-  color:#cbd5e1;
+color:#cbd5e1;
+}
+
+.dark nav button{
+background:#1b2935;
+color:white;
 }
 
 @media(max-width:600px){
-  main{
-    padding:14px;
-  }
-
-  .hero h2{
-    font-size:25px;
-  }
+main{padding:13px}
+.hero h2{font-size:25px}
 }
 </style>
 </head>
@@ -263,90 +245,67 @@ footer{
 <body>
 
 <header>
-  <div class="header">
-    <div class="logo">
-      <div class="logo-icon">⚕️</div>
-      <div>
-        <h1>CPH STUDY</h1>
-        <small>Learn • Practice • Master</small>
-      </div>
-    </div>
+<div class="header">
 
-    <button class="menu" onclick="toggleMenu()">☰</button>
-  </div>
+<div class="logo">
+<div class="logo-icon">⚕️</div>
+<div>
+<h1>CPH STUDY</h1>
+<small>Learn • Practice • Master</small>
+</div>
+</div>
+
+<button class="menu" onclick="toggleMenu()">☰</button>
+
+</div>
 </header>
 
 <nav id="nav">
-  <button onclick="home()">🏠 Home</button>
-  <button onclick="showLevels()">📚 Courses</button>
-  <button onclick="showQuiz()">📝 MCQ Practice</button>
-  <button onclick="showCalculations()">🧮 Calculations</button>
-  <button onclick="showProgress()">📊 Progress</button>
-  <button onclick="toggleDark()">🌙 Dark Mode</button>
+
+<button onclick="home()">🏠 Home</button>
+<button onclick="curriculum()">📚 Curriculum</button>
+<button onclick="quiz()">📝 MCQ Practice</button>
+<button onclick="calculations()">🧮 Calculations</button>
+<button onclick="progress()">📊 Progress</button>
+<button onclick="darkMode()">🌙 Dark Mode</button>
+
 </nav>
 
 <main>
 
-<section class="hero">
-  <h2>Welcome to CPH STUDY</h2>
-  <p>
-    Your Community Pharmacy learning companion.
-    Study your course units, practise questions and track your progress.
-  </p>
-</section>
-
-<div class="search">
-  <input
-    id="search"
-    placeholder="🔎 Search courses, units or topics..."
-    oninput="searchSite()"
-  >
-</div>
-
 <section id="home">
 
-  <h2 class="section-title">📚 Choose your CPH Level</h2>
+<div class="hero">
 
-  <div id="levels" class="grid"></div>
+<h2>Welcome to CPH STUDY</h2>
 
-  <h2 class="section-title">⚡ Quick Study</h2>
+<p>
+Your Certificate in Pharmacy learning companion.
+Study your curriculum, practise questions and prepare for examinations.
+</p>
 
-  <div class="grid">
+</div>
 
-    <div class="card feature">
-      <div class="feature-icon">📝</div>
-      <h3>MCQ Practice</h3>
-      <p>Test your pharmacy knowledge.</p>
-      <button onclick="showQuiz()">Start Quiz</button>
-    </div>
+<div class="search">
 
-    <div class="card feature">
-      <div class="feature-icon">🧮</div>
-      <h3>Calculations</h3>
-      <p>Practise pharmaceutical calculations.</p>
-      <button onclick="showCalculations()">Practise</button>
-    </div>
+<input
+id="search"
+placeholder="🔎 Search a course or unit..."
+oninput="searchCourses()">
 
-    <div class="card feature">
-      <div class="feature-icon">📖</div>
-      <h3>Study Notes</h3>
-      <p>Learn important pharmacy concepts.</p>
-      <button onclick="showLevels()">Study</button>
-    </div>
+</div>
 
-    <div class="card feature">
-      <div class="feature-icon">📊</div>
-      <h3>Progress</h3>
-      <p>Monitor your quiz performance.</p>
-      <button onclick="showProgress()">View</button>
-    </div>
+<h2>📚 CPH Curriculum</h2>
 
-  </div>
+<div id="semesters" class="grid"></div>
 
-  <div class="card" style="margin-top:20px;text-align:center;">
-    <h3>💡 Daily Motivation</h3>
-    <p id="quote"></p>
-  </div>
+<div class="card" style="margin-top:20px;text-align:center">
+
+<h3>💡 Daily Motivation</h3>
+
+<p id="quote"></p>
+
+</div>
 
 </section>
 
@@ -355,84 +314,135 @@ footer{
 </main>
 
 <footer>
-  <strong>⚕️ CPH STUDY</strong>
-  <p>Community Pharmacy • Learn • Practice • Master</p>
+
+<strong>⚕️ CPH STUDY</strong>
+
+<p>
+Certificate in Pharmacy • Learn • Practice • Master
+</p>
+
 </footer>
 
 <script>
 
 /* =========================
-   COURSE DATA
+   OFFICIAL COURSE STRUCTURE
 ========================= */
 
-const levels = [
+const semesters=[
+
 {
- name:"CPH Year 1",
- icon:"📘",
- description:"Foundation knowledge for Community Pharmacy.",
- units:[
-  "Anatomy and Physiology",
-  "Pharmaceutical Chemistry",
-  "Pharmaceutics",
-  "Pharmacology",
-  "Pharmaceutical Calculations",
-  "Microbiology",
-  "Communication Skills"
- ]
+name:"CPH 1.1",
+icon:"🟦",
+className:"blue",
+units:[
+"Microbiology",
+"Anatomy & Physiology 1",
+"Pharmaceutical Chemistry 1",
+"First Aid",
+"Primary Health Care (PHC)",
+"Computer Applications"
+]
 },
+
 {
- name:"CPH Year 2",
- icon:"📗",
- description:"Intermediate pharmacy knowledge and practice.",
- units:[
-  "Pharmacology",
-  "Pharmaceutics",
-  "Medicinal Chemistry",
-  "Microbiology",
-  "Community Pharmacy Practice",
-  "Public Health",
-  "Pharmacy Management"
- ]
+name:"CPH 1.2",
+icon:"🟩",
+className:"green",
+units:[
+"Anatomy & Physiology 2",
+"Pharmaceutical Chemistry 2",
+"Pharmaceutical Calculations",
+"Pharmacognosy",
+"Pharmacology 1",
+"Medical Psychology",
+"Communication Skills",
+"Pharmaceutical Practicals"
+]
 },
+
 {
- name:"CPH Year 3",
- icon:"📕",
- description:"Advanced pharmacy and clinical preparation.",
- units:[
-  "Clinical Pharmacy",
-  "Pharmacotherapy",
-  "Pharmacy Law and Ethics",
-  "Public Health",
-  "Pharmaceutical Management",
-  "Drug Information",
-  "Patient Counselling"
- ]
+name:"CPH 2.1",
+icon:"🟨",
+className:"yellow",
+units:[
+"Pharmaceutics 1",
+"Pharmacy Laws & Regulations",
+"Pharmacy Practice 1",
+"Therapeutics 1",
+"Pharmacology 2",
+"Stores & Inventory Management",
+"Field Attachment I"
+]
 },
+
 {
- name:"Final Revision",
- icon:"🎓",
- description:"Intensive examination preparation.",
- units:[
-  "MCQ Revision",
-  "Structured Questions",
-  "Pharmaceutical Calculations",
-  "Past Paper Practice",
-  "Clinical Cases",
-  "Final Examination Preparation"
- ]
+name:"CPH 2.2",
+icon:"🟥",
+className:"red",
+units:[
+"Pharmaceutics 2",
+"Quality Assurance of Pharmaceuticals",
+"Pharmacy Practice 2",
+"Therapeutics 2",
+"Entrepreneurship",
+"Field Attachment II"
+]
 }
+
 ];
 
 
 /* =========================
-   HOME
+   TOPICS FROM CURRICULUM
 ========================= */
 
-function home(){
- document.getElementById("home").classList.remove("hidden");
- document.getElementById("content").innerHTML="";
- window.scrollTo({top:0,behavior:"smooth"});
-}
+const topics={
+
+"Pharmaceutical Calculations":[
+"Mathematics Review",
+"Fractions, Ratios and Proportions",
+"Decimals and Percentages",
+"Measurement Systems and Conversions",
+"Scaling Formulae",
+"Dilution and Concentration",
+"Alligation",
+"Parts Per Million",
+"Dosage and Posology"
+],
+
+"Pharmaceutics 2":[
+"Simple Solutions",
+"Excipients",
+"Production Formulae",
+"Concentration Expressions",
+"Percentage Strength",
+"Ratio Strength",
+"Parts Per Million",
+"Scaling",
+"Posology",
+"Adult and Child Doses",
+"Reconstitution",
+"Mixing and Storage",
+"Antiseptic and Disinfectant Dilution"
+],
+
+"Quality Assurance of Pharmaceuticals":[
+"Quality Assurance",
+"Quality Control",
+"Good Manufacturing Practice",
+"Medicine Quality",
+"Inspection and Testing",
+"Supplier Selection",
+"Certification",
+"Storage Controls",
+"Distribution Controls",
+"Monitoring",
+"Medicine Recalls",
+"Medicines and Therapeutics Committee"
+]
+
+};
 
 
 /* =========================
@@ -440,42 +450,96 @@ function home(){
 ========================= */
 
 function toggleMenu(){
- const nav=document.getElementById("nav");
- nav.style.display=nav.style.display==="block"?"none":"block";
+
+const nav=document.getElementById("nav");
+
+nav.style.display=
+nav.style.display==="block"
+?"none"
+:"block";
+
 }
 
 
 /* =========================
-   LEVELS
+   HOME
 ========================= */
 
-function showLevels(){
+function home(){
 
- document.getElementById("home").classList.add("hidden");
+document.getElementById("home").classList.remove("hidden");
 
- document.getElementById("content").innerHTML=`
- <h2 class="section-title">📚 CPH Study Levels</h2>
- <div class="grid">
- ${levels.map((level,i)=>`
-   <div class="card">
-     <div style="font-size:42px">${level.icon}</div>
-     <h3>${level.name}</h3>
-     <p>${level.description}</p>
+document.getElementById("content").innerHTML="";
 
-     <div style="margin-top:15px">
-       ${level.units.map((unit,j)=>`
-         <div class="unit"
-              onclick="openUnit(${i},${j})">
-           📖 ${unit}
-         </div>
-       `).join("")}
-     </div>
-   </div>
- `).join("")}
- </div>
- `;
+window.scrollTo({top:0,behavior:"smooth"});
 
- window.scrollTo({top:0,behavior:"smooth"});
+}
+
+
+/* =========================
+   CURRICULUM
+========================= */
+
+function curriculum(){
+
+document.getElementById("home").classList.add("hidden");
+
+renderCurriculum();
+
+window.scrollTo({top:0,behavior:"smooth"});
+
+}
+
+
+function renderCurriculum(){
+
+document.getElementById("content").innerHTML=`
+
+<h2>📚 CPH Curriculum</h2>
+
+<p style="margin-top:5px">
+Select a semester, then select a course unit.
+</p>
+
+<div class="grid">
+
+${semesters.map((semester,index)=>`
+
+<div class="card semester ${semester.className}">
+
+<h2>
+${semester.icon}
+${semester.name}
+</h2>
+
+<p>
+${semester.units.length} course units
+</p>
+
+<div style="margin-top:15px">
+
+${semester.units.map((unit,j)=>`
+
+<div
+class="unit"
+onclick="openUnit(${index},${j})">
+
+📖 ${unit}
+
+</div>
+
+`).join("")}
+
+</div>
+
+</div>
+
+`).join("")}
+
+</div>
+
+`;
+
 }
 
 
@@ -483,63 +547,141 @@ function showLevels(){
    COURSE UNIT
 ========================= */
 
-function openUnit(levelIndex,unitIndex){
+function openUnit(semesterIndex,unitIndex){
 
- const level=levels[levelIndex];
- const unit=level.units[unitIndex];
+const semester=semesters[semesterIndex];
 
- document.getElementById("content").innerHTML=`
+const unit=semester.units[unitIndex];
 
- <div class="note">
+const unitTopics=
+topics[unit] || [
 
-   <h2>📖 ${unit}</h2>
+"Course Introduction",
+"Course Objectives",
+"Key Concepts",
+"Core Knowledge",
+"Applications in Pharmacy Practice",
+"Revision Summary",
+"Examination Preparation"
 
-   <p><strong>${level.name}</strong></p>
+];
 
-   <h3>Introduction</h3>
+document.getElementById("content").innerHTML=`
 
-   <p>
-   This study section introduces the important concepts
-   you need to understand for ${unit}.
-   </p>
+<div class="note">
 
-   <h3>Learning Objectives</h3>
+<h2>
+${semester.icon}
+${unit}
+</h2>
 
-   <ul>
-     <li>Understand the fundamental concepts.</li>
-     <li>Explain important terminology.</li>
-     <li>Apply knowledge to pharmacy practice.</li>
-     <li>Answer examination questions accurately.</li>
-   </ul>
+<p>
+<strong>${semester.name}</strong>
+</p>
 
-   <h3>Study Material</h3>
+<hr style="margin:15px 0">
 
-   <p>
-   Detailed CPH study notes will be organized here by topic,
-   with definitions, explanations, examples and examination
-   points.
-   </p>
+<h3>📖 Study Topics</h3>
 
-   <h3>📝 Practice</h3>
+${unitTopics.map((topic,index)=>`
 
-   <button class="action" onclick="showQuiz()">
-     Start MCQ Practice
-   </button>
+<div
+class="topic"
+onclick="openTopic('${unit}','${topic}')">
 
-   <button class="action" onclick="showCalculations()">
-     Pharmaceutical Calculations
-   </button>
+${index+1}. ${topic}
 
-   <br>
+</div>
 
-   <button class="action" onclick="showLevels()">
-     ← Back to Courses
-   </button>
+`).join("")}
 
- </div>
- `;
+<h3>📝 Examination Practice</h3>
 
- window.scrollTo({top:0,behavior:"smooth"});
+<p>
+Test yourself with MCQs and structured questions.
+</p>
+
+<button class="action" onclick="quiz()">
+📝 Start MCQs
+</button>
+
+<button class="action" onclick="calculations()">
+🧮 Calculations
+</button>
+
+<br>
+
+<button class="action" onclick="curriculum()">
+← Back to Curriculum
+</button>
+
+</div>
+
+`;
+
+window.scrollTo({top:0,behavior:"smooth"});
+
+}
+
+
+/* =========================
+   TOPIC
+========================= */
+
+function openTopic(unit,topic){
+
+document.getElementById("content").innerHTML=`
+
+<div class="note">
+
+<p>
+<strong>📚 ${unit}</strong>
+</p>
+
+<h2>📖 ${topic}</h2>
+
+<h3>Learning Objective</h3>
+
+<p>
+Understand the fundamental principles of ${topic}
+and apply them appropriately in pharmacy learning and practice.
+</p>
+
+<h3>Core Notes</h3>
+
+<p>
+Detailed curriculum-based notes for this topic will be
+organized here with definitions, explanations, examples,
+important points and examination guidance.
+</p>
+
+<h3>🧠 Key Points</h3>
+
+<ul>
+<li>Understand the relevant terminology.</li>
+<li>Learn the underlying principles.</li>
+<li>Apply the knowledge to pharmacy practice.</li>
+<li>Review examination points.</li>
+</ul>
+
+<h3>📝 Practice</h3>
+
+<button class="action" onclick="quiz()">
+Start MCQs
+</button>
+
+<br>
+
+<button class="action" onclick="curriculum()">
+← Back to Curriculum
+</button>
+
+</div>
+
+`;
+
+window.scrollTo({top:0,behavior:"smooth"});
+
 }
 
 
@@ -547,248 +689,346 @@ function openUnit(levelIndex,unitIndex){
    SEARCH
 ========================= */
 
-function searchSite(){
+function searchCourses(){
 
- const query=document
-   .getElementById("search")
-   .value
-   .toLowerCase()
-   .trim();
+const query=
+document.getElementById("search")
+.value
+.toLowerCase()
+.trim();
 
- if(!query){
-   home();
-   return;
- }
+if(!query){
 
- document.getElementById("home").classList.add("hidden");
+home();
 
- let found=[];
+return;
 
- levels.forEach((level,i)=>{
-   level.units.forEach((unit,j)=>{
-     if(
-       level.name.toLowerCase().includes(query) ||
-       unit.toLowerCase().includes(query)
-     ){
-       found.push({i,j,level,unit});
-     }
-   });
- });
+}
 
- document.getElementById("content").innerHTML=`
+document.getElementById("home").classList.add("hidden");
 
- <h2 class="section-title">
- 🔎 Search Results
- </h2>
+let results=[];
 
- ${
-   found.length
-   ?
-   `<div class="grid">
-    ${found.map(item=>`
-      <div class="card">
-        <h3>${item.unit}</h3>
-        <p>${item.level.name}</p>
-        <button onclick="openUnit(${item.i},${item.j})">
-          Open
-        </button>
-      </div>
-    `).join("")}
-   </div>`
-   :
-   `<div class="card">
-      <h3>No results found</h3>
-      <p>Try another course, unit or topic.</p>
-    </div>`
- }
- `;
+semesters.forEach((semester,i)=>{
+
+semester.units.forEach((unit,j)=>{
+
+if(
+semester.name.toLowerCase().includes(query) ||
+unit.toLowerCase().includes(query)
+){
+
+results.push({
+semesterIndex:i,
+unitIndex:j,
+semester,
+unit
+});
+
+}
+
+});
+
+});
+
+document.getElementById("content").innerHTML=`
+
+<h2>🔎 Search Results</h2>
+
+<div class="grid">
+
+${
+results.length
+
+?
+
+results.map(item=>`
+
+<div class="card">
+
+<h3>
+${item.semester.icon}
+${item.unit}
+</h3>
+
+<p>
+${item.semester.name}
+</p>
+
+<button
+onclick="openUnit(${item.semesterIndex},${item.unitIndex})">
+
+Open Course
+
+</button>
+
+</div>
+
+`).join("")
+
+:
+
+`<div class="card">
+<h3>No results found</h3>
+<p>Try another course or unit name.</p>
+</div>`
+
+}
+
+</div>
+
+`;
 
 }
 
 
 /* =========================
-   QUIZ
+   MCQ SYSTEM
 ========================= */
 
 const questions=[
+
 {
- q:"What is pharmacology?",
- options:[
-  "The study of drugs and their effects",
-  "The study of bones",
-  "The study of food",
-  "The study of microorganisms only"
- ],
- answer:0
+q:"What is pharmacology?",
+options:[
+"The study of drugs and their effects",
+"The study of bones",
+"The study of food",
+"The study of computers"
+],
+answer:0,
+explanation:"Pharmacology is the study of drugs and their effects on living organisms."
 },
+
 {
- q:"What does pharmacokinetics describe?",
- options:[
-  "What the drug does to the body",
-  "What the body does to the drug",
-  "Only adverse effects",
-  "Only drug manufacturing"
- ],
- answer:1
+q:"What does pharmacokinetics describe?",
+options:[
+"What the drug does to the body",
+"What the body does to the drug",
+"Only adverse drug reactions",
+"Only drug manufacture"
+],
+answer:1,
+explanation:"Pharmacokinetics describes absorption, distribution, metabolism and excretion."
 },
+
 {
- q:"Which equation is commonly used in dilution calculations?",
- options:[
-  "C₁V₁ = C₂V₂",
-  "E = mc²",
-  "F = ma",
-  "P = IV"
- ],
- answer:0
+q:"Which formula is commonly used for dilution calculations?",
+options:[
+"C₁V₁ = C₂V₂",
+"E = mc²",
+"F = ma",
+"P = IV"
+],
+answer:0,
+explanation:"C₁V₁ = C₂V₂ is commonly used for dilution calculations."
 },
+
 {
- q:"Which organ pumps blood around the body?",
- options:[
-  "Liver",
-  "Heart",
-  "Kidney",
-  "Lung"
- ],
- answer:1
+q:"Which organ pumps blood around the body?",
+options:[
+"Liver",
+"Heart",
+"Kidney",
+"Lung"
+],
+answer:1,
+explanation:"The heart pumps blood through the cardiovascular system."
 },
+
 {
- q:"What is homeostasis?",
- options:[
-  "Complete absence of change",
-  "Maintenance of a relatively stable internal environment",
-  "Digestion of food",
-  "Movement of bones"
- ],
- answer:1
+q:"What is homeostasis?",
+options:[
+"Complete absence of change",
+"Maintenance of a relatively stable internal environment",
+"Digestion of food",
+"Movement of bones"
+],
+answer:1,
+explanation:"Homeostasis is maintenance of relatively stable internal conditions."
 }
+
 ];
 
-let score=0;
-let questionIndex=0;
+let quizIndex=0;
+
+let quizScore=0;
 
 
-function showQuiz(){
+function quiz(){
 
- document.getElementById("home").classList.add("hidden");
+document.getElementById("home").classList.add("hidden");
 
- score=0;
- questionIndex=0;
+quizIndex=0;
 
- displayQuestion();
-}
+quizScore=0;
 
+showQuestion();
 
-function displayQuestion(){
-
- const q=questions[questionIndex];
-
- document.getElementById("content").innerHTML=`
-
- <div class="card">
-
- <h2>📝 CPH MCQ Practice</h2>
-
- <p>
- Question ${questionIndex+1} of ${questions.length}
- </p>
-
- <div class="question">
-
- <h3>${q.q}</h3>
-
- ${q.options.map((option,i)=>`
-   <button class="option"
-     onclick="answer(${i})">
-     ${String.fromCharCode(65+i)}. ${option}
-   </button>
- `).join("")}
-
- </div>
-
- </div>
- `;
+window.scrollTo({top:0,behavior:"smooth"});
 
 }
 
 
-function answer(selected){
+function showQuestion(){
 
- const q=questions[questionIndex];
+const question=questions[quizIndex];
 
- const buttons=document.querySelectorAll(".option");
+document.getElementById("content").innerHTML=`
 
- buttons.forEach(b=>b.disabled=true);
+<div class="card">
 
- if(selected===q.answer){
-   score++;
-   buttons[selected].style.border="3px solid green";
- }else{
-   buttons[selected].style.border="3px solid red";
-   buttons[q.answer].style.border="3px solid green";
- }
+<h2>📝 CPH MCQ Practice</h2>
 
- setTimeout(()=>{
+<p>
+Question ${quizIndex+1}
+of ${questions.length}
+</p>
 
-   questionIndex++;
+<hr style="margin:12px 0">
 
-   if(questionIndex<questions.length){
-     displayQuestion();
-   }else{
-     finishQuiz();
-   }
+<h3>${question.q}</h3>
 
- },700);
+<div style="margin-top:15px">
+
+${question.options.map((option,index)=>`
+
+<button
+class="option"
+onclick="answerQuestion(${index})">
+
+${String.fromCharCode(65+index)}.
+${option}
+
+</button>
+
+`).join("")}
+
+</div>
+
+</div>
+
+`;
+
+}
+
+
+function answerQuestion(selected){
+
+const question=questions[quizIndex];
+
+const buttons=
+document.querySelectorAll(".option");
+
+buttons.forEach(button=>{
+button.disabled=true;
+});
+
+if(selected===question.answer){
+
+quizScore++;
+
+buttons[selected].style.border=
+"3px solid green";
+
+}else{
+
+buttons[selected].style.border=
+"3px solid red";
+
+buttons[question.answer].style.border=
+"3px solid green";
+
+}
+
+const explanation=document.createElement("p");
+
+explanation.style.marginTop="15px";
+
+explanation.innerHTML=
+"<strong>Explanation:</strong> "
++
+question.explanation;
+
+document.querySelector(".card").appendChild(explanation);
+
+setTimeout(()=>{
+
+quizIndex++;
+
+if(quizIndex<questions.length){
+
+showQuestion();
+
+}else{
+
+finishQuiz();
+
+}
+
+},900);
 
 }
 
 
 function finishQuiz(){
 
- const percentage=Math.round(
-   score/questions.length*100
- );
+const percentage=
+Math.round(
+quizScore/questions.length*100
+);
 
- const history=JSON.parse(
-   localStorage.getItem("cphProgress")||"[]"
- );
+const history=
+JSON.parse(
+localStorage.getItem("cphHistory")||"[]"
+);
 
- history.push({
-   score,
-   total:questions.length,
-   percentage,
-   date:new Date().toLocaleString()
- });
+history.push({
 
- localStorage.setItem(
-   "cphProgress",
-   JSON.stringify(history)
- );
+score:quizScore,
 
- document.getElementById("content").innerHTML=`
+total:questions.length,
 
- <div class="card" style="text-align:center">
+percentage:percentage,
 
-   <h2>🎉 Quiz Complete</h2>
+date:new Date().toLocaleString()
 
-   <div style="font-size:50px;font-weight:bold">
-     ${percentage}%
-   </div>
+});
 
-   <p>
-     You scored <strong>${score}</strong>
-     out of <strong>${questions.length}</strong>.
-   </p>
+localStorage.setItem(
+"cphHistory",
+JSON.stringify(history)
+);
 
-   <button class="action" onclick="showQuiz()">
-     Try Again
-   </button>
+document.getElementById("content").innerHTML=`
 
-   <button class="action" onclick="showProgress()">
-     View Progress
-   </button>
+<div class="card" style="text-align:center">
 
- </div>
- `;
+<h2>🎉 Quiz Complete</h2>
+
+<h1 style="font-size:50px">
+${percentage}%
+</h1>
+
+<p>
+You scored
+<strong>${quizScore}</strong>
+out of
+<strong>${questions.length}</strong>.
+</p>
+
+<button onclick="quiz()">
+Try Again
+</button>
+
+<button onclick="progress()">
+View Progress
+</button>
+
+</div>
+
+`;
+
 }
 
 
@@ -796,80 +1036,96 @@ function finishQuiz(){
    CALCULATIONS
 ========================= */
 
-function showCalculations(){
+function calculations(){
 
- document.getElementById("home").classList.add("hidden");
+document.getElementById("home").classList.add("hidden");
 
- document.getElementById("content").innerHTML=`
+document.getElementById("content").innerHTML=`
 
- <div class="note">
+<div class="note">
 
- <h2>🧮 Pharmaceutical Calculations</h2>
+<h2>🧮 Pharmaceutical Calculations</h2>
 
- <h3>Dose calculation</h3>
+<h3>Dilution</h3>
 
- <p>
- Volume required =
- Dose required ÷ Dose available × Volume containing
- the available dose.
- </p>
+<p>
+<strong>C₁V₁ = C₂V₂</strong>
+</p>
 
- <h3>Dilution</h3>
+<h3>Dose Calculation</h3>
 
- <p><strong>C₁V₁ = C₂V₂</strong></p>
+<p>
+Volume required =
+Dose required ÷ Dose available
+× Volume containing the available dose.
+</p>
 
- <h3>Allegation</h3>
+<h3>Allegation</h3>
 
- <p>
- Allegation is a method used to determine the proportions
- of two preparations of different strengths required to
- produce a mixture of a desired intermediate strength.
- </p>
+<p>
+Allegation is a method used to determine the proportions
+of preparations of different strengths required to produce
+a mixture of a desired intermediate strength.
+</p>
 
- <h3>Practice</h3>
+<h3>📝 Practice Question</h3>
 
- <p>
- A solution contains 500 mg in 5 mL.
- How many milligrams are contained in 2 mL?
- </p>
+<p>
+A solution contains 500 mg in 5 mL.
+How many milligrams are contained in 2 mL?
+</p>
 
- <input
-   id="calc"
-   type="number"
-   placeholder="Enter your answer in mg"
-   style="width:100%;padding:13px;margin-top:12px"
- >
+<input
+id="calcAnswer"
+type="number"
+placeholder="Enter answer in mg"
+style="
+width:100%;
+padding:13px;
+margin-top:10px;
+border:1px solid #ccd7e5;
+border-radius:8px;
+">
 
- <button class="action" onclick="checkCalc()">
- Check Answer
- </button>
+<button
+class="action"
+onclick="checkCalculation()">
 
- <div id="calcResult"></div>
+Check Answer
 
- </div>
- `;
+</button>
+
+<p id="calcResult" style="margin-top:15px"></p>
+
+</div>
+
+`;
+
 }
 
 
-function checkCalc(){
+function checkCalculation(){
 
- const answer=Number(
-   document.getElementById("calc").value
- );
+const answer=
+Number(
+document.getElementById("calcAnswer").value
+);
 
- const result=document.getElementById("calcResult");
+const result=
+document.getElementById("calcResult");
 
- if(answer===200){
+if(answer===200){
 
-   result.innerHTML=
-   "<p style='margin-top:15px'>✅ Correct! 500 ÷ 5 = 100 mg/mL; 100 × 2 = 200 mg.</p>";
+result.innerHTML=
+"✅ Correct! 500 ÷ 5 = 100 mg/mL. 100 × 2 = 200 mg.";
 
- }else{
+}else{
 
-   result.innerHTML=
-   "<p style='margin-top:15px'>❌ Try again. First calculate the amount per mL.</p>";
+result.innerHTML=
+"❌ Try again. First calculate the amount per mL.";
 
- }
+}
+
 }
 
 
@@ -877,67 +1133,95 @@ function checkCalc(){
    PROGRESS
 ========================= */
 
-function showProgress(){
+function progress(){
 
- document.getElementById("home").classList.add("hidden");
+document.getElementById("home").classList.add("hidden");
 
- const history=JSON.parse(
-   localStorage.getItem("cphProgress")||"[]"
- );
+const history=
+JSON.parse(
+localStorage.getItem("cphHistory")||"[]"
+);
 
- if(!history.length){
+if(!history.length){
 
-   document.getElementById("content").innerHTML=`
+document.getElementById("content").innerHTML=`
 
-   <div class="card">
-     <h2>📊 Progress</h2>
-     <p>You haven't completed a quiz yet.</p>
-     <button class="action" onclick="showQuiz()">
-       Take Your First Quiz
-     </button>
-   </div>
+<div class="card">
 
-   `;
+<h2>📊 Progress</h2>
 
-   return;
- }
+<p>
+No quizzes completed yet.
+</p>
 
- const average=Math.round(
-   history.reduce((a,b)=>a+b.percentage,0)
-   /history.length
- );
+<button onclick="quiz()">
+Take a Quiz
+</button>
 
- document.getElementById("content").innerHTML=`
+</div>
 
- <div class="grid">
+`;
 
-   <div class="card">
-     <h3>📈 Average</h3>
-     <h2>${average}%</h2>
-   </div>
+return;
 
-   <div class="card">
-     <h3>📝 Quizzes</h3>
-     <h2>${history.length}</h2>
-   </div>
+}
 
- </div>
+const average=Math.round(
+history.reduce(
+(sum,item)=>sum+item.percentage,0
+)/history.length
+);
 
- <div class="card" style="margin-top:20px">
+document.getElementById("content").innerHTML=`
 
- <h2>Recent Attempts</h2>
+<div class="grid">
 
- ${history.slice(-10).reverse().map(x=>`
-   <div class="unit">
-     <strong>${x.percentage}%</strong>
-     — ${x.score}/${x.total}
-     <br>
-     <small>${x.date}</small>
-   </div>
- `).join("")}
+<div class="card">
 
- </div>
- `;
+<h3>📈 Average Score</h3>
+
+<h2>${average}%</h2>
+
+</div>
+
+<div class="card">
+
+<h3>📝 Quizzes Completed</h3>
+
+<h2>${history.length}</h2>
+
+</div>
+
+</div>
+
+<div class="card" style="margin-top:18px">
+
+<h2>Recent Attempts</h2>
+
+${history.slice(-10).reverse().map(item=>`
+
+<div class="unit">
+
+<strong>${item.percentage}%</strong>
+
+—
+
+${item.score}/${item.total}
+
+correct
+
+<br>
+
+<small>${item.date}</small>
+
+</div>
+
+`).join("")}
+
+</div>
+
+`;
+
 }
 
 
@@ -945,73 +1229,133 @@ function showProgress(){
    DARK MODE
 ========================= */
 
-function toggleDark(){
+function darkMode(){
 
- document.body.classList.toggle("dark");
+document.body.classList.toggle("dark");
 
- localStorage.setItem(
-   "cphDark",
-   document.body.classList.contains("dark")
- );
+localStorage.setItem(
+"cphDark",
+document.body.classList.contains("dark")
+);
+
 }
 
 
 /* =========================
-   DAILY QUOTE
+   DAILY MOTIVATION
 ========================= */
 
 const quotes=[
- "Study today. Become better tomorrow.",
- "Understand the concept before memorising the details.",
- "Consistency creates academic excellence.",
- "Every question is an opportunity to learn.",
- "Learn • Practice • Master.",
- "Small progress every day becomes great achievement."
+
+"Study today. Become better tomorrow.",
+
+"Understand the concept before memorising the details.",
+
+"Consistency creates academic excellence.",
+
+"Every question is an opportunity to learn.",
+
+"Learn • Practice • Master."
+
 ];
 
-const day=Math.floor(Date.now()/86400000);
+const day=
+Math.floor(Date.now()/86400000);
 
 document.getElementById("quote").textContent=
- quotes[day%quotes.length];
+"💡 "+quotes[day%quotes.length];
 
 
 /* =========================
-   LOAD LEVELS
+   LOAD HOMEPAGE
 ========================= */
 
-function loadLevels(){
+function loadSemesters(){
 
- document.getElementById("levels").innerHTML=
+document.getElementById("semesters").innerHTML=
 
- levels.map((level,i)=>`
+semesters.map((semester,index)=>`
 
- <div class="card">
+<div class="card semester ${semester.className}">
 
-   <div style="font-size:42px">
-     ${level.icon}
-   </div>
+<h2>
+${semester.icon}
+${semester.name}
+</h2>
 
-   <h3>${level.name}</h3>
+<p>
+${semester.units.length}
+course units
+</p>
 
-   <p>${level.description}</p>
+<button onclick="openSemester(${index})">
+Open Semester
+</button>
 
-   <button onclick="showLevels()">
-     📚 View Units
-   </button>
+</div>
 
- </div>
+`).join("");
 
- `).join("");
+}
+
+
+function openSemester(index){
+
+document.getElementById("home").classList.add("hidden");
+
+const semester=semesters[index];
+
+document.getElementById("content").innerHTML=`
+
+<div class="card">
+
+<h2>
+${semester.icon}
+${semester.name}
+</h2>
+
+<p>
+Select a course unit to begin studying.
+</p>
+
+<div style="margin-top:15px">
+
+${semester.units.map((unit,j)=>`
+
+<div
+class="unit"
+onclick="openUnit(${index},${j})">
+
+📖 ${unit}
+
+</div>
+
+`).join("")}
+
+</div>
+
+<button onclick="home()">
+← Home
+</button>
+
+</div>
+
+`;
+
+window.scrollTo({top:0,behavior:"smooth"});
+
 }
 
 
 if(localStorage.getItem("cphDark")==="true"){
- document.body.classList.add("dark");
+
+document.body.classList.add("dark");
+
 }
 
-loadLevels();
+loadSemesters();
 
 </script>
 
 </body>
-</html>
+  </html>
