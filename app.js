@@ -1,1053 +1,586 @@
-/* CPH STUDY APP */
+const app = document.getElementById("app");
 
-const results = document.getElementById("results");
+let currentPage = "home";
+let selectedCourse = null;
 
+const progress =
+  JSON.parse(localStorage.getItem("cphProgress") || "{}");
 
-/* =========================
-   QUIZZES
-========================= */
-
-const questions = [
-  {
-    q: "What is pharmacology?",
-    options: [
-      "The study of drugs and their effects",
-      "The study of bones",
-      "The study of food",
-      "The study of microorganisms only"
-    ],
-    answer: 0,
-    explanation:
-      "Pharmacology is the study of drugs and their effects on living organisms."
-  },
-
-  {
-    q: "What does pharmacokinetics describe?",
-    options: [
-      "What the drug does to the body",
-      "What the body does to the drug",
-      "Only adverse drug reactions",
-      "Only drug manufacturing"
-    ],
-    answer: 1,
-    explanation:
-      "Pharmacokinetics describes what the body does to a drug: absorption, distribution, metabolism and excretion."
-  },
-
-  {
-    q: "Which formula is commonly used for dilution calculations?",
-    options: [
-      "C₁V₁ = C₂V₂",
-      "E = mc²",
-      "F = ma",
-      "P = IV"
-    ],
-    answer: 0,
-    explanation:
-      "C₁V₁ = C₂V₂ is commonly used for dilution calculations."
-  },
-
-  {
-    q: "A medicine contains 500 mg in 5 mL. How many mg are in 1 mL?",
-    options: [
-      "50 mg",
-      "100 mg",
-      "250 mg",
-      "500 mg"
-    ],
-    answer: 1,
-    explanation:
-      "500 mg ÷ 5 mL = 100 mg/mL."
-  },
-
-  {
-    q: "Which organ pumps blood around the body?",
-    options: [
-      "Liver",
-      "Heart",
-      "Kidney",
-      "Lung"
-    ],
-    answer: 1,
-    explanation:
-      "The heart pumps blood through the cardiovascular system."
-  },
-
-  {
-    q: "What is homeostasis?",
-    options: [
-      "Complete absence of change",
-      "Maintenance of a relatively stable internal environment",
-      "Digestion of food",
-      "Movement of bones"
-    ],
-    answer: 1,
-    explanation:
-      "Homeostasis is the maintenance of relatively stable internal conditions."
-  }
-];
-
-
-let quizIndex = 0;
-let quizScore = 0;
-let selectedQuestions = [];
-
-
-/* =========================
-   TOOL CONTROLLER
-========================= */
-
-function showTool(title, description) {
-
-  if (!results) {
-    alert("CPH STUDY app is still loading. Please refresh the page.");
-    return;
-  }
-
-  if (title.includes("Quizzes")) {
-    showQuizMenu();
-    return;
-  }
-
-  if (title.includes("Calculations")) {
-    showCalculations();
-    return;
-  }
-
-  if (title.includes("Discussions")) {
-    showDiscussions();
-    return;
-  }
-
-  if (title.includes("Progress")) {
-    showProgress();
-    return;
-  }
-
-  if (title.includes("Bookmarks")) {
-    showBookmarks();
-    return;
-  }
-
-  if (title.includes("Settings")) {
-    showSettings();
-    return;
-  }
-
-  results.innerHTML = `
-    <div class="card">
-      <h2>${title}</h2>
-      <p>${description}</p>
-    </div>
-  `;
-
-  results.scrollIntoView({ behavior: "smooth" });
+function saveProgress(){
+  localStorage.setItem("cphProgress", JSON.stringify(progress));
 }
 
-
-/* =========================
-   QUIZ MENU
-========================= */
-
-function showQuizMenu() {
-
-  results.innerHTML = `
-    <div class="card">
-
-      <h2>📝 CPH STUDY Quiz Centre</h2>
-
-      <p>
-        Test your knowledge using CPH revision questions.
-      </p>
-
-      <br>
-
-      <button onclick="startQuiz()">
-        🚀 Start Mixed Quiz
-      </button>
-
-    </div>
-  `;
-
-  results.scrollIntoView({
-    behavior: "smooth"
-  });
+function courseProgress(id){
+  return progress[id] || 0;
 }
 
-
-/* =========================
-   START QUIZ
-========================= */
-
-function startQuiz() {
-
-  selectedQuestions = [...questions]
-    .sort(() => Math.random() - 0.5);
-
-  quizIndex = 0;
-  quizScore = 0;
-
-  displayQuestion();
+function markComplete(id){
+  progress[id] = 100;
+  saveProgress();
+  render();
 }
 
-
-/* =========================
-   DISPLAY QUESTION
-========================= */
-
-function displayQuestion() {
-
-  const question =
-    selectedQuestions[quizIndex];
-
-  if (!question) {
-
-    finishQuiz();
-
-    return;
-  }
-
-  results.innerHTML = `
-    <div class="card">
-
-      <h2>📝 CPH Quiz</h2>
-
-      <p>
-        Question ${quizIndex + 1}
-        of ${selectedQuestions.length}
-      </p>
-
-      <hr>
-
-      <h3 style="margin-top:15px;">
-        ${question.q}
-      </h3>
-
-      <div style="margin-top:15px;">
-
-        ${question.options.map(
-          (option, index) => `
-            <button
-              onclick="answerQuiz(${index})"
-              id="answer-${index}"
-              style="
-                display:block;
-                width:100%;
-                text-align:left;
-                margin:8px 0;
-              "
-            >
-              ${String.fromCharCode(65 + index)}.
-              ${option}
-            </button>
-          `
-        ).join("")}
-
-      </div>
-
-      <div
-        id="quizExplanation"
-        style="
-          display:none;
-          margin-top:15px;
-          padding:12px;
-          background:#eef6ff;
-          border-radius:8px;
-        "
-      ></div>
-
-      <button
-        id="nextQuiz"
-        onclick="nextQuizQuestion()"
-        style="display:none;margin-top:15px;"
-      >
-        Next Question →
-      </button>
-
-    </div>
-  `;
-
-  results.scrollIntoView({
-    behavior: "smooth"
-  });
+function findCourse(id){
+  return curriculum.find(c => c.id === id);
 }
 
+function render(){
 
-/* =========================
-   ANSWER
-========================= */
-
-function answerQuiz(selected) {
-
-  const question =
-    selectedQuestions[quizIndex];
-
-  const buttons =
-    document.querySelectorAll(
-      '[id^="answer-"]'
-    );
-
-  buttons.forEach(button => {
-    button.disabled = true;
-  });
-
-  if (selected === question.answer) {
-
-    quizScore++;
-
-    document.getElementById(
-      "answer-" + selected
-    ).style.border =
-      "3px solid green";
-
-  } else {
-
-    document.getElementById(
-      "answer-" + selected
-    ).style.border =
-      "3px solid red";
-
-    document.getElementById(
-      "answer-" + question.answer
-    ).style.border =
-      "3px solid green";
-  }
-
-  const explanation =
-    document.getElementById(
-      "quizExplanation"
-    );
-
-  explanation.innerHTML =
-    "<b>Explanation:</b> " +
-    question.explanation;
-
-  explanation.style.display =
-    "block";
-
-  document.getElementById(
-    "nextQuiz"
-  ).style.display =
-    "inline-block";
+  if(currentPage === "home") renderHome();
+  if(currentPage === "courses") renderCourses();
+  if(currentPage === "study") renderStudy();
+  if(currentPage === "mcqs") renderMCQs();
+  if(currentPage === "papers") renderPapers();
+  if(currentPage === "calculations") renderCalculations();
+  if(currentPage === "progress") renderProgress();
 }
 
+function renderHome(){
 
-/* =========================
-   NEXT QUESTION
-========================= */
-
-function nextQuizQuestion() {
-
-  quizIndex++;
-
-  displayQuestion();
-}
-
-
-/* =========================
-   FINISH QUIZ
-========================= */
-
-function finishQuiz() {
-
-  const total =
-    selectedQuestions.length;
-
-  const percentage =
-    Math.round(
-      (quizScore / total) * 100
-    );
-
-  const history =
-    JSON.parse(
-      localStorage.getItem(
-        "cphQuizHistory"
-      ) || "[]"
-    );
-
-  history.push({
-    date: new Date().toLocaleString(),
-    correct: quizScore,
-    wrong: total - quizScore,
-    total: total,
-    percentage: percentage
-  });
-
-  localStorage.setItem(
-    "cphQuizHistory",
-    JSON.stringify(history)
-  );
-
-  results.innerHTML = `
-    <div class="card" style="text-align:center;">
-
-      <h2>🎉 Quiz Complete</h2>
-
-      <div style="
-        font-size:45px;
-        font-weight:bold;
-        margin:15px;
-      ">
-        ${percentage}%
-      </div>
-
+  app.innerHTML = `
+    <section class="hero">
+      <h1>Welcome to CPH STUDY</h1>
       <p>
-        You scored
-        <b>${quizScore}</b>
-        out of
-        <b>${total}</b>.
-      </p>
-
-      <br>
-
-      <button onclick="showQuizMenu()">
-        📝 Try Again
-      </button>
-
-      <button onclick="showProgress()">
-        📊 View Progress
-      </button>
-
-    </div>
-  `;
-
-}
-
-
-/* =========================
-   CALCULATIONS
-========================= */
-
-function showCalculations() {
-
-  results.innerHTML = `
-    <div class="card">
-
-      <h2>🧮 Pharmaceutical Calculations</h2>
-
-      <p>
-        Practice pharmaceutical calculations.
-      </p>
-
-      <hr style="margin:15px 0;">
-
-      <h3>💧 Dilution</h3>
-
-      <p>
-        C₁V₁ = C₂V₂
-      </p>
-
-      <br>
-
-      <h3>⚖️ Dose Calculation</h3>
-
-      <p>
-        Volume required =
-        Dose required ÷ Dose available
-        × Volume containing available dose.
-      </p>
-
-      <br>
-
-      <h3>➗ Allegation</h3>
-
-      <p>
-        Allegation is a method used to determine the
-        proportions of two preparations of different
-        strengths needed to obtain a mixture of a desired
-        intermediate strength.
-      </p>
-
-      <br>
-
-      <button onclick="calculationQuestion()">
-        📝 Practice Question
-      </button>
-
-    </div>
-  `;
-
-  results.scrollIntoView({
-    behavior: "smooth"
-  });
-}
-
-
-function calculationQuestion() {
-
-  results.innerHTML = `
-    <div class="card">
-
-      <h2>🧮 Practice Question</h2>
-
-      <p>
-        A solution contains 500 mg in 5 mL.
-        How many milligrams are contained in 2 mL?
+        A structured Certificate in Pharmacy learning and
+        revision platform.
       </p>
 
       <input
-        id="calcAnswer"
-        type="number"
-        placeholder="Enter answer in mg"
-        style="
-          width:100%;
-          padding:12px;
-          margin:15px 0;
-        "
+        id="searchBox"
+        class="search"
+        placeholder="🔎 Search courses, topics and subjects..."
       >
+    </section>
 
-      <button onclick="checkCalculation()">
-        Check Answer
-      </button>
+    <div class="grid">
 
-      <div
-        id="calculationResult"
-        style="margin-top:15px;"
-      ></div>
+      <div class="card">
+        <h3>📚 Courses</h3>
+        <p>${curriculum.length} course units available.</p>
+        <button onclick="go('courses')">Open Courses</button>
+      </div>
 
-    </div>
-  `;
-}
+      <div class="card">
+        <h3>📝 MCQs</h3>
+        <p>Test your understanding with practice questions.</p>
+        <button onclick="go('mcqs')">Start MCQs</button>
+      </div>
 
+      <div class="card">
+        <h3>📄 Mock Papers</h3>
+        <p>Practise structured examination-style questions.</p>
+        <button onclick="go('papers')">Open Papers</button>
+      </div>
 
-function checkCalculation() {
-
-  const answer =
-    Number(
-      document.getElementById(
-        "calcAnswer"
-      ).value
-    );
-
-  const result =
-    document.getElementById(
-      "calculationResult"
-    );
-
-  if (answer === 200) {
-
-    result.innerHTML =
-      "✅ Correct! 500 ÷ 5 = 100 mg/mL, therefore 100 × 2 = 200 mg.";
-
-  } else {
-
-    result.innerHTML =
-      "❌ Try again. First calculate the amount per mL.";
-  }
-
-}
-
-
-/* =========================
-   DISCUSSIONS
-========================= */
-
-function showDiscussions() {
-
-  results.innerHTML = `
-    <div class="card">
-
-      <h2>💬 Discussions</h2>
-
-      <p>
-        Write an academic question or share a useful
-        explanation with other students.
-      </p>
-
-      <textarea
-        id="discussionInput"
-        placeholder="Write your question..."
-        style="
-          width:100%;
-          min-height:120px;
-          margin:15px 0;
-          padding:12px;
-          border-radius:8px;
-        "
-      ></textarea>
-
-      <button onclick="postDiscussion()">
-        📤 Post
-      </button>
-
-      <div
-        id="discussionPosts"
-        style="margin-top:20px;"
-      ></div>
+      <div class="card">
+        <h3>🧮 Calculations</h3>
+        <p>Study pharmaceutical calculations step by step.</p>
+        <button onclick="go('calculations')">Study Calculations</button>
+      </div>
 
     </div>
+
+    <section class="section">
+      <h2>🎯 Study workflow</h2>
+      <ol>
+        <li>Select a CPH level.</li>
+        <li>Select a course unit.</li>
+        <li>Study the notes.</li>
+        <li>Test yourself with MCQs.</li>
+        <li>Practise structured questions.</li>
+        <li>Attempt mock papers.</li>
+        <li>Track your progress.</li>
+      </ol>
+    </section>
   `;
 
-  loadDiscussions();
-
+  document.getElementById("searchBox")
+    .addEventListener("input", e => searchCourses(e.target.value));
 }
 
+function searchCourses(query){
 
-function postDiscussion() {
+  query = query.toLowerCase().trim();
 
-  const input =
-    document.getElementById(
-      "discussionInput"
-    );
-
-  const text =
-    input.value.trim();
-
-  if (!text) {
-
-    alert(
-      "Please write a question first."
-    );
-
+  if(!query){
+    renderCourses();
     return;
   }
 
-  const posts =
-    JSON.parse(
-      localStorage.getItem(
-        "cphDiscussions"
-      ) || "[]"
-    );
-
-  posts.push({
-    text: text,
-    date: new Date().toLocaleString()
-  });
-
-  localStorage.setItem(
-    "cphDiscussions",
-    JSON.stringify(posts)
+  const results = curriculum.filter(c =>
+    `${c.name} ${c.level} ${c.code}`
+      .toLowerCase()
+      .includes(query)
   );
 
-  input.value = "";
-
-  loadDiscussions();
-
-}
-
-
-function loadDiscussions() {
-
-  const container =
-    document.getElementById(
-      "discussionPosts"
-    );
-
-  if (!container) return;
-
-  const posts =
-    JSON.parse(
-      localStorage.getItem(
-        "cphDiscussions"
-      ) || "[]"
-    );
-
-  if (!posts.length) {
-
-    container.innerHTML =
-      "<p>No discussions yet.</p>";
-
-    return;
-  }
-
-  container.innerHTML =
-    posts.reverse().map(
-      post => `
-        <div style="
-          background:#f5f7fa;
-          padding:12px;
-          margin-bottom:10px;
-          border-radius:8px;
-        ">
-          <p>${escapeHTML(post.text)}</p>
-          <small>${post.date}</small>
-        </div>
-      `
-    ).join("");
-
-}
-
-
-/* =========================
-   PROGRESS
-========================= */
-
-function showProgress() {
-
-  const history =
-    JSON.parse(
-      localStorage.getItem(
-        "cphQuizHistory"
-      ) || "[]"
-    );
-
-  if (!history.length) {
-
-    results.innerHTML = `
-      <div class="card">
-        <h2>📊 Progress</h2>
-        <p>No quiz attempts yet.</p>
-
-        <br>
-
-        <button onclick="showQuizMenu()">
-          📝 Take a Quiz
-        </button>
+  app.innerHTML = `
+    <section class="section">
+      <h2>Search results</h2>
+      <div class="grid">
+        ${results.map(courseCard).join("") ||
+          "<p>No matching course found.</p>"}
       </div>
+    </section>
+  `;
+}
+
+function courseCard(c){
+
+  return `
+    <div class="card">
+      <span class="badge">${c.level}</span>
+      <h3>${c.code}</h3>
+      <p>${c.name}</p>
+      <p><strong>${courseProgress(c.id)}%</strong> complete</p>
+      <button onclick="openCourse('${c.id}')">
+        Open Course
+      </button>
+    </div>
+  `;
+}
+
+function renderCourses(){
+
+  const levels =
+    [...new Set(curriculum.map(c => c.level))];
+
+  app.innerHTML = `
+    <section class="section">
+      <h1>📚 CPH Curriculum</h1>
+      <p>
+        Select a level and course unit to begin.
+      </p>
+    </section>
+
+    ${levels.map(level => `
+
+      <section class="section">
+        <h2>${level}</h2>
+
+        <div class="grid">
+          ${curriculum
+            .filter(c => c.level === level)
+            .map(courseCard)
+            .join("")}
+        </div>
+      </section>
+
+    `).join("")}
+  `;
+}
+
+function openCourse(id){
+
+  selectedCourse = id;
+  currentPage = "study";
+
+  renderStudy();
+}
+
+function renderStudy(){
+
+  if(!selectedCourse){
+
+    app.innerHTML = `
+      <section class="section">
+        <h1>📖 Study Centre</h1>
+        <p>Select a course unit.</p>
+        <button class="primary"
+          onclick="go('courses')">
+          Browse Courses
+        </button>
+      </section>
     `;
 
     return;
   }
 
-  const latest =
-    history[history.length - 1];
+  const c = findCourse(selectedCourse);
+  const content = notes[selectedCourse];
 
-  const average =
-    Math.round(
-      history.reduce(
-        (sum, item) =>
-          sum + item.percentage,
-        0
-      ) / history.length
-    );
+  if(!content){
 
-  results.innerHTML = `
-    <div class="card">
-
-      <h2>📊 Your Progress</h2>
-
-      <h3>
-        Latest Score:
-        ${latest.percentage}%
-      </h3>
-
-      <p>
-        Average Score:
-        <b>${average}%</b>
-      </p>
-
-      <p>
-        Quizzes Completed:
-        <b>${history.length}</b>
-      </p>
-
-      <hr style="margin:15px 0;">
-
-      <h3>Recent Attempts</h3>
-
-      ${history.slice(-5).reverse().map(item => `
-        <p style="margin:10px 0;">
-          <b>${item.percentage}%</b>
-          — ${item.correct}/${item.total}
-          correct
-          <br>
-          <small>${item.date}</small>
+    app.innerHTML = `
+      <section class="section">
+        <h1>${c.name}</h1>
+        <p>
+          Content is being prepared for this course.
         </p>
-      `).join("")}
-
-      <br>
-
-      <button onclick="showQuizMenu()">
-        📝 Take Quiz
-      </button>
-
-    </div>
-  `;
-
-}
-
-
-/* =========================
-   BOOKMARKS
-========================= */
-
-function showBookmarks() {
-
-  results.innerHTML = `
-    <div class="card">
-
-      <h2>🔖 Saved Materials</h2>
-
-      <p>
-        Your saved learning materials will appear here.
-      </p>
-
-    </div>
-  `;
-
-}
-
-
-/* =========================
-   SETTINGS
-========================= */
-
-function showSettings() {
-
-  results.innerHTML = `
-    <div class="card">
-
-      <h2>⚙️ Settings</h2>
-
-      <p>
-        CPH STUDY settings.
-      </p>
-
-      <br>
-
-      <button onclick="toggleDarkMode()">
-        🌙 Toggle Dark Mode
-      </button>
-
-      <button onclick="requestNotifications()">
-        🔔 Notifications
-      </button>
-
-    </div>
-  `;
-
-}
-
-
-function toggleDarkMode() {
-
-  document.body.classList.toggle(
-    "dark-mode"
-  );
-
-}
-
-
-function requestNotifications() {
-
-  if (!("Notification" in window)) {
-
-    alert(
-      "Notifications are not supported by this browser."
-    );
+        <button onclick="go('courses')">
+          Back to Courses
+        </button>
+      </section>
+    `;
 
     return;
   }
 
-  Notification.requestPermission()
-    .then(permission => {
+  app.innerHTML = `
+    <section class="section">
 
-      if (permission === "granted") {
+      <span class="badge">${c.level}</span>
 
-        alert(
-          "🔔 Notifications enabled."
-        );
+      <h1>${c.name}</h1>
 
-      }
+      <p>${content.description || ""}</p>
 
-    });
+      ${content.topics.map(t => `
+        <article class="topic">
+          <h3>${t.title}</h3>
+          <div>${t.body}</div>
+        </article>
+      `).join("")}
 
-}
+      <br>
 
-
-/* =========================
-   SAFE TEXT
-========================= */
-
-function escapeHTML(text) {
-
-  const div =
-    document.createElement("div");
-
-  div.textContent = text;
-
-  return div.innerHTML;
-}
-
-
-/* =========================
-   DAILY QUOTE
-========================= */
-
-const dailyQuotes = [
-  "Study today. Become better tomorrow.",
-  "Understand the concept, then memorize the details.",
-  "Consistency creates academic excellence.",
-  "Every question is an opportunity to learn.",
-  "Learn • Practice • Master."
-];
-
-const quote =
-  document.getElementById("quote");
-
-if (quote) {
-
-  const day =
-    Math.floor(
-      Date.now() / 86400000
-    );
-
-  quote.textContent =
-    "💡 " +
-    dailyQuotes[
-      day % dailyQuotes.length
-    ];
-
-}
-/* =========================
-   CPH LEVELS
-========================= */
-
-const cphLevels = [
-  {
-    name: "CPH Year 1",
-    icon: "📘",
-    description: "Foundation courses for Community Pharmacy.",
-    units: [
-      "Anatomy and Physiology",
-      "Pharmaceutical Chemistry",
-      "Pharmaceutics",
-      "Pharmacology",
-      "Pharmaceutical Calculations"
-    ]
-  },
-  {
-    name: "CPH Year 2",
-    icon: "📗",
-    description: "Intermediate pharmacy knowledge and practice.",
-    units: [
-      "Pharmacology",
-      "Pharmaceutics",
-      "Medicinal Chemistry",
-      "Microbiology",
-      "Community Pharmacy Practice"
-    ]
-  },
-  {
-    name: "CPH Year 3",
-    icon: "📕",
-    description: "Advanced pharmacy and clinical preparation.",
-    units: [
-      "Clinical Pharmacy",
-      "Pharmacotherapy",
-      "Pharmacy Law and Ethics",
-      "Public Health",
-      "Pharmaceutical Management"
-    ]
-  },
-  {
-    name: "CPH Revision",
-    icon: "🎓",
-    description: "Revision resources, examinations and practice.",
-    units: [
-      "MCQ Practice",
-      "Structured Questions",
-      "Pharmaceutical Calculations",
-      "Past Paper Revision",
-      "Final Examination Preparation"
-    ]
-  }
-];
-
-function renderCPHLevels() {
-  const container = document.getElementById("levels");
-
-  if (!container) return;
-
-  container.innerHTML = cphLevels.map((level, index) => `
-    <div class="card">
-      <div style="font-size:38px;">${level.icon}</div>
-
-      <h3>${level.name}</h3>
-
-      <p>${level.description}</p>
-
-      <ul style="text-align:left;margin:15px 0;padding-left:20px;">
-        ${level.units.map(unit => `
-          <li style="margin:7px 0;">${unit}</li>
-        `).join("")}
-      </ul>
-
-      <button onclick="openCPHLevel(${index})">
-        📖 Open Level
+      <button class="primary"
+        onclick="markComplete('${c.id}')">
+        ✓ Mark Course Complete
       </button>
-    </div>
-  `).join("");
+
+      <button class="secondary"
+        onclick="go('courses')">
+        Back
+      </button>
+
+    </section>
+  `;
 }
 
-function openCPHLevel(index) {
-  const level = cphLevels[index];
+function renderMCQs(){
 
-  if (!level || !results) return;
+  const available =
+    Object.keys(mcqs || {});
 
-  results.innerHTML = `
-    <div class="card">
+  app.innerHTML = `
+    <section class="section">
+      <h1>📝 MCQ Centre</h1>
+      <p>Select a course to practise.</p>
 
-      <h2>${level.icon} ${level.name}</h2>
+      <div class="grid">
+        ${available.map(id => {
 
-      <p>${level.description}</p>
+          const c = findCourse(id);
 
-      <hr style="margin:15px 0;">
+          if(!c) return "";
 
-      <h3>📚 Course Units</h3>
+          return `
+            <div class="card">
+              <h3>${c.name}</h3>
+              <p>${mcqs[id].length} practice questions</p>
+              <button
+                onclick="startMCQ('${id}')">
+                Start
+              </button>
+            </div>
+          `;
 
-      <div style="margin-top:15px;">
-        ${level.units.map((unit, i) => `
-          <button
-            onclick="openCourseUnit('${unit.replace(/'/g, "\\'")}')"
-            style="display:block;width:100%;text-align:left;margin:8px 0;"
-          >
-            ${i + 1}. ${unit}
+        }).join("")}
+      </div>
+    </section>
+  `;
+}
+
+function startMCQ(id){
+
+  const questions = mcqs[id] || [];
+
+  let score = 0;
+  let current = 0;
+
+  function show(){
+
+    if(current >= questions.length){
+
+      app.innerHTML = `
+        <section class="section">
+          <h1>Result</h1>
+          <h2>${score}/${questions.length}</h2>
+          <button onclick="go('mcqs')">
+            Back to MCQs
+          </button>
+        </section>
+      `;
+
+      return;
+    }
+
+    const q = questions[current];
+
+    app.innerHTML = `
+      <section class="section">
+
+        <span class="badge">
+          Question ${current + 1}/${questions.length}
+        </span>
+
+        <h2>${q.question}</h2>
+
+        ${q.options.map((o,i) => `
+          <button class="option"
+            onclick="answerMCQ(${i})">
+            ${String.fromCharCode(65+i)}. ${o}
           </button>
         `).join("")}
-      </div>
 
-      <br>
+        <div id="feedback"></div>
 
-      <button onclick="renderCPHLevels()">
-        ← Back to CPH Levels
-      </button>
+      </section>
+    `;
 
-    </div>
-  `;
+    window.answerMCQ = function(i){
 
-  results.scrollIntoView({
-    behavior: "smooth"
-  });
+      const buttons =
+        document.querySelectorAll(".option");
+
+      buttons.forEach(b => b.disabled = true);
+
+      if(i === q.answer){
+
+        buttons[i].classList.add("correct");
+        score++;
+
+        document.getElementById("feedback").innerHTML =
+          `<div class="answer">
+             <strong>Correct.</strong>
+             ${q.explanation || ""}
+           </div>`;
+
+      }else{
+
+        buttons[i].classList.add("wrong");
+        buttons[q.answer].classList.add("correct");
+
+        document.getElementById("feedback").innerHTML =
+          `<div class="answer">
+             <strong>Incorrect.</strong>
+             Correct answer:
+             ${q.options[q.answer]}.
+             ${q.explanation || ""}
+           </div>`;
+      }
+
+      setTimeout(() => {
+        current++;
+        show();
+      }, 1200);
+    };
+  }
+
+  show();
 }
 
-function openCourseUnit(unit) {
-  if (!results) return;
+function renderPapers(){
 
-  results.innerHTML = `
-    <div class="card">
-
-      <h2>📚 ${unit}</h2>
-
+  app.innerHTML = `
+    <section class="section">
+      <h1>📄 Mock Examination Papers</h1>
       <p>
-        This course unit is part of CPH STUDY.
-        Detailed notes, revision questions and examinations
-        will be organized here.
+        These are revision/mock papers, not official examination papers.
       </p>
 
-      <hr style="margin:15px 0;">
-
-      <h3>📖 Study</h3>
-      <p>Detailed learning materials will appear here.</p>
-
-      <h3 style="margin-top:20px;">📝 Practice</h3>
-      <p>MCQs and structured questions will be linked here.</p>
-
-      <br>
-
-      <button onclick="renderCPHLevels()">
-        ← Back to CPH Levels
-      </button>
-
-    </div>
+      <div class="grid">
+        ${curriculum.map(c => `
+          <div class="card">
+            <h3>${c.name}</h3>
+            <p>20 practice papers</p>
+            <button onclick="openPapers('${c.id}')">
+              View Papers
+            </button>
+          </div>
+        `).join("")}
+      </div>
+    </section>
   `;
-
-  results.scrollIntoView({
-    behavior: "smooth"
-  });
 }
 
-/* Load CPH levels when the page opens */
-window.addEventListener("load", function () {
-  renderCPHLevels();
-});
+function openPapers(id){
+
+  const c = findCourse(id);
+  const data = papers[id];
+
+  app.innerHTML = `
+    <section class="section">
+      <h1>${c.name}</h1>
+
+      ${
+        data
+        ? data.map((p,i) => `
+          <article class="topic">
+            <h3>Paper ${i+1}</h3>
+            ${p.questions.map((q,n) =>
+              `<p><strong>${n+1}.</strong> ${q}</p>`
+            ).join("")}
+          </article>
+        `).join("")
+        : "<p>Practice papers are being prepared.</p>"
+      }
+
+      <button onclick="go('papers')">
+        Back
+      </button>
+    </section>
+  `;
+}
+
+function renderCalculations(){
+
+  app.innerHTML = `
+
+    <section class="section">
+
+      <h1>🧮 Pharmaceutical Calculations</h1>
+
+      <article class="topic">
+        <h2>Dilution</h2>
+
+        <p><strong>C₁V₁ = C₂V₂</strong></p>
+
+        <p>
+          C₁ = initial concentration<br>
+          V₁ = volume of stock required<br>
+          C₂ = desired concentration<br>
+          V₂ = final volume
+        </p>
+
+        <h3>Worked example</h3>
+
+        <p>
+          Prepare 100 mL of a 10% solution from a
+          25% stock solution.
+        </p>
+
+        <p>
+          25 × V₁ = 10 × 100
+        </p>
+
+        <p>
+          V₁ = 40 mL
+        </p>
+
+        <p>
+          Therefore, measure 40 mL of stock and add
+          vehicle to the required final volume.
+        </p>
+      </article>
+
+      <article class="topic">
+        <h2>Percentage strength</h2>
+
+        <p>
+          % w/v = grams of solute per 100 mL solution.
+        </p>
+
+        <p>
+          % w/w = grams of solute per 100 g preparation.
+        </p>
+
+        <p>
+          % v/v = mL of liquid solute per 100 mL solution.
+        </p>
+      </article>
+
+      <article class="topic">
+        <h2>Ratio strength</h2>
+
+        <p>
+          A ratio such as 1:1000 represents
+          1 part of active substance in 1000 parts
+          of the preparation.
+        </p>
+      </article>
+
+      <article class="topic">
+        <h2>Alligation</h2>
+
+        <p>
+          Alligation can be used to determine the
+          relative quantities of two preparations of
+          different strengths required to obtain
+          an intermediate strength.
+        </p>
+      </article>
+
+      <article class="topic">
+        <h2>Further calculation topics</h2>
+
+        <ul>
+          <li>Unit conversions</li>
+          <li>Weights and volumes</li>
+          <li>Concentration calculations</li>
+          <li>Dose calculations</li>
+          <li>Percentage calculations</li>
+          <li>Ratio calculations</li>
+          <li>Dilution calculations</li>
+          <li>Alligation calculations</li>
+          <li>Quantity calculations</li>
+          <li>Reconstitution calculations</li>
+        </ul>
+      </article>
+
+    </section>
+  `;
+}
+
+function renderProgress(){
+
+  const completed =
+    curriculum.filter(c =>
+      courseProgress(c.id) === 100
+    ).length;
+
+  app.innerHTML = `
+    <section class="section">
+
+      <h1>📊 My Progress</h1>
+
+      <h2>
+        ${completed} / ${curriculum.length}
+        courses completed
+      </h2>
+
+      <div class="grid">
+
+        ${curriculum.map(c => `
+          <div class="card">
+            <h3>${c.code}</h3>
+            <p>${c.name}</p>
+            <strong>
+              ${courseProgress(c.id)}%
+            </strong>
+          </div>
+        `).join("")}
+
+      </div>
+
+    </section>
+  `;
+}
+
+function go(page){
+
+  currentPage = page;
+
+  if(page !== "study")
+    selectedCourse = null;
+
+  render();
+}
+
+document.querySelectorAll(".nav button")
+  .forEach(btn => {
+
+    btn.addEventListener("click", () =>
+      go(btn.dataset.page)
+    );
+
+  });
+
+document.getElementById("themeBtn")
+  .addEventListener("click", () => {
+
+    document.body.classList.toggle("dark");
+
+  });
+
+render();
