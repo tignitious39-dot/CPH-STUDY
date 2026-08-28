@@ -2,413 +2,321 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#0757a0">
-<title>CPH STUDY — Learn • Practice • Master</title>
+<meta name="description" content="CPH STUDY - Your complete Community Pharmacy learning platform">
+<title>CPH STUDY</title>
 
 <style>
-*{box-sizing:border-box}
-
-html{scroll-behavior:smooth}
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
 
 body{
-margin:0;
-font-family:Arial,Helvetica,sans-serif;
-background:#f4f7fb;
-color:#172033;
-line-height:1.6
+  font-family:Arial,Helvetica,sans-serif;
+  background:#f4f7fb;
+  color:#172033;
+  line-height:1.6;
 }
 
-button,input,textarea{font:inherit}
+button,input{
+  font:inherit;
+}
 
-button{cursor:pointer}
+button{
+  cursor:pointer;
+}
 
 .app{
-max-width:1100px;
-margin:auto;
-min-height:100vh
+  min-height:100vh;
 }
 
-header{
-position:sticky;
-top:0;
-z-index:100;
-background:linear-gradient(135deg,#064b9b,#168ee5);
-color:white;
-padding:14px 16px;
-box-shadow:0 3px 15px #0003
+/* HEADER */
+.header{
+  background:#0757a0;
+  color:white;
+  padding:16px 18px;
+  position:sticky;
+  top:0;
+  z-index:100;
+  box-shadow:0 2px 10px rgba(0,0,0,.15);
+}
+
+.header-inner{
+  max-width:1100px;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
 }
 
 .brand{
-display:flex;
-align-items:center;
-gap:12px
+  display:flex;
+  align-items:center;
+  gap:10px;
 }
 
-.logo{
-width:48px;
-height:48px;
-border-radius:14px;
-background:white;
-color:#e21b23;
-display:grid;
-place-items:center;
-font-size:28px;
-font-weight:bold
+.brand-icon{
+  width:44px;
+  height:44px;
+  border-radius:12px;
+  background:white;
+  color:#0757a0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:25px;
+  font-weight:bold;
 }
 
 .brand h1{
-margin:0;
-font-size:21px
+  font-size:21px;
 }
 
 .brand small{
-opacity:.9
+  display:block;
+  opacity:.85;
+  font-size:11px;
 }
 
+.menu-btn{
+  background:transparent;
+  border:1px solid rgba(255,255,255,.4);
+  color:white;
+  border-radius:8px;
+  padding:7px 10px;
+}
+
+/* NAVIGATION */
+.nav{
+  display:none;
+  background:white;
+  border-bottom:1px solid #ddd;
+}
+
+.nav.show{
+  display:block;
+}
+
+.nav-inner{
+  max-width:1100px;
+  margin:auto;
+  display:flex;
+  flex-wrap:wrap;
+}
+
+.nav button{
+  background:none;
+  border:0;
+  padding:14px 16px;
+  color:#172033;
+  font-weight:bold;
+}
+
+.nav button:hover{
+  background:#eef5fc;
+  color:#0757a0;
+}
+
+/* MAIN */
 main{
-padding:16px 14px 100px
+  max-width:1100px;
+  margin:auto;
+  padding:22px 16px 50px;
 }
 
+/* HERO */
 .hero{
-background:linear-gradient(135deg,#0757a0,#168ee5);
-color:white;
-border-radius:20px;
-padding:24px;
-margin-bottom:18px;
-box-shadow:0 5px 20px #0757a033
+  background:linear-gradient(135deg,#0757a0,#0d78c8);
+  color:white;
+  border-radius:20px;
+  padding:30px 22px;
+  margin-bottom:22px;
+  box-shadow:0 8px 25px rgba(7,87,160,.2);
 }
 
 .hero h2{
-margin:0 0 6px;
-font-size:26px
+  font-size:30px;
+  margin-bottom:8px;
 }
 
 .hero p{
-margin:5px 0
+  max-width:700px;
+  opacity:.94;
 }
 
 .quote{
-margin-top:16px;
-padding:13px;
-background:#ffffff25;
-border-radius:12px;
-font-weight:bold
+  margin-top:18px;
+  padding:13px 15px;
+  border-left:4px solid white;
+  background:rgba(255,255,255,.1);
+  border-radius:8px;
+  font-style:italic;
 }
 
-.search{
-margin:15px 0
+/* SEARCH */
+.search-box{
+  background:white;
+  padding:16px;
+  border-radius:14px;
+  margin-bottom:22px;
+  box-shadow:0 2px 10px rgba(0,0,0,.06);
 }
 
-.search input{
-width:100%;
-padding:15px;
-border:1px solid #dbe3ec;
-border-radius:13px;
-background:white;
-outline:none
+.search-box input{
+  width:100%;
+  padding:13px 15px;
+  border:1px solid #ccd5df;
+  border-radius:10px;
+  outline:none;
 }
 
-.search input:focus{
-border-color:#168ee5;
-box-shadow:0 0 0 3px #168ee522
+.search-box input:focus{
+  border-color:#0757a0;
+  box-shadow:0 0 0 3px rgba(7,87,160,.1);
 }
 
-.grid{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:12px
+/* SECTION */
+.section-title{
+  margin:25px 0 12px;
 }
 
-.card{
-background:white;
-border:1px solid #dbe3ec;
-border-radius:16px;
-padding:17px;
-margin:10px 0;
-box-shadow:0 3px 12px #0000000a
+.section-title h3{
+  color:#0757a0;
 }
 
-.level{
-color:white;
-text-align:left;
-min-height:120px;
-border:0;
-transition:.2s
+/* COURSE GRID */
+.course-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+  gap:14px;
 }
 
-.level:hover{
-transform:translateY(-2px)
+.course{
+  background:white;
+  border:1px solid #e0e6ed;
+  border-radius:15px;
+  padding:20px;
+  transition:.2s;
+  box-shadow:0 2px 8px rgba(0,0,0,.04);
 }
 
-.l11{background:#1474d4}
-.l12{background:#15945a}
-.l21{background:#e97916}
-.l22{background:#7541b7}
-
-.level b{
-font-size:20px
+.course:hover{
+  transform:translateY(-2px);
+  box-shadow:0 6px 18px rgba(0,0,0,.08);
 }
 
-.level small{
-opacity:.92
+.course-icon{
+  width:45px;
+  height:45px;
+  border-radius:12px;
+  background:#eaf3fb;
+  color:#0757a0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:22px;
+  margin-bottom:12px;
 }
 
-.unit{
-width:100%;
-display:flex;
-align-items:center;
-gap:12px;
-text-align:left;
-background:white;
-border:1px solid #dbe3ec;
-padding:15px;
-border-radius:13px;
-margin:9px 0;
-transition:.15s
+.course h4{
+  margin-bottom:5px;
 }
 
-.unit:hover{
-border-color:#168ee5;
-background:#f8fbff
+.course p{
+  color:#687386;
+  font-size:14px;
 }
 
-.unit .ico{
-font-size:27px;
-min-width:35px
+.course button{
+  margin-top:15px;
+  width:100%;
+  padding:10px;
+  border:0;
+  border-radius:8px;
+  background:#0757a0;
+  color:white;
+  font-weight:bold;
 }
 
-.unit b{
-display:block
+/* QUICK ACTIONS */
+.actions{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:12px;
 }
 
-.unit small{
-display:block;
-color:#64748b
+.action{
+  border:0;
+  background:white;
+  padding:18px 12px;
+  border-radius:14px;
+  box-shadow:0 2px 9px rgba(0,0,0,.06);
+  color:#172033;
+  font-weight:bold;
 }
 
-.btn{
-border:0;
-border-radius:11px;
-padding:11px 15px;
-background:#0757a0;
-color:white;
-margin:4px 3px
+.action span{
+  display:block;
+  font-size:25px;
+  margin-bottom:7px;
 }
 
-.btn:hover{
-opacity:.9
+/* CONTENT AREA */
+#content{
+  display:none;
 }
 
-.secondary{
-background:#edf3f8;
-color:#0757a0
+.panel{
+  background:white;
+  border-radius:16px;
+  padding:22px;
+  box-shadow:0 2px 10px rgba(0,0,0,.06);
 }
 
-.success{
-background:#198754
+.panel h2{
+  color:#0757a0;
+  margin-bottom:10px;
 }
 
-.danger{
-background:#dc3545
+.panel p{
+  margin-bottom:10px;
 }
 
-.tabs{
-display:flex;
-gap:7px;
-overflow:auto;
-margin:13px 0
+.back{
+  margin-bottom:15px;
+  border:0;
+  background:#eaf3fb;
+  color:#0757a0;
+  padding:9px 13px;
+  border-radius:8px;
+  font-weight:bold;
 }
 
-.tabs button{
-white-space:nowrap;
-border:1px solid #dbe3ec;
-background:white;
-padding:10px 14px;
-border-radius:20px
-}
-
-.tabs .active{
-background:#0757a0;
-color:white
-}
-
-.note{
-line-height:1.75
-}
-
-.note h3{
-margin-top:23px;
-color:#0757a0
-}
-
-.note ul,
-.note ol{
-padding-left:23px
-}
-
-.topic{
-border-left:4px solid #0757a0;
-padding:12px 14px;
-background:#f8fbff;
-margin:10px 0;
-border-radius:8px
-}
-
-.topic b{
-color:#0757a0
-}
-
-.pill{
-display:inline-block;
-background:#eaf3ff;
-color:#0757a0;
-padding:4px 10px;
-border-radius:20px;
-font-size:12px;
-font-weight:bold
-}
-
-.option{
-width:100%;
-display:block;
-text-align:left;
-background:white;
-border:1px solid #dbe3ec;
-padding:13px;
-border-radius:10px;
-margin:8px 0
-}
-
-.option:hover{
-background:#f5faff
-}
-
-.option.correct{
-border:3px solid #198754;
-background:#ecfaf2
-}
-
-.option.wrong{
-border:3px solid #dc3545;
-background:#fff0f0
-}
-
-textarea{
-width:100%;
-min-height:130px;
-padding:13px;
-border:1px solid #dbe3ec;
-border-radius:10px;
-resize:vertical
-}
-
-.post{
-padding:13px;
-border-left:4px solid #168ee5;
-background:#f7f9fc;
-border-radius:9px;
-margin:9px 0
-}
-
-.statgrid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:10px
-}
-
-.stat{
-text-align:center;
-background:#f1f5f9;
-border-radius:11px;
-padding:15px
-}
-
-.stat strong{
-display:block;
-font-size:27px;
-color:#0757a0
-}
-
-.empty{
-text-align:center;
-color:#64748b;
-padding:28px
-}
-
-.bottom{
-position:fixed;
-bottom:0;
-left:0;
-right:0;
-max-width:1100px;
-margin:auto;
-background:white;
-border-top:1px solid #dbe3ec;
-display:grid;
-grid-template-columns:repeat(4,1fr);
-z-index:100
-}
-
-.bottom button{
-background:white;
-border:0;
-padding:8px 4px;
-color:#64748b
-}
-
-.bottom b{
-display:block;
-font-size:20px;
-color:#0757a0
-}
-
-.bottom span{
-font-size:11px
-}
-
-hr{
-border:0;
-border-top:1px solid #dbe3ec;
-margin:18px 0
-}
-
-.notice{
-padding:13px;
-border-radius:10px;
-background:#fff8e6;
-border-left:4px solid #e97916;
-margin:10px 0
-}
-
-.answerbox{
-background:#f8fbff;
-border:1px dashed #168ee5;
-padding:14px;
-border-radius:10px;
-margin-top:10px
-}
-
-.hidden{
-display:none!important
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:25px 15px;
+  background:#10243b;
+  color:#dce7f2;
+  font-size:13px;
 }
 
 @media(max-width:600px){
-.grid{
-grid-template-columns:1fr 1fr
-}
+  .hero h2{
+    font-size:25px;
+  }
 
-.statgrid{
-grid-template-columns:1fr 1fr 1fr
-}
+  main{
+    padding:16px 12px 40px;
+  }
 
-.hero h2{
-font-size:23px
-}
-
-.card{
-padding:14px
-}
+  .course-grid{
+    grid-template-columns:1fr;
+  }
 }
 </style>
 </head>
@@ -417,370 +325,257 @@ padding:14px
 
 <div class="app">
 
-<header>
-<div class="brand">
-<div class="logo">⚕</div>
-<div>
-<h1>CPH STUDY</h1>
-<small>Learn • Practice • Master</small>
-</div>
-</div>
+<header class="header">
+  <div class="header-inner">
+    <div class="brand">
+      <div class="brand-icon">⚕</div>
+      <div>
+        <h1>CPH STUDY</h1>
+        <small>Community Pharmacy Learning</small>
+      </div>
+    </div>
+
+    <button class="menu-btn" onclick="toggleMenu()">☰ Menu</button>
+  </div>
 </header>
 
-<main id="main"></main>
-
-<nav class="bottom">
-<button onclick="home()">
-<b>⌂</b>
-<span>Home</span>
-</button>
-
-<button onclick="searchPage()">
-<b>⌕</b>
-<span>Search</span>
-</button>
-
-<button onclick="studyPage()">
-<b>▣</b>
-<span>Study</span>
-</button>
-
-<button onclick="progressPage()">
-<b>◔</b>
-<span>Progress</span>
-</button>
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <button onclick="goHome()">Home</button>
+    <button onclick="showCourses()">Courses</button>
+    <button onclick="showAbout()">About</button>
+  </div>
 </nav>
+
+<main>
+
+<section id="home">
+
+  <div class="hero">
+    <h2>Welcome to CPH STUDY</h2>
+    <p>
+      Your organized learning platform for Community Pharmacy.
+      Study course units, revise important concepts and prepare for examinations.
+    </p>
+
+    <div class="quote" id="quote">
+      "Success is built one study session at a time."
+    </div>
+  </div>
+
+  <div class="search-box">
+    <input
+      type="search"
+      id="search"
+      placeholder="Search courses, units and topics..."
+      oninput="searchContent()">
+  </div>
+
+  <div class="section-title">
+    <h3>Choose your level</h3>
+  </div>
+
+  <div class="course-grid" id="courseGrid">
+
+    <div class="course" data-search="CPH 1.1 first year semester one">
+      <div class="course-icon">📚</div>
+      <h4>CPH 1.1</h4>
+      <p>First level — Semester One</p>
+      <button onclick="openCourse('CPH 1.1')">Open Course</button>
+    </div>
+
+    <div class="course" data-search="CPH 1.2 first year semester two">
+      <div class="course-icon">📖</div>
+      <h4>CPH 1.2</h4>
+      <p>First level — Semester Two</p>
+      <button onclick="openCourse('CPH 1.2')">Open Course</button>
+    </div>
+
+    <div class="course" data-search="CPH 2.1 second year semester one">
+      <div class="course-icon">🧪</div>
+      <h4>CPH 2.1</h4>
+      <p>Second level — Semester One</p>
+      <button onclick="openCourse('CPH 2.1')">Open Course</button>
+    </div>
+
+    <div class="course" data-search="CPH 2.2 second year semester two">
+      <div class="course-icon">💊</div>
+      <h4>CPH 2.2</h4>
+      <p>Second level — Semester Two</p>
+      <button onclick="openCourse('CPH 2.2')">Open Course</button>
+    </div>
+
+  </div>
+
+  <div class="section-title">
+    <h3>Quick study</h3>
+  </div>
+
+  <div class="actions">
+    <button class="action" onclick="showComing('Study Notes')">
+      <span>📘</span>
+      Study Notes
+    </button>
+
+    <button class="action" onclick="showComing('MCQ Practice')">
+      <span>📝</span>
+      MCQ Practice
+    </button>
+
+    <button class="action" onclick="showComing('Structured Questions')">
+      <span>✍️</span>
+      Structured Questions
+    </button>
+
+    <button class="action" onclick="showComing('Progress')">
+      <span>📊</span>
+      My Progress
+    </button>
+  </div>
+
+</section>
+
+<section id="content">
+
+  <div class="panel">
+    <button class="back" onclick="goHome()">← Back to Home</button>
+    <div id="contentBody"></div>
+  </div>
+
+</section>
+
+</main>
+
+<footer>
+  <strong>CPH STUDY</strong><br>
+  Learn • Revise • Practice • Succeed
+</footer>
 
 </div>
 
 <script>
 
-/* =========================================================
-   CPH STUDY
-   Uganda Certificate in Pharmacy Curriculum
-   ========================================================= */
+const quotes = [
+  "Success is built one study session at a time.",
+  "Understanding is more powerful than memorizing.",
+  "Small progress every day becomes great achievement.",
+  "Study with purpose. Revise with confidence.",
+  "Your future pharmacist self will thank you for studying today."
+];
 
-const curriculum={
+let quoteIndex = 0;
 
-"CPH 1.1":{
-semester:"Year 1 • Semester 1",
-units:[
-
-{
-code:"CPHA 1101",
-name:"Human Anatomy and Physiology I",
-cu:3,
-desc:"Introduces human body structures, their relationships, functions and homeostasis.",
-topics:[
-"Structural organization: cells, tissues, organs and organ systems; membranes and integument.",
-"Overview of human biology, anatomy and physiology terminology, surface and gross anatomy, anatomical planes.",
-"Musculoskeletal system: bones, joints, muscle anatomy, motion and locomotion.",
-"Nervous system: central and peripheral nervous systems, structure, functions and biomedical importance."
-]
-},
-
-{
-code:"CPHA 1102",
-name:"First Aid",
-cu:5,
-desc:"Basic principles of first aid and basic life support, with practical emergency-response skills.",
-topics:[
-"Introduction to first aid, first aid box, PPE and safe scene assessment.",
-"Emergency measures, shock, unconscious casualty care, vital signs, resuscitation and artificial respiration.",
-"Positioning, wounds, bleeding control, burns, electric injuries, rescue and transport.",
-"Fractures, soft-tissue injuries, bandages, dressings and infection prevention.",
-"Stings, bites, oral poisoning, hypothermia, hyperthermia and heat/cold emergencies."
-]
-},
-
-{
-code:"CPHA 1103",
-name:"Computer Applications",
-cu:5,
-desc:"Computer skills for pharmacy training and daily professional work.",
-topics:[
-"Computer components, input/output devices, peripherals and practical computer use.",
-"Word processing, processors, memory and data-storage units.",
-"Microsoft Excel and spreadsheet skills.",
-"Network computing, email, internet accounts, uploading/downloading and network devices.",
-"PowerPoint and professional document preparation; pharmacy information retrieval, records and reports."
-]
-},
-
-{
-code:"CPHA 1104",
-name:"Microbiology and Parasitology",
-cu:3,
-desc:"Microorganisms, parasites, infectious disease, prevention and infection control.",
-topics:[
-"Microbiology and parasitology definitions, history, branches and classification of microbes.",
-"Bacteriology: bacterial structure, classification, disease, reproduction, growth, normal flora, pathogenesis and transmission.",
-"Virology: structure, classification, viral replication and transmission.",
-"Mycology: medically important fungi and fungal infections.",
-"Parasitology: protozoa, helminths, cestodes and trematodes.",
-"Immunology: immunity, immunoglobulins, immunological disorders, vaccination and immunization.",
-"Infection prevention and control: antiseptics, disinfectants, preservatives and factors affecting activity."
-]
-},
-
-{
-code:"CPHA 1105",
-name:"Pharmaceutical Chemistry I",
-cu:4,
-desc:"Basic organic, medicinal, physical and analytical chemistry relevant to pharmacy.",
-topics:[
-"Organic chemistry terminology, reactions, homologous series, nomenclature, bonding, hybridization and isomerism.",
-"Alkanes: nomenclature, physical properties, substitution reactions and official preparations such as paraffins.",
-"Alkenes and alkynes: nomenclature, reactions, epoxidation, ozonolysis and polymerization.",
-"Benzene and aromatic compounds: structure, properties and electrophilic aromatic substitution.",
-"Aliphatic alcohols: primary, secondary and tertiary alcohols, properties, reactions, preparations and uses.",
-"Carbonyl compounds: nomenclature, properties, reactions and selected pharmaceutical examples.",
-"Carboxylic acids and derivatives, including esters, with pharmaceutical examples.",
-"Amines: classification, nomenclature, properties, reactions and pharmaceutical importance."
-]
-},
-
-{
-code:"CPHA 1106",
-name:"Primary Health Care",
-cu:3,
-desc:"Public-health foundations, health promotion, community participation and levels of care.",
-topics:[
-"Definition, concept, pillars/elements and responsibilities in primary health care.",
-"Health information, planning, monitoring, evaluation, community participation and multisectoral collaboration.",
-"Nutrition, food hygiene, healthy lifestyles, malnutrition, water, sanitation and waste disposal.",
-"Health promotion, social mobilization, community leaders and PHC resources.",
-"Levels of health-care delivery, referral systems, community diagnosis and pharmaceutical needs assessment."
-]
+function toggleMenu(){
+  document.getElementById("nav").classList.toggle("show");
 }
 
-]},
-
-"CPH 1.2":{
-semester:"Year 1 • Semester 2",
-units:[
-
-{
-code:"CPHA 1201",
-name:"Human Anatomy and Physiology II",
-cu:3,
-desc:"Elementary anatomy and physiology of major body systems and common physiological disorders.",
-topics:[
-"Cardiovascular system: blood, lymph, fluid compartments, heart, blood vessels, anaemia and heart disorders.",
-"Endocrine system: glands, hormones, endocrine versus exocrine glands and reproductive hormonal functions.",
-"Respiratory system: upper/lower respiratory tract, ventilation, lung volumes, acid-base balance and disorders.",
-"Digestive system: GIT structure/function, phases of digestion, GIT hormones, liver, pancreas and disorders."
-]
-},
-
-{
-code:"CPHA 1202",
-name:"Basic Pharmacognosy",
-cu:3,
-desc:"Medicinal plants, crude drugs, plant-derived active constituents and extraction.",
-topics:[
-"Pharmacognosy terminology, traditional/alternative medicine, medicinal plants and sources of crude drugs.",
-"Plant cells, tissues, tissue culture, metabolism, photosynthesis, respiration and secondary metabolites.",
-"Plant growth regulators, cultivation, fibres, cotton wool, algal products, gums, mucilage and honey.",
-"Collection, cleaning, drying, grinding, preservation, packaging, labelling, storage and deterioration of crude drugs.",
-"Extraction methods including maceration and percolation; advantages and disadvantages.",
-"Homeopathic medicine, aromatherapy and regulation of traditional/herbal medicine in Uganda."
-]
-},
-
-{
-code:"CPHA 1203",
-name:"Communication Skills",
-cu:2,
-desc:"Communication, counselling, negotiation and stress-management skills for health-care practice.",
-topics:[
-"Verbal/non-verbal communication, interviewing, culture, beliefs, attitudes, values and communication barriers.",
-"Effective speaking, public address, persuasion, meetings, minutes, group discussion and non-verbal cues.",
-"GATHER counselling approach: Greet, Ask, Tell/explain, Help, Explain/provide information, Return/follow-up.",
-"Active listening, evidence-based writing, critical thinking and problem solving.",
-"Presentation, adherence counselling, patient involvement, negotiation, advocacy, conflict resolution and stress management."
-]
-},
-
-{
-code:"CPHA 1204",
-name:"Medical Psychology",
-cu:3,
-desc:"Psychology, sociology and anthropology applied to health care and pharmacy practice.",
-topics:[
-"Psychology concepts, personality, emotions, motivation, sensation, perception and perception disorders.",
-"Learning theories, conditioning, social learning, memory, forgetting and learning/memory disorders.",
-"Sociology, family, socialization, health-seeking behaviour, attitudes and the health belief model.",
-"Socioeconomic factors, indigenous African healing, health/environment and societal responses to illness.",
-"Medical anthropology, traditional healers, culture, social systems and acceptable community conduct."
-]
-},
-
-{
-code:"CPHA 1205",
-name:"Pharmaceutical Chemistry II",
-cu:4,
-desc:"Inorganic medicinal chemistry, reactions, preparations, properties, uses and storage of selected compounds.",
-topics:[
-"Inorganic chemistry in life: grouping of inorganic elements and common reactions/equations.",
-"Group VII: halogens, hydrogen halides, chlorinated lime, alkali-metal halides and iodine preparations/uses.",
-"Group VI: oxygen, distilled water, hydrogen peroxide and sulphur compounds.",
-"Group V: nitrous oxide and sodium nitrate.",
-"Group III: boron compounds, boric acid and aluminium.",
-"Group II: magnesium, calcium, barium and zinc compounds.",
-"Group I: silver nitrate, properties, uses and storage."
-]
-},
-
-{
-code:"CPHA 1206",
-name:"Pharmaceutical Calculations",
-cu:3,
-desc:"Basic pharmacy mathematics applied to dosage, concentrations, measurements and data.",
-topics:[
-"Prerequisite mathematics: numbers, fractions, ratios, proportions, decimals and percentages.",
-"Percentage concentrations and expression of strength.",
-"Measurement systems: SI/International Units, metric and household systems, and interconversions.",
-"Scaling formulas, dilution and concentration, two-solution alligation, allegation and parts per million.",
-"Dosage calculations: dose, frequency, duration, unit dose, daily dose and total dose."
-]
+function goHome(){
+  document.getElementById("home").style.display="block";
+  document.getElementById("content").style.display="none";
+  window.scrollTo({top:0,behavior:"smooth"});
 }
 
-]},
-
-"CPH 2.1":{
-semester:"Year 2 • Semester 1",
-units:[
-
-{
-code:"CPHA 2101",
-name:"Pharmaceutics I",
-cu:4,
-desc:"Pharmaceutical dosage forms, formulation basics, laboratory safety and compounding equipment.",
-topics:[
-"Pharmaceutics, dosage forms and routes of administration.",
-"Excipients, co-solvents, preservatives, flavouring and colouring agents; labelling, storage, mixing and stability.",
-"Laboratory safety, hazards, SOPs, fire safety, chemical safety and emergency response.",
-"Hazard identification, assessment, hazardous-material handling, spill response and waste management.",
-"PPE and workplace clothing.",
-"Pharmaceutical compounding equipment including balances, mortar and pestle, cylinders, pipettes, filtration equipment, water baths and autoclaves."
-]
-},
-
-{
-code:"CPHA 2102",
-name:"Pharmacy Laws and Regulations",
-cu:2,
-desc:"Legal and regulatory framework governing medicines and pharmacy practice in Uganda.",
-topics:[
-"Law, statutes, acts, ordinances, courts, treaties and conventions; Uganda medicines licensing system.",
-"Pharmacy profession, ethics and professional bodies.",
-"Legal categories of medicines: prescription-only, controlled and over-the-counter medicines.",
-"Legal requirements for procurement, receipt, storage, custody, distribution, dispensing, records, loss and disposal.",
-"Licensing, medicines inspectorate, drug safety, quality, efficacy, counterfeiting and promotion controls."
-]
-},
-
-{
-code:"CPHA 2103",
-name:"Pharmacy Practice I",
-cu:3,
-desc:"Foundations of pharmacy practice, rational medicine use, dispensing and records.",
-topics:[
-"History and development of pharmacy practice in Uganda and worldwide; ethics and professional conduct.",
-"Rational versus irrational medicine use, causes, impacts, antimicrobial resistance and improvement strategies.",
-"Prescriptions: definition, components, abbreviations, common errors and look-alike/sound-alike medicines.",
-"Dispensing environment, equipment, medicine recognition, packaging, labelling and orderly workflow.",
-"Practical dispensing: role play, refills, prescription retention and dispensing records."
-]
-},
-
-{
-code:"CPHA 2104",
-name:"Therapeutics I",
-cu:3,
-desc:"Common health conditions, recognition, management approaches and rational medicine use.",
-topics:[
-"Introduction to therapeutics, role of pharmacy staff and drug interactions.",
-"Respiratory and gastrointestinal infections and related conditions.",
-"CNS, bone/joint, urinary and sexually transmitted infections; HIV/AIDS and opportunistic infections.",
-"Mycotic and parasitic infections including malaria and schistosomiasis.",
-"Bronchial asthma, COPD, cystic fibrosis and drug-induced pulmonary disease."
-]
-},
-
-{
-code:"CPHA 2105",
-name:"Pharmacology",
-cu:3,
-desc:"Principles of pharmacology, pharmacokinetics, pharmacodynamics and common drug classes.",
-topics:[
-"Pharmacokinetics: plasma concentration, bioavailability, volume of distribution, clearance and routes.",
-"Pharmacodynamics, drug effects, efficacy, interactions, receptors, metabolism and elimination.",
-"Therapeutic drug monitoring and principles of toxicology/acute poisoning.",
-"Analgesics and musculoskeletal agents.",
-"Cardiovascular drugs, digestive-system drugs, anti-infectives and topical agents."
-]
-},
-
-{
-code:"CPHA 2107",
-name:"Stores and Inventory Management",
-cu:3,
-desc:"Medicine supply management, procurement, receiving, distribution, records and inventory control.",
-topics:[
-"Medicine management cycle, supply objectives, selection, procurement, distribution and information systems.",
-"Procurement methods, requisitions, purchase orders, supplier selection, quantification, VEN and ABC analysis.",
-"Receiving procedures, documentation, cold-chain/special handling, variances, rejection and returns.",
-"Distribution systems including outpatient, ward, inpatient, unit-dose and emergency supply.",
-"Inventory records, stock cards, bin cards, ledgers, stock control, expiry, losses, disposal and audits.",
-"Good storekeeping, storage conditions, security, accountability, cleaning, pest control and reporting."
-]
-},
-
-{
-code:"CPHA 2106",
-name:"Field Attachment I",
-cu:4,
-desc:"Supervised field-based practical training in health facilities and pharmacies.",
-topics:[
-"Daily logbook recording of activities, lessons, skills and innovations.",
-"On-site preceptor assessment and academic supervisor review.",
-"Application of theory to real pharmacy/health-facility practice.",
-"Work ethics, responsibilities, stakeholder interaction and professional conduct.",
-"Field attachment report based on the approved logbook guidelines."
-]
+function showCourses(){
+  goHome();
+  document.getElementById("courseGrid").scrollIntoView({
+    behavior:"smooth"
+  });
 }
 
-]},
+function showAbout(){
+  document.getElementById("home").style.display="none";
+  document.getElementById("content").style.display="block";
 
-"CPH 2.2":{
-semester:"Year 2 • Semester 2",
-units:[
+  document.getElementById("contentBody").innerHTML = `
+    <h2>About CPH STUDY</h2>
+    <p>
+      CPH STUDY is being developed as a structured learning platform
+      for Community Pharmacy students.
+    </p>
+    <p>
+      The platform will organize course units, notes, revision questions,
+      marking guides and study progress in one place.
+    </p>
+  `;
+}
 
-{
-code:"CPHA 2201",
-name:"Pharmaceutics II",
-cu:4,
-desc:"Dispensing, compounding, pharmaceutical calculations and simple liquid preparations.",
-topics:[
-"Solutions, solutes, solvents, vehicles, solubility and methods of enhancing solubility.",
-"Syrups, elixirs, paints and other simple solutions: formulation, preparation, packaging and labelling.",
-"Production formulae, reference materials, concentration, percentage/ratio strength and parts per million.",
-"Dose calculations, unit/daily/total dose, adult and child calculations, body weight, body surface area, Young's and Field's rules.",
-"Powder reconstitution, measurement, mixing, dosing instructions and storage.",
-"Dilution of antiseptics and disinfectants."
-]
-},
+function openCourse(course){
+  document.getElementById("home").style.display="none";
+  document.getElementById("content").style.display="block";
 
-{
-code:"CPHA 2202",
-name:"Quality Assurance of Pharmaceuticals",
-cu:4,
-desc:"Systems and actions that ensure medicines are safe, effective and of standard quality.",
-topics:[
-"Quality assurance, quality control and Good Manufacturing Practices.",
-"Medicine quality: identity, purity, potency, uniformity, bioavailability, stability and pharmacopoeial standards.",
-"Quality assessment through inspection and laboratory testing.",
-"Quality assurance through product selection, suppliers, certification, specifications, storage, distribution and monitoring.",
-"Product problem reporting, r
+  document.getElementById("contentBody").innerHTML = `
+    <h2>${course}</h2>
+    <p><strong>Course area ready.</strong></p>
+    <p>
+      This is the foundation for ${course}. Course units,
+      detailed notes, MCQs and structured examination papers
+      will be connected here next.
+    </p>
+
+    <div class="course-grid">
+      <div class="course">
+        <div class="course-icon">📚</div>
+        <h4>Course Units</h4>
+        <p>Access the units for ${course}.</p>
+        <button onclick="showComing('Course Units')">Open Units</button>
+      </div>
+
+      <div class="course">
+        <div class="course-icon">📝</div>
+        <h4>Revision Questions</h4>
+        <p>Practice MCQs and structured questions.</p>
+        <button onclick="showComing('Revision Questions')">Practice</button>
+      </div>
+
+      <div class="course">
+        <div class="course-icon">📊</div>
+        <h4>Progress</h4>
+        <p>Track your study progress.</p>
+        <button onclick="showComing('Progress')">View Progress</button>
+      </div>
+    </div>
+  `;
+}
+
+function showComing(name){
+  document.getElementById("home").style.display="none";
+  document.getElementById("content").style.display="block";
+
+  document.getElementById("contentBody").innerHTML = `
+    <h2>${name}</h2>
+    <p>
+      <strong>${name}</strong> is part of the next development stage.
+    </p>
+    <p>
+      The foundation is now in place so we can add the real
+      study materials without rebuilding the entire website.
+    </p>
+  `;
+}
+
+function searchContent(){
+  const query =
+    document.getElementById("search").value.toLowerCase().trim();
+
+  const cards =
+    document.querySelectorAll("#courseGrid .course");
+
+  cards.forEach(card=>{
+    const text =
+      card.dataset.search.toLowerCase();
+
+    card.style.display =
+      text.includes(query) ? "" : "none";
+  });
+}
+
+setInterval(()=>{
+  quoteIndex = (quoteIndex + 1) % quotes.length;
+  document.getElementById("quote").textContent =
+    '"' + quotes[quoteIndex] + '"';
+},6000);
+
+</script>
+
+</body>
+   </html>
