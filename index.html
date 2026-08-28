@@ -8,965 +8,1010 @@
 <title>CPH STUDY</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
 
 body{
-font-family:Arial,Helvetica,sans-serif;
-background:#f4f7fb;
-color:#172033;
-line-height:1.65
+  font-family:Arial,Helvetica,sans-serif;
+  background:#f3f7fb;
+  color:#172033;
+  line-height:1.6;
 }
 
-button,input{font:inherit}
-button{cursor:pointer}
+header{
+  background:#0757a0;
+  color:white;
+  padding:18px;
+  position:sticky;
+  top:0;
+  z-index:10;
+  box-shadow:0 2px 10px #0002;
+}
 
 .header{
-background:#0757a0;
-color:#fff;
-position:sticky;
-top:0;
-z-index:1000;
-box-shadow:0 2px 12px rgba(0,0,0,.15)
+  max-width:1100px;
+  margin:auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
 }
 
-.header-inner{
-max-width:1150px;
-margin:auto;
-padding:14px 16px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-gap:12px
+.logo{
+  display:flex;
+  align-items:center;
+  gap:10px;
 }
 
-.brand{
-display:flex;
-align-items:center;
-gap:10px
+.logo-icon{
+  font-size:32px;
 }
 
-.brand-icon{
-width:45px;
-height:45px;
-background:#fff;
-color:#0757a0;
-border-radius:12px;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:25px;
-font-weight:bold
+.logo h1{
+  font-size:22px;
 }
 
-.brand h1{font-size:21px}
-.brand small{font-size:11px;opacity:.9}
-
-.menu-btn{
-border:1px solid rgba(255,255,255,.5);
-background:transparent;
-color:#fff;
-padding:8px 11px;
-border-radius:8px
+.logo small{
+  display:block;
+  opacity:.85;
 }
 
-.nav{
-display:none;
-background:#fff;
-border-bottom:1px solid #ddd
+.menu{
+  background:white;
+  color:#0757a0;
+  border:0;
+  border-radius:8px;
+  padding:9px 12px;
+  font-size:18px;
 }
 
-.nav.show{display:block}
-
-.nav-inner{
-max-width:1150px;
-margin:auto;
-display:flex;
-flex-wrap:wrap
+nav{
+  display:none;
+  background:white;
+  padding:10px;
+  box-shadow:0 2px 8px #0002;
 }
 
-.nav button{
-border:0;
-background:none;
-padding:14px 17px;
-font-weight:bold;
-color:#172033
-}
-
-.nav button:hover{
-background:#edf5fc;
-color:#0757a0
+nav button{
+  display:block;
+  width:100%;
+  background:white;
+  border:0;
+  padding:13px;
+  text-align:left;
+  font-size:15px;
+  border-bottom:1px solid #eee;
 }
 
 main{
-max-width:1150px;
-margin:auto;
-padding:20px 15px 50px
+  max-width:1100px;
+  margin:auto;
+  padding:20px;
 }
 
 .hero{
-background:linear-gradient(135deg,#0757a0,#0d78c8);
-color:#fff;
-border-radius:20px;
-padding:30px 22px;
-margin-bottom:20px;
-box-shadow:0 8px 25px rgba(7,87,160,.2)
+  background:linear-gradient(135deg,#0757a0,#1388d8);
+  color:white;
+  padding:30px 20px;
+  border-radius:16px;
+  margin-bottom:25px;
 }
 
 .hero h2{
-font-size:30px;
-margin-bottom:8px
-}
-
-.hero p{max-width:760px}
-
-.quote{
-margin-top:18px;
-padding:13px 15px;
-border-left:4px solid #fff;
-background:rgba(255,255,255,.1);
-border-radius:8px;
-font-style:italic
+  font-size:30px;
+  margin-bottom:8px;
 }
 
 .search{
-background:#fff;
-padding:15px;
-border-radius:14px;
-margin-bottom:22px;
-box-shadow:0 2px 10px rgba(0,0,0,.06)
+  margin:20px 0;
 }
 
 .search input{
-width:100%;
-padding:13px 15px;
-border:1px solid #ccd5df;
-border-radius:10px;
-outline:none
+  width:100%;
+  padding:15px;
+  border:1px solid #ccd6e2;
+  border-radius:10px;
+  font-size:16px;
 }
 
-.search input:focus{
-border-color:#0757a0;
-box-shadow:0 0 0 3px rgba(7,87,160,.1)
+.section-title{
+  margin:25px 0 12px;
 }
-
-.section-title{margin:24px 0 12px}
-.section-title h3{color:#0757a0}
 
 .grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
-gap:14px
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:16px;
 }
 
 .card{
-background:#fff;
-border:1px solid #e0e6ed;
-border-radius:15px;
-padding:19px;
-box-shadow:0 2px 8px rgba(0,0,0,.04)
+  background:white;
+  padding:20px;
+  border-radius:14px;
+  box-shadow:0 3px 12px #00000012;
 }
 
-.card:hover{box-shadow:0 6px 18px rgba(0,0,0,.08)}
-
-.icon{
-width:45px;
-height:45px;
-background:#eaf3fb;
-color:#0757a0;
-border-radius:12px;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:22px;
-margin-bottom:11px
+.card h3{
+  color:#0757a0;
+  margin:8px 0;
 }
-
-.card h4{margin-bottom:5px}
 
 .card p{
-color:#687386;
-font-size:14px
+  color:#526174;
 }
 
-.primary{
-width:100%;
-margin-top:14px;
-border:0;
-background:#0757a0;
-color:#fff;
-padding:10px;
-border-radius:8px;
-font-weight:bold
-}
-
-.primary:hover{background:#06487f}
-
-.secondary{
-width:100%;
-margin-top:10px;
-border:1px solid #0757a0;
-background:#fff;
-color:#0757a0;
-padding:10px;
-border-radius:8px;
-font-weight:bold
-}
-
-.actions{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
-gap:12px
-}
-
+.card button,
 .action{
-border:0;
-background:#fff;
-padding:18px 12px;
-border-radius:14px;
-box-shadow:0 2px 9px rgba(0,0,0,.06);
-color:#172033;
-font-weight:bold
+  border:0;
+  background:#0757a0;
+  color:white;
+  padding:11px 15px;
+  border-radius:8px;
+  margin-top:12px;
+  cursor:pointer;
 }
 
-.action span{
-display:block;
-font-size:25px;
-margin-bottom:6px
+.unit{
+  border:1px solid #dce5ef;
+  padding:13px;
+  border-radius:9px;
+  margin:8px 0;
+  background:#f8fbff;
+  cursor:pointer;
 }
 
-.content{display:none}
-
-.panel{
-background:#fff;
-border-radius:17px;
-padding:21px;
-box-shadow:0 2px 10px rgba(0,0,0,.06)
+.unit:hover{
+  background:#eaf4ff;
 }
 
-.panel h2{
-color:#0757a0;
-margin-bottom:8px
+.feature{
+  text-align:center;
 }
 
-.back{
-border:0;
-background:#eaf3fb;
-color:#0757a0;
-padding:9px 13px;
-border-radius:8px;
-font-weight:bold;
-margin-bottom:16px
+.feature-icon{
+  font-size:35px;
 }
 
-.unit-header{
-background:#eef6fd;
-border-left:5px solid #0757a0;
-padding:15px;
-border-radius:10px;
-margin-bottom:18px
+#content{
+  margin-top:25px;
 }
 
-.study-box{
-margin-top:20px;
-padding:18px;
-border:1px solid #e0e6ed;
-border-radius:13px
+.note{
+  background:#fff;
+  padding:20px;
+  border-radius:14px;
+  box-shadow:0 3px 12px #0001;
 }
 
-.study-box h3{
-color:#0757a0;
-margin-bottom:10px
+.note h2{
+  color:#0757a0;
+  margin-bottom:12px;
 }
 
-.study-box h4{
-color:#0757a0;
-margin-top:15px;
-margin-bottom:6px
+.note h3{
+  margin-top:18px;
+  color:#0757a0;
 }
 
-.study-box ul,
-.study-box ol{
-padding-left:22px;
-margin:8px 0 12px
-}
-
-.study-box li{margin-bottom:5px}
-
-.definition{
-background:#f1f7fc;
-border-left:4px solid #0757a0;
-padding:13px;
-margin:12px 0;
-border-radius:7px
-}
-
-.warning{
-background:#fff8e8;
-border-left:4px solid #d79b00;
-padding:13px;
-margin:12px 0;
-border-radius:7px
+.note li{
+  margin:7px 0 7px 20px;
 }
 
 .question{
-border:1px solid #e0e6ed;
-border-radius:12px;
-padding:15px;
-margin:12px 0;
-background:#fff
+  margin:15px 0;
+  padding:16px;
+  background:#f7faff;
+  border-radius:10px;
+  border:1px solid #dce7f2;
 }
-
-.answer{
-display:none;
-margin-top:12px;
-padding:12px;
-background:#f1f7fc;
-border-radius:8px
-}
-
-.answer.show{display:block}
 
 .option{
-display:block;
-padding:5px 0;
-color:#364154
+  display:block;
+  width:100%;
+  text-align:left;
+  background:white;
+  color:#172033;
+  border:1px solid #ccd8e5;
+  padding:12px;
+  border-radius:8px;
+  margin:7px 0;
 }
-
-.score{
-font-weight:bold;
-color:#0757a0
-}
-
-.progress{
-background:#e9eef4;
-height:10px;
-border-radius:20px;
-overflow:hidden;
-margin-top:8px
-}
-
-.progress-bar{
-height:100%;
-width:0%;
-background:#0757a0;
-transition:.3s
-}
-
-.badge{
-display:inline-block;
-padding:4px 9px;
-border-radius:20px;
-background:#eaf3fb;
-color:#0757a0;
-font-size:12px;
-font-weight:bold;
-margin:3px
-}
-
-.empty{
-text-align:center;
-padding:30px 15px;
-color:#687386
-}
-
-.hidden{display:none!important}
 
 footer{
-background:#10243b;
-color:#dce7f2;
-text-align:center;
-padding:25px 15px;
-font-size:13px
+  margin-top:40px;
+  background:#102a43;
+  color:white;
+  text-align:center;
+  padding:25px;
+}
+
+.hidden{
+  display:none;
+}
+
+.dark{
+  background:#101820;
+  color:#f1f5f9;
+}
+
+.dark .card,
+.dark .note,
+.dark nav,
+.dark .option{
+  background:#182532;
+  color:#f1f5f9;
+}
+
+.dark .card p{
+  color:#cbd5e1;
 }
 
 @media(max-width:600px){
-main{padding:15px 11px 40px}
-.hero{padding:25px 18px}
-.hero h2{font-size:25px}
-.grid{grid-template-columns:1fr}
-.panel{padding:17px}
+  main{
+    padding:14px;
+  }
+
+  .hero h2{
+    font-size:25px;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<header class="header">
-<div class="header-inner">
+<header>
+  <div class="header">
+    <div class="logo">
+      <div class="logo-icon">⚕️</div>
+      <div>
+        <h1>CPH STUDY</h1>
+        <small>Learn • Practice • Master</small>
+      </div>
+    </div>
 
-<div class="brand">
-<div class="brand-icon">⚕</div>
-<div>
-<h1>CPH STUDY</h1>
-<small>Community Pharmacy Learning</small>
-</div>
-</div>
-
-<button class="menu-btn" onclick="toggleMenu()">☰ Menu</button>
-
-</div>
+    <button class="menu" onclick="toggleMenu()">☰</button>
+  </div>
 </header>
 
-<nav class="nav" id="nav">
-<div class="nav-inner">
-<button onclick="home()">Home</button>
-<button onclick="showLevels()">Courses</button>
-<button onclick="showProgress()">Progress</button>
-<button onclick="showAbout()">About</button>
-</div>
+<nav id="nav">
+  <button onclick="home()">🏠 Home</button>
+  <button onclick="showLevels()">📚 Courses</button>
+  <button onclick="showQuiz()">📝 MCQ Practice</button>
+  <button onclick="showCalculations()">🧮 Calculations</button>
+  <button onclick="showProgress()">📊 Progress</button>
+  <button onclick="toggleDark()">🌙 Dark Mode</button>
 </nav>
 
 <main>
 
-<section id="homePage">
-
-<div class="hero">
-
-<h2>Welcome to CPH STUDY</h2>
-
-<p>
-A structured learning platform for Community Pharmacy students.
-Study course units, understand concepts, practise questions and
-prepare systematically for examinations.
-</p>
-
-<div class="quote" id="quote">
-"Success is built one study session at a time."
-</div>
-
-</div>
+<section class="hero">
+  <h2>Welcome to CPH STUDY</h2>
+  <p>
+    Your Community Pharmacy learning companion.
+    Study your course units, practise questions and track your progress.
+  </p>
+</section>
 
 <div class="search">
-
-<input
-id="searchInput"
-type="search"
-placeholder="Search CPH levels, units or topics..."
-oninput="searchCourses()">
-
+  <input
+    id="search"
+    placeholder="🔎 Search courses, units or topics..."
+    oninput="searchSite()"
+  >
 </div>
 
-<div id="searchResults" class="hidden">
+<section id="home">
 
-<div class="section-title">
-<h3>Search results</h3>
-</div>
+  <h2 class="section-title">📚 Choose your CPH Level</h2>
 
-<div id="resultsGrid" class="grid"></div>
+  <div id="levels" class="grid"></div>
 
-</div>
+  <h2 class="section-title">⚡ Quick Study</h2>
 
-<div id="normalHome">
+  <div class="grid">
 
-<div class="section-title">
-<h3>Choose your CPH level</h3>
-</div>
+    <div class="card feature">
+      <div class="feature-icon">📝</div>
+      <h3>MCQ Practice</h3>
+      <p>Test your pharmacy knowledge.</p>
+      <button onclick="showQuiz()">Start Quiz</button>
+    </div>
 
-<div id="levelGrid" class="grid"></div>
+    <div class="card feature">
+      <div class="feature-icon">🧮</div>
+      <h3>Calculations</h3>
+      <p>Practise pharmaceutical calculations.</p>
+      <button onclick="showCalculations()">Practise</button>
+    </div>
 
-<div class="section-title">
-<h3>Quick study</h3>
-</div>
+    <div class="card feature">
+      <div class="feature-icon">📖</div>
+      <h3>Study Notes</h3>
+      <p>Learn important pharmacy concepts.</p>
+      <button onclick="showLevels()">Study</button>
+    </div>
 
-<div class="actions">
+    <div class="card feature">
+      <div class="feature-icon">📊</div>
+      <h3>Progress</h3>
+      <p>Monitor your quiz performance.</p>
+      <button onclick="showProgress()">View</button>
+    </div>
 
-<button class="action" onclick="showComing('Study Notes')">
-<span>📘</span>
-Study Notes
-</button>
+  </div>
 
-<button class="action" onclick="showComing('MCQ Practice')">
-<span>📝</span>
-MCQ Practice
-</button>
-
-<button class="action" onclick="showComing('Structured Questions')">
-<span>✍️</span>
-Structured Questions
-</button>
-
-<button class="action" onclick="showProgress()">
-<span>📊</span>
-My Progress
-</button>
-
-</div>
-
-</div>
+  <div class="card" style="margin-top:20px;text-align:center;">
+    <h3>💡 Daily Motivation</h3>
+    <p id="quote"></p>
+  </div>
 
 </section>
 
-<section id="contentPage" class="content">
-
-<div class="panel">
-<div id="contentBody"></div>
-</div>
-
-</section>
+<section id="content"></section>
 
 </main>
 
 <footer>
-<strong>CPH STUDY</strong><br>
-Learn • Understand • Practice • Succeed
+  <strong>⚕️ CPH STUDY</strong>
+  <p>Community Pharmacy • Learn • Practice • Master</p>
 </footer>
 
 <script>
 
-const curriculum={
+/* =========================
+   COURSE DATA
+========================= */
 
-"CPH 1.1":[
-"Microbiology",
-"Anatomy & Physiology 1",
-"Pharmaceutical Chemistry 1",
-"First Aid",
-"PHC",
-"Computer Applications"
-],
-
-"CPH 1.2":[
-"Anatomy & Physiology 2",
-"Pharmaceutical Chemistry 2",
-"Pharmaceutical Calculations",
-"Pharmacognosy",
-"Pharmacology 1",
-"Medical Psychology",
-"Communication Skills",
-"Pharmaceutical Practicals"
-],
-
-"CPH 2.1":[
-"Unit to be added",
-"Pharmaceutics 1",
-"Pharmacy Laws & Regulations",
-"Pharmacy Practice 1",
-"Therapeutics 1",
-"Pharmacology 2",
-"Stores & Inventory Management"
-],
-
-"CPH 2.2":[
-"Pharmaceutics 2",
-"Quality Assurance of Pharmaceuticals",
-"Pharmacy Practice 2",
-"Therapeutics 2",
-"Entrepreneurship"
-]
-
-};
-
-const levelInfo={
-"CPH 1.1":"First Level • Semester One",
-"CPH 1.2":"First Level • Semester Two",
-"CPH 2.1":"Second Level • Semester One",
-"CPH 2.2":"Second Level • Semester Two"
-};
-
-const levelIcons={
-"CPH 1.1":"📚",
-"CPH 1.2":"📖",
-"CPH 2.1":"🧪",
-"CPH 2.2":"💊"
-};
-
-const unitIcons=[
-"🔬","🫀","⚗️","🩹","🏥","💻",
-"🧬","⚗️","🧮","🌿","💊","🧠",
-"🗣️","🧪","⚗️","⚖️","🏥","🩺",
-"💊","📦","⚗️","✅","🏥","🩺","💼"
+const levels = [
+{
+ name:"CPH Year 1",
+ icon:"📘",
+ description:"Foundation knowledge for Community Pharmacy.",
+ units:[
+  "Anatomy and Physiology",
+  "Pharmaceutical Chemistry",
+  "Pharmaceutics",
+  "Pharmacology",
+  "Pharmaceutical Calculations",
+  "Microbiology",
+  "Communication Skills"
+ ]
+},
+{
+ name:"CPH Year 2",
+ icon:"📗",
+ description:"Intermediate pharmacy knowledge and practice.",
+ units:[
+  "Pharmacology",
+  "Pharmaceutics",
+  "Medicinal Chemistry",
+  "Microbiology",
+  "Community Pharmacy Practice",
+  "Public Health",
+  "Pharmacy Management"
+ ]
+},
+{
+ name:"CPH Year 3",
+ icon:"📕",
+ description:"Advanced pharmacy and clinical preparation.",
+ units:[
+  "Clinical Pharmacy",
+  "Pharmacotherapy",
+  "Pharmacy Law and Ethics",
+  "Public Health",
+  "Pharmaceutical Management",
+  "Drug Information",
+  "Patient Counselling"
+ ]
+},
+{
+ name:"Final Revision",
+ icon:"🎓",
+ description:"Intensive examination preparation.",
+ units:[
+  "MCQ Revision",
+  "Structured Questions",
+  "Pharmaceutical Calculations",
+  "Past Paper Practice",
+  "Clinical Cases",
+  "Final Examination Preparation"
+ ]
+}
 ];
-
-let currentLevel=null;
-let currentUnit=null;
-
-let completedUnits=
-JSON.parse(localStorage.getItem("cphCompletedUnits")||"[]");
 
 
 /* =========================
-   MICROBIOLOGY CONTENT
+   HOME
 ========================= */
 
-const microbiology={
-
-overview:`
-
-<div class="study-box">
-
-<h3>1. Introduction to Microbiology</h3>
-
-<div class="definition">
-<strong>Microbiology</strong> is the branch of science concerned with the
-study of microorganisms and other microscopic biological agents.
-</div>
-
-<p>
-Microorganisms are organisms or biological entities that are generally
-too small to be seen clearly with the unaided eye. They include
-bacteria, fungi, protozoa and algae. Viruses are also studied in
-microbiology although they are acellular and depend on host cells for
-replication.
-</p>
-
-<h4>Importance of microbiology in pharmacy</h4>
-
-<ul>
-<li>Understanding microorganisms that cause infectious diseases.</li>
-<li>Understanding contamination of medicines and pharmaceutical products.</li>
-<li>Supporting safe preparation and storage of medicines.</li>
-<li>Understanding sterilization and aseptic techniques.</li>
-<li>Understanding antimicrobial medicines and antimicrobial resistance.</li>
-<li>Supporting quality control of pharmaceutical preparations.</li>
-<li>Understanding normal flora and opportunistic infections.</li>
-</ul>
-
-</div>
-
-<div class="study-box">
-
-<h3>2. Major Groups of Microorganisms</h3>
-
-<table style="width:100%;border-collapse:collapse;margin-top:10px">
-<tr>
-<th style="border:1px solid #ddd;padding:9px;text-align:left">Group</th>
-<th style="border:1px solid #ddd;padding:9px;text-align:left">General features</th>
-</tr>
-
-<tr>
-<td style="border:1px solid #ddd;padding:9px">Bacteria</td>
-<td style="border:1px solid #ddd;padding:9px">
-Unicellular prokaryotic microorganisms. They have no true membrane-bound nucleus.
-</td>
-</tr>
-
-<tr>
-<td style="border:1px solid #ddd;padding:9px">Fungi</td>
-<td style="border:1px solid #ddd;padding:9px">
-Eukaryotic organisms including yeasts and moulds.
-</td>
-</tr>
-
-<tr>
-<td style="border:1px solid #ddd;padding:9px">Protozoa</td>
-<td style="border:1px solid #ddd;padding:9px">
-Mostly unicellular eukaryotic organisms.
-</td>
-</tr>
-
-<tr>
-<td style="border:1px solid #ddd;padding:9px">Algae</td>
-<td style="border:1px solid #ddd;padding:9px">
-Mostly photosynthetic organisms; some are microscopic.
-</td>
-</tr>
-
-<tr>
-<td style="border:1px solid #ddd;padding:9px">Viruses</td>
-<td style="border:1px solid #ddd;padding:9px">
-Acellular infectious agents containing genetic material surrounded by
-a protein structure and sometimes an envelope.
-</td>
-</tr>
-
-</table>
-
-</div>
-
-<div class="study-box">
-
-<h3>3. Bacteria</h3>
-
-<p>
-Bacteria are single-celled prokaryotic microorganisms. They possess
-genetic material but lack a membrane-bound nucleus.
-</p>
-
-<h4>Common bacterial shapes</h4>
-
-<ul>
-<li><strong>Cocci</strong> — spherical or approximately spherical bacteria.</li>
-<li><strong>Bacilli</strong> — rod-shaped bacteria.</li>
-<li><strong>Vibrios</strong> — curved or comma-shaped bacteria.</li>
-<li><strong>Spirilla</strong> — rigid spiral-shaped bacteria.</li>
-<li><strong>Spirochaetes</strong> — flexible spiral-shaped bacteria.</li>
-</ul>
+function home(){
+ document.getElementById("home").classList.remove("hidden");
+ document.getElementById("content").innerHTML="";
+ window.scrollTo({top:0,behavior:"smooth"});
+}
 
-<h4>Common arrangements</h4>
 
-<ul>
-<li>Diplococci — pairs.</li>
-<li>Streptococci — chains.</li>
-<li>Staphylococci — grape-like clusters.</li>
-<li>Tetrads — groups of four.</li>
-</ul>
+/* =========================
+   MENU
+========================= */
 
-</div>
+function toggleMenu(){
+ const nav=document.getElementById("nav");
+ nav.style.display=nav.style.display==="block"?"none":"block";
+}
 
-<div class="study-box">
 
-<h3>4. Basic Bacterial Cell Structure</h3>
+/* =========================
+   LEVELS
+========================= */
 
-<ul>
-<li><strong>Cell wall:</strong> Provides structural support and helps maintain cell shape.</li>
-<li><strong>Cell membrane:</strong> Controls movement of substances into and out of the cell.</li>
-<li><strong>Cytoplasm:</strong> Contains enzymes, ribosomes and other cellular components.</li>
-<li><strong>Ribosomes:</strong> Responsible for protein synthesis.</li>
-<li><strong>Nucleoid:</strong> Region containing the bacterial chromosome.</li>
-<li><strong>Capsule:</strong> An external layer present in some bacteria; it may help protect against host defences.</li>
-<li><strong>Flagella:</strong> Structures associated with bacterial movement.</li>
-<li><strong>Pili/fimbriae:</strong> May assist attachment to surfaces; some pili participate in genetic exchange.</li>
-<li><strong>Plasmids:</strong> Small DNA molecules separate from the main chromosome; they may carry useful genes such as antimicrobial-resistance genes.</li>
-</ul>
+function showLevels(){
 
-</div>
+ document.getElementById("home").classList.add("hidden");
 
-<div class="study-box">
+ document.getElementById("content").innerHTML=`
+ <h2 class="section-title">📚 CPH Study Levels</h2>
+ <div class="grid">
+ ${levels.map((level,i)=>`
+   <div class="card">
+     <div style="font-size:42px">${level.icon}</div>
+     <h3>${level.name}</h3>
+     <p>${level.description}</p>
 
-<h3>5. Gram Staining</h3>
+     <div style="margin-top:15px">
+       ${level.units.map((unit,j)=>`
+         <div class="unit"
+              onclick="openUnit(${i},${j})">
+           📖 ${unit}
+         </div>
+       `).join("")}
+     </div>
+   </div>
+ `).join("")}
+ </div>
+ `;
 
-<p>
-Gram staining is an important differential staining technique used to
-classify many bacteria according to characteristics of their cell walls.
-</p>
+ window.scrollTo({top:0,behavior:"smooth"});
+}
 
-<h4>Gram-positive bacteria</h4>
 
-<ul>
-<li>Usually have a thick peptidoglycan cell wall.</li>
-<li>Retain the primary stain during the Gram-staining procedure.</li>
-<li>Appear purple or violet after staining.</li>
-</ul>
+/* =========================
+   COURSE UNIT
+========================= */
 
-<h4>Gram-negative bacteria</h4>
+function openUnit(levelIndex,unitIndex){
 
-<ul>
-<li>Have a thinner peptidoglycan layer.</li>
-<li>Possess an outer membrane.</li>
-<li>Do not retain the primary stain after decolourisation in the same way as Gram-positive organisms.</li>
-<li>Appear pink or red after counterstaining.</li>
-</ul>
+ const level=levels[levelIndex];
+ const unit=level.units[unitIndex];
 
-<div class="warning">
-<strong>Examination point:</strong> Gram staining is based primarily on
-differences in bacterial cell-envelope structure, especially the
-peptidoglycan layer and outer membrane.
-</div>
+ document.getElementById("content").innerHTML=`
 
-</div>
+ <div class="note">
 
-<div class="study-box">
+   <h2>📖 ${unit}</h2>
 
-<h3>6. Bacterial Growth and Reproduction</h3>
+   <p><strong>${level.name}</strong></p>
 
-<p>
-Many bacteria reproduce by <strong>binary fission</strong>. One bacterial
-cell replicates its genetic material and divides to form two daughter cells.
-</p>
+   <h3>Introduction</h3>
+
+   <p>
+   This study section introduces the important concepts
+   you need to understand for ${unit}.
+   </p>
+
+   <h3>Learning Objectives</h3>
+
+   <ul>
+     <li>Understand the fundamental concepts.</li>
+     <li>Explain important terminology.</li>
+     <li>Apply knowledge to pharmacy practice.</li>
+     <li>Answer examination questions accurately.</li>
+   </ul>
 
-<h4>Typical bacterial growth curve</h4>
+   <h3>Study Material</h3>
+
+   <p>
+   Detailed CPH study notes will be organized here by topic,
+   with definitions, explanations, examples and examination
+   points.
+   </p>
+
+   <h3>📝 Practice</h3>
+
+   <button class="action" onclick="showQuiz()">
+     Start MCQ Practice
+   </button>
+
+   <button class="action" onclick="showCalculations()">
+     Pharmaceutical Calculations
+   </button>
+
+   <br>
+
+   <button class="action" onclick="showLevels()">
+     ← Back to Courses
+   </button>
+
+ </div>
+ `;
+
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+
+
+/* =========================
+   SEARCH
+========================= */
+
+function searchSite(){
+
+ const query=document
+   .getElementById("search")
+   .value
+   .toLowerCase()
+   .trim();
+
+ if(!query){
+   home();
+   return;
+ }
+
+ document.getElementById("home").classList.add("hidden");
+
+ let found=[];
+
+ levels.forEach((level,i)=>{
+   level.units.forEach((unit,j)=>{
+     if(
+       level.name.toLowerCase().includes(query) ||
+       unit.toLowerCase().includes(query)
+     ){
+       found.push({i,j,level,unit});
+     }
+   });
+ });
+
+ document.getElementById("content").innerHTML=`
+
+ <h2 class="section-title">
+ 🔎 Search Results
+ </h2>
+
+ ${
+   found.length
+   ?
+   `<div class="grid">
+    ${found.map(item=>`
+      <div class="card">
+        <h3>${item.unit}</h3>
+        <p>${item.level.name}</p>
+        <button onclick="openUnit(${item.i},${item.j})">
+          Open
+        </button>
+      </div>
+    `).join("")}
+   </div>`
+   :
+   `<div class="card">
+      <h3>No results found</h3>
+      <p>Try another course, unit or topic.</p>
+    </div>`
+ }
+ `;
+
+}
+
+
+/* =========================
+   QUIZ
+========================= */
+
+const questions=[
+{
+ q:"What is pharmacology?",
+ options:[
+  "The study of drugs and their effects",
+  "The study of bones",
+  "The study of food",
+  "The study of microorganisms only"
+ ],
+ answer:0
+},
+{
+ q:"What does pharmacokinetics describe?",
+ options:[
+  "What the drug does to the body",
+  "What the body does to the drug",
+  "Only adverse effects",
+  "Only drug manufacturing"
+ ],
+ answer:1
+},
+{
+ q:"Which equation is commonly used in dilution calculations?",
+ options:[
+  "C₁V₁ = C₂V₂",
+  "E = mc²",
+  "F = ma",
+  "P = IV"
+ ],
+ answer:0
+},
+{
+ q:"Which organ pumps blood around the body?",
+ options:[
+  "Liver",
+  "Heart",
+  "Kidney",
+  "Lung"
+ ],
+ answer:1
+},
+{
+ q:"What is homeostasis?",
+ options:[
+  "Complete absence of change",
+  "Maintenance of a relatively stable internal environment",
+  "Digestion of food",
+  "Movement of bones"
+ ],
+ answer:1
+}
+];
+
+let score=0;
+let questionIndex=0;
+
+
+function showQuiz(){
+
+ document.getElementById("home").classList.add("hidden");
+
+ score=0;
+ questionIndex=0;
+
+ displayQuestion();
+}
+
+
+function displayQuestion(){
+
+ const q=questions[questionIndex];
+
+ document.getElementById("content").innerHTML=`
+
+ <div class="card">
+
+ <h2>📝 CPH MCQ Practice</h2>
+
+ <p>
+ Question ${questionIndex+1} of ${questions.length}
+ </p>
+
+ <div class="question">
+
+ <h3>${q.q}</h3>
+
+ ${q.options.map((option,i)=>`
+   <button class="option"
+     onclick="answer(${i})">
+     ${String.fromCharCode(65+i)}. ${option}
+   </button>
+ `).join("")}
 
-<ol>
-<li><strong>Lag phase:</strong> Cells adapt to the new environment and synthesize necessary components.</li>
-<li><strong>Log/exponential phase:</strong> Cells divide rapidly.</li>
-<li><strong>Stationary phase:</strong> Growth rate decreases as nutrients become limited and waste products accumulate.</li>
-<li><strong>Death/decline phase:</strong> Viable cell numbers decrease.</li>
-</ol>
+ </div>
 
-</div>
+ </div>
+ `;
 
-<div class="study-box">
+}
 
-<h3>7. Culture Media</h3>
 
-<p>
-Culture media provide nutrients and suitable conditions for growing
-microorganisms in the laboratory.
-</p>
+function answer(selected){
 
-<h4>Examples of types</h4>
+ const q=questions[questionIndex];
 
-<ul>
-<li><strong>General-purpose media:</strong> Support growth of many non-fastidious organisms.</li>
-<li><strong>Enriched media:</strong> Contain additional nutrients for organisms with greater nutritional requirements.</li>
-<li><strong>Selective media:</strong> Encourage growth of particular organisms while inhibiting others.</li>
-<li><strong>Differential media:</strong> Help distinguish organisms based on visible biochemical reactions.</li>
-</ul>
+ const buttons=document.querySelectorAll(".option");
 
-</div>
+ buttons.forEach(b=>b.disabled=true);
 
-<div class="study-box">
+ if(selected===q.answer){
+   score++;
+   buttons[selected].style.border="3px solid green";
+ }else{
+   buttons[selected].style.border="3px solid red";
+   buttons[q.answer].style.border="3px solid green";
+ }
 
-<h3>8. Sterilization and Disinfection</h3>
+ setTimeout(()=>{
 
-<div class="definition">
-<strong>Sterilization</strong> is a validated process that destroys or removes
-all forms of viable microorganisms from an object or environment.
-</div>
+   questionIndex++;
 
-<div class="definition">
-<strong>Disinfection</strong> reduces or eliminates many pathogenic microorganisms
-on inanimate objects, but it does not necessarily destroy all microbial forms.
-</div>
+   if(questionIndex<questions.length){
+     displayQuestion();
+   }else{
+     finishQuiz();
+   }
 
-<h4>Common sterilization methods</h4>
+ },700);
 
-<ul>
-<li>Moist heat.</li>
-<li>Dry heat.</li>
-<li>Filtration for suitable heat-sensitive fluids or gases.</li>
-<li>Radiation in appropriate applications.</li>
-<li>Validated chemical or gaseous methods for suitable materials.</li>
-</ul>
+}
 
-<h4>Autoclaving</h4>
 
-<p>
-Autoclaving uses pressurized saturated steam. Its effectiveness depends
-on appropriate temperature, pressure, exposure time, loading and other
-validated parameters.
-</p>
+function finishQuiz(){
 
-<div class="warning">
-Do not confuse <strong>sterilization</strong> with <strong>disinfection</strong>.
-Sterilization has the more stringent objective of eliminating viable
-microorganisms, including resistant forms where the validated process applies.
-</div>
+ const percentage=Math.round(
+   score/questions.length*100
+ );
 
-</div>
+ const history=JSON.parse(
+   localStorage.getItem("cphProgress")||"[]"
+ );
 
-<div class="study-box">
+ history.push({
+   score,
+   total:questions.length,
+   percentage,
+   date:new Date().toLocaleString()
+ });
 
-<h3>9. Viruses</h3>
+ localStorage.setItem(
+   "cphProgress",
+   JSON.stringify(history)
+ );
 
-<p>
-Viruses are acellular infectious agents that contain nucleic acid and
-use host-cell machinery for replication.
-</p>
+ document.getElementById("content").innerHTML=`
 
-<h4>Basic components</h4>
+ <div class="card" style="text-align:center">
 
-<ul>
-<li><strong>Genome:</strong> DNA or RNA.</li>
-<li><strong>Capsid:</strong> Protein coat surrounding the viral genome.</li>
-<li><strong>Envelope:</strong> Present in some viruses and derived from host-cell membranes.</li>
-</ul>
+   <h2>🎉 Quiz Complete</h2>
 
-<p>
-Because viruses depend on host cells for replication, antibacterial
-antibiotics do not generally treat viral infections.
-</p>
+   <div style="font-size:50px;font-weight:bold">
+     ${percentage}%
+   </div>
 
-</div>
+   <p>
+     You scored <strong>${score}</strong>
+     out of <strong>${questions.length}</strong>.
+   </p>
 
-<div class="study-box">
+   <button class="action" onclick="showQuiz()">
+     Try Again
+   </button>
 
-<h3>10. Fungi</h3>
+   <button class="action" onclick="showProgress()">
+     View Progress
+   </button>
 
-<p>
-Fungi are eukaryotic organisms. Medically important fungi include
-yeasts and moulds.
-</p>
+ </div>
+ `;
+}
 
-<ul>
-<li><strong>Yeasts:</strong> Usually unicellular fungi that may reproduce by budding.</li>
-<li><strong>Moulds:</strong> Multicellular filamentous fungi composed of hyphae.</li>
-<li><strong>Mycelium:</strong> A mass/network of fungal hyphae.</li>
-<li><strong>Spores:</strong> Reproductive or dispersal structures in many fungi.</li>
-</ul>
 
-</div>
+/* =========================
+   CALCULATIONS
+========================= */
 
-<div class="study-box">
+function showCalculations(){
 
-<h3>11. Protozoa</h3>
+ document.getElementById("home").classList.add("hidden");
 
-<p>
-Protozoa are predominantly unicellular eukaryotic organisms. Some
-species are important human pathogens.
-</p>
+ document.getElementById("content").innerHTML=`
 
-<p>
-Transmission may occur through contaminated food or water, vectors,
-sexual contact, or other routes depending on the organism.
-</p>
+ <div class="note">
 
-</div>
+ <h2>🧮 Pharmaceutical Calculations</h2>
 
-<div class="study-box">
+ <h3>Dose calculation</h3>
 
-<h3>12. Normal Flora and Opportunistic Infection</h3>
+ <p>
+ Volume required =
+ Dose required ÷ Dose available × Volume containing
+ the available dose.
+ </p>
 
-<p>
-Normal microbiota are microorganisms that commonly inhabit particular
-body sites without normally causing disease under usual conditions.
-</p>
+ <h3>Dilution</h3>
 
-<p>
-Some organisms can become <strong>opportunistic pathogens</strong> when
-host defences are impaired or when they enter sites where they are not
-normally present.
-</p>
+ <p><strong>C₁V₁ = C₂V₂</strong></p>
 
-</div>
+ <h3>Allegation</h3>
 
-<div class="study-box">
+ <p>
+ Allegation is a method used to determine the proportions
+ of two preparations of different strengths required to
+ produce a mixture of a desired intermediate strength.
+ </p>
 
-<h3>13. Infection and Transmission</h3>
+ <h3>Practice</h3>
 
-<h4>Common routes of transmission</h4>
+ <p>
+ A solution contains 500 mg in 5 mL.
+ How many milligrams are contained in 2 mL?
+ </p>
 
-<ul>
-<li>Direct contact.</li>
-<li>Indirect contact through contaminated objects.</li>
-<li>Droplet transmission.</li>
-<li>Airborne transmission for suitable pathogens.</li>
-<li>Food- or water-borne transmission.</li>
-<li>Vector-borne transmission.</li>
-<li>Blood or other body-fluid exposure for particular infections.</li>
-</ul>
+ <input
+   id="calc"
+   type="number"
+   placeholder="Enter your answer in mg"
+   style="width:100%;padding:13px;margin-top:12px"
+ >
 
-<h4>Breaking the chain of infection</h4>
+ <button class="action" onclick="checkCalc()">
+ Check Answer
+ </button>
 
-<ul>
-<li>Hand hygiene.</li>
-<li>Appropriate use of personal protective equipment.</li>
-<li>Cleaning, disinfection and sterilization where indicated.</li>
-<li>Safe handling of sharps.</li>
-<li>Appropriate waste management.</li>
-<li>Vaccination and other preventive measures.</li>
-<li>Isolation or other infection-control measures where appropriate.</li>
-</ul>
+ <div id="calcResult"></div>
 
-</div>
+ </div>
+ `;
+}
 
-<div class="study-box">
 
-<h3>14. Antimicrobial Agents and Resistance</h3>
+function checkCalc(){
 
-<p>
-Antimicrobial agents act against microorganisms. Different agents have
-different targets and spectra of activity.
-</p>
+ const answer=Number(
+   document.getElementById("calc").value
+ );
 
-<h4>Major mechanisms of antibacterial action</h4>
+ const result=document.getElementById("calcResult");
 
-<ul>
-<li>Inhibition of bacterial cell-wall synthesis.</li>
-<li>Inhibition of protein synthesis.</li>
-<li>Interference with nucleic-acid synthesis.</li>
-<li>Disruption of cell membranes.</li>
-<li>Interference with important metabolic pathways.</li>
-</ul>
+ if(answer===200){
 
-<h4>Antimicrobial resistance</h4>
+   result.innerHTML=
+   "<p style='margin-top:15px'>✅ Correct! 500 ÷ 5 = 100 mg/mL; 100 × 2 = 200 mg.</p>";
 
-<p>
-Antimicrobial resistance occurs when microorganisms develop or acquire
-characteristics that allow them to survive exposure to medicines that
-would previously have inhibited or killed them.
-</p>
+ }else{
 
-<p>
-Important contributing factors include inappropriate antimicrobial use,
-unnecessary exposure, poor adherence to appropriate treatment plans,
-and transmission of resistant org
+   result.innerHTML=
+   "<p style='margin-top:15px'>❌ Try again. First calculate the amount per mL.</p>";
+
+ }
+}
+
+
+/* =========================
+   PROGRESS
+========================= */
+
+function showProgress(){
+
+ document.getElementById("home").classList.add("hidden");
+
+ const history=JSON.parse(
+   localStorage.getItem("cphProgress")||"[]"
+ );
+
+ if(!history.length){
+
+   document.getElementById("content").innerHTML=`
+
+   <div class="card">
+     <h2>📊 Progress</h2>
+     <p>You haven't completed a quiz yet.</p>
+     <button class="action" onclick="showQuiz()">
+       Take Your First Quiz
+     </button>
+   </div>
+
+   `;
+
+   return;
+ }
+
+ const average=Math.round(
+   history.reduce((a,b)=>a+b.percentage,0)
+   /history.length
+ );
+
+ document.getElementById("content").innerHTML=`
+
+ <div class="grid">
+
+   <div class="card">
+     <h3>📈 Average</h3>
+     <h2>${average}%</h2>
+   </div>
+
+   <div class="card">
+     <h3>📝 Quizzes</h3>
+     <h2>${history.length}</h2>
+   </div>
+
+ </div>
+
+ <div class="card" style="margin-top:20px">
+
+ <h2>Recent Attempts</h2>
+
+ ${history.slice(-10).reverse().map(x=>`
+   <div class="unit">
+     <strong>${x.percentage}%</strong>
+     — ${x.score}/${x.total}
+     <br>
+     <small>${x.date}</small>
+   </div>
+ `).join("")}
+
+ </div>
+ `;
+}
+
+
+/* =========================
+   DARK MODE
+========================= */
+
+function toggleDark(){
+
+ document.body.classList.toggle("dark");
+
+ localStorage.setItem(
+   "cphDark",
+   document.body.classList.contains("dark")
+ );
+}
+
+
+/* =========================
+   DAILY QUOTE
+========================= */
+
+const quotes=[
+ "Study today. Become better tomorrow.",
+ "Understand the concept before memorising the details.",
+ "Consistency creates academic excellence.",
+ "Every question is an opportunity to learn.",
+ "Learn • Practice • Master.",
+ "Small progress every day becomes great achievement."
+];
+
+const day=Math.floor(Date.now()/86400000);
+
+document.getElementById("quote").textContent=
+ quotes[day%quotes.length];
+
+
+/* =========================
+   LOAD LEVELS
+========================= */
+
+function loadLevels(){
+
+ document.getElementById("levels").innerHTML=
+
+ levels.map((level,i)=>`
+
+ <div class="card">
+
+   <div style="font-size:42px">
+     ${level.icon}
+   </div>
+
+   <h3>${level.name}</h3>
+
+   <p>${level.description}</p>
+
+   <button onclick="showLevels()">
+     📚 View Units
+   </button>
+
+ </div>
+
+ `).join("");
+}
+
+
+if(localStorage.getItem("cphDark")==="true"){
+ document.body.classList.add("dark");
+}
+
+loadLevels();
+
+</script>
+
+</body>
+</html>
