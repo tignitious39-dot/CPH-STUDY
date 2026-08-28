@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#0757a0">
-<meta name="description" content="CPH STUDY - Your complete Community Pharmacy learning platform">
+<meta name="description" content="CPH STUDY - Community Pharmacy learning platform">
 <title>CPH STUDY</title>
 
 <style>
@@ -29,28 +29,23 @@ button{
   cursor:pointer;
 }
 
-.app{
-  min-height:100vh;
-}
-
-/* HEADER */
 .header{
   background:#0757a0;
-  color:white;
-  padding:16px 18px;
+  color:#fff;
   position:sticky;
   top:0;
-  z-index:100;
-  box-shadow:0 2px 10px rgba(0,0,0,.15);
+  z-index:1000;
+  box-shadow:0 2px 12px rgba(0,0,0,.15);
 }
 
 .header-inner{
-  max-width:1100px;
+  max-width:1150px;
   margin:auto;
+  padding:14px 16px;
   display:flex;
-  align-items:center;
   justify-content:space-between;
-  gap:15px;
+  align-items:center;
+  gap:12px;
 }
 
 .brand{
@@ -60,11 +55,11 @@ button{
 }
 
 .brand-icon{
-  width:44px;
-  height:44px;
-  border-radius:12px;
-  background:white;
+  width:45px;
+  height:45px;
+  background:#fff;
   color:#0757a0;
+  border-radius:12px;
   display:flex;
   align-items:center;
   justify-content:center;
@@ -77,23 +72,21 @@ button{
 }
 
 .brand small{
-  display:block;
-  opacity:.85;
   font-size:11px;
+  opacity:.9;
 }
 
 .menu-btn{
+  border:1px solid rgba(255,255,255,.5);
   background:transparent;
-  border:1px solid rgba(255,255,255,.4);
-  color:white;
+  color:#fff;
+  padding:8px 11px;
   border-radius:8px;
-  padding:7px 10px;
 }
 
-/* NAVIGATION */
 .nav{
   display:none;
-  background:white;
+  background:#fff;
   border-bottom:1px solid #ddd;
 }
 
@@ -102,39 +95,37 @@ button{
 }
 
 .nav-inner{
-  max-width:1100px;
+  max-width:1150px;
   margin:auto;
   display:flex;
   flex-wrap:wrap;
 }
 
 .nav button{
-  background:none;
   border:0;
-  padding:14px 16px;
-  color:#172033;
+  background:none;
+  padding:14px 17px;
   font-weight:bold;
+  color:#172033;
 }
 
 .nav button:hover{
-  background:#eef5fc;
+  background:#edf5fc;
   color:#0757a0;
 }
 
-/* MAIN */
 main{
-  max-width:1100px;
+  max-width:1150px;
   margin:auto;
-  padding:22px 16px 50px;
+  padding:20px 15px 50px;
 }
 
-/* HERO */
 .hero{
   background:linear-gradient(135deg,#0757a0,#0d78c8);
-  color:white;
+  color:#fff;
   border-radius:20px;
   padding:30px 22px;
-  margin-bottom:22px;
+  margin-bottom:20px;
   box-shadow:0 8px 25px rgba(7,87,160,.2);
 }
 
@@ -144,29 +135,27 @@ main{
 }
 
 .hero p{
-  max-width:700px;
-  opacity:.94;
+  max-width:760px;
 }
 
 .quote{
   margin-top:18px;
   padding:13px 15px;
-  border-left:4px solid white;
+  border-left:4px solid #fff;
   background:rgba(255,255,255,.1);
   border-radius:8px;
   font-style:italic;
 }
 
-/* SEARCH */
-.search-box{
-  background:white;
-  padding:16px;
+.search{
+  background:#fff;
+  padding:15px;
   border-radius:14px;
   margin-bottom:22px;
   box-shadow:0 2px 10px rgba(0,0,0,.06);
 }
 
-.search-box input{
+.search input{
   width:100%;
   padding:13px 15px;
   border:1px solid #ccd5df;
@@ -174,75 +163,74 @@ main{
   outline:none;
 }
 
-.search-box input:focus{
+.search input:focus{
   border-color:#0757a0;
   box-shadow:0 0 0 3px rgba(7,87,160,.1);
 }
 
-/* SECTION */
 .section-title{
-  margin:25px 0 12px;
+  margin:24px 0 12px;
 }
 
 .section-title h3{
   color:#0757a0;
 }
 
-/* COURSE GRID */
-.course-grid{
+.grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
   gap:14px;
 }
 
-.course{
-  background:white;
+.card{
+  background:#fff;
   border:1px solid #e0e6ed;
   border-radius:15px;
-  padding:20px;
-  transition:.2s;
+  padding:19px;
   box-shadow:0 2px 8px rgba(0,0,0,.04);
 }
 
-.course:hover{
-  transform:translateY(-2px);
+.card:hover{
   box-shadow:0 6px 18px rgba(0,0,0,.08);
 }
 
-.course-icon{
+.icon{
   width:45px;
   height:45px;
-  border-radius:12px;
   background:#eaf3fb;
   color:#0757a0;
+  border-radius:12px;
   display:flex;
   align-items:center;
   justify-content:center;
   font-size:22px;
-  margin-bottom:12px;
+  margin-bottom:11px;
 }
 
-.course h4{
+.card h4{
   margin-bottom:5px;
 }
 
-.course p{
+.card p{
   color:#687386;
   font-size:14px;
 }
 
-.course button{
-  margin-top:15px;
+.primary{
   width:100%;
-  padding:10px;
+  margin-top:14px;
   border:0;
-  border-radius:8px;
   background:#0757a0;
-  color:white;
+  color:#fff;
+  padding:10px;
+  border-radius:8px;
   font-weight:bold;
 }
 
-/* QUICK ACTIONS */
+.primary:hover{
+  background:#06487f;
+}
+
 .actions{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
@@ -251,7 +239,7 @@ main{
 
 .action{
   border:0;
-  background:white;
+  background:#fff;
   padding:18px 12px;
   border-radius:14px;
   box-shadow:0 2px 9px rgba(0,0,0,.06);
@@ -262,60 +250,112 @@ main{
 .action span{
   display:block;
   font-size:25px;
-  margin-bottom:7px;
+  margin-bottom:6px;
 }
 
-/* CONTENT AREA */
-#content{
+.content{
   display:none;
 }
 
 .panel{
-  background:white;
-  border-radius:16px;
-  padding:22px;
+  background:#fff;
+  border-radius:17px;
+  padding:21px;
   box-shadow:0 2px 10px rgba(0,0,0,.06);
 }
 
 .panel h2{
   color:#0757a0;
-  margin-bottom:10px;
+  margin-bottom:8px;
 }
 
-.panel p{
-  margin-bottom:10px;
+.panel-intro{
+  color:#687386;
+  margin-bottom:18px;
 }
 
 .back{
-  margin-bottom:15px;
   border:0;
   background:#eaf3fb;
   color:#0757a0;
   padding:9px 13px;
   border-radius:8px;
   font-weight:bold;
+  margin-bottom:16px;
 }
 
-/* FOOTER */
-footer{
+.unit-header{
+  background:#eef6fd;
+  border-left:5px solid #0757a0;
+  padding:15px;
+  border-radius:10px;
+  margin-bottom:18px;
+}
+
+.study-box{
+  margin-top:20px;
+  padding:18px;
+  border:1px solid #e0e6ed;
+  border-radius:13px;
+}
+
+.study-box h3{
+  color:#0757a0;
+  margin-bottom:8px;
+}
+
+.progress{
+  background:#e9eef4;
+  height:10px;
+  border-radius:20px;
+  overflow:hidden;
+  margin-top:8px;
+}
+
+.progress-bar{
+  height:100%;
+  width:0%;
+  background:#0757a0;
+  transition:.3s;
+}
+
+.empty{
   text-align:center;
-  padding:25px 15px;
+  padding:30px 15px;
+  color:#687386;
+}
+
+footer{
   background:#10243b;
   color:#dce7f2;
+  text-align:center;
+  padding:25px 15px;
   font-size:13px;
 }
 
+.hidden{
+  display:none!important;
+}
+
 @media(max-width:600px){
+  main{
+    padding:15px 11px 40px;
+  }
+
+  .hero{
+    padding:25px 18px;
+  }
+
   .hero h2{
     font-size:25px;
   }
 
-  main{
-    padding:16px 12px 40px;
+  .grid{
+    grid-template-columns:1fr;
   }
 
-  .course-grid{
-    grid-template-columns:1fr;
+  .panel{
+    padding:17px;
   }
 }
 </style>
@@ -323,10 +363,9 @@ footer{
 
 <body>
 
-<div class="app">
-
 <header class="header">
   <div class="header-inner">
+
     <div class="brand">
       <div class="brand-icon">⚕</div>
       <div>
@@ -336,110 +375,105 @@ footer{
     </div>
 
     <button class="menu-btn" onclick="toggleMenu()">☰ Menu</button>
+
   </div>
 </header>
 
 <nav class="nav" id="nav">
   <div class="nav-inner">
-    <button onclick="goHome()">Home</button>
-    <button onclick="showCourses()">Courses</button>
+    <button onclick="home()">Home</button>
+    <button onclick="showLevels()">Courses</button>
+    <button onclick="showProgress()">Progress</button>
     <button onclick="showAbout()">About</button>
   </div>
 </nav>
 
 <main>
 
-<section id="home">
+<section id="homePage">
 
   <div class="hero">
+
     <h2>Welcome to CPH STUDY</h2>
+
     <p>
-      Your organized learning platform for Community Pharmacy.
-      Study course units, revise important concepts and prepare for examinations.
+      A structured learning platform for Community Pharmacy students.
+      Study your course units, revise important concepts and prepare
+      for examinations.
     </p>
 
     <div class="quote" id="quote">
       "Success is built one study session at a time."
     </div>
+
   </div>
 
-  <div class="search-box">
+  <div class="search">
+
     <input
+      id="searchInput"
       type="search"
-      id="search"
-      placeholder="Search courses, units and topics..."
-      oninput="searchContent()">
-  </div>
-
-  <div class="section-title">
-    <h3>Choose your level</h3>
-  </div>
-
-  <div class="course-grid" id="courseGrid">
-
-    <div class="course" data-search="CPH 1.1 first year semester one">
-      <div class="course-icon">📚</div>
-      <h4>CPH 1.1</h4>
-      <p>First level — Semester One</p>
-      <button onclick="openCourse('CPH 1.1')">Open Course</button>
-    </div>
-
-    <div class="course" data-search="CPH 1.2 first year semester two">
-      <div class="course-icon">📖</div>
-      <h4>CPH 1.2</h4>
-      <p>First level — Semester Two</p>
-      <button onclick="openCourse('CPH 1.2')">Open Course</button>
-    </div>
-
-    <div class="course" data-search="CPH 2.1 second year semester one">
-      <div class="course-icon">🧪</div>
-      <h4>CPH 2.1</h4>
-      <p>Second level — Semester One</p>
-      <button onclick="openCourse('CPH 2.1')">Open Course</button>
-    </div>
-
-    <div class="course" data-search="CPH 2.2 second year semester two">
-      <div class="course-icon">💊</div>
-      <h4>CPH 2.2</h4>
-      <p>Second level — Semester Two</p>
-      <button onclick="openCourse('CPH 2.2')">Open Course</button>
-    </div>
+      placeholder="Search CPH levels, units or topics..."
+      oninput="searchCourses()">
 
   </div>
 
-  <div class="section-title">
-    <h3>Quick study</h3>
+  <div id="searchResults" class="hidden">
+
+    <div class="section-title">
+      <h3>Search results</h3>
+    </div>
+
+    <div id="resultsGrid" class="grid"></div>
+
   </div>
 
-  <div class="actions">
-    <button class="action" onclick="showComing('Study Notes')">
-      <span>📘</span>
-      Study Notes
-    </button>
+  <div id="normalHome">
 
-    <button class="action" onclick="showComing('MCQ Practice')">
-      <span>📝</span>
-      MCQ Practice
-    </button>
+    <div class="section-title">
+      <h3>Choose your CPH level</h3>
+    </div>
 
-    <button class="action" onclick="showComing('Structured Questions')">
-      <span>✍️</span>
-      Structured Questions
-    </button>
+    <div id="levelGrid" class="grid"></div>
 
-    <button class="action" onclick="showComing('Progress')">
-      <span>📊</span>
-      My Progress
-    </button>
+    <div class="section-title">
+      <h3>Quick study</h3>
+    </div>
+
+    <div class="actions">
+
+      <button class="action" onclick="showComing('Study Notes')">
+        <span>📘</span>
+        Study Notes
+      </button>
+
+      <button class="action" onclick="showComing('MCQ Practice')">
+        <span>📝</span>
+        MCQ Practice
+      </button>
+
+      <button class="action" onclick="showComing('Structured Questions')">
+        <span>✍️</span>
+        Structured Questions
+      </button>
+
+      <button class="action" onclick="showProgress()">
+        <span>📊</span>
+        My Progress
+      </button>
+
+    </div>
+
   </div>
 
 </section>
 
-<section id="content">
+<section id="contentPage" class="content">
 
   <div class="panel">
-    <button class="back" onclick="goHome()">← Back to Home</button>
+
     <div id="contentBody"></div>
+
   </div>
 
 </section>
@@ -448,132 +482,674 @@ footer{
 
 <footer>
   <strong>CPH STUDY</strong><br>
-  Learn • Revise • Practice • Succeed
+  Learn • Understand • Practice • Succeed
 </footer>
-
-</div>
 
 <script>
 
-const quotes = [
-  "Success is built one study session at a time.",
-  "Understanding is more powerful than memorizing.",
-  "Small progress every day becomes great achievement.",
-  "Study with purpose. Revise with confidence.",
-  "Your future pharmacist self will thank you for studying today."
+const curriculum = {
+
+  "CPH 1.1":[
+    "Microbiology",
+    "Anatomy & Physiology 1",
+    "Pharmaceutical Chemistry 1",
+    "First Aid",
+    "PHC",
+    "Computer Applications"
+  ],
+
+  "CPH 1.2":[
+    "Anatomy & Physiology 2",
+    "Pharmaceutical Chemistry 2",
+    "Pharmaceutical Calculations",
+    "Pharmacognosy",
+    "Pharmacology 1",
+    "Medical Psychology",
+    "Communication Skills",
+    "Pharmaceutical Practicals"
+  ],
+
+  "CPH 2.1":[
+    "Unit to be added",
+    "Pharmaceutics 1",
+    "Pharmacy Laws & Regulations",
+    "Pharmacy Practice 1",
+    "Therapeutics 1",
+    "Pharmacology 2",
+    "Stores & Inventory Management"
+  ],
+
+  "CPH 2.2":[
+    "Pharmaceutics 2",
+    "Quality Assurance of Pharmaceuticals",
+    "Pharmacy Practice 2",
+    "Therapeutics 2",
+    "Entrepreneurship"
+  ]
+
+};
+
+const levelInfo = {
+  "CPH 1.1":"First Level • Semester One",
+  "CPH 1.2":"First Level • Semester Two",
+  "CPH 2.1":"Second Level • Semester One",
+  "CPH 2.2":"Second Level • Semester Two"
+};
+
+const levelIcons = {
+  "CPH 1.1":"📚",
+  "CPH 1.2":"📖",
+  "CPH 2.1":"🧪",
+  "CPH 2.2":"💊"
+};
+
+const unitIcons = [
+  "🔬","🫀","⚗️","🩹","🏥","💻",
+  "🧬","⚗️","🧮","🌿","💊","🧠",
+  "🗣️","🧪","⚗️","⚖️","🏥","🩺",
+  "💊","📦","⚗️","✅","🏥","🩺","💼"
 ];
 
-let quoteIndex = 0;
+let currentLevel = null;
+let currentUnit = null;
+let completedUnits =
+  JSON.parse(localStorage.getItem("cphCompletedUnits") || "[]");
 
 function toggleMenu(){
   document.getElementById("nav").classList.toggle("show");
 }
 
-function goHome(){
-  document.getElementById("home").style.display="block";
-  document.getElementById("content").style.display="none";
-  window.scrollTo({top:0,behavior:"smooth"});
-}
+function home(){
 
-function showCourses(){
-  goHome();
-  document.getElementById("courseGrid").scrollIntoView({
+  document.getElementById("homePage").style.display="block";
+  document.getElementById("contentPage").style.display="none";
+
+  document.getElementById("normalHome").style.display="block";
+  document.getElementById("searchResults").classList.add("hidden");
+
+  document.getElementById("searchInput").value="";
+
+  window.scrollTo({
+    top:0,
     behavior:"smooth"
   });
 }
 
-function showAbout(){
-  document.getElementById("home").style.display="none";
-  document.getElementById("content").style.display="block";
+function showLevels(){
 
-  document.getElementById("contentBody").innerHTML = `
-    <h2>About CPH STUDY</h2>
-    <p>
-      CPH STUDY is being developed as a structured learning platform
-      for Community Pharmacy students.
-    </p>
-    <p>
-      The platform will organize course units, notes, revision questions,
-      marking guides and study progress in one place.
-    </p>
-  `;
+  home();
+
+  document.getElementById("levelGrid").scrollIntoView({
+    behavior:"smooth"
+  });
+
 }
 
-function openCourse(course){
-  document.getElementById("home").style.display="none";
-  document.getElementById("content").style.display="block";
+function renderLevels(){
+
+  const grid = document.getElementById("levelGrid");
+
+  grid.innerHTML = "";
+
+  Object.keys(curriculum).forEach(level=>{
+
+    grid.innerHTML += `
+
+      <div class="card">
+
+        <div class="icon">
+          ${levelIcons[level]}
+        </div>
+
+        <h4>${level}</h4>
+
+        <p>${levelInfo[level]}</p>
+
+        <p>
+          ${curriculum[level].length} course units
+        </p>
+
+        <button
+          class="primary"
+          onclick="openLevel('${level}')">
+
+          Open Course
+
+        </button>
+
+      </div>
+
+    `;
+
+  });
+
+}
+
+function openLevel(level){
+
+  currentLevel = level;
+
+  document.getElementById("homePage").style.display="none";
+  document.getElementById("contentPage").style.display="block";
+
+  let html = `
+
+    <button class="back" onclick="home()">
+      ← Back to Home
+    </button>
+
+    <div class="unit-header">
+
+      <h2>${level}</h2>
+
+      <p>${levelInfo[level]}</p>
+
+      <p>
+        Select a course unit below.
+      </p>
+
+    </div>
+
+    <div class="grid">
+
+  `;
+
+  curriculum[level].forEach((unit,index)=>{
+
+    const key = level + "|" + unit;
+
+    const done = completedUnits.includes(key);
+
+    html += `
+
+      <div class="card">
+
+        <div class="icon">
+          ${unitIcons[index % unitIcons.length]}
+        </div>
+
+        <h4>${index+1}. ${unit}</h4>
+
+        <p>
+          Notes • MCQs • Structured Questions
+          • Marking Guide
+        </p>
+
+        <button
+          class="primary"
+          onclick="openUnit('${escapeText(level)}','${escapeText(unit)}')">
+
+          Open Unit
+
+        </button>
+
+        ${
+          done
+          ? `<p style="margin-top:9px;color:#0757a0;font-weight:bold;">
+               ✓ Completed
+             </p>`
+          : ""
+        }
+
+      </div>
+
+    `;
+
+  });
+
+  html += `</div>`;
+
+  document.getElementById("contentBody").innerHTML = html;
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
+}
+
+function openUnit(level,unit){
+
+  currentLevel = level;
+  currentUnit = unit;
+
+  document.getElementById("homePage").style.display="none";
+  document.getElementById("contentPage").style.display="block";
+
+  const key = level + "|" + unit;
+  const done = completedUnits.includes(key);
 
   document.getElementById("contentBody").innerHTML = `
-    <h2>${course}</h2>
-    <p><strong>Course area ready.</strong></p>
-    <p>
-      This is the foundation for ${course}. Course units,
-      detailed notes, MCQs and structured examination papers
-      will be connected here next.
-    </p>
 
-    <div class="course-grid">
-      <div class="course">
-        <div class="course-icon">📚</div>
-        <h4>Course Units</h4>
-        <p>Access the units for ${course}.</p>
-        <button onclick="showComing('Course Units')">Open Units</button>
-      </div>
+    <button
+      class="back"
+      onclick="openLevel('${escapeText(level)}')">
 
-      <div class="course">
-        <div class="course-icon">📝</div>
-        <h4>Revision Questions</h4>
-        <p>Practice MCQs and structured questions.</p>
-        <button onclick="showComing('Revision Questions')">Practice</button>
-      </div>
+      ← Back to ${level}
 
-      <div class="course">
-        <div class="course-icon">📊</div>
-        <h4>Progress</h4>
-        <p>Track your study progress.</p>
-        <button onclick="showComing('Progress')">View Progress</button>
-      </div>
+    </button>
+
+    <div class="unit-header">
+
+      <h2>${unit}</h2>
+
+      <p>
+        ${level} • ${levelInfo[level]}
+      </p>
+
     </div>
+
+    <div class="actions">
+
+      <button class="action"
+        onclick="showComing('Study Notes')">
+
+        <span>📘</span>
+        Study Notes
+
+      </button>
+
+      <button class="action"
+        onclick="showComing('MCQ Practice')">
+
+        <span>📝</span>
+        MCQ Practice
+
+      </button>
+
+      <button class="action"
+        onclick="showComing('Structured Questions')">
+
+        <span>✍️</span>
+        Structured Questions
+
+      </button>
+
+      <button class="action"
+        onclick="showComing('Marking Guide')">
+
+        <span>✅</span>
+        Marking Guide
+
+      </button>
+
+    </div>
+
+    <div class="study-box">
+
+      <h3>📚 Unit Overview</h3>
+
+      <p>
+        This is the study area for
+        <strong>${unit}</strong>.
+      </p>
+
+      <p>
+        Comprehensive notes, explanations,
+        examples, revision questions and
+        examination practice will be added
+        to this unit.
+      </p>
+
+    </div>
+
+    <div class="study-box">
+
+      <h3>📊 Unit Progress</h3>
+
+      <p>
+        ${done ? "This unit is marked as completed." : "Not completed yet."}
+      </p>
+
+      <div class="progress">
+        <div
+          class="progress-bar"
+          style="width:${done ? 100 : 0}%">
+        </div>
+      </div>
+
+      <button
+        class="primary"
+        onclick="toggleComplete()">
+
+        ${done ? "Mark as Not Completed" : "Mark Unit Completed"}
+
+      </button>
+
+    </div>
+
   `;
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
+}
+
+function toggleComplete(){
+
+  if(!currentLevel || !currentUnit) return;
+
+  const key = currentLevel + "|" + currentUnit;
+
+  if(completedUnits.includes(key)){
+
+    completedUnits =
+      completedUnits.filter(item=>item!==key);
+
+  }else{
+
+    completedUnits.push(key);
+
+  }
+
+  localStorage.setItem(
+    "cphCompletedUnits",
+    JSON.stringify(completedUnits)
+  );
+
+  openUnit(currentLevel,currentUnit);
+
+}
+
+function showProgress(){
+
+  document.getElementById("homePage").style.display="none";
+  document.getElementById("contentPage").style.display="block";
+
+  let total = 0;
+
+  Object.values(curriculum).forEach(units=>{
+    total += units.length;
+  });
+
+  const completed = completedUnits.length;
+
+  const percentage =
+    total === 0
+    ? 0
+    : Math.round((completed / total) * 100);
+
+  document.getElementById("contentBody").innerHTML = `
+
+    <button class="back" onclick="home()">
+      ← Back to Home
+    </button>
+
+    <h2>My Progress</h2>
+
+    <div class="study-box">
+
+      <h3>Overall Course Progress</h3>
+
+      <p>
+        ${completed} of ${total} course units completed.
+      </p>
+
+      <div class="progress">
+        <div
+          class="progress-bar"
+          style="width:${percentage}%">
+        </div>
+      </div>
+
+      <p style="margin-top:8px;font-weight:bold;">
+        ${percentage}% complete
+      </p>
+
+    </div>
+
+    <div class="study-box">
+
+      <h3>Course Breakdown</h3>
+
+      ${Object.keys(curriculum).map(level=>{
+
+        const units = curriculum[level];
+
+        const done = units.filter(unit=>
+          completedUnits.includes(level+"|"+unit)
+        ).length;
+
+        const pct =
+          units.length
+          ? Math.round(done/units.length*100)
+          : 0;
+
+        return `
+
+          <div style="margin-bottom:18px;">
+
+            <strong>${level}</strong>
+
+            <p>
+              ${done}/${units.length} units completed
+            </p>
+
+            <div class="progress">
+
+              <div
+                class="progress-bar"
+                style="width:${pct}%">
+              </div>
+
+            </div>
+
+          </div>
+
+        `;
+
+      }).join("")}
+
+    </div>
+
+  `;
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
+}
+
+function showAbout(){
+
+  document.getElementById("homePage").style.display="none";
+  document.getElementById("contentPage").style.display="block";
+
+  document.getElementById("contentBody").innerHTML = `
+
+    <button class="back" onclick="home()">
+      ← Back to Home
+    </button>
+
+    <h2>About CPH STUDY</h2>
+
+    <div class="study-box">
+
+      <h3>Our Purpose</h3>
+
+      <p>
+        CPH STUDY is designed to organize Community
+        Pharmacy learning materials in one accessible
+        platform.
+      </p>
+
+      <p>
+        The platform will provide structured notes,
+        revision questions, MCQs, examination papers,
+        marking guides and progress tracking.
+      </p>
+
+    </div>
+
+  `;
+
 }
 
 function showComing(name){
-  document.getElementById("home").style.display="none";
-  document.getElementById("content").style.display="block";
+
+  document.getElementById("homePage").style.display="none";
+  document.getElementById("contentPage").style.display="block";
 
   document.getElementById("contentBody").innerHTML = `
+
+    <button
+      class="back"
+      onclick="openUnit('${escapeText(currentLevel || "CPH 1.1")}','${escapeText(currentUnit || "Course Unit")}')">
+
+      ← Back to Unit
+
+    </button>
+
     <h2>${name}</h2>
-    <p>
-      <strong>${name}</strong> is part of the next development stage.
-    </p>
-    <p>
-      The foundation is now in place so we can add the real
-      study materials without rebuilding the entire website.
-    </p>
+
+    <div class="study-box">
+
+      <h3>${name} Area</h3>
+
+      <p>
+        This section is ready for the actual
+        ${name.toLowerCase()} content.
+      </p>
+
+      <p>
+        We will add the comprehensive educational
+        material here in the next development stage.
+      </p>
+
+    </div>
+
   `;
+
 }
 
-function searchContent(){
+function searchCourses(){
+
   const query =
-    document.getElementById("search").value.toLowerCase().trim();
+    document.getElementById("searchInput")
+    .value
+    .toLowerCase()
+    .trim();
 
-  const cards =
-    document.querySelectorAll("#courseGrid .course");
+  const results =
+    document.getElementById("resultsGrid");
 
-  cards.forEach(card=>{
-    const text =
-      card.dataset.search.toLowerCase();
+  const resultBox =
+    document.getElementById("searchResults");
 
-    card.style.display =
-      text.includes(query) ? "" : "none";
+  const normal =
+    document.getElementById("normalHome");
+
+  if(!query){
+
+    resultBox.classList.add("hidden");
+    normal.style.display="block";
+    return;
+
+  }
+
+  resultBox.classList.remove("hidden");
+  normal.style.display="none";
+
+  results.innerHTML="";
+
+  let found = 0;
+
+  Object.keys(curriculum).forEach(level=>{
+
+    curriculum[level].forEach((unit,index)=>{
+
+      const text =
+        (level+" "+unit+" "+levelInfo[level])
+        .toLowerCase();
+
+      if(text.includes(query)){
+
+        found++;
+
+        results.innerHTML += `
+
+          <div class="card">
+
+            <div class="icon">
+              ${unitIcons[index % unitIcons.length]}
+            </div>
+
+            <h4>${unit}</h4>
+
+            <p>${level} • ${levelInfo[level]}</p>
+
+            <button
+              class="primary"
+              onclick="openUnit('${escapeText(level)}','${escapeText(unit)}')">
+
+              Open Unit
+
+            </button>
+
+          </div>
+
+        `;
+
+      }
+
+    });
+
   });
+
+  if(!found){
+
+    results.innerHTML = `
+
+      <div class="empty">
+
+        No matching course or unit found.
+
+      </div>
+
+    `;
+
+  }
+
 }
+
+function escapeText(text){
+
+  return text
+    .replace(/\\/g,"\\\\")
+    .replace(/'/g,"\\'");
+
+}
+
+const quotes = [
+
+  "Success is built one study session at a time.",
+
+  "Understanding is more powerful than memorizing.",
+
+  "Small progress every day becomes great achievement.",
+
+  "Study with purpose. Revise with confidence.",
+
+  "Consistency turns difficult subjects into familiar knowledge."
+
+];
+
+let quoteIndex = 0;
 
 setInterval(()=>{
-  quoteIndex = (quoteIndex + 1) % quotes.length;
+
+  quoteIndex =
+    (quoteIndex + 1) % quotes.length;
+
   document.getElementById("quote").textContent =
     '"' + quotes[quoteIndex] + '"';
+
 },6000);
+
+renderLevels();
 
 </script>
 
