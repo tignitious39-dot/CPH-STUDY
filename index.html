@@ -1,25 +1,121 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#0b5cab"><title>CPH STUDY</title>
-<link rel="manifest" href="manifest.json"><link rel="stylesheet" href="style.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<meta name="theme-color" content="#0b5cab">
+<title>CPH STUDY</title>
+
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-<header><div class="brand"><div class="icon">✚</div><div><b>CPH STUDY</b><small>Learn • Practice • Master</small></div></div>
-<button id="notify">🔔</button></header>
+
+<header>
+  <div class="brand">
+    <div class="icon">✚</div>
+    <div>
+      <b>CPH STUDY</b>
+      <small>Learn • Practice • Master</small>
+    </div>
+  </div>
+
+  <button id="notify">🔔</button>
+</header>
+
 <main>
-<section class="hero"><h1>Welcome to CPH STUDY</h1><p>Your medical and pharmacy learning resource.</p><div class="quote" id="quote"></div></section>
-<div class="search"><input id="search" placeholder="🔎 Search courses, topics and materials..."></div>
-<section><h2>CPH Levels</h2><div id="levels" class="grid"></div></section>
-<section><h2>Study Tools</h2><div class="tools">
-<button onclick="showTool('📝 Quizzes','Practice MCQs and revision questions.')">📝<span>Quizzes</span></button>
-<button onclick="showTool('🧮 Calculations','Practice pharmaceutical calculations step by step.')">🧮<span>Calculations</span></button>
-<button onclick="showTool('💬 Discussions','Ask questions and discuss topics with fellow students.')">💬<span>Discussions</span></button>
-<button onclick="showTool('📊 Progress','Track your study and quiz progress.')">📊<span>Progress</span></button>
-</div></section>
+
+<section class="hero">
+  <h1>Welcome to CPH STUDY</h1>
+  <p>Your medical and pharmacy learning resource.</p>
+  <div class="quote" id="quote"></div>
+</section>
+
+<div class="search">
+  <input
+    id="search"
+    placeholder="🔎 Search courses, topics and materials..."
+  >
+</div>
+
+<section>
+  <h2>CPH Levels</h2>
+  <div id="levels" class="grid"></div>
+</section>
+
+<!-- STUDY MATERIALS -->
+<section>
+  <h2>📚 Study Materials</h2>
+
+  <div class="tools">
+
+    <button onclick="window.location.href='materials.html'">
+      📚
+      <span>Study Materials</span>
+    </button>
+
+  </div>
+</section>
+
+<section>
+  <h2>Study Tools</h2>
+
+  <div class="tools">
+
+    <button onclick="showTool('📝 Quizzes','Practice MCQs and revision questions.')">
+      📝
+      <span>Quizzes</span>
+    </button>
+
+    <button onclick="showTool('🧮 Calculations','Practice pharmaceutical calculations step by step.')">
+      🧮
+      <span>Calculations</span>
+    </button>
+
+    <button onclick="showTool('💬 Discussions','Ask questions and discuss topics with fellow students.')">
+      💬
+      <span>Discussions</span>
+    </button>
+
+    <button onclick="showTool('📊 Progress','Track your study and quiz progress.')">
+      📊
+      <span>Progress</span>
+    </button>
+
+  </div>
+</section>
+
 <section id="results"></section>
+
 </main>
-<nav><button>🏠<span>Home</span></button><button onclick="alert('Global search is available above.')">🔎<span>Search</span></button><button onclick="showTool('🔖 Bookmarks','Saved study materials will appear here.')">🔖<span>Saved</span></button><button onclick="showTool('⚙️ Settings','App settings will be added in the next version.')">⚙️<span>Settings</span></button></nav>
+
+<nav>
+
+  <button>
+    🏠
+    <span>Home</span>
+  </button>
+
+  <button onclick="document.getElementById('search').focus()">
+    🔎
+    <span>Search</span>
+  </button>
+
+  <button onclick="showTool('🔖 Bookmarks','Saved study materials will appear here.')">
+    🔖
+    <span>Saved</span>
+  </button>
+
+  <button onclick="showTool('⚙️ Settings','App settings will be added in the next version.')">
+    ⚙️
+    <span>Settings</span>
+  </button>
+
+</nav>
+
 <script src="app.js"></script>
-</body></html>
+
+</body>
+</html>
