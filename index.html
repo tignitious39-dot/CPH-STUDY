@@ -2,1571 +2,1201 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#0757a0">
-
 <title>CPH STUDY</title>
 
 <style>
-
-*{
-box-sizing:border-box;
-margin:0;
-padding:0;
-}
-
+*{box-sizing:border-box}
 body{
-font-family:Arial,Helvetica,sans-serif;
-background:#f4f7fb;
-color:#172033;
-line-height:1.6;
+ margin:0;
+ font-family:Arial,sans-serif;
+ background:#f4f7fb;
+ color:#172033;
 }
-
 header{
-background:linear-gradient(135deg,#064b9b,#087bd3);
-color:white;
-padding:16px;
-display:flex;
-align-items:center;
-justify-content:space-between;
-position:sticky;
-top:0;
-z-index:100;
+ background:#0757a0;
+ color:white;
+ padding:16px;
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ position:sticky;
+ top:0;
+ z-index:5;
 }
-
-.brand{
-display:flex;
-align-items:center;
-gap:10px;
-}
-
-.brand-icon{
-font-size:34px;
-}
-
-.brand-title{
-font-size:20px;
-font-weight:bold;
-}
-
-.brand-subtitle{
-font-size:12px;
-opacity:.9;
-}
-
-header button{
-background:rgba(255,255,255,.15);
-border:0;
-color:white;
-font-size:21px;
-padding:9px;
-border-radius:9px;
-}
-
-main{
-max-width:1000px;
-margin:auto;
-padding:18px 15px 100px;
-}
-
+.brand{display:flex;gap:10px;align-items:center}
+.icon{font-size:30px}
+.title{font-size:20px;font-weight:bold}
+.small{font-size:12px;opacity:.9}
+main{max-width:950px;margin:auto;padding:16px 14px 90px}
 .hero{
-background:linear-gradient(135deg,#0757a0,#1393e6);
-color:white;
-padding:24px;
-border-radius:18px;
-margin-bottom:18px;
+ background:linear-gradient(135deg,#0757a0,#168ee5);
+ color:white;
+ padding:22px;
+ border-radius:16px;
+ margin-bottom:18px;
 }
-
-.hero h1{
-font-size:27px;
-margin-bottom:5px;
-}
-
+.hero h1{margin:0 0 5px}
 .quote{
-margin-top:16px;
-padding:12px;
-background:rgba(255,255,255,.15);
-border-radius:10px;
+ margin-top:15px;
+ padding:12px;
+ background:rgba(255,255,255,.15);
+ border-radius:9px;
 }
-
-.search{
-margin-bottom:20px;
-}
-
 .search input{
-width:100%;
-padding:15px;
-border:1px solid #ccd5df;
-border-radius:12px;
-font-size:16px;
-outline:none;
+ width:100%;
+ padding:14px;
+ border:1px solid #ccd5df;
+ border-radius:10px;
+ font-size:16px;
+ margin-bottom:18px;
 }
-
-h2{
-margin-bottom:14px;
-}
-
-h3{
-margin-bottom:8px;
-}
-
-.section{
-margin-bottom:25px;
-}
-
 .grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-gap:12px;
+ display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+ gap:12px;
 }
-
 .card{
-background:white;
-border-radius:15px;
-padding:18px;
-margin-bottom:14px;
-box-shadow:0 3px 12px rgba(0,0,0,.07);
+ background:white;
+ padding:17px;
+ border-radius:13px;
+ box-shadow:0 3px 12px rgba(0,0,0,.07);
+ margin-bottom:12px;
 }
-
-.clickable{
-cursor:pointer;
-transition:.2s;
-}
-
-.clickable:hover{
-transform:translateY(-2px);
-}
-
-.class-card{
-border-left:5px solid #0757a0;
-}
-
-.unit-card{
-border-left:5px solid #1688df;
-}
-
 button{
-border:0;
-border-radius:10px;
-padding:12px 15px;
-cursor:pointer;
-font-size:14px;
-background:#0757a0;
-color:white;
-margin:4px;
+ border:0;
+ border-radius:9px;
+ padding:11px 14px;
+ margin:4px;
+ background:#0757a0;
+ color:white;
+ cursor:pointer;
 }
-
-button.secondary{
-background:#eef3f8;
-color:#0757a0;
+.secondary{
+ background:#eaf1f8;
+ color:#0757a0;
 }
-
-button.danger{
-background:#dc3545;
-}
-
-button.success{
-background:#198754;
-}
-
-.tools{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:12px;
-}
-
 .tool{
-min-height:90px;
-font-size:27px;
+ width:100%;
+ min-height:85px;
+ font-size:24px;
 }
-
 .tool span{
-display:block;
-font-size:14px;
-margin-top:6px;
+ display:block;
+ font-size:14px;
+ margin-top:5px;
 }
-
-.unit-actions{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:8px;
-margin-top:15px;
+.unit-buttons{
+ display:grid;
+ grid-template-columns:repeat(2,1fr);
+ gap:8px;
 }
-
-.unit-actions button{
-margin:0;
+.unit-buttons button{margin:0}
+textarea,input[type=text]{
+ width:100%;
+ padding:12px;
+ border:1px solid #ccd5df;
+ border-radius:9px;
+ font:inherit;
 }
-
-.notes{
-background:#fbfcfe;
-border-left:4px solid #0757a0;
-padding:15px;
-border-radius:8px;
-margin-top:12px;
-}
-
-.notes h4{
-margin-top:15px;
-margin-bottom:5px;
-}
-
-.notes ul{
-padding-left:20px;
-}
-
-.quiz-option{
-display:block;
-width:100%;
-text-align:left;
-background:#f5f7fa;
-color:#172033;
-border:1px solid #d5dce5;
-margin:8px 0;
-}
-
-.quiz-option.correct{
-border:3px solid #198754;
-}
-
-.quiz-option.wrong{
-border:3px solid #dc3545;
-}
-
-.explanation{
-background:#eef6ff;
-border-left:4px solid #0757a0;
-padding:13px;
-border-radius:8px;
-margin:12px 0;
-}
-
-textarea{
-width:100%;
-min-height:120px;
-padding:12px;
-border:1px solid #ccd5df;
-border-radius:9px;
-resize:vertical;
-font-family:inherit;
-}
-
-input{
-font-family:inherit;
-}
-
+textarea{min-height:110px}
 .post{
-background:#f7f9fc;
-padding:14px;
-border-radius:10px;
-margin:10px 0;
-border-left:3px solid #1688df;
+ background:#f5f8fb;
+ padding:12px;
+ border-left:4px solid #168ee5;
+ border-radius:8px;
+ margin-top:10px;
 }
-
-.post-meta{
-font-size:12px;
-color:#687386;
-margin-top:6px;
+.answer{
+ display:block;
+ width:100%;
+ text-align:left;
+ background:#f0f4f8;
+ color:#172033;
 }
-
-.reply{
-margin:8px 0 0 20px;
-padding:9px;
-background:white;
-border-radius:7px;
-}
-
-.stat-grid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:10px;
-}
-
-.stat{
-background:#f1f5f9;
-padding:15px;
-border-radius:10px;
-text-align:center;
-}
-
-.stat strong{
-display:block;
-font-size:24px;
-color:#0757a0;
-}
-
-.hidden{
-display:none!important;
-}
-
+.correct{border:3px solid #198754}
+.wrong{border:3px solid #dc3545}
+.hidden{display:none}
 nav{
-position:fixed;
-bottom:0;
-left:0;
-right:0;
-background:white;
-border-top:1px solid #ddd;
-display:grid;
-grid-template-columns:repeat(4,1fr);
-padding:7px;
-z-index:200;
+ position:fixed;
+ bottom:0;
+ left:0;
+ right:0;
+ background:white;
+ border-top:1px solid #ddd;
+ display:grid;
+ grid-template-columns:repeat(4,1fr);
+ z-index:10;
 }
-
 nav button{
-background:transparent;
-color:#172033;
-margin:0;
-font-size:18px;
+ background:white;
+ color:#172033;
+ margin:0;
+ border-radius:0;
 }
-
-nav span{
-display:block;
-font-size:11px;
-}
-
-.dark{
-background:#101722;
-color:#f1f5f9;
-}
-
-.dark .card,
-.dark nav{
-background:#1b2635;
-color:#f1f5f9;
-}
-
-.dark .notes,
-.dark .post,
-.dark .reply,
-.dark .stat{
-background:#243144;
-}
-
-.dark .search input,
-.dark textarea{
-background:#1b2635;
-color:white;
-border-color:#46546a;
-}
+nav span{display:block;font-size:11px}
 
 @media(max-width:600px){
-
-.hero h1{
-font-size:23px;
+ .unit-buttons{grid-template-columns:1fr}
 }
-
-.stat-grid{
-grid-template-columns:1fr;
-}
-
-.unit-actions{
-grid-template-columns:1fr;
-}
-
-}
-
 </style>
 </head>
 
 <body>
 
 <header>
-
-<div class="brand">
-
-<div class="brand-icon">✚</div>
-
-<div>
-<div class="brand-title">CPH STUDY</div>
-<div class="brand-subtitle">
-Learn • Practice • Master
-</div>
-</div>
-
-</div>
-
-<button onclick="enableNotifications()">🔔</button>
-
+ <div class="brand">
+  <div class="icon">✚</div>
+  <div>
+   <div class="title">CPH STUDY</div>
+   <div class="small">Learn • Practice • Master</div>
+  </div>
+ </div>
+ <button onclick="notifyUser()">🔔</button>
 </header>
-
 
 <main>
 
 <section class="hero">
-
-<h1>Welcome to CPH STUDY</h1>
-
-<p>
-Your organized Certificate in Pharmacy learning platform.
-</p>
-
-<div
-class="quote"
-id="hourlyQuote">
-Loading motivation...
-</div>
-
+ <h1>Welcome to CPH STUDY</h1>
+ <p>Certificate in Pharmacy Study Platform</p>
+ <div class="quote" id="quote"></div>
 </section>
 
-
 <div class="search">
-
-<input
-id="globalSearch"
-type="search"
-placeholder="🔎 Search classes, units and topics..."
-oninput="globalSearch()">
-
+ <input
+  id="search"
+  type="text"
+  placeholder="🔎 Search classes and course units..."
+  oninput="searchCourses()">
 </div>
 
-
-<div id="app"></div>
+<div id="content"></div>
 
 </main>
 
-
 <nav>
-
-<button onclick="home()">
-🏠
-<span>Home</span>
-</button>
-
-<button onclick="focusSearch()">
-🔎
-<span>Search</span>
-</button>
-
-<button onclick="showSaved()">
-🔖
-<span>Saved</span>
-</button>
-
-<button onclick="settings()">
-⚙️
-<span>Settings</span>
-</button>
-
+ <button onclick="home()">🏠<span>Home</span></button>
+ <button onclick="focusSearch()">🔎<span>Search</span></button>
+ <button onclick="saved()">🔖<span>Saved</span></button>
+ <button onclick="settings()">⚙️<span>Settings</span></button>
 </nav>
-
 
 <script>
 
-/* ==================================================
-   CPH STUDY CURRICULUM
-================================================== */
+/* =========================
+   CURRICULUM
+========================= */
 
 const curriculum={
+ "CPH 1.1":[
+  "Microbiology",
+  "Anatomy & Physiology 1",
+  "Pharmaceutical Chemistry 1",
+  "First Aid",
+  "PHC",
+  "Computer Applications"
+ ],
 
-"CPH 1.1":[
+ "CPH 1.2":[
+  "Anatomy & Physiology 2",
+  "Pharmaceutical Chemistry 2",
+  "Pharmaceutical Calculations",
+  "Pharmacognosy",
+  "Pharmacology 1",
+  "Medical Psychology",
+  "Communication Skills",
+  "Pharmaceutical Practicals"
+ ],
 
-"Microbiology",
-"Anatomy & Physiology 1",
-"Pharmaceutical Chemistry 1",
-"First Aid",
-"PHC",
-"Computer Applications"
+ "CPH 2.1":[
+  "Pharmaceutics 1",
+  "Pharmacy Laws & Regulations",
+  "Pharmacy Practice 1",
+  "Therapeutics 1",
+  "Pharmacology 2",
+  "Stores & Inventory Management"
+ ],
 
-],
-
-"CPH 1.2":[
-
-"Anatomy & Physiology 2",
-"Pharmaceutical Chemistry 2",
-"Pharmaceutical Calculations",
-"Pharmacognosy",
-"Pharmacology 1",
-"Medical Psychology",
-"Communication Skills",
-"Pharmaceutical Practicals"
-
-],
-
-"CPH 2.1":[
-
-"Pharmaceutics 1",
-"Pharmacy Laws & Regulations",
-"Pharmacy Practice 1",
-"Therapeutics 1",
-"Pharmacology 2",
-"Stores & Inventory Management"
-
-],
-
-"CPH 2.2":[
-
-"Pharmaceutics 2",
-"Quality Assurance of Pharmaceuticals",
-"Pharmacy Practice 2",
-"Therapeutics 2",
-"Entrepreneurship"
-
-]
-
+ "CPH 2.2":[
+  "Pharmaceutics 2",
+  "Quality Assurance of Pharmaceuticals",
+  "Pharmacy Practice 2",
+  "Therapeutics 2",
+  "Entrepreneurship"
+ ]
 };
 
 
-/* ==================================================
-   APP STATE
-================================================== */
-
-const app=
-document.getElementById("app");
-
-let currentClass=null;
-
-let currentUnit=null;
-
-let quizQuestions=[];
-
-let quizIndex=0;
-
-let quizScore=0;
-
-let quizLocked=false;
-
-
-/* ==================================================
-   HOURLY MOTIVATION
-================================================== */
+/* =========================
+   MOTIVATION
+========================= */
 
 const quotes=[
-
-"📚 One hour of focused study can change your understanding completely.",
-
-"💡 Understand the concept before trying to memorize it.",
-
-"🎯 Study with purpose. Practice with discipline.",
-
-"🧠 Every question you solve strengthens your clinical thinking.",
-
-"💊 Knowledge makes a better pharmacy professional.",
-
-"🌟 Your consistency today builds your professional future.",
-
-"📖 Read. Understand. Recall. Apply.",
-
-"🚀 Do not wait for motivation. Build a study habit.",
-
-"🏆 Progress comes from repeated focused practice.",
-
-"🔬 Learn the science behind the medicine."
-
+ "📚 Study consistently, not occasionally.",
+ "🧠 Understand first. Memorize second.",
+ "🎯 Every topic mastered is one step forward.",
+ "💊 Good pharmacy practice begins with good knowledge.",
+ "🔬 Learn the science behind the medicine.",
+ "📖 Read. Recall. Practise. Improve.",
+ "🏆 Your effort today builds your professional future.",
+ "💡 Ask questions whenever a concept is unclear."
 ];
 
-
 function updateQuote(){
-
-const hour=
-new Date().getHours();
-
-const quote=
-quotes[hour%quotes.length];
-
-document.getElementById(
-"hourlyQuote"
-).textContent=quote;
-
+ const hour=new Date().getHours();
+ document.getElementById("quote").textContent=
+ quotes[hour%quotes.length];
 }
 
-
 updateQuote();
-
-
-/*
-Change automatically at the next hour.
-*/
-
 setInterval(updateQuote,60000);
 
 
-/* ==================================================
+/* =========================
    HOME
-================================================== */
+========================= */
 
 function home(){
 
-currentClass=null;
+ document.getElementById("search").value="";
 
-currentUnit=null;
+ document.getElementById("content").innerHTML=`
 
-app.innerHTML=`
+ <h2>🎓 Select Your Class</h2>
 
-<section class="section">
+ <div class="grid">
 
-<h2>🎓 Choose Your CPH Class</h2>
+ ${Object.keys(curriculum).map(level=>`
 
-<div class="grid">
+  <div class="card">
 
-${Object.keys(curriculum).map(
-level=>`
+   <h3>📚 ${level}</h3>
 
-<div
-class="card clickable class-card"
-onclick="openClass('${safeAttr(level)}')">
+   <p>
+    ${curriculum[level].length} course units
+   </p>
 
-<h3>📚 ${level}</h3>
+   <button onclick="openClass('${level}')">
+    Open Class
+   </button>
 
-<p>
-${curriculum[level].length}
-course units
-</p>
+  </div>
 
-<p>
-Study only the curriculum for this level.
-</p>
+ `).join("")}
 
-</div>
+ </div>
 
-`
-).join("")}
+ <h2>🛠️ Study Tools</h2>
 
-</div>
+ <div class="grid">
 
-</section>
+  <button class="tool" onclick="quizClasses()">
+   📝
+   <span>Quizzes</span>
+  </button>
 
+  <button class="tool" onclick="discussionClasses()">
+   💬
+   <span>Live Discussions</span>
+  </button>
 
-<section class="section">
+  <button class="tool" onclick="progress()">
+   📊
+   <span>Progress</span>
+  </button>
 
-<h2>🛠️ Study Tools</h2>
+  <button class="tool" onclick="saved()">
+   🔖
+   <span>Saved</span>
+  </button>
 
-<div class="tools">
-
-<button
-class="tool"
-onclick="chooseQuizClass()">
-
-📝
-<span>Quizzes</span>
-
-</button>
-
-
-<button
-class="tool"
-onclick="chooseCalculationClass()">
-
-🧮
-<span>Calculations</span>
-
-</button>
-
-
-<button
-class="tool"
-onclick="chooseDiscussionClass()">
-
-💬
-<span>Discussions</span>
-
-</button>
-
-
-<button
-class="tool"
-onclick="showProgress()">
-
-📊
-<span>Progress</span>
-
-</button>
-
-</div>
-
-</section>
-
-`;
-
+ </div>
+ `;
 }
-
 
 home();
 
 
-/* ==================================================
-   OPEN CLASS
-================================================== */
+/* =========================
+   CLASS
+========================= */
 
 function openClass(level){
 
-currentClass=level;
+ document.getElementById("content").innerHTML=`
 
-app.innerHTML=`
+ <div class="card">
 
-<div class="card">
+  <button class="secondary" onclick="home()">← Home</button>
 
-<button
-class="secondary"
-onclick="home()">
+  <h2>📚 ${level}</h2>
 
-← Back
+  <p>
+   Choose a course unit. Your notes, quizzes and
+   discussions remain separated by class and unit.
+  </p>
 
-</button>
+ </div>
 
-<h2>📚 ${level}</h2>
+ <div class="grid">
 
-<p>
-Choose a course unit. Materials and quizzes are restricted
-to this class level.
-</p>
+ ${curriculum[level].map(unit=>`
 
-</div>
+  <div class="card">
 
+   <h3>📖 ${unit}</h3>
 
-<div class="grid">
+   <div class="unit-buttons">
 
-${curriculum[level].map(
-unit=>`
+    <button onclick="notes('${level}','${unit}')">
+     📖 Notes
+    </button>
 
-<div
-class="card clickable unit-card">
+    <button onclick="quiz('${level}','${unit}')">
+     📝 Quiz
+    </button>
 
-<h3>📖 ${unit}</h3>
+    <button onclick="discussion('${level}','${unit}')">
+     💬 Discussion
+    </button>
 
-<p>
-Notes • Quiz • Discussion
-</p>
+    <button class="secondary"
+     onclick="save('${level}','${unit}')">
+     🔖 Save
+    </button>
 
-<div class="unit-actions">
+   </div>
 
-<button
-onclick="openUnit('${safeAttr(level)}','${safeAttr(unit)}')">
+  </div>
 
-Open Unit
+ `).join("")}
 
-</button>
-
-<button
-class="secondary"
-onclick="openDiscussion('${safeAttr(level)}','${safeAttr(unit)}')">
-
-💬 Live
-
-</button>
-
-</div>
-
-</div>
-
-`
-).join("")}
-
-</div>
-
-`;
-
+ </div>
+ `;
 }
 
 
-/* ==================================================
-   OPEN UNIT
-================================================== */
-
-function openUnit(level,unit){
-
-currentClass=level;
-
-currentUnit=unit;
-
-app.innerHTML=`
-
-<div class="card">
-
-<button
-class="secondary"
-onclick="openClass('${safeAttr(level)}')">
-
-← ${level}
-
-</button>
-
-<h2>📖 ${unit}</h2>
-
-<p>
-${level} • ${unit}
-</p>
-
-<div class="unit-actions">
-
-<button
-onclick="showNotes('${safeAttr(level)}','${safeAttr(unit)}')">
-
-📖 Notes
-
-</button>
-
-<button
-onclick="startUnitQuiz('${safeAttr(level)}','${safeAttr(unit)}')">
-
-📝 Quiz
-
-</button>
-
-<button
-onclick="openDiscussion('${safeAttr(level)}','${safeAttr(unit)}')">
-
-💬 Live Discussion
-
-</button>
-
-<button
-onclick="saveUnit('${safeAttr(level)}','${safeAttr(unit)}')">
-
-🔖 Save
-
-</button>
-
-</div>
-
-</div>
-
-<div id="unitContent"></div>
-
-`;
-
-}
-
-
-/* ==================================================
+/* =========================
    NOTES
-================================================== */
+========================= */
 
-function showNotes(level,unit){
+function notes(level,unit){
 
-const box=
-document.getElementById("unitContent");
+ document.getElementById("content").innerHTML=`
 
-box.innerHTML=`
+ <div class="card">
 
-<div class="card">
+ <button class="secondary"
+ onclick="openClass('${level}')">
+ ← ${level}
+ </button>
 
-<h2>📖 ${unit} — Study Notes</h2>
+ <h2>📖 ${unit}</h2>
 
-<div class="notes">
+ <p><b>${level} → ${unit}</b></p>
 
-<h3>About this unit</h3>
+ <hr>
 
-<p>
-These notes are organized specifically under
-<b>${level}</b> → <b>${unit}</b>.
-</p>
+ <h3>Study Notes</h3>
 
-<h4>Learning approach</h4>
+ <div class="card">
 
-<p>
-Study each topic carefully, identify important definitions,
-understand the underlying principles, and practise applying
-the knowledge to examination-style questions.
-</p>
+ <h3>Introduction</h3>
 
-<h4>Key revision areas</h4>
+ <p>
+ This section contains the structured study material
+ for <b>${unit}</b> under <b>${level}</b>.
+ </p>
 
-<ul>
+ <h3>Learning objectives</h3>
 
-<li>Definitions and terminology</li>
+ <ul>
+  <li>Understand the major concepts.</li>
+  <li>Learn important terminology.</li>
+  <li>Relate theory to pharmacy practice.</li>
+  <li>Practise examination questions.</li>
+ </ul>
 
-<li>Core principles and concepts</li>
+ <h3>Key revision points</h3>
 
-<li>Important classifications</li>
+ <p>
+ Important definitions, classifications, principles,
+ mechanisms and practical applications for this unit
+ will be organized here.
+ </p>
 
-<li>Mechanisms and processes</li>
+ </div>
 
-<li>Practical applications</li>
+ <button onclick="quiz('${level}','${unit}')">
+ 📝 Test Yourself
+ </button>
 
-<li>Common examination questions</li>
+ <button onclick="discussion('${level}','${unit}')">
+ 💬 Discuss This Unit
+ </button>
 
-<li>Key points requiring revision</li>
-
-</ul>
-
-<h4>Important</h4>
-
-<p>
-The complete course-specific notes should be added here
-for this particular unit. The system keeps notes separated
-by class and course unit so students do not accidentally
-study material outside their curriculum level.
-</p>
-
-</div>
-
-</div>
-
-`;
-
+ </div>
+ `;
 }
 
 
-/* ==================================================
-   QUIZ QUESTIONS BY UNIT
-================================================== */
+/* =========================
+   QUIZ BANK
+========================= */
 
-const quizBank={
+const questions={
 
-"CPH 1.1|Microbiology":[
+ "CPH 1.1|Microbiology":[
+  {
+   q:"What is microbiology?",
+   a:[
+    "Study of microorganisms",
+    "Study of bones",
+    "Study of accounting",
+    "Study of buildings"
+   ],
+   correct:0,
+   explanation:
+   "Microbiology is the scientific study of microorganisms."
+  }
+ ],
 
-{
-q:"Microbiology is primarily concerned with the study of what?",
-o:[
-"Microorganisms",
-"Bones",
-"Drug prices",
-"Body measurements"
-],
-a:0,
-e:"Microbiology is the scientific study of microorganisms."
-},
+ "CPH 1.1|Anatomy & Physiology 1":[
+  {
+   q:"Anatomy primarily deals with:",
+   a:[
+    "Body structure",
+    "Drug pricing",
+    "Business",
+    "Communication"
+   ],
+   correct:0,
+   explanation:
+   "Anatomy concerns the structure of the body."
+  }
+ ],
 
-{
-q:"Which of the following is a microorganism?",
-o:[
-"Bacterium",
-"Femur",
-"Heart",
-"Kidney"
-],
-a:0,
-e:"Bacteria are microorganisms."
-}
+ "CPH 1.2|Pharmaceutical Calculations":[
+  {
+   q:"Which equation is commonly used for dilution calculations?",
+   a:[
+    "C₁V₁ = C₂V₂",
+    "E = mc²",
+    "F = ma",
+    "P = IV"
+   ],
+   correct:0,
+   explanation:
+   "C₁V₁ = C₂V₂ is a standard dilution relationship."
+  },
 
-],
+  {
+   q:"A solution contains 500 mg in 5 mL. How many mg are in 1 mL?",
+   a:[
+    "50 mg",
+    "100 mg",
+    "250 mg",
+    "500 mg"
+   ],
+   correct:1,
+   explanation:
+   "500 mg ÷ 5 mL = 100 mg/mL."
+  }
+ ],
 
+ "CPH 1.2|Pharmacology 1":[
+  {
+   q:"Pharmacology is primarily concerned with:",
+   a:[
+    "Drugs and their effects",
+    "Buildings",
+    "Accounting",
+    "Food preparation"
+   ],
+   correct:0,
+   explanation:
+   "Pharmacology studies drugs and their effects on living systems."
+  }
+ ],
 
-"CPH 1.1|Anatomy & Physiology 1":[
+ "CPH 2.1|Pharmacology 2":[
+  {
+   q:"Pharmacodynamics primarily describes:",
+   a:[
+    "What a drug does to the body",
+    "What the body does to a drug",
+    "Drug packaging",
+    "Drug purchasing"
+   ],
+   correct:0,
+   explanation:
+   "Pharmacodynamics concerns drug effects and mechanisms of action."
+  }
+ ],
 
-{
-q:"Anatomy is primarily concerned with:",
-o:[
-"Body structure",
-"Drug pricing",
-"Drug storage",
-"Communication"
-],
-a:0,
-e:"Anatomy deals with the structure of the body."
-},
-
-{
-q:"Physiology is the study of:",
-o:[
-"How the body functions",
-"Only bones",
-"Drug packaging",
-"Business management"
-],
-a:0,
-e:"Physiology studies how body structures function."
-}
-
-],
-
-
-"CPH 1.2|Pharmaceutical Calculations":[
-
-{
-q:"Which equation is commonly used for dilution calculations?",
-o:[
-"C₁V₁ = C₂V₂",
-"F = ma",
-"E = mc²",
-"P = IV"
-],
-a:0,
-e:"C₁V₁ = C₂V₂ is commonly used for dilution calculations."
-},
-
-{
-q:"A solution contains 500 mg in 5 mL. How many mg are in 1 mL?",
-o:[
-"50 mg",
-"100 mg",
-"250 mg",
-"500 mg"
-],
-a:1,
-e:"500 mg ÷ 5 mL = 100 mg/mL."
-},
-
-{
-q:"What is the first step when solving many pharmaceutical calculation problems?",
-o:[
-"Identify the required quantity and available information",
-"Guess the answer",
-"Ignore the units",
-"Round everything immediately"
-],
-a:0,
-e:"Identify what is required, what is available, and ensure the units are compatible."
-}
-
-],
-
-
-"CPH 1.2|Pharmacology 1":[
-
-{
-q:"Pharmacology is the study of:",
-o:[
-"Drugs and their effects",
-"Only body temperature",
-"Hospital buildings",
-"Food preparation"
-],
-a:0,
-e:"Pharmacology concerns drugs and their effects on living systems."
-}
-
-],
-
-
-"CPH 2.1|Pharmacology 2":[
-
-{
-q:"Pharmacodynamics primarily describes:",
-o:[
-"What a drug does to the body",
-"What the body does to a drug",
-"Drug packaging",
-"Drug purchasing"
-],
-a:0,
-e:"Pharmacodynamics describes the biochemical and physiological effects of drugs and their mechanisms of action."
-}
-
-],
-
-
-"CPH 2.2|Entrepreneurship":[
-
-{
-q:"Entrepreneurship involves:",
-o:[
-"Identifying opportunities and creating value",
-"Only memorizing drug names",
-"Only measuring blood pressure",
-"Only dispensing tablets"
-],
-a:0,
-e:"Entrepreneurship involves identifying opportunities, organizing resources and creating value."
-}
-
-]
+ "CPH 2.2|Entrepreneurship":[
+  {
+   q:"Entrepreneurship involves:",
+   a:[
+    "Identifying opportunities and creating value",
+    "Only memorizing medicines",
+    "Only measuring temperature",
+    "Only dispensing tablets"
+   ],
+   correct:0,
+   explanation:
+   "Entrepreneurship involves identifying opportunities and organizing resources to create value."
+  }
+ ]
 
 };
 
 
-/* ==================================================
-   START UNIT QUIZ
-================================================== */
+/* =========================
+   QUIZ
+========================= */
 
-function startUnitQuiz(level,unit){
+let activeQuestions=[];
+let qIndex=0;
+let score=0;
 
-const key=
-level+"|"+unit;
+function quiz(level,unit){
 
-const available=
-quizBank[key] || [];
+ const key=level+"|"+unit;
+
+ activeQuestions=questions[key]||[];
+
+ if(activeQuestions.length===0){
+
+  document.getElementById("content").innerHTML=`
+
+  <div class="card">
+
+   <button class="secondary"
+   onclick="openClass('${level}')">
+   ← Back
+   </button>
+
+   <h2>📝 ${unit}</h2>
+
+   <p>
+    The question bank for this unit is being prepared.
+   </p>
+
+   <p>
+    CPH STUDY will never mix questions from another
+    class or course unit into this quiz.
+   </p>
+
+  </div>`;
+
+  return;
+ }
+
+ qIndex=0;
+ score=0;
+
+ showQuestion(level,unit);
+}
 
 
-if(!available.length){
+function showQuestion(level,unit){
 
-app.innerHTML=`
+ const q=activeQuestions[qIndex];
 
-<div class="card">
+ document.getElementById("content").innerHTML=`
 
-<h2>📝 ${unit} Quiz</h2>
+ <div class="card">
 
-<p>
-The quiz bank for this unit is being prepared.
-</p>
+ <button class="secondary"
+ onclick="openClass('${level}')">
+ ← Back
+ </button>
 
-<p>
-No questions from another class or course unit
-will be mixed into this quiz.
-</p>
+ <h2>📝 ${unit}</h2>
 
-<br>
+ <p>${level} • Question ${qIndex+1}/${activeQuestions.length}</p>
 
-<button
-onclick="openUnit('${safeAttr(level)}','${safeAttr(unit)}')">
+ <hr>
 
-← Back to Unit
+ <h3>${q.q}</h3>
 
-</button>
+ <div>
 
-</div>
+ ${q.a.map((answer,i)=>`
 
-`;
+  <button
+   class="answer"
+   onclick="checkAnswer(${i},${q.correct},'${level}','${unit}')">
 
-return;
+   ${String.fromCharCode(65+i)}. ${answer}
+
+  </button>
+
+ `).join("")}
+
+ </div>
+
+ <div id="explanation"></div>
+
+ </div>
+ `;
+}
+
+
+function checkAnswer(selected,correct,level,unit){
+
+ const buttons=document.querySelectorAll(".answer");
+
+ buttons.forEach(b=>b.disabled=true);
+
+ if(selected===correct){
+  score++;
+  buttons[selected].classList.add("correct");
+ }else{
+  buttons[selected].classList.add("wrong");
+  buttons[correct].classList.add("correct");
+ }
+
+ const q=activeQuestions[qIndex];
+
+ document.getElementById("explanation").innerHTML=`
+
+ <div class="post">
+
+ <b>Explanation</b>
+
+ <p>${q.explanation}</p>
+
+ <button onclick="nextQuestion('${level}','${unit}')">
+ Next →
+ </button>
+
+ </div>
+ `;
+}
+
+
+function nextQuestion(level,unit){
+
+ qIndex++;
+
+ if(qIndex>=activeQuestions.length){
+
+  const percent=
+   Math.round(score/activeQuestions.length*100);
+
+  document.getElementById("content").innerHTML=`
+
+  <div class="card">
+
+   <h2>🎉 Quiz Complete</h2>
+
+   <p>${level}</p>
+
+   <p>${unit}</p>
+
+   <h1>${percent}%</h1>
+
+   <p>
+    Score: ${score}/${activeQuestions.length}
+   </p>
+
+   <button onclick="quiz('${level}','${unit}')">
+    Retry
+   </button>
+
+   <button onclick="openClass('${level}')">
+    Back to Class
+   </button>
+
+  </div>
+  `;
+
+  return;
+ }
+
+ showQuestion(level,unit);
+}
+
+
+/* =========================
+   QUIZ CLASS SELECTOR
+========================= */
+
+function quizClasses(){
+
+ document.getElementById("content").innerHTML=`
+
+ <div class="card">
+
+ <h2>📝 Choose Class</h2>
+
+ <p>
+ Select your class before selecting a quiz.
+ </p>
+
+ </div>
+
+ <div class="grid">
+
+ ${Object.keys(curriculum).map(level=>`
+
+  <div class="card">
+
+   <h3>${level}</h3>
+
+   <button onclick="quizUnits('${level}')">
+    Choose Unit
+   </button>
+
+  </div>
+
+ `).join("")}
+
+ </div>
+ `;
+}
+
+
+function quizUnits(level){
+
+ document.getElementById("content").innerHTML=`
+
+ <div class="card">
+
+ <button class="secondary"
+ onclick="quizClasses()">
+ ← Classes
+ </button>
+
+ <h2>📝 ${level} Quizzes</h2>
+
+ </div>
+
+ <div class="grid">
+
+ ${curriculum[level].map(unit=>`
+
+  <div class="card">
+
+   <h3>${unit}</h3>
+
+   <button onclick="quiz('${level}','${unit}')">
+    Start Quiz
+   </button>
+
+  </div>
+
+ `).join("")}
+
+ </div>
+ `;
+}
+
+
+/* =========================
+   DISCUSSIONS
+========================= */
+
+function discussionClasses(){
+
+ document.getElementById("content").innerHTML=`
+
+ <div class="card">
+
+ <h2>💬 Discussions</h2>
+
+ <p>
+ Select your class.
+ </p>
+
+ </div>
+
+ <div class="grid">
+
+ ${Object.keys(curriculum).map(level=>`
+
+  <div class="card">
+
+   <h3>${level}</h3>
+
+   <button onclick="discussionUnits('${level}')">
+    Course Units
+   </button>
+
+  </div>
+
+ `).join("")}
+
+ </div>
+ `;
+}
+
+
+function discussionUnits(level){
+
+ document.getElementById("content").innerHTML=`
+
+ <div class="card">
+
+ <button class="secondary"
+ onclick="discussionClasses()">
+ ← Classes
+ </button>
+
+ <h2>💬 ${level}</h2>
+
+ </div>
+
+ <div class="grid">
+
+ ${curriculum[level].map(unit=>`
+
+  <div class="card">
+
+   <h3>${unit}</h3>
+
+   <button onclick="discussion('${level}','${unit}')">
+    💬 Open Discussion
+   </button>
+
+  </div>
+
+ `).join("")}
+
+ </div>
+ `;
+}
+
+
+function discussion(level,unit){
+
+ const key="cphDiscussion_"+level+"_"+unit;
+
+ const posts=
+ JSON.parse(localStorage.getItem(key)||"[]");
+
+ document.getElementById("content").innerHTML=`
+
+ <div class="card">
+
+ <button class="secondary"
+ onclick="openClass('${level}')">
+ ← Back
+ </button>
+
+ <h2>💬 Live Discussion</h2>
+
+ <p><b>${level}</b> → ${unit}</p>
+
+ <textarea
+ id="message"
+ placeholder="Ask a question or share something useful...">
+ </textarea>
+
+ <button onclick="post('${level}','${unit}')">
+ 📤 Post
+ </button>
+
+ </div>
+
+ <div id="posts">
+
+ ${posts.length
+ ?
+ posts.map(p=>`
+
+  <div class="post">
+
+   ${escapeHTML(p.text)}
+
+   <small>
+    <br>${p.time}
+   </small>
+
+  </div>
+
+ `).join("")
+ :
+ `<div class="card">
+  No posts yet. Start the discussion.
+ </div>`
+ }
+
+ </div>
+ `;
+}
+
+
+function post(level,unit){
+
+ const message=
+ document.getElementById("message").value.trim();
+
+ if(!message){
+  alert("Write a message first.");
+  return;
+ }
+
+ const key="cphDiscussion_"+level+"_"+unit;
+
+ const posts=
+ JSON.parse(localStorage.getItem(key)||"[]");
+
+ posts.push({
+  text:message,
+  time:new Date().toLocaleString()
+ });
+
+ localStorage.setItem(key,JSON.stringify(posts));
+
+ discussion(level,unit);
+}
+
+
+/* =========================
+   SAVED
+========================= */
+
+function save(level,unit){
+
+ const data=
+ JSON.parse(localStorage.getItem("cphSaved")||"[]");
+
+ if(!data.some(x=>x.level===level&&x.unit===unit)){
+
+  data.push({level,unit});
+
+  localStorage.setItem("cphSaved",JSON.stringify(data));
+
+ }
+
+ alert("🔖 Saved successfully.");
+}
+
+
+function saved(){
+
+ const data=
+ JSON.parse(localStorage.getItem("cphSaved")||"[]");
+
+ document.getElementById("content").innerHTML=`
+
+ <div class="card">
+
+ <h2>🔖 Saved Materials</h2>
+
+ ${
+ data.length
+ ?
+ data.map(x=>`
+
+  <div class="post">
+
+   <b>${x.level}</b><br>
+   ${x.unit}<br>
+
+   <button onclick="openClass('${x.level}')">
+    Open
+   </button>
+
+  </div>
+
+ `).join("")
+ :
+ "<p>No saved materials yet.</p>"
+ }
+
+ </div>
+ `;
+}
+
+
+/* =========================
+   PROGRESS
+========================= */
+
+function progress(){
+
+ document.getElementById("content").innerHTML=`
+
+ <div class="card">
+
+ <h2>📊 Progress</h2>
+
+ <p>
+ Quiz progress tracking will appear here as you
+ complete unit quizzes.
+ </p>
+
+ <button onclick="quizClasses()">
+ Start a Quiz
+ </button>
+
+ </div>
+ `;
+}
+
+
+/* =========================
+   SEARCH
+========================= */
+
+function focusSearch(){
+
+ document.getElementById("search").focus();
+}
+
+
+function searchCourses(){
+
+ const q=
+ document.getElementById("search").value
+ .toLowerCase().trim();
+
+ if(!q){
+  home();
+  return;
+ }
+
+ let results=[];
+
+ Object.keys(curriculum).forEach(level=>{
+
+  curriculum[level].forEach(unit=>{
+
+   if(
+    level.toLowerCase().includes(q) ||
+    unit.toLowerCase().includes(q)
+   ){
+
+    results.push({level,unit});
+
+   }
+
+  });
+
+ });
+
+ document.getElementById("content").innerHTML=`
+
+ <div class="card">
+
+ <h2>🔎 Search Results</h2>
+
+ <p>${results.length} result(s)</p>
+
+ </div>
+
+ ${
+ results.length
+ ?
+ results.map(x=>`
+
+  <div class="card">
+
+   <h3>${x.level}</h3>
+
+   <p>📖 ${x.unit}</p>
+
+   <button onclick="openClass('${x.level}')">
+    Open
+   </button>
+
+  </div>
+
+ `).join("")
+ :
+ `<div class="card">
+  No matching course found.
+ </div>`
+ }
+ `;
+}
+
+
+/* =========================
+   SETTINGS
+========================= */
+
+function settings(){
+
+ document.getElementById("content").innerHTML=`
+
+ <div class="card">
+
+ <h2>⚙️ Settings</h2>
+
+ <button onclick="toggleDark()">
+ 🌙 Dark Mode
+ </button>
+
+ <button onclick="notifyUser()">
+ 🔔 Notifications
+ </button>
+
+ </div>
+ `;
+}
+
+
+function toggleDark(){
+
+ document.body.style.background=
+ document.body.style.background==="rgb(15, 23, 42)"
+ ?
+ "#f4f7fb"
+ :
+ "#0f172a";
+
+ document.body.style.color=
+ document.body.style.color==="white"
+ ?
+ "#172033"
+ :
+ "white";
+}
+
+
+function notifyUser(){
+
+ if(!("Notification" in window)){
+
+  alert("Notifications are not supported.");
+
+  return;
+ }
+
+ Notification.requestPermission().then(p=>{
+
+  if(p==="granted"){
+   alert("🔔 Notifications enabled.");
+  }else{
+   alert("Notification permission was not granted.");
+  }
+
+ });
 
 }
 
 
-quizQuestions=
-[...available]
-.sort(()=>Math.random()-.5);
+/* =========================
+   SECURITY
+========================= */
 
-quizIndex=0;
+function escapeHTML(text){
 
-quizScore=0;
+ const div=document.createElement("div");
 
-quizLocked=false;
+ div.textContent=text;
 
-showQuizQuestion(level,unit);
-
+ return div.innerHTML;
 }
 
+</script>
 
-/* ==================================================
-   SHOW QUIZ QUESTION
-================================================== */
-
-function showQuizQuestion(level,unit){
-
-const q=
-quizQuestions[quizIndex];
-
-app.innerHTML=`
-
-<div class="card">
-
-<button
-class="secondary"
-onclick="openUnit('${safeAttr(level)}','${safeAttr(unit)}')">
-
-← Back to Unit
-
-</button>
-
-<h2>📝 ${unit} Quiz</h2>
-
-<p>
-${level} • ${unit}
-</p>
-
-<p>
-Question ${quizIndex+1}
-of ${quizQuestions.length}
-</p>
-
-<hr>
-
-<h3>
-${q.q}
-</h3>
-
-<div>
-
-${q.o.map(
-(option,index)=>`
-
-<button
-class="quiz-option"
-id="quizOption${index}"
-onclick="answer('${safeAttr(level)}','${safeAttr(unit)}',${index})">
-
-${String.fromCharCode(65+index)}. ${option}
-
-</button>
-
-`
-).join("")}
-
-</div>
-
-<div
-id="quizExplanation"
-class="explanation hidden">
-</div>
-
-<button
-id="nextQuiz"
-class="hidden"
-onclick="nextQuiz('${safeAttr(level)}','${safeAttr(unit)}')">
-
-Next Question →
-
-</button>
-
-</div>
-
-`;
-
-}
-
-
-/* ==================================================
-   ANSWER QUIZ
-================================================== */
-
-function answer(level,unit,selected){
-
-if(quizLocked)return;
-
-quizLocked=true;
-
-const q=
-quizQuestions[quizIndex];
-
-q.o.forEach(
-(_,index)=>{
-
-const btn=
-document.getElementById(
-"quizOption"+index
-);
-
-btn.disabled=true;
-
-if(index===q.a){
-
-btn.classList.add("correct");
-
-}
-
-});
-
-if(selected===q.a){
-
-quizScore++;
-
-}else{
-
-document
-.getElementById(
-"quizOption"+selected
-)
-.classList.add("wrong");
-
-}
-
-
-const explanation=
-document.getElementById(
-"quizExplanation"
-);
-
-explanation.textContent=
-"Explanation: "+q.e;
-
-explanation.classList.remove(
-"hidden"
-);
-
-document
-.getElementById("nextQuiz")
-.classList.remove(
-"hidden"
-);
-
-}
-
-
-/* ==================================================
-   NEXT QUIZ
-================================================== */
-
-function nextQuiz(level,unit){
-
-quizIndex++;
-
-quizLocked=false;
-
-if(
-quizIndex>=quizQuestions.length
-){
-
-finishQuiz(level,unit);
-
-}else{
-
-showQuizQuestion(level,unit);
-
-}
-
-}
-
-
-/* ==================================================
-   FINISH QUIZ
-================================================== */
-
-function finishQuiz(level,unit){
-
-const total=
-quizQuestions.length;
-
-const percentage=
-Math.round(
-quizScore/total*100
-);
-
-const history=
-JSON.parse(
-localStorage.getItem(
-"cphQuizHistory"
-)||"[]"
-);
-
-history.push({
-
-classLevel:level,
-
-unit:unit,
-
-score:quizScore,
-
-total:total,
-
-percentage:percentage,
-
-date:new Date().toLocaleString()
-
-});
-
-localStorage.setItem(
-"cphQuizHistory",
-JSON.stringify(history)
-);
-
-app.innerHTML=`
-
-<div class="card" style="text-align:center">
-
-<h2>🎉 Quiz Complete</h2>
-
-<h3>${level}</h3>
-
-<p>${unit}</p>
-
-<div style="
-font-size:48px;
-font-weight:bold;
-color:#0757a0;
-margin:15px">
-
-${percentage}%
-
-</div>
-
-<p>
-Score:
-<b>${quizScore}/${total}</b>
-</p>
-
-<br>
-
-<button
-onclick="startUnitQuiz('${safeAttr(level)}','${safeAttr(unit)}')">
-
-📝 Retry
-
-</button>
-
-<button
-onclick="openUnit('${safeAttr(level)}','${safeAttr(unit)}')">
-
-📖 Back to Unit
-
-</button>
-
-</div>
-
-`;
-
-}
-
-
-/* ==================================================
-   DISCUSSION CLASS SELECTOR
-================================================== */
-
-function chooseDiscussionClass(){
-
-app.innerHTML=`
-
-<div class="card">
-
-<h2>💬 Live Discussions</h2>
-
-<p>
-Choose your class first.
-</p>
-
-</div>
-
-<div class="grid">
-
-${Object.keys(curriculum).map(
-level=>`
-
-<div
-class="card clickable"
-onclick="openClassDiscussion('${safeAttr(level)}')">
-
-<h3>💬 ${level}</h3>
-
-<p>
-Choose a course unit for its live discussion.
-</p>
-
-</div>
-
-`
-).join("")}
-
-</div>
-
-`;
-
-}
-
-
-/* ==================================================
-   DISCUSSION UNIT SELECTOR
-================================================== */
-
-function openClassDiscussion(level){
-
-app.innerHTML=`
-
-<div class="card">
-
-<button
-class="secondary"
-onclick="chooseDiscussionClass()">
-
-← Back
-
-</button>
-
-<h2>💬 ${level} Discussions</h2>
-
-</div>
-
-<div class="grid">
-
-${curriculum[level].map(
-unit=>`
-
-<div
-class="card clickable"
-onclick="openDiscussion('${safeAttr(level)}','${safeAttr(unit)}')">
-
-<h3>${unit}</h3>
-
-<p>
-💬 Open live discussion
-</p>
-
-</div>
-
-`
-).join("")}
-
-</div>
-
-`;
-
-}
-
-
-/* ==================================================
-   DISCUSSION
-================================================== */
-
-function openDiscussion(level,unit){
-
-currentClass=level;
-
-currentUnit=unit;
-
-app.innerHTML=`
-
-<div class="card">
-
-<button
-class="secondary"
-onclick="openClass('${safeAttr(level)}')">
-
-← ${level}
-
-</button>
-
-<h2>💬 Live Discussion</h2>
-
-<p>
-<b>${level}</b> → ${unit}
-</p>
-
-<p>
-This discussion belongs only to this class and course unit.
-</p>
-
-<textarea
-id="discussionText"
-placeholder="Ask a question or share something useful...">
-</textarea>
-
-<button onclick="postDiscussion('${safeAttr(level)}','${safeAttr(unit)}')">
-
-📤 Post
-
-</button>
-
-<div id="discussionPosts"></div>
-
-</div>
-
-`;
-
-loadDiscussion(level,unit);
-
-}
-
-
-/* ==================================================
-   LOCAL DISCUSSION FALLBACK
-================================================== */
-
-function postDiscussion(level,unit){
-
-const box=
-document.getElementById(
-"discussionText"
-);
-
-const text=
-box.value.trim();
-
-if(!text){
-
-alert("Please write a message first.");
-
-return;
-
-}
-
-const key=
-"discussion_"+level+"_"+unit;
-
-const posts=
-JSON.parse(
-localStorage.getItem(key)||"[]"
-);
-
-posts.push({
-
-text:text,
-
-date:new Date().toLocaleString()
-
-});
-
-localStorage.setItem(
-key,
-JSON.stringify(posts)
-);
-
-  
+</body>
+   </html>
