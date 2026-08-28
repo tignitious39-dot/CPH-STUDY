@@ -4,135 +4,202 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#0757a0">
-<meta name="description" content="CPH STUDY - Certificate in Pharmacy Study Platform">
+<meta name="description" content="CPH STUDY — Certificate in Pharmacy Study Platform">
 <title>CPH STUDY</title>
 
 <style>
 *{box-sizing:border-box}
+html{scroll-behavior:smooth}
 body{
-  margin:0;
-  font-family:Arial,Helvetica,sans-serif;
-  background:#f4f7fb;
-  color:#172033;
+ margin:0;
+ font-family:Arial,Helvetica,sans-serif;
+ background:#f4f7fb;
+ color:#172033;
+ line-height:1.6
 }
 header{
-  background:#0757a0;
-  color:#fff;
-  padding:18px;
-  position:sticky;
-  top:0;
-  z-index:10;
-  box-shadow:0 2px 10px #0003;
+ position:sticky;
+ top:0;
+ z-index:100;
+ background:#0757a0;
+ color:white;
+ box-shadow:0 3px 15px #0003
 }
-.wrap{
-  width:min(1180px,94%);
-  margin:auto;
+.header{
+ max-width:1200px;
+ margin:auto;
+ padding:15px
 }
-.logo{
-  font-size:27px;
-  font-weight:800;
+.brand{
+ font-size:27px;
+ font-weight:800
 }
-.tag{
-  opacity:.9;
-  font-size:14px;
-}
+.subtitle{font-size:13px;opacity:.9}
 nav{
-  display:flex;
-  flex-wrap:wrap;
-  gap:7px;
-  margin-top:14px;
+ display:flex;
+ flex-wrap:wrap;
+ gap:7px;
+ margin-top:12px
 }
-nav a{
-  text-decoration:none;
-  background:#fff;
-  color:#0757a0;
-  padding:9px 12px;
-  border-radius:8px;
-  font-weight:700;
-  font-size:13px;
-}
-nav a:hover{
-  transform:translateY(-1px);
+nav button{
+ border:0;
+ border-radius:8px;
+ padding:9px 12px;
+ background:white;
+ color:#0757a0;
+ font-weight:700;
+ cursor:pointer
 }
 main{
-  padding:20px 0 40px;
-}
-.hero,.card,.level{
-  background:#fff;
-  border-radius:16px;
-  padding:22px;
-  margin-bottom:18px;
-  box-shadow:0 3px 14px #00000012;
+ max-width:1200px;
+ margin:auto;
+ padding:18px 14px 60px
 }
 .hero{
-  border-top:5px solid #0757a0;
+ background:white;
+ border-radius:18px;
+ padding:25px;
+ box-shadow:0 3px 15px #00000012;
+ margin-bottom:20px
 }
-h1,h2,h3{
-  color:#0757a0;
+.hero h1{margin-top:0;color:#0757a0}
+.search{
+ width:100%;
+ padding:14px;
+ border:1px solid #ccd5df;
+ border-radius:10px;
+ font-size:16px
 }
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-  gap:16px;
+.stats{
+ display:grid;
+ grid-template-columns:repeat(4,1fr);
+ gap:12px;
+ margin-top:15px
+}
+.stat{
+ background:#f7fbff;
+ border-radius:12px;
+ padding:14px;
+ text-align:center
+}
+.stat b{
+ display:block;
+ font-size:25px;
+ color:#0757a0
 }
 .level{
-  border-left:5px solid #0757a0;
+ margin:22px 0;
+ border-radius:18px;
+ overflow:hidden;
+ background:white;
+ box-shadow:0 3px 15px #00000012
 }
-.subject{
-  background:#f7fbff;
-  border:1px solid #dbe8f5;
-  border-radius:12px;
-  padding:15px;
-  margin:10px 0;
+.level-title{
+ padding:17px;
+ color:white;
+ font-size:21px;
+ font-weight:800
+}
+.blue{background:#0757a0}
+.green{background:#168447}
+.yellow{background:#a27600}
+.red{background:#b52b32}
+.units{
+ display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+ gap:14px;
+ padding:16px
+}
+.unit{
+ border:1px solid #dde5ed;
+ border-radius:13px;
+ padding:16px;
+ background:#fff
+}
+.unit h3{
+ margin-top:0;
+ color:#0757a0
 }
 .btn{
-  display:inline-block;
-  text-decoration:none;
-  border:0;
-  border-radius:9px;
-  padding:11px 15px;
-  background:#0757a0;
-  color:white;
-  font-weight:700;
-  margin:4px 2px;
+ border:0;
+ border-radius:9px;
+ padding:10px 13px;
+ margin:4px 2px;
+ cursor:pointer;
+ font-weight:700;
+ background:#0757a0;
+ color:white
 }
-.btn.alt{
-  background:#e7f0f8;
-  color:#0757a0;
+.btn.secondary{
+ background:#e8f1f8;
+ color:#0757a0
 }
-.search{
-  width:100%;
-  padding:14px;
-  border:1px solid #ccd5df;
-  border-radius:10px;
-  font-size:16px;
-  margin-top:12px;
+.btn.success{
+ background:#168447;
+ color:white
 }
-.badge{
-  display:inline-block;
-  padding:4px 9px;
-  border-radius:20px;
-  background:#e7f0f8;
-  color:#0757a0;
-  font-size:12px;
-  font-weight:700;
+.page{display:none}
+.page.active{display:block}
+.panel{
+ background:white;
+ border-radius:16px;
+ padding:20px;
+ margin-bottom:16px;
+ box-shadow:0 3px 15px #00000010
 }
-.notice{
-  background:#fff8e7;
-  border-left:4px solid #e0a000;
-  padding:14px;
-  border-radius:8px;
+.topic{
+ border-left:4px solid #0757a0;
+ padding:12px 15px;
+ margin:10px 0;
+ background:#f7fbff;
+ border-radius:7px
+}
+.question{
+ border:1px solid #dce4ec;
+ padding:16px;
+ border-radius:12px;
+ margin:12px 0
+}
+.option{
+ display:block;
+ padding:10px;
+ margin:7px 0;
+ border:1px solid #ccd6e0;
+ border-radius:8px;
+ cursor:pointer
+}
+.option:hover{background:#f0f6fb}
+.correct{background:#dff4e7!important}
+.wrong{background:#fde2e2!important}
+.result{
+ font-weight:800;
+ padding:12px;
+ border-radius:9px;
+ margin-top:10px
+}
+textarea{
+ width:100%;
+ min-height:130px;
+ border:1px solid #ccd5df;
+ border-radius:10px;
+ padding:12px;
+ font:inherit
 }
 footer{
-  text-align:center;
-  padding:30px;
-  color:#667085;
+ text-align:center;
+ padding:30px;
+ color:#667085
 }
-@media(max-width:600px){
-  header{padding:14px}
-  .logo{font-size:23px}
-  .hero,.card,.level{padding:16px}
-  nav a{font-size:12px;padding:8px 9px}
+.empty{
+ padding:25px;
+ text-align:center;
+ color:#667085
+}
+@media(max-width:700px){
+ .stats{grid-template-columns:repeat(2,1fr)}
+ .brand{font-size:23px}
+ nav button{font-size:12px;padding:8px}
+ .units{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -140,279 +207,209 @@ footer{
 <body>
 
 <header>
-<div class="wrap">
-
-<div class="logo">⚕️ CPH STUDY</div>
-<div class="tag">
-Certificate in Pharmacy • Learn • Practise • Master
-</div>
+<div class="header">
+<div class="brand">⚕️ CPH STUDY</div>
+<div class="subtitle">Certificate in Pharmacy • Learn • Practise • Master</div>
 
 <nav>
-<a href="index.html">🏠 Home</a>
-<a href="materials.html">📚 Materials</a>
-<a href="quiz.html">📝 MCQs</a>
-<a href="progress.html">📊 Progress</a>
-<a href="calculations.html">🧮 Calculations</a>
-<a href="papers.html">📄 Papers</a>
+<button onclick="showPage('home')">🏠 Home</button>
+<button onclick="showPage('courses')">📚 Courses</button>
+<button onclick="showPage('study')">📖 Study</button>
+<button onclick="showPage('quiz')">📝 MCQs</button>
+<button onclick="showPage('papers')">📄 Papers</button>
+<button onclick="showPage('calc')">🧮 Calculations</button>
+<button onclick="showPage('progress')">📊 Progress</button>
 </nav>
-
 </div>
 </header>
 
-<main class="wrap">
 
-<section class="hero">
+<main>
 
-<span class="badge">CPH STUDY</span>
+<!-- HOME -->
+<section id="home" class="page active">
 
-<h1>Your Pharmacy Study Platform</h1>
+<div class="hero">
+<h1>Welcome to CPH STUDY</h1>
 
 <p>
-Study your Certificate in Pharmacy subjects, revise important
-concepts, practise questions and monitor your progress from one
-mobile-friendly dashboard.
+A complete Certificate in Pharmacy revision platform covering
+CPH 1.1, CPH 1.2, CPH 2.1 and CPH 2.2.
 </p>
 
-<input
+<input id="searchBox"
 class="search"
-id="search"
-type="search"
-placeholder="🔎 Search a subject..."
-oninput="searchSubjects()">
+placeholder="🔎 Search any course..."
+oninput="searchCourses()">
 
-</section>
-
-
-<section class="grid">
-
-<div class="card">
-<h2>📚 Study Materials</h2>
-<p>
-Access course materials, notes and revision topics.
-</p>
-<a class="btn" href="materials.html">
-Open Materials
-</a>
+<div class="stats">
+<div class="stat"><b>25</b>Course Units</div>
+<div class="stat"><b>4</b>CPH Levels</div>
+<div class="stat"><b id="completedCount">0</b>Completed</div>
+<div class="stat"><b id="bookmarkCount">0</b>Bookmarks</div>
+</div>
 </div>
 
-<div class="card">
-<h2>📝 MCQ Centre</h2>
-<p>
-Practise multiple-choice questions and check your performance.
-</p>
-<a class="btn" href="quiz.html">
-Start MCQs
-</a>
-</div>
-
-<div class="card">
-<h2>📊 Progress</h2>
-<p>
-Track your completed study areas and examination practice.
-</p>
-<a class="btn" href="progress.html">
-View Progress
-</a>
-</div>
-
-<div class="card">
-<h2>🧮 Calculations</h2>
-<p>
-Practise pharmaceutical calculations including dilution,
-percentage strength, ratio strength and alligation.
-</p>
-<a class="btn" href="calculations.html">
-Open Calculations
-</a>
-</div>
-
-<div class="card">
-<h2>📄 Practice Papers</h2>
-<p>
-Use examination-style practice papers for revision.
-</p>
-<a class="btn" href="papers.html">
-Open Papers
-</a>
-</div>
-
-</div>
-
-
-<section id="levels">
-
-<div class="level">
-
-<span class="badge">CPH 1.1</span>
-<h2>CPH 1.1</h2>
-
-<div class="subject">
-<h3>Microbiology</h3>
-<p>Microorganisms, bacteria, infection, sterilisation and disinfection.</p>
-<a class="btn alt" href="materials.html?subject=Microbiology">
-Study
-</a>
-</div>
-
-<div class="subject">
-<h3>Anatomy & Physiology 1</h3>
-<p>Cells, tissues, organs, body systems and homeostasis.</p>
-<a class="btn alt" href="materials.html?subject=Anatomy%20%26%20Physiology%201">
-Study
-</a>
-</div>
-
-<div class="subject">
-<h3>Pharmaceutical Chemistry 1</h3>
-<p>Basic chemistry, acids, bases, pH, solutions and reactions.</p>
-<a class="btn alt" href="materials.html?subject=Pharmaceutical%20Chemistry%201">
-Study
-</a>
-</div>
-
-<div class="subject">
-<h3>First Aid</h3>
-<p>Emergency assessment, common injuries, basic first aid and referral.</p>
-<a class="btn alt" href="materials.html?subject=First%20Aid">
-Study
-</a>
-</div>
-
-<div class="subject">
-<h3>Primary Health Care</h3>
-<p>PHC principles, prevention, health promotion and community participation.</p>
-<a class="btn alt" href="materials.html?subject=Primary%20Health%20Care">
-Study
-</a>
-</div>
-
-<div class="subject">
-<h3>Computer Applications</h3>
-<p>Computer fundamentals, software, applications and digital safety.</p>
-<a class="btn alt" href="materials.html?subject=Computer%20Applications">
-Study
-</a>
-</div>
-
-</div>
-
-
-<div class="level">
-
-<span class="badge">CPH 1.2</span>
-<h2>CPH 1.2</h2>
-
-<div class="subject">
-<h3>Anatomy & Physiology 2</h3>
-<p>Endocrine, urinary, reproductive and immune systems.</p>
-<a class="btn alt" href="materials.html?subject=Anatomy%20%26%20Physiology%202">
-Study
-</a>
-</div>
-
-<div class="subject">
-<h3>Pharmaceutical Chemistry 2</h3>
-<p>Organic chemistry, functional groups, solubility and stability.</p>
-<a class="btn alt" href="materials.html?subject=Pharmaceutical%20Chemistry%202">
-Study
-</a>
-</div>
-
-<div class="subject">
-<h3>Pharmaceutical Calculations</h3>
-<p>Doses, dilutions, concentrations, percentages, ratios and alligation.</p>
-<a class="btn alt" href="calculations.html">
-Study
-</a>
-</div>
-
-<div class="subject">
-<h3>Pharmacognosy</h3>
-<p>Crude drugs, medicinal plants, identification, quality and adulteration.</p>
-<a class="btn alt" href="materials.html?subject=Pharmacognosy">
-Study
-</a>
-</div>
-
-<div class="subject">
-<h3>Pharmacology 1</h3>
-<p>Pharmacokinetics, pharmacodynamics, drug effects and adverse effects.</p>
-<a class="btn alt" href="materials.html?subject=Pharmacology%201">
-Study
-</a>
-</div>
-
-<div class="subject">
-<h3>Medical Psychology</h3>
-<p>Behaviour, motivation, stress and psychological factors in healthcare.</p>
-<a class="btn alt" href="materials.html?subject=Medical%20Psychology">
-Study
-</a>
-</div>
-
-<div class="subject">
-<h3>Communication Skills</h3>
-<p>Listening, counselling, communication barriers and professional communication.</p>
-<a class="btn alt" href="materials.html?subject=Communication%20Skills">
-Study
-</a>
-</div>
-
-</div>
-
-
-<div class="level">
-
-<span class="badge">CPH 2.1</span>
-<h2>CPH 2.1</h2>
-
-<div class="notice">
-The existing project content should be preserved here. Do not label
-invented subjects as an official curriculum. Connect this level to
-the CPH 2.1 material already stored in your project.
-</div>
-
-<a class="btn" href="materials.html?level=CPH%202.1">
-Open CPH 2.1
-</a>
-
-</div>
-
-
-<div class="level">
-
-<span class="badge">CPH 2.2</span>
-<h2>CPH 2.2</h2>
-
-<div class="notice">
-The existing project content should be preserved here. Do not label
-invented subjects as an official curriculum. Connect this level to
-the CPH 2.2 material already stored in your project.
-</div>
-
-<a class="btn" href="materials.html?level=CPH%202.2">
-Open CPH 2.2
-</a>
-
-</div>
-
-</section>
-
-
-<section class="hero">
-
-<h2>🎯 Recommended Study Order</h2>
-
+<div class="panel">
+<h2>🎯 How to study</h2>
 <ol>
-<li>Choose your CPH level.</li>
-<li>Open the relevant study material.</li>
-<li>Read the topic notes.</li>
-<li>Attempt the revision questions.</li>
-<li>Practise MCQs.</li>
-<li>Practise pharmaceutical calculations.</li>
+<li>Select your CPH level.</li>
+<li>Choose a course unit.</li>
+<li>Study the topics and key concepts.</li>
+<li>Attempt MCQs.</li>
+<li>Practise structured questions.</li>
 <li>Attempt examination papers.</li>
-<li>Check your progress.</li>
+<li>Record your progress.</li>
 </ol>
+</div>
+
+</section>
+
+
+<!-- COURSES -->
+<section id="courses" class="page">
+
+<div class="hero">
+<h1>📚 Official CPH Curriculum</h1>
+<p>25 course units across four levels.</p>
+</div>
+
+<div id="courseContainer"></div>
+
+</section>
+
+
+<!-- STUDY -->
+<section id="study" class="page">
+
+<div class="hero">
+<h1>📖 Study Centre</h1>
+<p id="studyIntro">
+Choose a course from the Courses section to begin studying.
+</p>
+</div>
+
+<div id="studyContent"></div>
+
+</section>
+
+
+<!-- QUIZ -->
+<section id="quiz" class="page">
+
+<div class="hero">
+<h1>📝 MCQ Centre</h1>
+<p>Test your knowledge and receive instant feedback.</p>
+</div>
+
+<div id="quizContent"></div>
+
+</section>
+
+
+<!-- PAPERS -->
+<section id="papers" class="page">
+
+<div class="hero">
+<h1>📄 Practice Examination Papers</h1>
+<p>Use these papers for revision and examination preparation.</p>
+</div>
+
+<div id="paperContent"></div>
+
+</section>
+
+
+<!-- CALCULATIONS -->
+<section id="calc" class="page">
+
+<div class="hero">
+<h1>🧮 Pharmaceutical Calculations</h1>
+
+<div class="topic">
+<h3>Dilution</h3>
+<p><b>C₁V₁ = C₂V₂</b></p>
+<p>
+Where C₁ is the initial concentration,
+V₁ is the volume required from the stock,
+C₂ is the required concentration and
+V₂ is the final volume.
+</p>
+</div>
+
+<div class="topic">
+<h3>Percentage Strength</h3>
+<p>
+% w/v = grams of solute per 100 mL of solution.
+</p>
+<p>
+% w/w = grams of solute per 100 g of preparation.
+</p>
+</div>
+
+<div class="topic">
+<h3>Ratio Strength</h3>
+<p>
+A ratio such as 1:1000 means 1 part of active substance
+in 1000 parts of the preparation.
+</p>
+</div>
+
+<div class="topic">
+<h3>Alligation</h3>
+<p>
+Alligation is used to determine the proportions of two
+different strengths required to prepare an intermediate strength.
+</p>
+</div>
+
+<div class="topic">
+<h3>Example</h3>
+<p>
+Prepare 100 mL of a 10% solution from a 25% stock solution.
+</p>
+
+<p>
+C₁V₁=C₂V₂
+</p>
+
+<p>
+25 × V₁ = 10 × 100
+</p>
+
+<p>
+V₁ = 40 mL
+</p>
+
+<p>
+Therefore use <b>40 mL</b> of the 25% stock and add vehicle
+to make a final volume of <b>100 mL</b>.
+</p>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- PROGRESS -->
+<section id="progress" class="page">
+
+<div class="hero">
+<h1>📊 My Progress</h1>
+
+<p>
+Completed units:
+<strong id="progressNumber">0</strong> / 25
+</p>
+
+<div id="progressList"></div>
+
+<button class="btn" onclick="resetProgress()">
+Reset Progress
+</button>
+
+</div>
 
 </section>
 
@@ -420,38 +417,713 @@ Open CPH 2.2
 
 
 <footer>
-CPH STUDY • Certificate in Pharmacy Study Platform
+CPH STUDY © 2026<br>
+Certificate in Pharmacy Study & Revision Platform
 </footer>
 
 
 <script>
 
-function searchSubjects(){
+/* =========================================================
+   OFFICIAL CPH CURRICULUM
+   ========================================================= */
 
-const value=
-document.getElementById("search")
-.value
-.toLowerCase()
-.trim();
+const curriculum={
 
-const subjects=
-document.querySelectorAll(".subject");
+"CPH 1.1":{
+color:"blue",
+units:[
+"Microbiology",
+"Anatomy & Physiology 1",
+"Pharmaceutical Chemistry 1",
+"First Aid",
+"Primary Health Care (PHC)",
+"Computer Applications"
+]},
 
-subjects.forEach(function(subject){
+"CPH 1.2":{
+color:"green",
+units:[
+"Anatomy & Physiology 2",
+"Pharmaceutical Chemistry 2",
+"Pharmaceutical Calculations",
+"Pharmacognosy",
+"Pharmacology 1",
+"Medical Psychology",
+"Communication Skills",
+"Pharmaceutical Practicals"
+]},
 
-const text=
-subject.innerText.toLowerCase();
+"CPH 2.1":{
+color:"yellow",
+units:[
+"Pharmaceutics 1",
+"Pharmacy Laws & Regulations",
+"Pharmacy Practice 1",
+"Therapeutics 1",
+"Pharmacology 2",
+"Stores & Inventory Management"
+]},
 
-subject.style.display=
-(!value || text.includes(value))
-?"block"
-:"none";
+"CPH 2.2":{
+color:"red",
+units:[
+"Pharmaceutics 2",
+"Quality Assurance of Pharmaceuticals",
+"Pharmacy Practice 2",
+"Therapeutics 2",
+"Entrepreneurship"
+]}
+
+};
+
+
+/* =========================================================
+   STUDY TOPIC FRAMEWORK
+   ========================================================= */
+
+const studyData={
+
+"Microbiology":[
+"Introduction to microbiology",
+"Classification of microorganisms",
+"Bacteria",
+"Viruses",
+"Fungi",
+"Protozoa",
+"Microbial growth",
+"Sterilisation and disinfection",
+"Antimicrobial agents",
+"Healthcare-associated infections"
+],
+
+"Anatomy & Physiology 1":[
+"Introduction to human anatomy",
+"Cells and tissues",
+"Skeletal system",
+"Muscular system",
+"Nervous system",
+"Cardiovascular system",
+"Respiratory system",
+"Digestive system"
+],
+
+"Pharmaceutical Chemistry 1":[
+"Atoms and molecules",
+"Chemical bonding",
+"Acids and bases",
+"pH and buffers",
+"Solutions",
+"Chemical reactions",
+"Pharmaceutical substances",
+"Chemical safety"
+],
+
+"First Aid":[
+"Principles of first aid",
+"Emergency assessment",
+"Wounds and bleeding",
+"Burns",
+"Fractures and sprains",
+"Shock",
+"Poisoning",
+"Emergency referral"
+],
+
+"Primary Health Care (PHC)":[
+"Concept of primary health care",
+"Health promotion",
+"Disease prevention",
+"Community participation",
+"Maternal and child health",
+"Immunisation",
+"Nutrition",
+"Community health education"
+],
+
+"Computer Applications":[
+"Computer fundamentals",
+"Operating systems",
+"Word processing",
+"Spreadsheets",
+"Presentations",
+"Internet use",
+"Data management",
+"Digital safety"
+],
+
+"Anatomy & Physiology 2":[
+"Endocrine system",
+"Urinary system",
+"Reproductive system",
+"Immune system",
+"Special senses",
+"Homeostasis",
+"Human reproduction"
+],
+
+"Pharmaceutical Chemistry 2":[
+"Organic chemistry",
+"Functional groups",
+"Hydrocarbons",
+"Alcohols and phenols",
+"Aldehydes and ketones",
+"Carboxylic acids",
+"Drug chemistry",
+"Stability"
+],
+
+"Pharmaceutical Calculations":[
+"Units and conversions",
+"Dosage calculations",
+"Percentage strength",
+"Ratio strength",
+"Dilution",
+"Concentration",
+"Alligation",
+"Infusion calculations"
+],
+
+"Pharmacognosy":[
+"Introduction to pharmacognosy",
+"Crude drugs",
+"Medicinal plants",
+"Plant constituents",
+"Alkaloids",
+"Glycosides",
+"Adulteration",
+"Quality control"
+],
+
+"Pharmacology 1":[
+"Introduction to pharmacology",
+"Pharmacokinetics",
+"Pharmacodynamics",
+"Drug receptors",
+"Adverse drug reactions",
+"Drug interactions",
+"Routes of administration",
+"Drug dosage forms"
+],
+
+"Medical Psychology":[
+"Introduction to psychology",
+"Human behaviour",
+"Learning",
+"Motivation",
+"Stress",
+"Communication and behaviour",
+"Patient behaviour"
+],
+
+"Communication Skills":[
+"Communication process",
+"Verbal communication",
+"Non-verbal communication",
+"Listening",
+"Counselling",
+"Communication barriers",
+"Professional communication",
+"Patient education"
+],
+
+"Pharmaceutical Practicals":[
+"Laboratory safety",
+"Measurement",
+"Weighing",
+"Preparation of solutions",
+"Pharmaceutical calculations",
+"Dispensing procedures",
+"Labelling",
+"Record keeping"
+],
+
+"Pharmaceutics 1":[
+"Introduction to pharmaceutics",
+"Dosage forms",
+"Solutions",
+"Suspensions",
+"Emulsions",
+"Powders",
+"Ointments",
+"Suppositories"
+],
+
+"Pharmacy Laws & Regulations":[
+"Pharmacy legislation",
+"Professional responsibilities",
+"Regulation of medicines",
+"Controlled medicines",
+"Prescription requirements",
+"Dispensing requirements",
+"Record keeping",
+"Professional ethics"
+],
+
+"Pharmacy Practice 1":[
+"Introduction to pharmacy practice",
+"Patient care",
+"Prescription interpretation",
+"Dispensing",
+"Labelling",
+"Patient counselling",
+"Medication safety",
+"Referral"
+],
+
+"Therapeutics 1":[
+"Principles of therapeutics",
+"Rational medicine use",
+"Common diseases",
+"Treatment principles",
+"Patient assessment",
+"Drug selection",
+"Monitoring",
+"Patient counselling"
+],
+
+"Pharmacology 2":[
+"Autonomic drugs",
+"Cardiovascular drugs",
+"Antimicrobial drugs",
+"Analgesics",
+"Anti-inflammatory drugs",
+"Respiratory drugs",
+"Gastrointestinal drugs",
+"Endocrine drugs"
+],
+
+"Stores & Inventory Management":[
+"Pharmaceutical stores",
+"Inventory systems",
+"Stock records",
+"Ordering",
+"Receiving medicines",
+"Storage conditions",
+"FEFO and FIFO",
+"Stock control"
+],
+
+"Pharmaceutics 2":[
+"Advanced dosage forms",
+"Tablets",
+"Capsules",
+"Sterile preparations",
+"Parenteral products",
+"Modified-release preparations",
+"Packaging",
+"Stability"
+],
+
+"Quality Assurance of Pharmaceuticals":[
+"Quality assurance principles",
+"Quality control",
+"Good Manufacturing Practice",
+"Good Storage Practice",
+"Good Distribution Practice",
+"Sampling",
+"Documentation",
+"Stability testing"
+],
+
+"Pharmacy Practice 2":[
+"Advanced pharmacy practice",
+"Medication review",
+"Patient counselling",
+"Adherence",
+"Drug-related problems",
+"Pharmacovigilance",
+"Public health pharmacy",
+"Professional practice"
+],
+
+"Therapeutics 2":[
+"Advanced therapeutics",
+"Chronic diseases",
+"Infectious diseases",
+"Cardiovascular therapeutics",
+"Respiratory therapeutics",
+"Endocrine therapeutics",
+"Gastrointestinal therapeutics",
+"Special populations"
+],
+
+"Entrepreneurship":[
+"Entrepreneurship concepts",
+"Business ideas",
+"Business planning",
+"Market research",
+"Financial management",
+"Marketing",
+"Customer service",
+"Small business management"
+]
+
+};
+
+
+/* =========================================================
+   SAMPLE QUESTION BANK
+   ========================================================= */
+
+const questions=[
+
+{
+subject:"Microbiology",
+q:"Which group contains bacteria?",
+options:["Prokaryotic microorganisms","Multicellular animals","Plants","Viruses only"],
+answer:0,
+explain:"Bacteria are prokaryotic microorganisms."
+},
+
+{
+subject:"Pharmaceutical Calculations",
+q:"Which equation is commonly used for dilution calculations?",
+options:["C₁V₁ = C₂V₂","E = mc²","PV = nRT","A = πr²"],
+answer:0,
+explain:"C₁V₁ = C₂V₂ relates concentration and volume before and after dilution."
+},
+
+{
+subject:"Pharmacology 1",
+q:"Pharmacokinetics describes:",
+options:[
+"What the drug does to the body",
+"What the body does to the drug",
+"Only adverse effects",
+"Only drug interactions"
+],
+answer:1,
+explain:"Pharmacokinetics covers absorption, distribution, metabolism and excretion."
+},
+
+{
+subject:"Pharmacy Practice 1",
+q:"Which activity is central to dispensing?",
+options:[
+"Preparing and supplying medicines appropriately",
+"Manufacturing computers",
+"Building hospitals",
+"Writing legislation"
+],
+answer:0,
+explain:"Dispensing involves appropriate preparation, labelling and supply of medicines."
+},
+
+{
+subject:"Quality Assurance of Pharmaceuticals",
+q:"GMP primarily aims to ensure:",
+options:[
+"Consistent production and quality of medicines",
+"Advertising only",
+"Hospital construction",
+"Patient diagnosis"
+],
+answer:0,
+explain:"Good Manufacturing Practice helps ensure medicines are consistently produced and controlled to appropriate quality standards."
+}
+
+];
+
+
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
+
+function showPage(id){
+
+document.querySelectorAll(".page")
+.forEach(p=>p.classList.remove("active"));
+
+const page=document.getElementById(id);
+
+if(page)page.classList.add("active");
+
+window.scrollTo({top:0,behavior:"smooth"});
+
+if(id==="courses")renderCourses();
+if(id==="progress")renderProgress();
+if(id==="quiz")renderQuiz();
+if(id==="papers")renderPapers();
+
+}
+
+
+/* =========================================================
+   COURSES
+   ========================================================= */
+
+function renderCourses(){
+
+const box=document.getElementById("courseContainer");
+box.innerHTML="";
+
+Object.entries(curriculum).forEach(([level,data])=>{
+
+const section=document.createElement("div");
+section.className="level";
+
+section.innerHTML=`
+<div class="level-title ${data.color}">
+${level} — ${data.units.length} Units
+</div>
+<div class="units"></div>
+`;
+
+const units=section.querySelector(".units");
+
+data.units.forEach(subject=>{
+
+const div=document.createElement("div");
+div.className="unit";
+
+div.innerHTML=`
+<h3>${subject}</h3>
+<p>${studyData[subject]?
+studyData[subject].length+" study topics available."
+:"Study content available."}</p>
+
+<button class="btn"
+onclick='openStudy(${JSON.stringify(subject)})'>
+📖 Study
+</button>
+
+<button class="btn secondary"
+onclick='bookmark(${JSON.stringify(subject)})'>
+🔖 Bookmark
+</button>
+
+<button class="btn success"
+onclick='complete(${JSON.stringify(subject)})'>
+✓ Complete
+</button>
+`;
+
+units.appendChild(div);
+
+});
+
+box.appendChild(section);
+
+});
+
+updateStats();
+
+}
+
+
+/* =========================================================
+   STUDY
+   ========================================================= */
+
+function openStudy(subject){
+
+showPage("study");
+
+const topics=studyData[subject]||[];
+
+document.getElementById("studyIntro").innerHTML=
+"<strong>"+subject+"</strong>";
+
+const box=document.getElementById("studyContent");
+
+box.innerHTML=`
+<div class="panel">
+<h2>${subject}</h2>
+<p>
+Work through the topics below systematically. After studying,
+return to the quiz centre and test yourself.
+</p>
+</div>
+`;
+
+topics.forEach((topic,i)=>{
+
+const div=document.createElement("div");
+div.className="topic";
+
+div.innerHTML=`
+<h3>${i+1}. ${topic}</h3>
+<p>
+<strong>Study focus:</strong>
+Understand the definition, principles, applications,
+professional relevance, examples and key examination points
+associated with <b>${topic}</b>.
+</p>
+`;
+
+box.appendChild(div);
+
+});
+
+box.innerHTML+=`
+<div class="panel">
+<button class="btn success"
+onclick='complete(${JSON.stringify(subject)})'>
+✓ Mark ${subject} Complete
+</button>
+
+<button class="btn"
+onclick='startSubjectQuiz(${JSON.stringify(subject)})'>
+📝 Test Me
+</button>
+</div>
+`;
+
+}
+
+
+/* =========================================================
+   QUIZ
+   ========================================================= */
+
+function renderQuiz(){
+
+const box=document.getElementById("quizContent");
+
+box.innerHTML=`
+<div class="panel">
+<h2>Quick Assessment</h2>
+<p>
+Choose an answer for each question.
+</p>
+<div id="questions"></div>
+<button class="btn" onclick="markQuiz()">
+Submit Answers
+</button>
+<div id="quizResult"></div>
+</div>
+`;
+
+const qbox=document.getElementById("questions");
+
+questions.forEach((q,i)=>{
+
+let html=`
+<div class="question">
+<strong>${i+1}. ${q.q}</strong>
+`;
+
+q.options.forEach((o,j)=>{
+
+html+=`
+<label class="option">
+<input type="radio"
+name="q${i}"
+value="${j}">
+${o}
+</label>
+`;
+
+});
+
+html+=`</div>`;
+
+qbox.innerHTML+=html;
 
 });
 
 }
 
-</script>
 
-</body>
-  </html>
+function startSubjectQuiz(subject){
+
+showPage("quiz");
+
+const relevant=
+questions.filter(q=>q.subject===subject);
+
+const box=document.getElementById("quizContent");
+
+if(!relevant.length){
+
+box.innerHTML=`
+<div class="panel">
+<h2>${subject}</h2>
+<p>
+A full question bank for this unit can be added to the
+question database without changing the application engine.
+</p>
+</div>
+`;
+
+return;
+}
+
+box.innerHTML=`
+<div class="panel">
+<h2>${subject} Test</h2>
+<div id="subjectQuestions"></div>
+<button class="btn" onclick="markSubjectQuiz()">
+Submit
+</button>
+<div id="subjectResult"></div>
+</div>
+`;
+
+const qbox=document.getElementById("subjectQuestions");
+
+relevant.forEach((q,i)=>{
+
+let html=
+`<div class="question">
+<strong>${i+1}. ${q.q}</strong>`;
+
+q.options.forEach((o,j)=>{
+
+html+=`
+<label class="option">
+<input type="radio"
+name="sq${i}"
+value="${j}">
+${o}
+</label>
+`;
+
+});
+
+html+=`</div>`;
+
+qbox.innerHTML+=html;
+
+});
+
+window.currentSubjectQuestions=relevant;
+
+}
+
+
+function markQuiz(){
+
+let score=0;
+
+questions.forEach((q,i)=>{
+
+const selected=
+document.querySelector(
+`input[name="q${i}"]:checked`
+);
+
+if(selected && Number(selected.value)===q.answer)
+score++;
+
+});
+
+document.getElementById("quizResult").innerHTML=
+`<div class="result">
+Score: ${score}/${questions.length}
+</div>`;
+
+}
+
+
+function markSubjectQuiz(){
+
+const qs=window.currentSubjectQuestions||[];
+let score=0;
+
+qs.forEach((q,i)=>{
+
+const selected=
+document.querySelector(
+`input[name="sq${i}"]:
