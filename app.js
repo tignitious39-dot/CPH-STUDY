@@ -1,369 +1,136 @@
-/* =========================================================
-   CPH STUDY - MAIN APP ENGINE
-   ========================================================= */
+/* CPH STUDY APP */
 
 const results = document.getElementById("results");
-const searchInput = document.getElementById("search");
-const levelsContainer = document.getElementById("levels");
-const quoteBox = document.getElementById("quote");
 
-/* =========================================================
-   CPH LEVELS
-   ========================================================= */
 
-const levels = [
+/* =========================
+   QUIZZES
+========================= */
+
+const questions = [
   {
-    name: "CPH 1.1",
-    description: "Foundation pharmacy and medical sciences",
-    topics: [
-      "Anatomy & Physiology",
-      "Pharmaceutical Calculations",
-      "Pharmaceutics",
-      "Biochemistry"
-    ]
-  },
-  {
-    name: "CPH 1.2",
-    description: "Core pharmaceutical knowledge",
-    topics: [
-      "Pharmacology",
-      "Microbiology",
-      "Pharmaceutics",
-      "Clinical Pharmacy"
-    ]
-  },
-  {
-    name: "CPH 2.1",
-    description: "Advanced pharmacy studies",
-    topics: [
-      "Clinical Pharmacy",
-      "Pharmacology",
-      "Pharmaceutical Technology",
-      "Medicine Management"
-    ]
-  },
-  {
-    name: "CPH 2.2",
-    description: "Advanced revision and examination preparation",
-    topics: [
-      "Clinical Practice",
-      "Pharmacotherapy",
-      "Calculations",
-      "CPH Revision"
-    ]
-  }
-];
-
-function loadLevels() {
-
-  if (!levelsContainer) return;
-
-  levelsContainer.innerHTML = "";
-
-  levels.forEach((level, index) => {
-
-    const card = document.createElement("div");
-
-    card.className = "card";
-
-    card.innerHTML = `
-      <h3>📚 ${level.name}</h3>
-      <p>${level.description}</p>
-      <button onclick="openLevel(${index})">
-        Explore Level
-      </button>
-    `;
-
-    levelsContainer.appendChild(card);
-
-  });
-
-}
-
-function openLevel(index) {
-
-  const level = levels[index];
-
-  results.innerHTML = `
-    <div class="card">
-      <h2>📚 ${level.name}</h2>
-
-      <p>${level.description}</p>
-
-      <h3>Topics</h3>
-
-      <ul>
-        ${level.topics.map(topic => `
-          <li style="margin:8px 0;">
-            ${topic}
-          </li>
-        `).join("")}
-      </ul>
-
-      <br>
-
-      <button onclick="showTool(
-        '📝 Quizzes',
-        'Practice MCQs and revision questions.'
-      )">
-        📝 Start Revision
-      </button>
-    </div>
-  `;
-
-  results.scrollIntoView({
-    behavior: "smooth"
-  });
-
-}
-
-
-/* =========================================================
-   DAILY MOTIVATION
-   ========================================================= */
-
-const quotes = [
-  "Small progress every day becomes great achievement.",
-  "Study the concept, not just the answer.",
-  "Your future pharmacy professional self is built today.",
-  "Consistency beats last-minute preparation.",
-  "Understand it today. Remember it tomorrow.",
-  "Every question you practice makes you stronger.",
-  "Learn • Practice • Master.",
-  "Do not fear difficult topics. Break them into smaller ideas."
-];
-
-function loadQuote() {
-
-  if (!quoteBox) return;
-
-  const day =
-    Math.floor(Date.now() / 86400000);
-
-  quoteBox.textContent =
-    "💡 " + quotes[day % quotes.length];
-
-}
-
-
-/* =========================================================
-   QUIZ DATABASE
-   ========================================================= */
-
-const quizQuestions = [
-
-  {
-    subject: "Pharmacology",
-
-    question:
-      "What is pharmacology?",
-
+    q: "What is pharmacology?",
     options: [
       "The study of drugs and their effects",
-      "The study of bones only",
+      "The study of bones",
       "The study of food",
       "The study of microorganisms only"
     ],
-
     answer: 0,
-
     explanation:
-      "Pharmacology is the science concerned with drugs and their interactions with living systems."
+      "Pharmacology is the study of drugs and their effects on living organisms."
   },
 
   {
-    subject: "Pharmacology",
-
-    question:
-      "What does pharmacokinetics describe?",
-
+    q: "What does pharmacokinetics describe?",
     options: [
       "What the drug does to the body",
       "What the body does to the drug",
-      "Only adverse effects",
+      "Only adverse drug reactions",
       "Only drug manufacturing"
     ],
-
     answer: 1,
-
     explanation:
-      "Pharmacokinetics describes the movement of a drug through the body, commonly summarized as ADME."
+      "Pharmacokinetics describes what the body does to a drug: absorption, distribution, metabolism and excretion."
   },
 
   {
-    subject: "Pharmaceutical Calculations",
-
-    question:
-      "Which formula is commonly used for dilution calculations?",
-
+    q: "Which formula is commonly used for dilution calculations?",
     options: [
       "C₁V₁ = C₂V₂",
       "E = mc²",
       "F = ma",
       "P = IV"
     ],
-
     answer: 0,
-
     explanation:
-      "C₁V₁ = C₂V₂ is commonly used to calculate dilution of solutions."
+      "C₁V₁ = C₂V₂ is commonly used for dilution calculations."
   },
 
   {
-    subject: "Pharmaceutical Calculations",
-
-    question:
-      "A preparation contains 500 mg in 5 mL. How many mg are in 1 mL?",
-
+    q: "A medicine contains 500 mg in 5 mL. How many mg are in 1 mL?",
     options: [
       "50 mg",
       "100 mg",
       "250 mg",
       "500 mg"
     ],
-
     answer: 1,
-
     explanation:
       "500 mg ÷ 5 mL = 100 mg/mL."
   },
 
   {
-    subject: "Anatomy & Physiology",
-
-    question:
-      "Which organ pumps blood around the body?",
-
+    q: "Which organ pumps blood around the body?",
     options: [
       "Liver",
       "Heart",
       "Kidney",
       "Lung"
     ],
-
     answer: 1,
-
     explanation:
       "The heart pumps blood through the cardiovascular system."
   },
 
   {
-    subject: "Anatomy & Physiology",
-
-    question:
-      "What is homeostasis?",
-
+    q: "What is homeostasis?",
     options: [
       "Complete absence of change",
       "Maintenance of a relatively stable internal environment",
       "Digestion of food",
       "Movement of bones"
     ],
-
     answer: 1,
-
     explanation:
       "Homeostasis is the maintenance of relatively stable internal conditions."
-  },
-
-  {
-    subject: "Microbiology",
-
-    question:
-      "Microbiology is primarily the study of:",
-
-    options: [
-      "Microorganisms",
-      "Bones",
-      "Medicines only",
-      "Macroscopic plants only"
-    ],
-
-    answer: 0,
-
-    explanation:
-      "Microbiology studies microorganisms such as bacteria, viruses, fungi and protozoa."
-  },
-
-  {
-    subject: "Pharmaceutics",
-
-    question:
-      "Which of the following is a pharmaceutical dosage form?",
-
-    options: [
-      "Tablet",
-      "Neuron",
-      "Artery",
-      "Enzyme"
-    ],
-
-    answer: 0,
-
-    explanation:
-      "A tablet is a solid pharmaceutical dosage form."
   }
-
 ];
 
 
-/* =========================================================
-   QUIZ STATE
-   ========================================================= */
-
-let activeQuestions = [];
 let quizIndex = 0;
 let quizScore = 0;
-let quizAnswered = false;
+let selectedQuestions = [];
 
 
-/* =========================================================
-   MAIN TOOL CONTROLLER
-   ========================================================= */
+/* =========================
+   TOOL CONTROLLER
+========================= */
 
 function showTool(title, description) {
 
-  if (!results) return;
+  if (!results) {
+    alert("CPH STUDY app is still loading. Please refresh the page.");
+    return;
+  }
 
   if (title.includes("Quizzes")) {
-
-    openQuizMenu();
-
+    showQuizMenu();
     return;
   }
 
   if (title.includes("Calculations")) {
-
-    openCalculations();
-
+    showCalculations();
     return;
   }
 
   if (title.includes("Discussions")) {
-
-    openDiscussions();
-
+    showDiscussions();
     return;
   }
 
   if (title.includes("Progress")) {
-
-    openProgress();
-
+    showProgress();
     return;
   }
 
   if (title.includes("Bookmarks")) {
-
-    openSaved();
-
+    showBookmarks();
     return;
   }
 
   if (title.includes("Settings")) {
-
-    openSettings();
-
+    showSettings();
     return;
   }
 
@@ -374,59 +141,29 @@ function showTool(title, description) {
     </div>
   `;
 
-  results.scrollIntoView({
-    behavior: "smooth"
-  });
-
+  results.scrollIntoView({ behavior: "smooth" });
 }
 
 
-/* =========================================================
+/* =========================
    QUIZ MENU
-   ========================================================= */
+========================= */
 
-function openQuizMenu() {
-
-  const subjects = [
-    "Mixed CPH Revision",
-    "Pharmacology",
-    "Pharmaceutical Calculations",
-    "Anatomy & Physiology",
-    "Microbiology",
-    "Pharmaceutics"
-  ];
+function showQuizMenu() {
 
   results.innerHTML = `
     <div class="card">
 
-      <h2>📝 CPH Quiz Centre</h2>
+      <h2>📝 CPH STUDY Quiz Centre</h2>
 
       <p>
-        Test yourself using interactive CPH revision questions.
+        Test your knowledge using CPH revision questions.
       </p>
 
-      <label>
-        <b>Select subject</b>
-      </label>
+      <br>
 
-      <select id="quizSubject"
-        style="
-          width:100%;
-          padding:12px;
-          margin:12px 0;
-          border-radius:8px;
-        ">
-
-        ${subjects.map((subject, i) => `
-          <option value="${i}">
-            ${subject}
-          </option>
-        `).join("")}
-
-      </select>
-
-      <button onclick="beginQuiz()">
-        🚀 Start Quiz
+      <button onclick="startQuiz()">
+        🚀 Start Mixed Quiz
       </button>
 
     </div>
@@ -435,75 +172,40 @@ function openQuizMenu() {
   results.scrollIntoView({
     behavior: "smooth"
   });
-
 }
 
 
-/* =========================================================
+/* =========================
    START QUIZ
-   ========================================================= */
+========================= */
 
-function beginQuiz() {
+function startQuiz() {
 
-  const selected =
-    Number(document.getElementById("quizSubject").value);
-
-  const subjects = [
-    "Mixed CPH Revision",
-    "Pharmacology",
-    "Pharmaceutical Calculations",
-    "Anatomy & Physiology",
-    "Microbiology",
-    "Pharmaceutics"
-  ];
-
-  const subject = subjects[selected];
-
-  if (subject === "Mixed CPH Revision") {
-
-    activeQuestions =
-      [...quizQuestions];
-
-  } else {
-
-    activeQuestions =
-      quizQuestions.filter(
-        q => q.subject === subject
-      );
-
-  }
-
-  activeQuestions =
-    activeQuestions.sort(
-      () => Math.random() - 0.5
-    );
+  selectedQuestions = [...questions]
+    .sort(() => Math.random() - 0.5);
 
   quizIndex = 0;
   quizScore = 0;
-  quizAnswered = false;
 
-  showQuizQuestion();
-
+  displayQuestion();
 }
 
 
-/* =========================================================
+/* =========================
    DISPLAY QUESTION
-   ========================================================= */
+========================= */
 
-function showQuizQuestion() {
+function displayQuestion() {
 
-  if (quizIndex >= activeQuestions.length) {
+  const question =
+    selectedQuestions[quizIndex];
+
+  if (!question) {
 
     finishQuiz();
 
     return;
   }
-
-  const q =
-    activeQuestions[quizIndex];
-
-  quizAnswered = false;
 
   results.innerHTML = `
     <div class="card">
@@ -512,52 +214,52 @@ function showQuizQuestion() {
 
       <p>
         Question ${quizIndex + 1}
-        of ${activeQuestions.length}
+        of ${selectedQuestions.length}
       </p>
 
-      <hr style="margin:12px 0;">
+      <hr>
 
-      <h3>
-        ${q.question}
+      <h3 style="margin-top:15px;">
+        ${question.q}
       </h3>
 
-      <div id="quizOptions"
-        style="margin-top:15px;">
+      <div style="margin-top:15px;">
 
-        ${q.options.map((option, i) => `
-          <button
-            onclick="answerQuestion(${i})"
-            id="option${i}"
-            style="
-              display:block;
-              width:100%;
-              text-align:left;
-              margin:8px 0;
-            "
-          >
-            ${String.fromCharCode(65 + i)}.
-            ${option}
-          </button>
-        `).join("")}
+        ${question.options.map(
+          (option, index) => `
+            <button
+              onclick="answerQuiz(${index})"
+              id="answer-${index}"
+              style="
+                display:block;
+                width:100%;
+                text-align:left;
+                margin:8px 0;
+              "
+            >
+              ${String.fromCharCode(65 + index)}.
+              ${option}
+            </button>
+          `
+        ).join("")}
 
       </div>
 
-      <div id="quizExplanation"
+      <div
+        id="quizExplanation"
         style="
           display:none;
           margin-top:15px;
           padding:12px;
           background:#eef6ff;
           border-radius:8px;
-        ">
-      </div>
-
-      <br>
+        "
+      ></div>
 
       <button
-        id="nextQuestionButton"
+        id="nextQuiz"
         onclick="nextQuizQuestion()"
-        style="display:none;"
+        style="display:none;margin-top:15px;"
       >
         Next Question →
       </button>
@@ -568,60 +270,47 @@ function showQuizQuestion() {
   results.scrollIntoView({
     behavior: "smooth"
   });
-
 }
 
 
-/* =========================================================
-   ANSWER QUESTION
-   ========================================================= */
+/* =========================
+   ANSWER
+========================= */
 
-function answerQuestion(selected) {
+function answerQuiz(selected) {
 
-  if (quizAnswered) return;
-
-  quizAnswered = true;
-
-  const q =
-    activeQuestions[quizIndex];
+  const question =
+    selectedQuestions[quizIndex];
 
   const buttons =
     document.querySelectorAll(
-      "#quizOptions button"
+      '[id^="answer-"]'
     );
 
-  buttons.forEach(
-    (button, index) => {
+  buttons.forEach(button => {
+    button.disabled = true;
+  });
 
-      button.disabled = true;
-
-      if (index === q.answer) {
-
-        button.style.border =
-          "2px solid #198754";
-
-      }
-
-    }
-  );
-
-  const selectedButton =
-    document.getElementById(
-      "option" + selected
-    );
-
-  if (selected === q.answer) {
+  if (selected === question.answer) {
 
     quizScore++;
 
-    selectedButton.style.border =
-      "2px solid #198754";
+    document.getElementById(
+      "answer-" + selected
+    ).style.border =
+      "3px solid green";
 
   } else {
 
-    selectedButton.style.border =
-      "2px solid #dc3545";
+    document.getElementById(
+      "answer-" + selected
+    ).style.border =
+      "3px solid red";
 
+    document.getElementById(
+      "answer-" + question.answer
+    ).style.border =
+      "3px solid green";
   }
 
   const explanation =
@@ -631,118 +320,43 @@ function answerQuestion(selected) {
 
   explanation.innerHTML =
     "<b>Explanation:</b> " +
-    q.explanation;
+    question.explanation;
 
   explanation.style.display =
     "block";
 
   document.getElementById(
-    "nextQuestionButton"
+    "nextQuiz"
   ).style.display =
     "inline-block";
-
 }
 
 
-/* =========================================================
+/* =========================
    NEXT QUESTION
-   ========================================================= */
+========================= */
 
 function nextQuizQuestion() {
 
   quizIndex++;
 
-  showQuizQuestion();
-
+  displayQuestion();
 }
 
 
-/* =========================================================
-   QUIZ RESULTS
-   ========================================================= */
+/* =========================
+   FINISH QUIZ
+========================= */
 
 function finishQuiz() {
 
   const total =
-    activeQuestions.length;
+    selectedQuestions.length;
 
   const percentage =
     Math.round(
       (quizScore / total) * 100
     );
-
-  saveQuizResult(
-    quizScore,
-    total,
-    percentage
-  );
-
-  let message;
-
-  if (percentage >= 80) {
-
-    message =
-      "🌟 Excellent performance!";
-
-  } else if (percentage >= 60) {
-
-    message =
-      "👍 Good work. Review the questions you missed.";
-
-  } else {
-
-    message =
-      "📖 Keep practicing. Review your study materials and try again.";
-
-  }
-
-  results.innerHTML = `
-    <div class="card"
-      style="text-align:center;">
-
-      <h2>🎉 Quiz Complete</h2>
-
-      <h1 style="font-size:45px;">
-        ${percentage}%
-      </h1>
-
-      <p>
-        You scored
-        <b>${quizScore}</b>
-        out of
-        <b>${total}</b>.
-      </p>
-
-      <h3 style="margin:15px 0;">
-        ${message}
-      </h3>
-
-      <button onclick="openQuizMenu()">
-        📝 Try Another Quiz
-      </button>
-
-      <button
-        onclick="openProgress()"
-        style="margin-left:5px;"
-      >
-        📊 View Progress
-      </button>
-
-    </div>
-  `;
-
-}
-
-
-/* =========================================================
-   SAVE QUIZ RESULT
-   ========================================================= */
-
-function saveQuizResult(
-  correct,
-  total,
-  percentage
-) {
 
   const history =
     JSON.parse(
@@ -752,19 +366,11 @@ function saveQuizResult(
     );
 
   history.push({
-
-    date:
-      new Date().toLocaleString(),
-
-    correct: correct,
-
-    wrong:
-      total - correct,
-
+    date: new Date().toLocaleString(),
+    correct: quizScore,
+    wrong: total - quizScore,
     total: total,
-
     percentage: percentage
-
   });
 
   localStorage.setItem(
@@ -772,14 +378,301 @@ function saveQuizResult(
     JSON.stringify(history)
   );
 
+  results.innerHTML = `
+    <div class="card" style="text-align:center;">
+
+      <h2>🎉 Quiz Complete</h2>
+
+      <div style="
+        font-size:45px;
+        font-weight:bold;
+        margin:15px;
+      ">
+        ${percentage}%
+      </div>
+
+      <p>
+        You scored
+        <b>${quizScore}</b>
+        out of
+        <b>${total}</b>.
+      </p>
+
+      <br>
+
+      <button onclick="showQuizMenu()">
+        📝 Try Again
+      </button>
+
+      <button onclick="showProgress()">
+        📊 View Progress
+      </button>
+
+    </div>
+  `;
+
 }
 
 
-/* =========================================================
-   PROGRESS
-   ========================================================= */
+/* =========================
+   CALCULATIONS
+========================= */
 
-function openProgress() {
+function showCalculations() {
+
+  results.innerHTML = `
+    <div class="card">
+
+      <h2>🧮 Pharmaceutical Calculations</h2>
+
+      <p>
+        Practice pharmaceutical calculations.
+      </p>
+
+      <hr style="margin:15px 0;">
+
+      <h3>💧 Dilution</h3>
+
+      <p>
+        C₁V₁ = C₂V₂
+      </p>
+
+      <br>
+
+      <h3>⚖️ Dose Calculation</h3>
+
+      <p>
+        Volume required =
+        Dose required ÷ Dose available
+        × Volume containing available dose.
+      </p>
+
+      <br>
+
+      <h3>➗ Allegation</h3>
+
+      <p>
+        Allegation is a method used to determine the
+        proportions of two preparations of different
+        strengths needed to obtain a mixture of a desired
+        intermediate strength.
+      </p>
+
+      <br>
+
+      <button onclick="calculationQuestion()">
+        📝 Practice Question
+      </button>
+
+    </div>
+  `;
+
+  results.scrollIntoView({
+    behavior: "smooth"
+  });
+}
+
+
+function calculationQuestion() {
+
+  results.innerHTML = `
+    <div class="card">
+
+      <h2>🧮 Practice Question</h2>
+
+      <p>
+        A solution contains 500 mg in 5 mL.
+        How many milligrams are contained in 2 mL?
+      </p>
+
+      <input
+        id="calcAnswer"
+        type="number"
+        placeholder="Enter answer in mg"
+        style="
+          width:100%;
+          padding:12px;
+          margin:15px 0;
+        "
+      >
+
+      <button onclick="checkCalculation()">
+        Check Answer
+      </button>
+
+      <div
+        id="calculationResult"
+        style="margin-top:15px;"
+      ></div>
+
+    </div>
+  `;
+}
+
+
+function checkCalculation() {
+
+  const answer =
+    Number(
+      document.getElementById(
+        "calcAnswer"
+      ).value
+    );
+
+  const result =
+    document.getElementById(
+      "calculationResult"
+    );
+
+  if (answer === 200) {
+
+    result.innerHTML =
+      "✅ Correct! 500 ÷ 5 = 100 mg/mL, therefore 100 × 2 = 200 mg.";
+
+  } else {
+
+    result.innerHTML =
+      "❌ Try again. First calculate the amount per mL.";
+  }
+
+}
+
+
+/* =========================
+   DISCUSSIONS
+========================= */
+
+function showDiscussions() {
+
+  results.innerHTML = `
+    <div class="card">
+
+      <h2>💬 Discussions</h2>
+
+      <p>
+        Write an academic question or share a useful
+        explanation with other students.
+      </p>
+
+      <textarea
+        id="discussionInput"
+        placeholder="Write your question..."
+        style="
+          width:100%;
+          min-height:120px;
+          margin:15px 0;
+          padding:12px;
+          border-radius:8px;
+        "
+      ></textarea>
+
+      <button onclick="postDiscussion()">
+        📤 Post
+      </button>
+
+      <div
+        id="discussionPosts"
+        style="margin-top:20px;"
+      ></div>
+
+    </div>
+  `;
+
+  loadDiscussions();
+
+}
+
+
+function postDiscussion() {
+
+  const input =
+    document.getElementById(
+      "discussionInput"
+    );
+
+  const text =
+    input.value.trim();
+
+  if (!text) {
+
+    alert(
+      "Please write a question first."
+    );
+
+    return;
+  }
+
+  const posts =
+    JSON.parse(
+      localStorage.getItem(
+        "cphDiscussions"
+      ) || "[]"
+    );
+
+  posts.push({
+    text: text,
+    date: new Date().toLocaleString()
+  });
+
+  localStorage.setItem(
+    "cphDiscussions",
+    JSON.stringify(posts)
+  );
+
+  input.value = "";
+
+  loadDiscussions();
+
+}
+
+
+function loadDiscussions() {
+
+  const container =
+    document.getElementById(
+      "discussionPosts"
+    );
+
+  if (!container) return;
+
+  const posts =
+    JSON.parse(
+      localStorage.getItem(
+        "cphDiscussions"
+      ) || "[]"
+    );
+
+  if (!posts.length) {
+
+    container.innerHTML =
+      "<p>No discussions yet.</p>";
+
+    return;
+  }
+
+  container.innerHTML =
+    posts.reverse().map(
+      post => `
+        <div style="
+          background:#f5f7fa;
+          padding:12px;
+          margin-bottom:10px;
+          border-radius:8px;
+        ">
+          <p>${escapeHTML(post.text)}</p>
+          <small>${post.date}</small>
+        </div>
+      `
+    ).join("");
+
+}
+
+
+/* =========================
+   PROGRESS
+========================= */
+
+function showProgress() {
 
   const history =
     JSON.parse(
@@ -788,23 +681,18 @@ function openProgress() {
       ) || "[]"
     );
 
-  if (history.length === 0) {
+  if (!history.length) {
 
     results.innerHTML = `
       <div class="card">
-
-        <h2>📊 Your Progress</h2>
-
-        <p>
-          You have not completed a quiz yet.
-        </p>
+        <h2>📊 Progress</h2>
+        <p>No quiz attempts yet.</p>
 
         <br>
 
-        <button onclick="openQuizMenu()">
-          📝 Take Your First Quiz
+        <button onclick="showQuizMenu()">
+          📝 Take a Quiz
         </button>
-
       </div>
     `;
 
@@ -828,160 +716,91 @@ function openProgress() {
 
       <h2>📊 Your Progress</h2>
 
-      <div style="
-        display:grid;
-        grid-template-columns:
-        repeat(auto-fit,minmax(120px,1fr));
-        gap:10px;
-        margin:15px 0;
-      ">
-
-        <div>
-          <b>${latest.percentage}%</b>
-          <br>
-          Latest
-        </div>
-
-        <div>
-          <b>${average}%</b>
-          <br>
-          Average
-        </div>
-
-        <div>
-          <b>${history.length}</b>
-          <br>
-          Quizzes
-        </div>
-
-      </div>
-
-      <h3>Recent Attempts</h3>
-
-      ${history.slice(-5).reverse().map(item => `
-        <div style="
-          padding:10px 0;
-          border-bottom:1px solid #ddd;
-        ">
-          <b>${item.percentage}%</b>
-          —
-          ${item.correct}/${item.total}
-          correct
-          <br>
-          <small>${item.date}</small>
-        </div>
-      `).join("")}
-
-      <br>
-
-      <button onclick="openQuizMenu()">
-        📝 Take Another Quiz
-      </button>
-
-      <button
-        onclick="clearProgress()"
-        style="margin-left:5px;"
-      >
-        🗑️ Clear Progress
-      </button>
-
-    </div>
-  `;
-
-  results.scrollIntoView({
-    behavior:"smooth"
-  });
-
-}
-
-
-function clearProgress() {
-
-  if (
-    !confirm(
-      "Clear all saved quiz progress on this device?"
-    )
-  ) return;
-
-  localStorage.removeItem(
-    "cphQuizHistory"
-  );
-
-  openProgress();
-
-}
-
-
-/* =========================================================
-   PHARMACEUTICAL CALCULATIONS
-   ========================================================= */
-
-function openCalculations() {
-
-  results.innerHTML = `
-    <div class="card">
-
-      <h2>🧮 Pharmaceutical Calculations</h2>
+      <h3>
+        Latest Score:
+        ${latest.percentage}%
+      </h3>
 
       <p>
-        Practice essential pharmaceutical calculation methods.
+        Average Score:
+        <b>${average}%</b>
+      </p>
+
+      <p>
+        Quizzes Completed:
+        <b>${history.length}</b>
       </p>
 
       <hr style="margin:15px 0;">
 
-      <h3>💧 Dilution</h3>
+      <h3>Recent Attempts</h3>
+
+      ${history.slice(-5).reverse().map(item => `
+        <p style="margin:10px 0;">
+          <b>${item.percentage}%</b>
+          — ${item.correct}/${item.total}
+          correct
+          <br>
+          <small>${item.date}</small>
+        </p>
+      `).join("")}
+
+      <br>
+
+      <button onclick="showQuizMenu()">
+        📝 Take Quiz
+      </button>
+
+    </div>
+  `;
+
+}
+
+
+/* =========================
+   BOOKMARKS
+========================= */
+
+function showBookmarks() {
+
+  results.innerHTML = `
+    <div class="card">
+
+      <h2>🔖 Saved Materials</h2>
 
       <p>
-        The common dilution relationship is:
+        Your saved learning materials will appear here.
       </p>
 
-      <div style="
-        padding:12px;
-        background:#eef6ff;
-        border-radius:8px;
-        margin:10px 0;
-        font-weight:bold;
-      ">
-        C₁V₁ = C₂V₂
-      </div>
+    </div>
+  `;
 
-      <h3>⚖️ Dose Calculation</h3>
+}
 
-      <div style="
-        padding:12px;
-        background:#eef6ff;
-        border-radius:8px;
-        margin:10px 0;
-      ">
-        Volume required =
-        Dose required ÷ Dose available
-        × Volume containing available dose
-      </div>
 
-      <h3>🔢 Percentage Strength</h3>
+/* =========================
+   SETTINGS
+========================= */
 
-      <div style="
-        padding:12px;
-        background:#eef6ff;
-        border-radius:8px;
-        margin:10px 0;
-      ">
-        % strength =
-        Amount of solute ÷ Amount of preparation × 100
-      </div>
+function showSettings() {
 
-      <h3>➗ Allegation</h3>
+  results.innerHTML = `
+    <div class="card">
+
+      <h2>⚙️ Settings</h2>
 
       <p>
-        Allegation is a method for determining the proportions
-        of two preparations of different strengths required to
-        produce a mixture of an intermediate strength.
+        CPH STUDY settings.
       </p>
 
       <br>
 
-      <button onclick="openCalculationPractice()">
-        📝 Practice Calculations
+      <button onclick="toggleDarkMode()">
+        🌙 Toggle Dark Mode
+      </button>
+
+      <button onclick="requestNotifications()">
+        🔔 Notifications
       </button>
 
     </div>
@@ -990,151 +809,83 @@ function openCalculations() {
 }
 
 
-function openCalculationPractice() {
+function toggleDarkMode() {
 
-  results.innerHTML = `
-    <div class="card">
-
-      <h2>🧮 Calculation Practice</h2>
-
-      <p>
-        A medicine contains 500 mg in 5 mL.
-        How many milligrams are contained in 2 mL?
-      </p>
-
-      <input
-        id="calcAnswer"
-        type="number"
-        placeholder="Enter your answer in mg"
-        style="
-          width:100%;
-          padding:12px;
-          margin:12px 0;
-        "
-      >
-
-      <button onclick="checkCalculation()">
-        Check Answer
-      </button>
-
-      <div id="calcResult"
-        style="margin-top:15px;">
-      </div>
-
-    </div>
-  `;
+  document.body.classList.toggle(
+    "dark-mode"
+  );
 
 }
 
 
-function checkCalculation() {
+function requestNotifications() {
 
-  const answer =
-    Number(
-      document.getElementById(
-        "calcAnswer"
-      ).value
-    );
-
-  const result =
-    document.getElementById(
-      "calcResult"
-    );
-
-  if (answer === 200) {
-
-    result.innerHTML =
-      "✅ Correct! 500 mg ÷ 5 mL = 100 mg/mL; 100 × 2 = 200 mg.";
-
-  } else {
-
-    result.innerHTML =
-      "❌ Not quite. First calculate 500 ÷ 5 = 100 mg/mL, then multiply by 2 mL.";
-
-  }
-
-}
-
-
-/* =========================================================
-   DISCUSSIONS
-   ========================================================= */
-
-function openDiscussions() {
-
-  results.innerHTML = `
-    <div class="card">
-
-      <h2>💬 CPH Discussions</h2>
-
-      <p>
-        Ask academic questions and share useful explanations
-        with fellow students.
-      </p>
-
-      <textarea
-        id="discussionText"
-        placeholder="Write your question or contribution..."
-        style="
-          width:100%;
-          min-height:110px;
-          padding:12px;
-          margin:15px 0;
-          border-radius:8px;
-          border:1px solid #ccc;
-        "
-      ></textarea>
-
-      <button onclick="postDiscussion()">
-        📤 Post
-      </button>
-
-      <div id="discussionList"
-        style="margin-top:20px;">
-      </div>
-
-    </div>
-  `;
-
-  loadDiscussions();
-
-}
-
-
-function postDiscussion() {
-
-  const input =
-    document.getElementById(
-      "discussionText"
-    );
-
-  const text =
-    input.value.trim();
-
-  if (!text) {
+  if (!("Notification" in window)) {
 
     alert(
-      "Please write something first."
+      "Notifications are not supported by this browser."
     );
 
     return;
   }
 
-  const posts =
-    JSON.parse(
-      localStorage.getItem(
-        "cphDiscussions"
-      ) || "[]"
+  Notification.requestPermission()
+    .then(permission => {
+
+      if (permission === "granted") {
+
+        alert(
+          "🔔 Notifications enabled."
+        );
+
+      }
+
+    });
+
+}
+
+
+/* =========================
+   SAFE TEXT
+========================= */
+
+function escapeHTML(text) {
+
+  const div =
+    document.createElement("div");
+
+  div.textContent = text;
+
+  return div.innerHTML;
+}
+
+
+/* =========================
+   DAILY QUOTE
+========================= */
+
+const dailyQuotes = [
+  "Study today. Become better tomorrow.",
+  "Understand the concept, then memorize the details.",
+  "Consistency creates academic excellence.",
+  "Every question is an opportunity to learn.",
+  "Learn • Practice • Master."
+];
+
+const quote =
+  document.getElementById("quote");
+
+if (quote) {
+
+  const day =
+    Math.floor(
+      Date.now() / 86400000
     );
 
-  posts.push({
+  quote.textContent =
+    "💡 " +
+    dailyQuotes[
+      day % dailyQuotes.length
+    ];
 
-    text: text,
-
-    date:
-      new Date().toLocaleString()
-
-  });
-
-  localStorage.setItem(
-    "cphDisc
+}
