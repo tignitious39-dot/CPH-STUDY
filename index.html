@@ -2,396 +2,247 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#0757a0">
 <title>CPH STUDY</title>
 
 <style>
 *{box-sizing:border-box}
-
-:root{
- --blue:#0757a0;
- --blue2:#168ee5;
- --bg:#f4f7fb;
- --card:#fff;
- --text:#172033;
- --muted:#657184;
- --border:#d9e1ea;
- --success:#198754;
- --danger:#dc3545;
-}
-
+html{scroll-behavior:smooth}
 body{
  margin:0;
  font-family:Arial,Helvetica,sans-serif;
- background:var(--bg);
- color:var(--text);
+ background:#f4f7fb;
+ color:#172033;
  line-height:1.6;
- transition:.2s;
 }
-
-body.dark{
- --bg:#0f172a;
- --card:#1e293b;
- --text:#f1f5f9;
- --muted:#aab5c4;
- --border:#475569;
-}
-
 header{
  background:linear-gradient(135deg,#064b9b,#087bd3);
  color:white;
  padding:14px 16px;
  display:flex;
- justify-content:space-between;
  align-items:center;
+ justify-content:space-between;
  position:sticky;
  top:0;
  z-index:100;
+ box-shadow:0 2px 10px #0002;
 }
-
-.brand{
- display:flex;
- gap:10px;
- align-items:center;
-}
-
-.icon{
- font-size:32px;
-}
-
-.title{
- font-size:20px;
- font-weight:bold;
-}
-
-.small{
- font-size:12px;
- opacity:.9;
-}
-
+.brand{display:flex;align-items:center;gap:10px}
+.brand-icon{font-size:32px}
+.brand-title{font-size:20px;font-weight:bold}
+.brand-subtitle{font-size:11px;opacity:.9}
 header button{
- background:rgba(255,255,255,.16);
+ background:#ffffff22;
  color:white;
  border:0;
- border-radius:9px;
- padding:9px 12px;
- font-size:20px;
+ font-size:21px;
+ padding:8px 12px;
+ border-radius:10px;
 }
-
 main{
- max-width:1050px;
+ max-width:1000px;
  margin:auto;
  padding:16px 14px 100px;
 }
-
 .hero{
- background:linear-gradient(135deg,#0757a0,#168ee5);
+ background:linear-gradient(135deg,#0757a0,#1393e6);
  color:white;
  padding:24px;
  border-radius:18px;
  margin-bottom:18px;
 }
-
-.hero h1{
- margin:0 0 5px;
- font-size:28px;
-}
-
+.hero h1{margin:0 0 5px;font-size:28px}
 .quote{
  margin-top:15px;
- padding:13px;
- background:rgba(255,255,255,.15);
+ padding:12px;
+ background:#ffffff22;
  border-radius:10px;
 }
-
-.search{
- margin-bottom:20px;
-}
-
-.search input,
-textarea,
-input[type=text]{
+.search{margin-bottom:20px}
+.search input{
  width:100%;
- padding:14px;
- border:1px solid var(--border);
- border-radius:10px;
- font:inherit;
- background:var(--card);
- color:var(--text);
+ padding:15px;
+ border:1px solid #ccd5df;
+ border-radius:12px;
+ font-size:16px;
  outline:none;
 }
-
-textarea{
- min-height:120px;
- resize:vertical;
-}
-
-h2{
- margin-top:20px;
- margin-bottom:14px;
-}
-
-h3{
- margin-top:0;
-}
-
+h2{margin-top:10px}
+h3{margin-bottom:7px}
 .card{
- background:var(--card);
+ background:white;
  border-radius:14px;
  padding:17px;
  margin-bottom:13px;
- box-shadow:0 3px 12px rgba(0,0,0,.07);
+ box-shadow:0 3px 12px #0000000d;
 }
-
 .grid{
  display:grid;
  grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
  gap:12px;
 }
-
 button{
  border:0;
  border-radius:9px;
  padding:11px 14px;
  margin:4px;
- background:var(--blue);
+ background:#0757a0;
  color:white;
  cursor:pointer;
  font-size:14px;
 }
-
-button:hover{
- opacity:.9;
-}
-
-button:disabled{
- opacity:.6;
- cursor:not-allowed;
-}
-
+button:hover{opacity:.9}
+button:disabled{opacity:.65;cursor:not-allowed}
 .secondary{
  background:#eaf1f8;
- color:var(--blue);
+ color:#0757a0;
 }
-
-.dark .secondary{
- background:#334155;
- color:#dbeafe;
-}
-
-.success{
- background:var(--success);
-}
-
-.danger{
- background:var(--danger);
-}
-
+.danger{background:#dc3545}
+.success{background:#198754}
 .tool{
  width:100%;
- min-height:95px;
- font-size:26px;
+ min-height:90px;
+ font-size:25px;
 }
-
 .tool span{
  display:block;
  font-size:14px;
  margin-top:5px;
 }
-
-.class-card{
- border-left:5px solid var(--blue);
- cursor:pointer;
-}
-
-.unit-card{
- border-left:5px solid var(--blue2);
-}
-
 .unit-buttons{
  display:grid;
  grid-template-columns:repeat(2,1fr);
- gap:8px;
- margin-top:12px;
+ gap:7px;
 }
-
-.unit-buttons button{
- margin:0;
+.unit-buttons button{margin:0}
+.notes{
+ background:#fbfdff;
+ border-left:4px solid #0757a0;
+ padding:16px;
+ border-radius:9px;
 }
-
-.note{
- background:#f8fbff;
- color:#172033;
- border-left:4px solid var(--blue);
- padding:15px;
- border-radius:8px;
- margin:12px 0;
-}
-
-.dark .note{
- background:#263449;
- color:#f1f5f9;
-}
-
-.note h4{
- margin:16px 0 5px;
-}
-
-.note ul{
- padding-left:22px;
-}
-
-.quiz-answer{
+.notes h3{color:#0757a0;margin-top:20px}
+.notes ul{padding-left:22px}
+.quiz-option{
  display:block;
  width:100%;
  text-align:left;
- background:#eef3f8;
+ background:#f1f5f9;
  color:#172033;
- border:2px solid transparent;
+ border:2px solid #d7dee7;
  margin:8px 0;
 }
-
-.dark .quiz-answer{
- background:#334155;
- color:#f1f5f9;
+.quiz-option.correct{
+ border-color:#198754;
+ background:#e9f8ef;
 }
-
-.quiz-answer.correct{
- border-color:var(--success);
+.quiz-option.wrong{
+ border-color:#dc3545;
+ background:#fff0f0;
 }
-
-.quiz-answer.wrong{
- border-color:var(--danger);
-}
-
 .explanation{
- background:#edf6ff;
- color:#172033;
- border-left:4px solid var(--blue);
+ background:#eef6ff;
+ border-left:4px solid #0757a0;
  padding:13px;
  border-radius:8px;
  margin-top:12px;
 }
-
-.dark .explanation{
- background:#263449;
- color:#f1f5f9;
+textarea,input[type=text]{
+ width:100%;
+ padding:12px;
+ border:1px solid #ccd5df;
+ border-radius:9px;
+ font:inherit;
 }
-
+textarea{min-height:120px}
 .post{
  background:#f5f8fb;
- color:#172033;
  padding:13px;
- border-left:4px solid var(--blue2);
- border-radius:9px;
+ border-left:4px solid #168ee5;
+ border-radius:8px;
  margin:10px 0;
 }
-
-.dark .post{
- background:#263449;
- color:#f1f5f9;
-}
-
-.post small{
- color:#687386;
-}
-
 .stat-grid{
  display:grid;
  grid-template-columns:repeat(3,1fr);
  gap:10px;
 }
-
 .stat{
  background:#eef3f8;
- color:#172033;
  padding:15px;
- border-radius:10px;
  text-align:center;
+ border-radius:10px;
 }
-
-.dark .stat{
- background:#334155;
- color:#f1f5f9;
-}
-
 .stat strong{
  display:block;
- font-size:25px;
- color:var(--blue);
+ font-size:26px;
+ color:#0757a0;
 }
-
-.empty{
- text-align:center;
- padding:30px;
- color:var(--muted);
-}
-
 .badge{
  display:inline-block;
+ background:#eaf1f8;
+ color:#0757a0;
  padding:4px 8px;
  border-radius:20px;
- background:#e8f2ff;
- color:var(--blue);
  font-size:12px;
- margin:3px;
 }
-
-.dark .badge{
- background:#334155;
- color:#bfdbfe;
+.empty{
+ text-align:center;
+ padding:25px;
+ color:#667085;
 }
-
+.hidden{display:none!important}
 nav{
  position:fixed;
  bottom:0;
  left:0;
  right:0;
- background:var(--card);
- border-top:1px solid var(--border);
+ background:white;
+ border-top:1px solid #ddd;
  display:grid;
  grid-template-columns:repeat(4,1fr);
- padding:7px;
+ padding:6px;
  z-index:200;
 }
-
 nav button{
  background:transparent;
- color:var(--text);
+ color:#172033;
  margin:0;
  border-radius:7px;
- font-size:19px;
+ font-size:18px;
 }
-
-nav span{
- display:block;
- font-size:11px;
+nav span{display:block;font-size:11px}
+.dark{
+ background:#101722;
+ color:#f1f5f9;
 }
-
-.notice{
- padding:12px;
- border-radius:9px;
- background:#fff7df;
- color:#684f00;
- margin:10px 0;
+.dark .card,
+.dark nav{
+ background:#1b2635;
+ color:#f1f5f9;
 }
-
-.dark .notice{
- background:#3b3219;
- color:#ffe9a6;
+.dark .notes,
+.dark .post,
+.dark .stat,
+.dark .quiz-option{
+ background:#243144;
+ color:#f1f5f9;
 }
-
+.dark .search input,
+.dark textarea{
+ background:#1b2635;
+ color:white;
+ border-color:#46546a;
+}
+.dark .secondary{
+ background:#31445c;
+ color:#fff;
+}
 @media(max-width:600px){
- .unit-buttons{
-  grid-template-columns:1fr;
- }
- .stat-grid{
-  grid-template-columns:1fr;
- }
- .hero h1{
-  font-size:23px;
- }
+ .hero h1{font-size:23px}
+ .unit-buttons{grid-template-columns:1fr}
+ .stat-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -399,31 +250,30 @@ nav span{
 <body>
 
 <header>
- <div class="brand">
-  <div class="icon">✚</div>
-  <div>
-   <div class="title">CPH STUDY</div>
-   <div class="small">Learn • Practice • Master</div>
-  </div>
- </div>
-
- <button onclick="enableNotifications()">🔔</button>
+<div class="brand">
+<div class="brand-icon">✚</div>
+<div>
+<div class="brand-title">CPH STUDY</div>
+<div class="brand-subtitle">Learn • Practice • Master</div>
+</div>
+</div>
+<button onclick="enableNotifications()">🔔</button>
 </header>
 
 <main>
 
 <section class="hero">
- <h1>Welcome to CPH STUDY</h1>
- <p>Certificate in Pharmacy Study Platform</p>
- <div class="quote" id="quote">Loading motivation...</div>
+<h1>Welcome to CPH STUDY</h1>
+<p>Certificate in Pharmacy Study Platform</p>
+<div class="quote" id="quote">Loading motivation...</div>
 </section>
 
 <div class="search">
- <input
-  id="search"
-  type="text"
-  placeholder="🔎 Search classes, units and topics..."
-  oninput="searchCourses()">
+<input
+id="searchBox"
+type="text"
+placeholder="🔎 Search class, course unit or topic..."
+oninput="searchCourses()">
 </div>
 
 <div id="content"></div>
@@ -431,25 +281,19 @@ nav span{
 </main>
 
 <nav>
- <button onclick="home()">🏠<span>Home</span></button>
- <button onclick="focusSearch()">🔎<span>Search</span></button>
- <button onclick="saved()">🔖<span>Saved</span></button>
- <button onclick="settings()">⚙️<span>Settings</span></button>
+<button onclick="home()">🏠<span>Home</span></button>
+<button onclick="focusSearch()">🔎<span>Search</span></button>
+<button onclick="showSaved()">🔖<span>Saved</span></button>
+<button onclick="settings()">⚙️<span>Settings</span></button>
 </nav>
 
 <script>
 
 /* =====================================================
-   CPH STUDY — PHASE 1, 2 & 3
+   CPH STUDY — MAIN CURRICULUM
 ===================================================== */
 
-
-/* =====================================================
-   CURRICULUM
-===================================================== */
-
-const curriculum={
-
+const curriculum = {
  "CPH 1.1":[
   "Microbiology",
   "Anatomy & Physiology 1",
@@ -486,101 +330,317 @@ const curriculum={
   "Therapeutics 2",
   "Entrepreneurship"
  ]
-
 };
 
 
 /* =====================================================
    MOTIVATIONAL QUOTES
+   CHANGES EVERY HOUR
 ===================================================== */
 
 const quotes=[
  "📚 Study consistently, not occasionally.",
  "🧠 Understand first. Memorize second.",
- "🎯 Every mastered topic takes you closer to your goal.",
+ "🎯 Every topic mastered is one step forward.",
  "💊 Good pharmacy practice begins with good knowledge.",
  "🔬 Learn the science behind the medicine.",
  "📖 Read. Recall. Practise. Improve.",
  "🏆 Your effort today builds your professional future.",
  "💡 Ask questions whenever a concept is unclear.",
- "🚀 Small daily progress produces big results.",
- "🌟 Discipline turns academic goals into achievements.",
- "📝 Practice questions reveal what you truly understand.",
- "🎓 Build knowledge you can use, not knowledge you can only repeat."
+ "🚀 Small daily progress becomes great achievement.",
+ "🌟 Discipline turns study goals into results.",
+ "📝 Practise questions until the method becomes familiar.",
+ "🎓 Your knowledge is an investment in your future."
 ];
 
 function updateQuote(){
-
  const hour=new Date().getHours();
-
- document.getElementById("quote").textContent=
- quotes[hour%quotes.length];
+ const index=hour % quotes.length;
+ const element=document.getElementById("quote");
+ if(element) element.textContent=quotes[index];
 }
 
 updateQuote();
-
-/* Updates every minute and therefore changes automatically
-   when the clock enters a new hour. */
 
 setInterval(updateQuote,60000);
 
 
 /* =====================================================
-   NOTES DATABASE
+   SAFE TEXT
 ===================================================== */
 
-const notesDB={};
+function safe(text){
+ return String(text)
+  .replace(/&/g,"&amp;")
+  .replace(/</g,"&lt;")
+  .replace(/>/g,"&gt;")
+  .replace(/"/g,"&quot;")
+  .replace(/'/g,"&#039;");
+}
 
 
-/*
-  Default structured notes are generated for every
-  curriculum unit. This prevents empty course pages.
-*/
+/* =====================================================
+   HOME
+===================================================== */
 
-Object.keys(curriculum).forEach(level=>{
+function home(){
 
- curriculum[level].forEach(unit=>{
+ document.getElementById("searchBox").value="";
 
-  notesDB[level+"|"+unit]=generateNotes(level,unit);
+ document.getElementById("content").innerHTML=`
 
- });
+ <section>
+ <h2>🎓 CPH Classes</h2>
 
-});
+ <div class="grid">
+
+ ${Object.keys(curriculum).map(level=>`
+
+  <div class="card">
+
+   <h3>📚 ${safe(level)}</h3>
+
+   <p>
+   <span class="badge">
+   ${curriculum[level].length} course units
+   </span>
+   </p>
+
+   <p>
+   Access notes, quizzes and discussions
+   specifically for this class.
+   </p>
+
+   <button onclick="openClass('${safe(level)}')">
+   Open Class →
+   </button>
+
+  </div>
+
+ `).join("")}
+
+ </div>
+ </section>
 
 
-function generateNotes(level,unit){
+ <section>
 
- return {
+ <h2>🛠️ Study Tools</h2>
 
-  introduction:
-  `${unit} is studied under ${level} in the CPH STUDY curriculum. This section provides an organized framework for studying the unit, reviewing important concepts and preparing for examination questions.`,
+ <div class="grid">
 
-  objectives:[
-   `Define and explain important terminology used in ${unit}.`,
-   `Identify the major principles and concepts in the unit.`,
-   `Explain important relationships, processes or mechanisms.`,
-   `Apply knowledge to pharmacy-related situations.`,
-   `Answer examination-style questions accurately.`
-  ],
+ <button class="tool" onclick="quizClasses()">
+ 📝
+ <span>Class-Based Quizzes</span>
+ </button>
 
-  areas:[
-   "Definitions and terminology",
-   "Classification and categories",
-   "Core principles",
-   "Important processes and mechanisms",
-   "Practical pharmacy applications",
-   "Common examination points",
-   "Revision questions and self-testing"
-  ],
+ <button class="tool" onclick="discussionClasses()">
+ 💬
+ <span>Live Discussions</span>
+ </button>
 
-  study:
-  `Begin with the basic terminology of ${unit}. Build understanding from simple concepts to more advanced applications. After each topic, close your notes and recall the major points without looking. Finish by testing yourself with questions from this exact class and unit.`,
+ <button class="tool" onclick="showProgress()">
+ 📊
+ <span>My Progress</span>
+ </button>
 
-  exam:
-  `For examination preparation, pay particular attention to definitions, classifications, comparisons, principles, procedures, applications and questions requiring explanation. Always read the question carefully and answer according to the command word such as define, list, explain, describe, compare or calculate.`
+ <button class="tool" onclick="showSaved()">
+ 🔖
+ <span>Saved Materials</span>
+ </button>
 
- };
+ </div>
 
+ </section>
+
+ <section class="card">
+
+ <h2>📌 How CPH STUDY Works</h2>
+
+ <ol>
+ <li>Select your CPH class.</li>
+ <li>Select a course unit.</li>
+ <li>Read the study notes.</li>
+ <li>Take the quiz for that exact unit.</li>
+ <li>Ask questions in that unit's discussion.</li>
+ <li>Track your quiz performance in Progress.</li>
+ </ol>
+
+ </section>
+ `;
+}
+
+
+/* =====================================================
+   CLASS PAGE
+===================================================== */
+
+function openClass(level){
+
+ if(!curriculum[level]){
+  home();
+  return;
+ }
+
+ document.getElementById("content").innerHTML=`
+
+ <div class="card">
+
+ <button class="secondary" onclick="home()">← Home</button>
+
+ <h2>📚 ${safe(level)}</h2>
+
+ <p>
+ Select a course unit. Materials, quizzes and
+ discussions remain separated by class and unit.
+ </p>
+
+ </div>
+
+ <div class="grid">
+
+ ${curriculum[level].map(unit=>`
+
+ <div class="card">
+
+ <h3>📖 ${safe(unit)}</h3>
+
+ <p>
+ <span class="badge">${safe(level)}</span>
+ </p>
+
+ <div class="unit-buttons">
+
+ <button onclick="showNotes('${safe(level)}','${safe(unit)}')">
+ 📖 Notes
+ </button>
+
+ <button onclick="startQuiz('${safe(level)}','${safe(unit)}')">
+ 📝 Quiz
+ </button>
+
+ <button onclick="discussion('${safe(level)}','${safe(unit)}')">
+ 💬 Discussion
+ </button>
+
+ <button class="secondary"
+ onclick="saveMaterial('${safe(level)}','${safe(unit)}')">
+ 🔖 Save
+ </button>
+
+ </div>
+
+ </div>
+
+ `).join("")}
+
+ </div>
+ `;
+}
+
+
+/* =====================================================
+   NOTES
+===================================================== */
+
+function showNotes(level,unit){
+
+ document.getElementById("content").innerHTML=`
+
+ <div class="card">
+
+ <button class="secondary" onclick="openClass('${safe(level)}')">
+ ← ${safe(level)}
+ </button>
+
+ <h2>📖 ${safe(unit)}</h2>
+
+ <p>
+ <span class="badge">${safe(level)}</span>
+ <span class="badge">${safe(unit)}</span>
+ </p>
+
+ <div class="notes">
+
+ <h3>1. Introduction</h3>
+
+ <p>
+ This study section is specifically organized for
+ <b>${safe(level)}</b> under the course unit
+ <b>${safe(unit)}</b>.
+ </p>
+
+ <h3>2. Learning Objectives</h3>
+
+ <ul>
+ <li>Define and explain important terminology.</li>
+ <li>Understand the major principles of the unit.</li>
+ <li>Identify important classifications and examples.</li>
+ <li>Relate theoretical knowledge to pharmacy practice.</li>
+ <li>Apply knowledge to examination-style questions.</li>
+ </ul>
+
+ <h3>3. Core Concepts</h3>
+
+ <p>
+ Students should first understand the fundamental concepts
+ before attempting to memorize details. Pay attention to
+ definitions, classifications, processes, mechanisms,
+ examples and practical applications.
+ </p>
+
+ <h3>4. Important Revision Areas</h3>
+
+ <ul>
+ <li>Definitions and terminology</li>
+ <li>Classification systems</li>
+ <li>Principles and mechanisms</li>
+ <li>Examples and applications</li>
+ <li>Advantages and disadvantages where applicable</li>
+ <li>Common examination points</li>
+ <li>Practical pharmacy applications</li>
+ </ul>
+
+ <h3>5. Examination Strategy</h3>
+
+ <p>
+ Read the question carefully. Identify exactly what is being
+ asked, recall the relevant concept, eliminate incorrect
+ alternatives and check your answer before submitting.
+ </p>
+
+ <h3>6. Active Recall</h3>
+
+ <p>
+ After reading this material, close the notes and explain
+ the main concepts in your own words. Then attempt the
+ unit quiz without looking at the answers.
+ </p>
+
+ <h3>7. Further Study</h3>
+
+ <p>
+ The course-specific material for this unit can be expanded
+ here with detailed topics, definitions, classifications,
+ diagrams, practical examples and examination questions.
+ </p>
+
+ </div>
+
+ <button onclick="startQuiz('${safe(level)}','${safe(unit)}')">
+ 📝 Test Yourself
+ </button>
+
+ <button onclick="discussion('${safe(level)}','${safe(unit)}')">
+ 💬 Discuss This Unit
+ </button>
+
+ <button onclick="saveMaterial('${safe(level)}','${safe(unit)}')">
+ 🔖 Save Unit
+ </button>
+
+ </div>
+ `;
 }
 
 
@@ -588,491 +648,416 @@ function generateNotes(level,unit){
    QUIZ DATABASE
 ===================================================== */
 
-const questions={
+const quizBank={
 
  "CPH 1.1|Microbiology":[
 
-  {
-   q:"What is microbiology?",
-   a:[
-    "The scientific study of microorganisms",
-    "The study of bones",
-    "The study of accounting",
-    "The study of buildings"
-   ],
-   correct:0,
-   explanation:
-   "Microbiology is the scientific study of microorganisms."
-  },
+ {
+ q:"What is microbiology?",
+ a:[
+ "The study of microorganisms",
+ "The study of bones",
+ "The study of accounting",
+ "The study of buildings"
+ ],
+ correct:0,
+ explanation:
+ "Microbiology is the scientific study of microorganisms."
+ },
 
-  {
-   q:"Which of the following is a microorganism?",
-   a:[
-    "Bacterium",
-    "Femur",
-    "Heart",
-    "Kidney"
-   ],
-   correct:0,
-   explanation:
-   "Bacteria are microorganisms."
-  },
-
-  {
-   q:"Which group includes bacteria?",
-   a:[
-    "Prokaryotic organisms",
-    "Only mammals",
-    "Only plants",
-    "Only fungi"
-   ],
-   correct:0,
-   explanation:
-   "Bacteria are prokaryotic microorganisms."
-  }
+ {
+ q:"Which of the following is a microorganism?",
+ a:[
+ "Bacterium",
+ "Femur",
+ "Heart",
+ "Kidney"
+ ],
+ correct:0,
+ explanation:
+ "Bacteria are microorganisms."
+ }
 
  ],
 
  "CPH 1.1|Anatomy & Physiology 1":[
 
-  {
-   q:"Anatomy primarily deals with:",
-   a:[
-    "Body structure",
-    "Drug pricing",
-    "Business",
-    "Communication"
-   ],
-   correct:0,
-   explanation:
-   "Anatomy concerns the structure of the body."
-  },
+ {
+ q:"Anatomy primarily deals with:",
+ a:[
+ "Body structure",
+ "Drug pricing",
+ "Business management",
+ "Communication"
+ ],
+ correct:0,
+ explanation:
+ "Anatomy concerns the structure of the body."
+ },
 
-  {
-   q:"Physiology is primarily concerned with:",
-   a:[
-    "How the body functions",
-    "Drug packaging",
-    "Accounting",
-    "Building construction"
-   ],
-   correct:0,
-   explanation:
-   "Physiology is the study of how body structures function."
-  }
+ {
+ q:"Physiology primarily studies:",
+ a:[
+ "How body structures function",
+ "Only bones",
+ "Drug packaging",
+ "Hospital accounting"
+ ],
+ correct:0,
+ explanation:
+ "Physiology studies how body structures function."
+ }
 
  ],
 
  "CPH 1.1|Pharmaceutical Chemistry 1":[
 
-  {
-   q:"Pharmaceutical chemistry applies chemistry to:",
-   a:[
-    "Medicinal substances and drugs",
-    "Building construction",
-    "Sports training",
-    "Accounting"
-   ],
-   correct:0,
-   explanation:
-   "Pharmaceutical chemistry involves the chemical study of substances relevant to medicines."
-  }
+ {
+ q:"Pharmaceutical chemistry is concerned with:",
+ a:[
+ "Chemical aspects of drugs",
+ "Hospital construction",
+ "Sports training",
+ "Accounting"
+ ],
+ correct:0,
+ explanation:
+ "Pharmaceutical chemistry applies chemistry to drugs and pharmaceutical substances."
+ }
 
  ],
 
  "CPH 1.1|First Aid":[
 
-  {
-   q:"The main purpose of first aid is to:",
-   a:[
-    "Provide immediate assistance until further care is available",
-    "Replace all medical treatment",
-    "Diagnose every disease",
-    "Prescribe every medicine"
-   ],
-   correct:0,
-   explanation:
-   "First aid provides immediate assistance while awaiting appropriate further care."
-  }
+ {
+ q:"What is the general purpose of first aid?",
+ a:[
+ "Provide immediate assistance to an injured or ill person",
+ "Replace all medical treatment",
+ "Diagnose every disease",
+ "Manufacture medicines"
+ ],
+ correct:0,
+ explanation:
+ "First aid provides immediate assistance while appropriate professional care is obtained."
+ }
 
  ],
 
  "CPH 1.1|PHC":[
 
-  {
-   q:"PHC commonly refers to:",
-   a:[
-    "Primary Health Care",
-    "Pharmaceutical Hospital Coding",
-    "Primary Hospital Chemistry",
-    "Public Health Calculation"
-   ],
-   correct:0,
-   explanation:
-   "PHC commonly means Primary Health Care."
-  }
+ {
+ q:"PHC commonly refers to:",
+ a:[
+ "Primary Health Care",
+ "Private Hospital Chemistry",
+ "Pharmaceutical Hospital Control",
+ "Primary Human Chemistry"
+ ],
+ correct:0,
+ explanation:
+ "PHC commonly stands for Primary Health Care."
+ }
 
  ],
 
  "CPH 1.1|Computer Applications":[
 
-  {
-   q:"A computer application is:",
-   a:[
-    "Software designed to perform particular tasks",
-    "A human organ",
-    "A pharmaceutical dosage form",
-    "A laboratory reagent"
-   ],
-   correct:0,
-   explanation:
-   "Computer applications are software programs designed to perform particular tasks."
-  }
+ {
+ q:"Which device is primarily used to enter text into a computer?",
+ a:[
+ "Keyboard",
+ "Monitor",
+ "Speaker",
+ "Printer"
+ ],
+ correct:0,
+ explanation:
+ "A keyboard is an input device commonly used for entering text."
+ }
 
  ],
 
  "CPH 1.2|Anatomy & Physiology 2":[
 
-  {
-   q:"Physiology mainly studies:",
-   a:[
-    "Normal functions of living organisms",
-    "Drug prices",
-    "Business records",
-    "Packaging materials"
-   ],
-   correct:0,
-   explanation:
-   "Physiology focuses on normal functions of living organisms."
-  }
+ {
+ q:"Physiology is mainly concerned with:",
+ a:[
+ "Normal body functions",
+ "Drug packaging",
+ "Business accounts",
+ "Building design"
+ ],
+ correct:0,
+ explanation:
+ "Physiology is the study of normal functions of living organisms."
+ }
 
  ],
 
  "CPH 1.2|Pharmaceutical Chemistry 2":[
 
-  {
-   q:"Pharmaceutical chemistry is relevant to understanding:",
-   a:[
-    "Chemical properties of medicinal substances",
-    "Only hospital buildings",
-    "Only accounting",
-    "Only communication"
-   ],
-   correct:0,
-   explanation:
-   "Pharmaceutical chemistry examines chemical properties and behavior relevant to medicinal substances."
-  }
+ {
+ q:"Pharmaceutical chemistry helps pharmacists understand:",
+ a:[
+ "Chemical properties of pharmaceutical substances",
+ "Only hospital buildings",
+ "Only accounting",
+ "Only communication"
+ ],
+ correct:0,
+ explanation:
+ "It deals with chemical properties and behavior of substances used in medicines."
+ }
 
  ],
 
  "CPH 1.2|Pharmaceutical Calculations":[
 
-  {
-   q:"Which equation is commonly used for dilution calculations?",
-   a:[
-    "C₁V₁ = C₂V₂",
-    "E = mc²",
-    "F = ma",
-    "P = IV"
-   ],
-   correct:0,
-   explanation:
-   "C₁V₁ = C₂V₂ is a standard relationship used in dilution calculations."
-  },
+ {
+ q:"Which equation is commonly used for dilution calculations?",
+ a:[
+ "C₁V₁ = C₂V₂",
+ "E = mc²",
+ "F = ma",
+ "P = IV"
+ ],
+ correct:0,
+ explanation:
+ "C₁V₁ = C₂V₂ is commonly used for dilution calculations."
+ },
 
-  {
-   q:"A solution contains 500 mg in 5 mL. How many mg are in 1 mL?",
-   a:[
-    "50 mg",
-    "100 mg",
-    "250 mg",
-    "500 mg"
-   ],
-   correct:1,
-   explanation:
-   "500 mg ÷ 5 mL = 100 mg/mL."
-  },
+ {
+ q:"A solution contains 500 mg in 5 mL. How many mg are in 1 mL?",
+ a:[
+ "50 mg",
+ "100 mg",
+ "250 mg",
+ "500 mg"
+ ],
+ correct:1,
+ explanation:
+ "500 mg ÷ 5 mL = 100 mg/mL."
+ },
 
-  {
-   q:"When solving a pharmaceutical calculation, you should first:",
-   a:[
-    "Identify what is required and the information given",
-    "Guess the answer",
-    "Ignore units",
-    "Round every value immediately"
-   ],
-   correct:0,
-   explanation:
-   "First identify the required quantity, the available information and the appropriate units."
-  }
+ {
+ q:"What should you identify first in a pharmaceutical calculation?",
+ a:[
+ "What is required and what information is available",
+ "The answer by guessing",
+ "The decimal place only",
+ "The final unit only"
+ ],
+ correct:0,
+ explanation:
+ "First identify the required quantity and the information provided."
+ },
+
+ {
+ q:"If 1 g equals 1000 mg, then 2 g equals:",
+ a:[
+ "20 mg",
+ "200 mg",
+ "2000 mg",
+ "20,000 mg"
+ ],
+ correct:2,
+ explanation:
+ "2 g × 1000 mg/g = 2000 mg."
+ }
 
  ],
 
  "CPH 1.2|Pharmacognosy":[
 
-  {
-   q:"Pharmacognosy is primarily concerned with:",
-   a:[
-    "Medicinal substances obtained from natural sources",
-    "Only accounting",
-    "Hospital construction",
-    "Computer programming"
-   ],
-   correct:0,
-   explanation:
-   "Pharmacognosy traditionally deals with medicinal substances from natural sources."
-  }
+ {
+ q:"Pharmacognosy is broadly concerned with:",
+ a:[
+ "Medicinal substances obtained from natural sources",
+ "Hospital accounting",
+ "Computer repair",
+ "Building construction"
+ ],
+ correct:0,
+ explanation:
+ "Pharmacognosy studies medicinal substances from natural sources."
+ }
 
  ],
 
  "CPH 1.2|Pharmacology 1":[
 
-  {
-   q:"Pharmacology is primarily concerned with:",
-   a:[
-    "Drugs and their effects",
-    "Buildings",
-    "Accounting",
-    "Food preparation"
-   ],
-   correct:0,
-   explanation:
-   "Pharmacology studies drugs and their effects on living systems."
-  }
+ {
+ q:"Pharmacology is primarily concerned with:",
+ a:[
+ "Drugs and their effects",
+ "Hospital buildings",
+ "Accounting",
+ "Food preparation"
+ ],
+ correct:0,
+ explanation:
+ "Pharmacology studies drugs and their effects on living systems."
+ }
 
  ],
 
  "CPH 1.2|Medical Psychology":[
 
-  {
-   q:"Medical psychology considers:",
-   a:[
-    "Psychological factors relevant to health and illness",
-    "Only drug prices",
-    "Only drug packaging",
-    "Only computer hardware"
-   ],
-   correct:0,
-   explanation:
-   "Medical psychology considers psychological factors relevant to health, illness and patient care."
-  }
+ {
+ q:"Medical psychology considers psychological factors related to:",
+ a:[
+ "Health and illness",
+ "Drug packaging only",
+ "Computer hardware",
+ "Building construction"
+ ],
+ correct:0,
+ explanation:
+ "Medical psychology considers psychological aspects of health, illness and patient care."
+ }
 
  ],
 
  "CPH 1.2|Communication Skills":[
 
-  {
-   q:"Effective communication in pharmacy practice should be:",
-   a:[
-    "Clear and understandable",
-    "Deliberately confusing",
-    "Always extremely technical",
-    "Limited to written communication"
-   ],
-   correct:0,
-   explanation:
-   "Clear, understandable communication is essential for safe and effective pharmacy practice."
-  }
+ {
+ q:"Effective communication in healthcare should generally be:",
+ a:[
+ "Clear and appropriate",
+ "Confusing",
+ "Deliberately incomplete",
+ "Always technical"
+ ],
+ correct:0,
+ explanation:
+ "Healthcare communication should be clear, appropriate and understandable."
+ }
 
  ],
 
  "CPH 1.2|Pharmaceutical Practicals":[
 
-  {
-   q:"A practical session is important because it helps students:",
-   a:[
-    "Apply theoretical knowledge",
-    "Avoid learning theory",
-    "Replace all examinations",
-    "Avoid following procedures"
-   ],
-   correct:0,
-   explanation:
-   "Practicals help students apply theoretical knowledge and develop practical skills."
-  }
+ {
+ q:"The purpose of pharmaceutical practical work includes:",
+ a:[
+ "Applying theoretical knowledge safely",
+ "Avoiding all procedures",
+ "Replacing all lectures",
+ "Ignoring measurements"
+ ],
+ correct:0,
+ explanation:
+ "Practical work allows students to apply theoretical knowledge and develop practical skills."
+ }
 
  ],
 
  "CPH 2.1|Pharmaceutics 1":[
 
-  {
-   q:"Pharmaceutics is broadly concerned with:",
-   a:[
-    "Designing and preparing pharmaceutical dosage forms",
-    "Only hospital accounting",
-    "Only anatomy",
-    "Only communication"
-   ],
-   correct:0,
-   explanation:
-   "Pharmaceutics concerns the formulation, preparation and performance of dosage forms."
-  }
+ {
+ q:"Pharmaceutics is primarily concerned with:",
+ a:[
+ "The formulation and preparation of medicines",
+ "Only hospital accounting",
+ "Only anatomy",
+ "Only communication"
+ ],
+ correct:0,
+ explanation:
+ "Pharmaceutics concerns the formulation, preparation and appropriate delivery of medicines."
+ }
 
  ],
 
  "CPH 2.1|Pharmacy Laws & Regulations":[
 
-  {
-   q:"Pharmacy laws and regulations primarily help to:",
-   a:[
-    "Regulate safe and lawful pharmacy practice",
-    "Replace all clinical knowledge",
-    "Teach computer games",
-    "Determine sports scores"
-   ],
-   correct:0,
-   explanation:
-   "Pharmacy laws and regulations establish requirements for safe, lawful and professional practice."
-  }
+ {
+ q:"Why are pharmacy laws important?",
+ a:[
+ "They regulate safe and lawful pharmacy practice",
+ "They eliminate the need for professional responsibility",
+ "They are only for students",
+ "They concern building construction"
+ ],
+ correct:0,
+ explanation:
+ "Pharmacy laws and regulations establish requirements for safe and lawful pharmacy practice."
+ }
 
  ],
 
  "CPH 2.1|Pharmacy Practice 1":[
 
-  {
-   q:"Pharmacy practice focuses on:",
-   a:[
-    "Safe and effective use of medicines and pharmacy services",
-    "Only manufacturing buildings",
-    "Only accounting",
-    "Only computer programming"
-   ],
-   correct:0,
-   explanation:
-   "Pharmacy practice includes activities supporting safe and effective medication use and patient care."
-  }
+ {
+ q:"Pharmacy practice involves:",
+ a:[
+ "Applying pharmaceutical knowledge in patient care",
+ "Only manufacturing buildings",
+ "Only accounting",
+ "Only computer programming"
+ ],
+ correct:0,
+ explanation:
+ "Pharmacy practice applies pharmaceutical knowledge and skills to patient care and medicine-related services."
+ }
 
  ],
 
  "CPH 2.1|Therapeutics 1":[
 
-  {
-   q:"Therapeutics is concerned with:",
-   a:[
-    "Treatment of disease",
-    "Only drug packaging",
-    "Only accounting",
-    "Only computer hardware"
-   ],
-   correct:0,
-   explanation:
-   "Therapeutics concerns the treatment and management of disease."
-  }
+ {
+ q:"Therapeutics is broadly concerned with:",
+ a:[
+ "Treatment of disease",
+ "Computer programming",
+ "Building construction",
+ "Accounting"
+ ],
+ correct:0,
+ explanation:
+ "Therapeutics concerns the principles and practice of treating disease."
+ }
 
  ],
 
  "CPH 2.1|Pharmacology 2":[
 
-  {
-   q:"Pharmacodynamics primarily describes:",
-   a:[
-    "What a drug does to the body",
-    "What the body does to a drug",
-    "Drug packaging",
-    "Drug purchasing"
-   ],
-   correct:0,
-   explanation:
-   "Pharmacodynamics describes drug effects and mechanisms of action."
-  }
+ {
+ q:"Pharmacodynamics primarily describes:",
+ a:[
+ "What a drug does to the body",
+ "What the body does to a drug",
+ "Drug packaging",
+ "Drug purchasing"
+ ],
+ correct:0,
+ explanation:
+ "Pharmacodynamics concerns drug effects and mechanisms of action."
+ }
 
  ],
 
  "CPH 2.1|Stores & Inventory Management":[
 
-  {
-   q:"Inventory management involves:",
-   a:[
-    "Controlling and monitoring stock",
-    "Only diagnosing patients",
-    "Only prescribing medicines",
-    "Only studying anatomy"
-   ],
-   correct:0,
-   explanation:
-   "Inventory management involves controlling, monitoring and maintaining appropriate stock."
-  }
+ {
+ q:"The purpose of inventory management includes:",
+ a:[
+ "Maintaining appropriate stock levels",
+ "Keeping no records",
+ "Allowing medicines to expire unnecessarily",
+ "Ignoring stock movement"
+ ],
+ correct:0,
+ explanation:
+ "Inventory management helps maintain appropriate stock levels and control stock movement."
+ }
 
  ],
 
  "CPH 2.2|Pharmaceutics 2":[
 
-  {
-   q:"A dosage form is:",
-   a:[
-    "The physical form in which a medicine is supplied",
-    "A patient's diagnosis",
-    "A financial record",
-    "A hospital building"
-   ],
-   correct:0,
-   explanation:
-   "A dosage form is the physical pharmaceutical form in which a medicine is presented."
-  }
-
- ],
-
- "CPH 2.2|Quality Assurance of Pharmaceuticals":[
-
-  {
-   q:"Quality assurance aims to:",
-   a:[
-    "Ensure pharmaceutical products consistently meet required standards",
-    "Increase confusion",
-    "Replace all regulations",
-    "Eliminate documentation"
-   ],
-   correct:0,
-   explanation:
-   "Quality assurance is concerned with systems that help ensure consistent pharmaceutical quality."
-  }
-
- ],
-
- "CPH 2.2|Pharmacy Practice 2":[
-
-  {
-   q:"A major objective of pharmacy practice is:",
-   a:[
-    "Promoting safe and appropriate medicine use",
-    "Selling medicines without regard to safety",
-    "Ignoring patients",
-    "Avoiding documentation"
-   ],
-   correct:0,
-   explanation:
-   "Safe and appropriate medicine use is a central objective of pharmacy practice."
-  }
-
- ],
-
- "CPH 2.2|Therapeutics 2":[
-
-  {
-   q:"Therapeutic decisions should be based on:",
-   a:[
-    "Appropriate clinical information and evidence",
-    "Guesswork alone",
-    "Advertising alone",
-    "Patient popularity"
-   ],
-   correct:0,
-   explanation:
-   "Therapeutic decisions should use appropriate clinical information and evidence."
-  }
-
- ],
-
- "CPH 2.2|Entrepreneurship":[
-
-  {
-   q:"Entrepreneurship involves:",
-   a:[
-    "Identifying opportunities and creating value",
-    "Only memorizing medicines",
-    "Only measuring temperature",
-    "Only dispensing tablets"
-   ],
-   correct:0,
-   explanation:
-   "Entrepreneurship involves ident
+ {
+ q:"A pharmaceutical dosage form is:",
+ a:[
+ "The physical
