@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#0757a0">
 <title>CPH STUDY</title>
 
@@ -10,366 +10,371 @@
 *{box-sizing:border-box}
 
 body{
- margin:0;
- font-family:Arial,Helvetica,sans-serif;
- background:#f4f7fb;
- color:#172033;
- line-height:1.6;
+margin:0;
+font-family:Arial,Helvetica,sans-serif;
+background:#f4f7fb;
+color:#172033;
+line-height:1.6;
 }
 
 header{
- background:linear-gradient(135deg,#064b9b,#087bd3);
- color:#fff;
- padding:14px 16px;
- display:flex;
- align-items:center;
- justify-content:space-between;
- position:sticky;
- top:0;
- z-index:100;
- box-shadow:0 2px 10px #0002;
+background:linear-gradient(135deg,#064b9b,#087bd3);
+color:#fff;
+padding:14px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+position:sticky;
+top:0;
+z-index:100;
 }
 
 .brand{
- display:flex;
- align-items:center;
- gap:10px;
+display:flex;
+align-items:center;
+gap:10px;
 }
 
-.brand-icon{
- font-size:32px;
+.logo{
+font-size:32px;
 }
 
 .brand-title{
- font-size:20px;
- font-weight:bold;
+font-size:20px;
+font-weight:bold;
 }
 
-.brand-subtitle{
- font-size:11px;
- opacity:.9;
+.brand-sub{
+font-size:12px;
+opacity:.9;
 }
 
 header button{
- background:#ffffff22;
- color:#fff;
- border:0;
- font-size:20px;
- padding:9px 12px;
- border-radius:9px;
+background:rgba(255,255,255,.15);
+color:#fff;
+border:0;
+font-size:20px;
+padding:9px 12px;
+border-radius:9px;
 }
 
 main{
- max-width:1050px;
- margin:auto;
- padding:16px 14px 100px;
+max-width:1050px;
+margin:auto;
+padding:16px 14px 100px;
 }
 
 .hero{
- background:linear-gradient(135deg,#0757a0,#168ee5);
- color:#fff;
- padding:23px;
- border-radius:17px;
- margin-bottom:18px;
+background:linear-gradient(135deg,#0757a0,#1596e8);
+color:#fff;
+padding:24px;
+border-radius:18px;
+margin-bottom:18px;
 }
 
 .hero h1{
- margin:0 0 5px;
- font-size:27px;
+margin:0 0 5px;
+font-size:27px;
 }
 
 .quote{
- margin-top:15px;
- padding:12px;
- border-radius:10px;
- background:#ffffff22;
+margin-top:15px;
+padding:12px;
+background:rgba(255,255,255,.16);
+border-radius:10px;
 }
 
 .search{
- margin-bottom:18px;
+margin-bottom:18px;
 }
 
 .search input{
- width:100%;
- padding:14px;
- border:1px solid #ccd5df;
- border-radius:11px;
- font-size:16px;
- outline:none;
+width:100%;
+padding:15px;
+border:1px solid #ccd5df;
+border-radius:12px;
+font-size:16px;
+outline:none;
 }
 
-.grid{
- display:grid;
- grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
- gap:12px;
+h2,h3,h4{
+margin-top:0;
 }
 
 .card{
- background:#fff;
- padding:17px;
- border-radius:14px;
- box-shadow:0 3px 12px #00000010;
- margin-bottom:12px;
+background:#fff;
+border-radius:14px;
+padding:18px;
+margin-bottom:14px;
+box-shadow:0 3px 12px rgba(0,0,0,.07);
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+gap:12px;
 }
 
 .class-card{
- border-left:5px solid #0757a0;
+border-left:5px solid #0757a0;
+cursor:pointer;
 }
 
 .unit-card{
- border-left:5px solid #168ee5;
-}
-
-button{
- border:0;
- border-radius:9px;
- padding:11px 14px;
- margin:4px;
- background:#0757a0;
- color:#fff;
- cursor:pointer;
- font-size:14px;
-}
-
-button:hover{
- opacity:.9;
-}
-
-button:disabled{
- opacity:.65;
- cursor:not-allowed;
-}
-
-.secondary{
- background:#eaf1f8;
- color:#0757a0;
-}
-
-.success{
- background:#198754;
-}
-
-.danger{
- background:#dc3545;
+border-left:5px solid #168ee5;
 }
 
 .tool{
- width:100%;
- min-height:95px;
- font-size:25px;
+width:100%;
+min-height:95px;
+font-size:27px;
 }
 
 .tool span{
- display:block;
- font-size:14px;
- margin-top:5px;
+display:block;
+font-size:14px;
+margin-top:5px;
 }
 
-.unit-buttons{
- display:grid;
- grid-template-columns:repeat(2,1fr);
- gap:8px;
+button{
+border:0;
+border-radius:9px;
+padding:11px 14px;
+margin:4px;
+background:#0757a0;
+color:#fff;
+cursor:pointer;
+font-size:14px;
 }
 
-.unit-buttons button{
- margin:0;
+button:hover{
+opacity:.9;
+}
+
+button:disabled{
+opacity:.55;
+cursor:not-allowed;
+}
+
+.secondary{
+background:#eaf1f8;
+color:#0757a0;
+}
+
+.success{
+background:#198754;
+}
+
+.danger{
+background:#dc3545;
+}
+
+.warning{
+background:#d98b00;
+}
+
+.unit-actions{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:8px;
+margin-top:12px;
+}
+
+.unit-actions button{
+margin:0;
 }
 
 .notes{
- background:#f9fbfd;
- border-left:4px solid #0757a0;
- padding:16px;
- border-radius:8px;
- margin-top:12px;
+background:#f8fbff;
+border-left:4px solid #0757a0;
+padding:15px;
+border-radius:8px;
+margin-top:12px;
 }
 
-.notes h3{
- color:#0757a0;
- margin-top:22px;
+.notes h4{
+margin-top:18px;
+margin-bottom:6px;
 }
 
-.notes h3:first-child{
- margin-top:0;
-}
-
-.notes li{
- margin-bottom:7px;
+.notes ul,.notes ol{
+padding-left:22px;
 }
 
 .topic{
- background:#fff;
- border:1px solid #e1e7ee;
- border-radius:10px;
- padding:13px;
- margin:10px 0;
+background:#fff;
+border:1px solid #dce4ed;
+border-radius:9px;
+padding:12px;
+margin:10px 0;
 }
 
 .question{
- background:#fff;
- padding:17px;
- border-radius:12px;
- margin-bottom:14px;
- box-shadow:0 2px 8px #0001;
+font-size:18px;
+font-weight:bold;
+margin:15px 0;
 }
 
 .answer{
- display:block;
- width:100%;
- text-align:left;
- background:#f1f5f9;
- color:#172033;
- border:1px solid #d5dce5;
- margin:8px 0;
+display:block;
+width:100%;
+text-align:left;
+background:#f1f5f9;
+color:#172033;
+border:2px solid #d8e0e8;
+margin:8px 0;
 }
 
 .answer.correct{
- border:3px solid #198754;
- background:#eefaf3;
+border-color:#198754;
+background:#e9f8ef;
 }
 
 .answer.wrong{
- border:3px solid #dc3545;
- background:#fff1f2;
+border-color:#dc3545;
+background:#fff0f0;
 }
 
 .explanation{
- background:#eef6ff;
- border-left:4px solid #0757a0;
- padding:13px;
- border-radius:8px;
- margin-top:12px;
-}
-
-.structured{
- border-left:4px solid #168ee5;
- background:#f8fbff;
- padding:15px;
- margin:12px 0;
- border-radius:8px;
+background:#eef6ff;
+border-left:4px solid #0757a0;
+padding:13px;
+border-radius:8px;
+margin-top:12px;
 }
 
 .paper{
- border:1px solid #dce4ec;
- border-radius:11px;
- padding:15px;
- margin:10px 0;
+border-left:4px solid #168ee5;
+padding:14px;
+background:#f8fafc;
+margin:10px 0;
+border-radius:8px;
 }
 
 .post{
- background:#f6f9fc;
- border-left:4px solid #168ee5;
- padding:13px;
- border-radius:8px;
- margin:10px 0;
+background:#f5f8fb;
+padding:13px;
+border-left:4px solid #168ee5;
+border-radius:8px;
+margin:10px 0;
 }
 
 .post small{
- color:#687386;
-}
-
-.stat-grid{
- display:grid;
- grid-template-columns:repeat(3,1fr);
- gap:10px;
-}
-
-.stat{
- background:#eef3f8;
- padding:15px;
- border-radius:10px;
- text-align:center;
-}
-
-.stat strong{
- display:block;
- font-size:25px;
- color:#0757a0;
-}
-
-.empty{
- text-align:center;
- padding:30px 15px;
- color:#667085;
-}
-
-.badge{
- display:inline-block;
- background:#eaf1f8;
- color:#0757a0;
- padding:5px 9px;
- border-radius:20px;
- font-size:12px;
- margin:3px;
+color:#687386;
 }
 
 textarea{
- width:100%;
- min-height:120px;
- padding:12px;
- border:1px solid #ccd5df;
- border-radius:9px;
- font:inherit;
- resize:vertical;
+width:100%;
+min-height:120px;
+padding:12px;
+border:1px solid #ccd5df;
+border-radius:9px;
+font:inherit;
+resize:vertical;
+}
+
+.stat-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:10px;
+}
+
+.stat{
+background:#eef3f8;
+padding:15px;
+border-radius:10px;
+text-align:center;
+}
+
+.stat strong{
+display:block;
+font-size:26px;
+color:#0757a0;
+}
+
+.badge{
+display:inline-block;
+background:#eaf1f8;
+color:#0757a0;
+padding:5px 9px;
+border-radius:20px;
+font-size:12px;
+margin:3px;
+}
+
+.hidden{
+display:none!important;
+}
+
+.empty{
+text-align:center;
+padding:25px;
+color:#687386;
 }
 
 nav{
- position:fixed;
- left:0;
- right:0;
- bottom:0;
- background:#fff;
- border-top:1px solid #ddd;
- display:grid;
- grid-template-columns:repeat(4,1fr);
- z-index:200;
+position:fixed;
+bottom:0;
+left:0;
+right:0;
+background:#fff;
+border-top:1px solid #ddd;
+display:grid;
+grid-template-columns:repeat(4,1fr);
+padding:6px;
+z-index:200;
 }
 
 nav button{
- background:#fff;
- color:#172033;
- margin:0;
- border-radius:0;
- padding:8px 4px;
+background:transparent;
+color:#172033;
+margin:0;
+border-radius:0;
+font-size:18px;
 }
 
 nav span{
- display:block;
- font-size:11px;
+display:block;
+font-size:11px;
 }
 
 .dark{
- background:#101722;
- color:#f1f5f9;
+background:#101722;
+color:#f1f5f9;
 }
 
 .dark .card,
-.dark nav,
-.dark .paper,
-.dark .question{
- background:#1b2635;
- color:#f1f5f9;
+.dark nav{
+background:#1b2635;
+color:#f1f5f9;
 }
 
 .dark .notes,
 .dark .topic,
-.dark .structured,
+.dark .paper,
 .dark .post,
 .dark .stat{
- background:#243144;
- color:#f1f5f9;
+background:#243144;
+color:#f1f5f9;
 }
 
 .dark .search input,
 .dark textarea{
- background:#1b2635;
- color:#fff;
- border-color:#46546a;
+background:#1b2635;
+color:#fff;
+border-color:#46546a;
+}
+
+.dark .answer{
+background:#243144;
+color:#fff;
+border-color:#46546a;
 }
 
 @media(max-width:600px){
- .hero h1{font-size:23px}
- .unit-buttons{grid-template-columns:1fr}
- .stat-grid{grid-template-columns:1fr}
+.hero h1{font-size:23px}
+.unit-actions{grid-template-columns:1fr}
+.stat-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -377,503 +382,600 @@ nav span{
 <body>
 
 <header>
- <div class="brand">
-  <div class="brand-icon">✚</div>
-  <div>
-   <div class="brand-title">CPH STUDY</div>
-   <div class="brand-subtitle">Learn • Practice • Master</div>
-  </div>
- </div>
+<div class="brand">
+<div class="logo">✚</div>
+<div>
+<div class="brand-title">CPH STUDY</div>
+<div class="brand-sub">Learn • Practice • Master</div>
+</div>
+</div>
 
- <button onclick="enableNotifications()">🔔</button>
+<button onclick="enableNotifications()">🔔</button>
 </header>
 
 <main>
 
 <section class="hero">
- <h1>Welcome to CPH STUDY</h1>
- <p>Certificate in Pharmacy Study Platform</p>
- <div class="quote" id="quote">
-  Your study journey starts here.
- </div>
+<h1>Welcome to CPH STUDY</h1>
+<p>Your organized Certificate in Pharmacy study platform.</p>
+<div class="quote" id="quote">Welcome to CPH STUDY.</div>
 </section>
 
 <div class="search">
- <input
-  id="search"
-  type="search"
-  placeholder="🔎 Search classes, courses and topics..."
-  oninput="searchCourses()">
+<input id="search"
+type="search"
+placeholder="🔎 Search classes, course units or topics..."
+oninput="searchCourses()">
 </div>
 
-<div id="content"></div>
+<div id="app"></div>
 
 </main>
 
 <nav>
- <button onclick="home()">🏠<span>Home</span></button>
- <button onclick="focusSearch()">🔎<span>Search</span></button>
- <button onclick="showSaved()">🔖<span>Saved</span></button>
- <button onclick="settings()">⚙️<span>Settings</span></button>
+<button onclick="home()">🏠<span>Home</span></button>
+<button onclick="focusSearch()">🔎<span>Search</span></button>
+<button onclick="showSaved()">🔖<span>Saved</span></button>
+<button onclick="showSettings()">⚙️<span>Settings</span></button>
 </nav>
+
 
 <script>
 
 /* =========================================================
-   CPH STUDY
-   SINGLE-FILE EDUCATIONAL SYSTEM
-========================================================= */
+   CPH STUDY — SINGLE FILE VERSION
+   ========================================================= */
 
 
-/* =========================================================
+/* =========================
    CURRICULUM
-========================================================= */
+========================= */
 
 const curriculum={
 
- "CPH 1.1":[
-  "Microbiology",
-  "Anatomy & Physiology 1",
-  "Pharmaceutical Chemistry 1",
-  "First Aid",
-  "Primary Health Care",
-  "Computer Applications"
- ],
+"CPH 1.1":[
+"Microbiology",
+"Anatomy & Physiology 1",
+"Pharmaceutical Chemistry 1",
+"First Aid",
+"PHC",
+"Computer Applications"
+],
 
- "CPH 1.2":[
-  "Anatomy & Physiology 2",
-  "Pharmaceutical Chemistry 2",
-  "Pharmaceutical Calculations",
-  "Basic Pharmacognosy",
-  "Pharmacology 1",
-  "Medical Psychology",
-  "Communication Skills",
-  "Pharmaceutical Practicals"
- ],
+"CPH 1.2":[
+"Anatomy & Physiology 2",
+"Pharmaceutical Chemistry 2",
+"Pharmaceutical Calculations",
+"Pharmacognosy",
+"Pharmacology 1",
+"Medical Psychology",
+"Communication Skills",
+"Pharmaceutical Practicals"
+],
 
- "CPH 2.1":[
-  "Pharmaceutics 1",
-  "Pharmacy Laws & Regulations",
-  "Pharmacy Practice 1",
-  "Therapeutics 1",
-  "Pharmacology 2",
-  "Stores & Inventory Management"
- ],
+"CPH 2.1":[
+"Pharmaceutics 1",
+"Pharmacy Laws & Regulations",
+"Pharmacy Practice 1",
+"Therapeutics 1",
+"Pharmacology 2",
+"Stores & Inventory Management"
+],
 
- "CPH 2.2":[
-  "Pharmaceutics 2",
-  "Quality Assurance of Pharmaceuticals",
-  "Pharmacy Practice 2",
-  "Therapeutics 2",
-  "Entrepreneurship"
- ]
+"CPH 2.2":[
+"Pharmaceutics 2",
+"Quality Assurance of Pharmaceuticals",
+"Pharmacy Practice 2",
+"Therapeutics 2",
+"Entrepreneurship"
+]
 
 };
 
 
-/* =========================================================
-   CURRICULUM NOTES DATABASE
-========================================================= */
+/* =========================
+   APP VARIABLES
+========================= */
 
-const notesDB={
+let activeLevel="";
+let activeUnit="";
+let quizQuestions=[];
+let quizIndex=0;
+let quizScore=0;
+let quizAnswered=false;
 
-"CPH 1.1|Microbiology":{
 
-intro:
-"Microbiology is the study of microorganisms and their activities. In pharmacy, microbiology is important because microorganisms can cause disease, contaminate medicines and pharmaceutical environments, and may also be useful in the production of certain biological products.",
+/* =========================
+   MOTIVATION
+========================= */
 
-objectives:[
-"Define microbiology and microorganism.",
-"Identify major groups of microorganisms.",
-"Explain the importance of microorganisms in health and disease.",
-"Describe basic principles of infection and contamination.",
-"Explain basic methods used to control microorganisms."
-],
+const quotes=[
 
-topics:[
+"📚 Study consistently, not occasionally.",
 
-{
-title:"1. Meaning of Microbiology",
-body:
-"Microbiology is the scientific discipline concerned with microorganisms, including their structure, classification, growth, reproduction, activities and relationship with humans and the environment."
-},
+"🧠 Understand first. Memorize second.",
 
-{
-title:"2. Major Groups of Microorganisms",
-body:
-"Important groups include bacteria, viruses, fungi and protozoa. Each group has characteristic structural and biological features. Some microorganisms are harmless or beneficial, while others are pathogenic."
-},
+"🎯 Every topic mastered is one step forward.",
 
-{
-title:"3. Importance in Pharmacy",
-body:
-"Microbiology is relevant to pharmacy because microorganisms may contaminate pharmaceutical products, cause infections, affect product stability and create risks to patients. Microbiological quality control is therefore an important component of pharmaceutical practice."
-},
+"💊 Good pharmacy practice begins with good knowledge.",
 
-{
-title:"4. Infection and Contamination",
-body:
-"Infection refers to the invasion and multiplication of microorganisms in a host. Contamination refers to the unwanted presence of microorganisms or other contaminants in a material, product or environment."
-},
+"🔬 Learn the science behind the medicine.",
 
-{
-title:"5. Control of Microorganisms",
-body:
-"Microbial control may involve cleaning, disinfection, antisepsis, sterilization and appropriate environmental control. The method selected depends on the material, organism and purpose."
+"📖 Read. Recall. Practise. Improve.",
+
+"🏆 Your effort today builds your professional future.",
+
+"💡 Ask questions whenever a concept is unclear.",
+
+"🚀 Small daily progress produces major results.",
+
+"🌟 Your knowledge is an investment in your future."
+
+];
+
+function updateQuote(){
+
+const hour=new Date().getHours();
+
+document.getElementById("quote").textContent=
+quotes[hour%quotes.length];
+
 }
 
+updateQuote();
+
+setInterval(updateQuote,60000);
+
+
+/* =========================
+   SAFE TEXT
+========================= */
+
+function esc(value){
+
+return String(value)
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
+
+}
+
+
+/* =========================
+   HOME
+========================= */
+
+function home(){
+
+document.getElementById("search").value="";
+
+const app=document.getElementById("app");
+
+app.innerHTML=`
+
+<div class="card">
+<h2>🎓 Select Your CPH Class</h2>
+
+<p>
+Choose your class level first. CPH STUDY keeps
+course units, notes, quizzes and discussions
+separated by level.
+</p>
+</div>
+
+<div class="grid">
+
+${Object.keys(curriculum).map(level=>`
+
+<div class="card class-card"
+onclick="openClass('${esc(level)}')">
+
+<h3>📚 ${esc(level)}</h3>
+
+<p>
+${curriculum[level].length} course units
+</p>
+
+<span class="badge">Curriculum restricted</span>
+<span class="badge">Notes</span>
+<span class="badge">MCQs</span>
+<span class="badge">Structured</span>
+
+</div>
+
+`).join("")}
+
+</div>
+
+<h2>🛠️ Study Tools</h2>
+
+<div class="grid">
+
+<button class="tool"
+onclick="quizClasses()">
+📝
+<span>MCQ Quizzes</span>
+</button>
+
+<button class="tool"
+onclick="structuredClasses()">
+📄
+<span>Structured Papers</span>
+</button>
+
+<button class="tool"
+onclick="discussionClasses()">
+💬
+<span>Live Discussions</span>
+</button>
+
+<button class="tool"
+onclick="showProgress()">
+📊
+<span>Progress</span>
+</button>
+
+</div>
+
+<br>
+
+<div class="card">
+
+<h3>📌 How to use CPH STUDY</h3>
+
+<ol>
+<li>Select your class.</li>
+<li>Select a course unit.</li>
+<li>Read the notes.</li>
+<li>Attempt MCQs.</li>
+<li>Practise structured questions.</li>
+<li>Discuss difficult topics.</li>
+<li>Track your progress.</li>
+</ol>
+
+</div>
+`;
+
+}
+
+
+/* =========================
+   CLASS
+========================= */
+
+function openClass(level){
+
+activeLevel=level;
+
+document.getElementById("app").innerHTML=`
+
+<div class="card">
+
+<button class="secondary" onclick="home()">← Home</button>
+
+<h2>📚 ${esc(level)}</h2>
+
+<p>
+Only course units belonging to <b>${esc(level)}</b>
+are displayed here.
+</p>
+
+</div>
+
+<div class="grid">
+
+${curriculum[level].map(unit=>`
+
+<div class="card unit-card">
+
+<h3>📖 ${esc(unit)}</h3>
+
+<p>
+Complete learning area for ${esc(level)}.
+</p>
+
+<div class="unit-actions">
+
+<button onclick="showNotes('${esc(level)}','${esc(unit)}')">
+📖 Notes
+</button>
+
+<button onclick="startQuiz('${esc(level)}','${esc(unit)}')">
+📝 MCQ
+</button>
+
+<button onclick="structured('${esc(level)}','${esc(unit)}')">
+📄 Structured
+</button>
+
+<button onclick="discussion('${esc(level)}','${esc(unit)}')">
+💬 Discussion
+</button>
+
+<button class="secondary"
+onclick="saveUnit('${esc(level)}','${esc(unit)}')">
+🔖 Save
+</button>
+
+</div>
+
+</div>
+
+`).join("")}
+
+</div>
+`;
+
+}
+
+
+/* =========================
+   NOTES ENGINE
+========================= */
+
+const noteTopics={
+
+"Microbiology":[
+["Introduction to microbiology",
+"Microbiology is the study of microorganisms. In pharmacy and healthcare, microbiology is important because microorganisms may cause disease, contaminate pharmaceutical products and influence infection-control practices."],
+["Bacteria",
+"Bacteria are microscopic single-celled organisms. Important concepts include bacterial shape, arrangement, growth requirements, identification and their relationship with human disease."],
+["Sterilization and disinfection",
+"Sterilization aims to eliminate all forms of viable microorganisms. Disinfection reduces or eliminates many pathogenic microorganisms on non-living surfaces. The method selected depends on the material and intended use."],
+["Infection control",
+"Basic infection-control principles include hand hygiene, appropriate protective measures, safe handling of contaminated materials and correct disposal of waste."]
 ],
 
-keyPoints:[
-"Microorganisms are microscopic living organisms or infectious agents studied by microbiology.",
-"Bacteria are cellular microorganisms.",
-"Viruses depend on host cells for replication.",
-"Contamination of medicines can compromise quality and patient safety.",
-"Sterilization aims to eliminate viable microorganisms from an appropriately treated object or material."
+"Anatomy & Physiology 1":[
+["Introduction",
+"Anatomy studies body structure while physiology studies body function. Understanding normal structure and function provides a foundation for understanding disease and drug effects."],
+["Cells and tissues",
+"The cell is the basic structural and functional unit of the body. Major tissue categories include epithelial, connective, muscle and nervous tissue."],
+["Skeletal system",
+"The skeletal system provides support, protection, movement and mineral storage. Bones also contain marrow involved in blood-cell formation."],
+["Muscular system",
+"Muscle tissue produces movement. Skeletal muscle is generally under voluntary control, while smooth and cardiac muscle have specialized involuntary functions."]
+],
+
+"Pharmaceutical Calculations":[
+["Units and measurements",
+"Pharmaceutical calculations require careful handling of units. Common quantities include mass, volume, concentration, amount, dose and percentage strength."],
+["Ratio and proportion",
+"Ratio and proportion can be used to determine unknown quantities when relationships between quantities are known. Always write units and check whether the resulting answer is reasonable."],
+["Dilution",
+"A common dilution relationship is C₁V₁ = C₂V₂, where concentration and volume before and after dilution are related. Units must be compatible."],
+["Percentage strength",
+"Percentage strength expresses the amount of active ingredient in relation to the preparation. The exact interpretation depends on whether the preparation is expressed as mass/mass, mass/volume or volume/volume."],
+["Dose calculations",
+"Drug-dose calculations require identifying the prescribed dose, available strength and quantity needed. Unit conversion should be completed carefully before the final calculation."]
+],
+
+"Pharmacology 1":[
+["Introduction to pharmacology",
+"Pharmacology studies drugs and their effects on living systems. Important areas include pharmacodynamics, pharmacokinetics, therapeutic effects and adverse effects."],
+["Pharmacodynamics",
+"Pharmacodynamics describes what a drug does to the body, including receptor interactions, mechanisms of action and resulting physiological effects."],
+["Pharmacokinetics",
+"Pharmacokinetics describes what the body does to a drug. Major processes are absorption, distribution, metabolism and excretion."],
+["Adverse drug reactions",
+"Adverse drug reactions are unwanted and potentially harmful responses associated with medicines when used appropriately. Recognition and reporting support medicine safety."]
+],
+
+"Pharmacognosy":[
+["Introduction",
+"Pharmacognosy concerns medicinal substances obtained from natural sources, especially plants, and includes identification, constituents, preparation and uses."],
+["Medicinal plants",
+"Medicinal plants contain biologically active constituents. Correct identification and quality control are important because natural products may vary in composition."],
+["Crude drugs",
+"Crude drugs are natural substances used medicinally in relatively unrefined forms. Their evaluation may include identity, purity, quality and storage."]
+],
+
+"Pharmaceutics 1":[
+["Introduction to pharmaceutics",
+"Pharmaceutics is concerned with converting active pharmaceutical ingredients into suitable dosage forms that can be administered safely and effectively."],
+["Dosage forms",
+"Dosage forms include tablets, capsules, solutions, suspensions, creams and other preparations. Each dosage form has characteristics affecting administration, stability and patient use."],
+["Excipients",
+"Excipients are ingredients other than the active pharmaceutical ingredient. They may assist formulation, stability, appearance, preservation or administration."]
+],
+
+"Pharmacy Laws & Regulations":[
+["Purpose of pharmacy regulation",
+"Pharmacy laws and regulations establish standards for the safe handling, storage, dispensing and distribution of medicines and define professional responsibilities."],
+["Professional responsibility",
+"Pharmacy personnel should work within their legal scope, maintain appropriate records, protect patients and follow applicable professional and regulatory requirements."],
+["Medicine control",
+"Controlled and restricted medicines require additional safeguards. Proper documentation, storage and accountability are essential."]
+],
+
+"Entrepreneurship":[
+["Introduction",
+"Entrepreneurship involves identifying opportunities, organizing resources, taking calculated decisions and creating value."],
+["Business planning",
+"A business plan normally considers the product or service, target customers, resources, costs, revenue model, risks and implementation strategy."],
+["Customer service",
+"Good customer service involves communication, reliability, ethical conduct, understanding customer needs and appropriate follow-up."]
 ]
-
-},
-
-
-"CPH 1.1|Anatomy & Physiology 1":{
-
-intro:
-"Anatomy concerns body structure, while physiology concerns how body structures function. Together they provide the foundation for understanding disease, medicines and patient care.",
-
-objectives:[
-"Define anatomy and physiology.",
-"Use basic anatomical terminology.",
-"Describe levels of organization of the human body.",
-"Identify major body structures.",
-"Explain basic relationships between structure and function."
-],
-
-topics:[
-
-{
-title:"1. Anatomy and Physiology",
-body:
-"Anatomy studies the form and structure of the body. Physiology studies the functions performed by body structures. Understanding both subjects allows health professionals to connect anatomical structures with their normal physiological roles."
-},
-
-{
-title:"2. Levels of Organization",
-body:
-"The human body can be considered at several levels: chemical, cellular, tissue, organ, organ-system and organismal levels. Increasing levels of organization involve increasingly complex relationships between structures."
-},
-
-{
-title:"3. Anatomical Position",
-body:
-"Anatomical terminology provides a standardized method of describing locations and relationships within the body. Terms such as superior, inferior, anterior, posterior, medial and lateral help health professionals communicate accurately."
-},
-
-{
-title:"4. Musculoskeletal System",
-body:
-"The musculoskeletal system provides support, protection and movement. Bones provide structural support, joints connect bones and muscles generate force for movement."
-},
-
-{
-title:"5. Nervous System Introduction",
-body:
-"The nervous system coordinates rapid communication and control. It is broadly divided into the central nervous system and peripheral nervous system."
-}
-
-],
-
-keyPoints:[
-"Anatomy = structure.",
-"Physiology = function.",
-"Standard anatomical terminology improves clinical communication.",
-"Bones provide support and protection.",
-"Muscles contribute to movement.",
-"The nervous system coordinates body functions through electrical and chemical signalling."
-]
-
-},
-
-
-"CPH 1.1|First Aid":{
-
-intro:
-"First aid involves immediate care given to a person who is injured or suddenly ill before definitive medical treatment is available. It emphasizes safety, assessment, appropriate immediate measures and referral.",
-
-objectives:[
-"Explain the purpose of first aid.",
-"Identify basic first-aid equipment and PPE.",
-"Assess an emergency scene safely.",
-"Recognize common emergencies.",
-"Provide appropriate immediate assistance and arrange referral."
-],
-
-topics:[
-
-{
-title:"1. Principles of First Aid",
-body:
-"The first aider should first consider scene safety, personal protection and the condition of the casualty. Assistance should be appropriate to the situation and should not unnecessarily increase risk."
-},
-
-{
-title:"2. First-Aid Box and PPE",
-body:
-"A first-aid kit contains materials used for immediate care. Personal protective equipment helps reduce exposure to blood, body fluids and other hazards."
-},
-
-{
-title:"3. Emergency Assessment",
-body:
-"An emergency assessment involves securing the scene, identifying casualties, assessing their condition and determining priorities for assistance and referral."
-},
-
-{
-title:"4. Wounds and Bleeding",
-body:
-"First-aid management of wounds includes protecting the casualty and first aider, controlling bleeding appropriately and seeking further medical assessment when required."
-},
-
-{
-title:"5. Burns",
-body:
-"Burns can result from heat, chemicals, electricity or other sources. Initial management focuses on safety, stopping the harmful exposure where possible, appropriate cooling for suitable thermal burns and referral according to severity."
-},
-
-{
-title:"6. Fractures and Soft-Tissue Injuries",
-body:
-"Fractures involve breaks in bone continuity. Soft-tissue injuries affect structures such as muscles, ligaments and skin. Appropriate immobilization and referral may be required."
-},
-
-{
-title:"7. Bites, Stings and Poisoning",
-body:
-"Assessment should identify the possible exposure and the condition of the casualty. Poisoning and serious bites or stings require prompt medical assessment and referral."
-},
-
-{
-title:"8. Temperature Emergencies",
-body:
-"Hypothermia involves abnormally low body temperature, while hyperthermia involves abnormally elevated body temperature. Immediate care focuses on removing the person from the harmful environment and obtaining appropriate medical assistance."
-}
-
-],
-
-keyPoints:[
-"Scene safety comes before treatment.",
-"PPE helps protect the first aider.",
-"Assessment determines priorities.",
-"Serious emergencies require appropriate referral.",
-"First aid is immediate care and does not replace definitive medical treatment."
-]
-
-},
-
-
-"CPH 1.2|Pharmaceutical Calculations":{
-
-intro:
-"Pharmaceutical calculations apply mathematical principles to medicines, formulations, concentrations, doses, quantities and other pharmacy-related problems. Accuracy is essential.",
-
-objectives:[
-"Convert common units.",
-"Calculate doses and quantities.",
-"Calculate concentrations.",
-"Perform dilution calculations.",
-"Interpret pharmaceutical calculation questions systematically.",
-"Check answers for reasonable units and magnitude."
-],
-
-topics:[
-
-{
-title:"1. General Calculation Method",
-body:
-"First identify what the question is asking. Then identify the information supplied, ensure units are compatible, select the appropriate equation, substitute values, calculate carefully and check whether the final answer has the correct unit."
-},
-
-{
-title:"2. Ratio and Proportion",
-body:
-"Ratio compares quantities. Proportion expresses equality between ratios. These methods are useful when determining quantities of ingredients or doses from known relationships."
-},
-
-{
-title:"3. Percentage Strength",
-body:
-"Percentage strength expresses the amount of active ingredient relative to the preparation according to the stated percentage convention. Always identify whether the question concerns percentage weight/weight, weight/volume or volume/volume."
-},
-
-{
-title:"4. Dilution",
-body:
-"For many dilution problems involving the same solute, the relationship C₁V₁ = C₂V₂ can be used. C₁ and V₁ represent the initial concentration and volume, while C₂ and V₂ represent the final concentration and volume."
-},
-
-{
-title:"5. Dose Calculations",
-body:
-"Dose calculations require careful interpretation of the prescribed or required dose, available strength and dosage form. Units must be compatible before calculation."
-},
-
-{
-title:"6. Checking Answers",
-body:
-"Check the unit, decimal position, magnitude and whether the answer makes practical sense. Never ignore units during pharmaceutical calculations."
-}
-
-],
-
-keyPoints:[
-"Write the required quantity before calculating.",
-"Keep units visible throughout the calculation.",
-"Use C₁V₁ = C₂V₂ for appropriate dilution problems.",
-"Do not round unnecessarily early.",
-"Always perform a final reasonableness check."
-]
-
-},
-
-
-"CPH 1.2|Communication Skills":{
-
-intro:
-"Communication skills are essential for effective interaction with patients, carers, colleagues and other health professionals. The curriculum includes communication principles, interviewing, counselling, listening, presentation, negotiation and conflict resolution.",
-
-objectives:[
-"Explain the importance of communication at the workplace.",
-"Identify communication barriers.",
-"Explain the role of culture, beliefs, attitudes and values.",
-"Communicate effectively with patients and health workers.",
-"Apply the GATHER approach during counselling.",
-"Demonstrate negotiation and advocacy skills."
-],
-
-topics:[
-
-{
-title:"1. Communication at the Workplace",
-body:
-"Effective communication supports teamwork, accurate information transfer, patient safety and professional relationships. Communication may be verbal, written or non-verbal."
-},
-
-{
-title:"2. Verbal and Non-Verbal Communication",
-body:
-"Verbal communication uses spoken or written language. Non-verbal communication includes facial expressions, posture, gestures, eye contact and other behavioural cues."
-},
-
-{
-title:"3. Communication Barriers",
-body:
-"Barriers may arise from language differences, noise, assumptions, cultural differences, poor listening, inappropriate terminology and emotional factors. Effective communication requires recognition and management of these barriers."
-},
-
-{
-title:"4. GATHER Counselling Approach",
-body:
-"GATHER is a structured approach used in counselling: Greet, Ask, Tell/Explain/Discuss, Help, Explain/Provide information or instructions, and Return/Discuss follow-up or referral."
-},
-
-{
-title:"5. Active Listening",
-body:
-"Active listening involves paying attention, understanding the message, observing relevant non-verbal communication, clarifying information and responding appropriately."
-},
-
-{
-title:"6. Negotiation and Conflict Resolution",
-body:
-"Negotiation involves communication aimed at reaching an acceptable outcome. Conflict resolution involves identifying the source of disagreement, listening to relevant perspectives and seeking constructive solutions."
-}
-
-],
-
-keyPoints:[
-"Communication is central to safe patient care.",
-"Use language appropriate to the patient's understanding.",
-"Culture, beliefs and values can influence communication.",
-"GATHER provides a structured counselling approach.",
-"Active listening is an essential professional skill."
-]
-
-}
 
 };
 
 
-/* =========================================================
-   MCQ DATABASE
-========================================================= */
+/* =========================
+   GENERIC NOTE BUILDER
+========================= */
 
-const mcqs={
+function getTopics(unit){
 
-"CPH 1.1|Microbiology":[
+if(noteTopics[unit]) return noteTopics[unit];
 
-{
-q:"What is microbiology primarily concerned with?",
-a:[
-"Microorganisms",
-"Bones",
-"Financial accounting",
-"Hospital construction"
-],
-correct:0,
-explanation:
-"Microbiology is the scientific study of microorganisms."
-},
+return [
 
-{
-q:"Which is an example of a microorganism?",
-a:[
-"Bacterium",
-"Femur",
-"Heart",
-"Kidney"
-],
-correct:0,
-explanation:
-"Bacteria are microorganisms."
-},
+["Introduction to "+unit,
+unit+" should be studied systematically by beginning with definitions, scope, basic terminology and the relationship of the subject to pharmacy practice."],
 
-{
-q:"Why is microbiology important in pharmacy?",
-a:[
-"It helps understand contamination and microbial disease",
-"It replaces all pharmaceutical calculations",
-"It only studies hospital buildings",
-"It deals only with accounting"
-],
-correct:0,
-explanation:
-"Microbiology is important in pharmacy because microorganisms can cause disease and contaminate pharmaceutical products."
+["Core concepts",
+"Focus on major principles, classifications, terminology, processes and relationships. Do not rely only on memorization; understand why each concept matters."],
+
+["Pharmacy application",
+"Relate the theory to pharmaceutical practice, patient care, medicine use, safety, quality assurance or other relevant professional activities."],
+
+["Examination focus",
+"Revise definitions, comparisons, classifications, mechanisms, procedures, advantages and disadvantages, examples and applications."],
+
+["Revision strategy",
+"Create short summaries, practise recall, answer examination questions and revisit areas where mistakes occur."]
+
+];
+
 }
 
-],
+
+/* =========================
+   NOTES
+========================= */
+
+function showNotes(level,unit){
+
+activeLevel=level;
+activeUnit=unit;
+
+const topics=getTopics(unit);
+
+document.getElementById("app").innerHTML=`
+
+<div class="card">
+
+<button class="secondary"
+onclick="openClass('${esc(level)}')">
+← ${esc(level)}
+</button>
+
+<h2>📖 ${esc(unit)}</h2>
+
+<p>
+<b>${esc(level)}</b> → <b>${esc(unit)}</b>
+</p>
+
+<div class="notes">
+
+<h3>📚 Comprehensive Study Notes</h3>
+
+<p>
+These notes are organized specifically under
+${esc(level)} → ${esc(unit)}.
+No material from another class is intentionally
+loaded into this unit.
+</p>
+
+${topics.map((t,i)=>`
+
+<div class="topic">
+
+<h4>${i+1}. ${esc(t[0])}</h4>
+
+<p>${esc(t[1])}</p>
+
+</div>
+
+`).join("")}
+
+<h3>🧠 Master Revision Checklist</h3>
+
+<ul>
+<li>Know important definitions.</li>
+<li>Understand classifications.</li>
+<li>Understand major principles.</li>
+<li>Know important examples.</li>
+<li>Understand practical applications.</li>
+<li>Practise explaining concepts in your own words.</li>
+<li>Attempt both MCQs and structured questions.</li>
+</ul>
+
+<h3>✍️ Exam Technique</h3>
+
+<p>
+For structured questions, read the command word carefully.
+For example, “define” requires a concise definition,
+while “explain” requires the concept and relevant reasoning.
+For calculations, show the formula, substitution, units
+and final answer.
+</p>
+
+</div>
+
+<br>
+
+<button onclick="startQuiz('${esc(level)}','${esc(unit)}')">
+📝 Start MCQ Quiz
+</button>
+
+<button onclick="structured('${esc(level)}','${esc(unit)}')">
+📄 Structured Questions
+</button>
+
+</div>
+`;
+
+}
 
 
-"CPH 1.1|Anatomy & Physiology 1":[
+/* =========================
+   QUESTION BANK
+========================= */
 
+const questionBank={
+
+"Microbiology":[
 {
-q:"Anatomy primarily studies:",
-a:[
-"Body structure",
-"Drug prices",
-"Business management",
-"Computer networks"
-],
-correct:0,
-explanation:
-"Anatomy concerns body structure."
+q:"Microbiology is primarily the study of:",
+a:["Microorganisms","Bones","Business","Buildings"],
+c:0,
+e:"Microbiology is the scientific study of microorganisms."
 },
-
 {
-q:"Physiology primarily studies:",
-a:[
-"Body function",
-"Drug packaging",
-"Accounting",
-"Building design"
+q:"Which is a microorganism?",
+a:["Bacterium","Femur","Kidney","Heart"],
+c:0,
+e:"Bacteria are microorganisms."
+},
+{
+q:"Sterilization is intended to:",
+a:["Eliminate viable microorganisms","Increase contamination","Add microorganisms","Change drug colour"],
+c:0,
+e:"Sterilization is intended to eliminate viable microorganisms."
+}
 ],
-correct:0,
-expla
+
+"Anatomy & Physiology 1":[
+{
+q:"Anatomy primarily concerns:",
+a:["Body structure","Drug pricing","Accounting","Communication"],
+c:0,
+e:"Anatomy is concerned with body structure."
+},
+{
+q:"Physiology primarily concerns:",
+a:["Body function","Drug packaging","Business plans","Hospital buildings"],
+c:0,
+e:"Physiology is concerned with how the body functions."
+}
+],
+
+"Pharmaceutical Calculations":[
+{
+q:"Which equation is commonly used for dilution calculations?",
+a:["C₁V₁=C₂V₂","F=ma","E=mc²","P=IV"],
+c:0,
+e:"C₁V₁=C₂V₂ is commonly used for dilution calculations."
+},
+{
+q:"500 mg in 5 mL equals:",
+a:["50 mg/mL","100 mg/mL","250 mg/mL","500 mg/mL"],
+c:1,
+e:"500 mg ÷ 5 mL = 100 mg/mL."
+},
+{
+q:"What should be done before performing a pharmaceutical calculation?",
+a:["
