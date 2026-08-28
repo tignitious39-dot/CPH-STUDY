@@ -2,145 +2,281 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <meta name="theme-color" content="#0757a0">
-<meta name="description" content="CPH STUDY - Community Pharmacy learning platform">
+
 <title>CPH STUDY</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{
- font-family:Arial,Helvetica,sans-serif;
- background:#f3f7fb;
- color:#172033;
- line-height:1.6
-}
-header{
- background:linear-gradient(135deg,#0757a0,#0b78d0);
- color:white;
- padding:18px 5%;
- position:sticky;
- top:0;
- z-index:1000;
- box-shadow:0 2px 10px #0002
-}
-.nav{
- max-width:1200px;
- margin:auto;
- display:flex;
- align-items:center;
- justify-content:space-between;
- gap:15px
-}
-.logo{font-size:25px;font-weight:800}
-.logo span{color:#ffd43b}
-nav{display:flex;gap:8px;flex-wrap:wrap}
-nav button{
- border:0;background:transparent;color:white;
- padding:9px 12px;border-radius:7px;cursor:pointer;
- font-weight:bold
-}
-nav button:hover{background:#ffffff22}
+*{box-sizing:border-box}
 
-.container{max-width:1200px;margin:auto;padding:25px 5%}
+body{
+margin:0;
+font-family:Arial,Helvetica,sans-serif;
+background:#f3f7fb;
+color:#172033;
+line-height:1.6;
+}
+
+header{
+background:#0757a0;
+color:white;
+padding:15px;
+position:sticky;
+top:0;
+z-index:1000;
+box-shadow:0 2px 10px #0003;
+}
+
+.header{
+max-width:1100px;
+margin:auto;
+display:flex;
+align-items:center;
+justify-content:space-between;
+}
+
+.logo{
+font-size:22px;
+font-weight:bold;
+}
+
+.menu{
+background:white;
+color:#0757a0;
+font-size:22px;
+padding:6px 12px;
+}
+
+nav{
+display:none;
+background:white;
+box-shadow:0 2px 10px #0002;
+}
+
+nav button{
+display:block;
+width:100%;
+border:0;
+background:white;
+color:#172033;
+text-align:left;
+padding:14px 20px;
+font-size:16px;
+}
+
+main{
+max-width:1100px;
+margin:auto;
+padding:18px;
+}
 
 .hero{
- background:linear-gradient(135deg,#0757a0,#1590e8);
- color:white;
- border-radius:18px;
- padding:45px 25px;
- text-align:center;
- margin-bottom:25px
+background:linear-gradient(135deg,#0757a0,#1596df);
+color:white;
+padding:30px 22px;
+border-radius:18px;
+margin-bottom:20px;
 }
-.hero h1{font-size:clamp(30px,6vw,52px);margin-bottom:10px}
-.hero p{font-size:18px;opacity:.95}
+
+.hero h1{
+margin:0 0 8px;
+font-size:32px;
+}
+
 .search{
- width:100%;max-width:700px;margin:25px auto 0;
- display:block;padding:15px 18px;border:0;border-radius:30px;
- font-size:16px;outline:none
+width:100%;
+padding:15px;
+border:1px solid #ccd7e5;
+border-radius:10px;
+font-size:16px;
+margin-bottom:18px;
 }
 
 .grid{
- display:grid;
- grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
- gap:18px
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:15px;
 }
-.card{
- background:white;border-radius:14px;padding:22px;
- box-shadow:0 4px 15px #0000000d;
- border:1px solid #e3eaf2
-}
-.card h3{color:#0757a0;margin-bottom:8px}
-.card p{color:#536174}
-.card button,.primary{
- margin-top:15px;background:#0757a0;color:white;
- border:0;border-radius:8px;padding:11px 15px;
- cursor:pointer;font-weight:bold
-}
-.card button:hover,.primary:hover{background:#06477f}
 
-.section{display:none}
-.section.active{display:block}
+.card{
+background:white;
+border-radius:15px;
+padding:18px;
+margin-bottom:15px;
+box-shadow:0 3px 12px #0001;
+}
+
+.semester{
+border-left:7px solid #0757a0;
+}
+
+.course{
+background:#f7fbff;
+border:1px solid #d9e6f2;
+border-radius:10px;
+padding:14px;
+margin:8px 0;
+cursor:pointer;
+}
+
+.course:hover{
+background:#eaf5ff;
+}
+
+.paper{
+background:#fff;
+border:1px solid #d8e1eb;
+padding:13px;
+margin:7px 0;
+border-radius:9px;
+cursor:pointer;
+}
+
+.paper:hover{
+background:#eef7ff;
+}
+
+button{
+background:#0757a0;
+color:white;
+border:0;
+border-radius:9px;
+padding:11px 15px;
+margin:5px 3px;
+cursor:pointer;
+font-size:15px;
+}
+
+button.secondary{
+background:#607080;
+}
+
+button.success{
+background:#218739;
+}
+
+button.warning{
+background:#b77900;
+}
+
+h1,h2,h3{
+color:#0757a0;
+}
+
+.hero h1{
+color:white;
+}
 
 .badge{
- display:inline-block;padding:5px 10px;border-radius:20px;
- background:#e8f2fc;color:#0757a0;font-size:13px;font-weight:bold
+display:inline-block;
+padding:4px 10px;
+border-radius:20px;
+background:#e5f2ff;
+color:#0757a0;
+font-size:13px;
+margin:2px;
 }
-
-.unit{
- background:white;margin:12px 0;padding:18px;
- border-radius:12px;border-left:5px solid #0757a0;
- cursor:pointer
-}
-.unit:hover{box-shadow:0 3px 12px #0001}
-.unit h3{color:#0757a0}
 
 .note{
- background:white;border-radius:15px;padding:25px;
- margin-top:15px;box-shadow:0 3px 15px #0001
+background:#eef7ff;
+padding:15px;
+border-radius:10px;
+border-left:5px solid #0757a0;
+margin:12px 0;
 }
-.note h2,.note h3{color:#0757a0;margin:18px 0 8px}
-.note ul{padding-left:25px}
-.note li{margin:5px 0}
 
 .question{
- background:white;padding:20px;border-radius:12px;
- margin:15px 0;box-shadow:0 3px 12px #0001
+padding:14px;
+background:#fafafa;
+border:1px solid #ddd;
+border-radius:10px;
+margin:10px 0;
 }
+
 .option{
- display:block;width:100%;text-align:left;
- margin:8px 0;padding:11px;border:1px solid #d8e0e9;
- background:#f8fafc;border-radius:7px;cursor:pointer
+display:block;
+width:100%;
+text-align:left;
+background:#f2f6fa;
+color:#172033;
+border:1px solid #ccd7e5;
 }
-.option:hover{background:#eaf3fb}
-.correct{background:#d8f5df!important;border-color:#31a354!important}
-.wrong{background:#ffe0e0!important;border-color:#d33!important}
+
+.option:hover{
+background:#e5f1fb;
+}
+
+.correct{
+border:3px solid #16852d !important;
+}
+
+.wrong{
+border:3px solid #c62828 !important;
+}
+
+textarea,
+input{
+font-family:inherit;
+}
+
+textarea{
+width:100%;
+min-height:120px;
+padding:12px;
+border:1px solid #ccd7e5;
+border-radius:9px;
+}
 
 .progressbar{
- height:18px;background:#dce5ee;border-radius:20px;
- overflow:hidden;margin:12px 0
+height:18px;
+background:#e2e8ef;
+border-radius:20px;
+overflow:hidden;
+margin:10px 0;
 }
+
 .progressfill{
- height:100%;background:#0757a0;width:0%;
- transition:.4s
+height:100%;
+background:#0757a0;
+width:0%;
 }
 
 footer{
- margin-top:40px;background:#172033;color:white;
- text-align:center;padding:25px
+background:#102a43;
+color:white;
+text-align:center;
+padding:25px;
+margin-top:30px;
 }
 
-.small{font-size:14px;color:#687586}
-.back{
- background:#64748b;color:white;border:0;padding:9px 14px;
- border-radius:7px;cursor:pointer;margin-bottom:15px
+.dark{
+background:#101820;
+color:#eee;
 }
 
-@media(max-width:650px){
- .nav{align-items:flex-start;flex-direction:column}
- nav{width:100%}
- nav button{flex:1}
- .hero{padding:35px 18px}
+.dark .card,
+.dark nav,
+.dark .course,
+.dark .paper,
+.dark .question{
+background:#1c2935;
+color:#eee;
+}
+
+.dark nav button{
+background:#1c2935;
+color:white;
+}
+
+.dark .option{
+background:#243544;
+color:white;
+}
+
+@media(max-width:600px){
+.hero h1{font-size:27px}
+main{padding:12px}
 }
 </style>
 </head>
@@ -148,138 +284,52 @@ footer{
 <body>
 
 <header>
-<div class="nav">
-<div class="logo">CPH <span>STUDY</span></div>
-<nav>
-<button onclick="show('home')">Home</button>
-<button onclick="show('courses')">Courses</button>
-<button onclick="show('notes')">Notes</button>
-<button onclick="show('quiz')">MCQs</button>
-<button onclick="show('structured')">Structured</button>
-<button onclick="show('progress')">Progress</button>
-</nav>
+<div class="header">
+
+<div>
+<div class="logo">⚕️ CPH STUDY</div>
+<small>Learn • Practice • Master</small>
+</div>
+
+<button class="menu" onclick="toggleMenu()">☰</button>
+
 </div>
 </header>
 
-<main class="container">
+<nav id="nav">
 
-<!-- HOME -->
-<section id="home" class="section active">
+<button onclick="home()">🏠 Home</button>
+<button onclick="showCurriculum()">📚 Curriculum</button>
+<button onclick="showAllPapers()">📝 20-Paper Centre</button>
+<button onclick="showCalculations()">🧮 Pharmaceutical Calculations</button>
+<button onclick="showProgress()">📊 My Progress</button>
+<button onclick="showBookmarks()">🔖 Bookmarks</button>
+<button onclick="toggleDark()">🌙 Dark Mode</button>
 
-<div class="hero">
-<h1>CPH STUDY</h1>
-<p>Your Community Pharmacy Learning Platform</p>
-<input class="search" id="searchBox"
-placeholder="Search CPH units, topics or subjects..."
-oninput="searchCourses()">
-</div>
+</nav>
 
-<div class="grid">
+<main>
 
-<div class="card">
-<h3>📘 Study Notes</h3>
-<p>Access organised learning material for your CPH subjects.</p>
-<button onclick="show('notes')">Open Notes</button>
-</div>
-
-<div class="card">
-<h3>📝 MCQ Practice</h3>
-<p>Test your knowledge using multiple-choice questions.</p>
-<button onclick="show('quiz')">Start MCQs</button>
-</div>
-
-<div class="card">
-<h3>✍️ Structured Questions</h3>
-<p>Practise examination-style structured questions.</p>
-<button onclick="show('structured')">Practise</button>
-</div>
-
-<div class="card">
-<h3>📊 My Progress</h3>
-<p>Track your quiz performance and study progress.</p>
-<button onclick="show('progress')">View Progress</button>
-</div>
-
-</div>
-
-<h2 style="margin:30px 0 15px">CPH Curriculum</h2>
-<div id="homeCourses" class="grid"></div>
-
-</section>
-
-<!-- COURSES -->
-<section id="courses" class="section">
-
-<h1>📚 CPH Courses</h1>
-<p class="small">Select a level to explore the subjects.</p>
-
-<div id="courseList"></div>
-
-</section>
-
-<!-- NOTES -->
-<section id="notes" class="section">
-
-<h1>📘 Study Notes</h1>
-<p class="small">Select a subject to open its study material.</p>
-
-<div id="notesList" class="grid" style="margin-top:20px"></div>
-
-<div id="noteViewer"></div>
-
-</section>
-
-<!-- QUIZ -->
-<section id="quiz" class="section">
-
-<h1>📝 MCQ Practice</h1>
-<p class="small">Choose an answer. Your score is saved automatically.</p>
-
-<div id="quizArea"></div>
-
-</section>
-
-<!-- STRUCTURED -->
-<section id="structured" class="section">
-
-<h1>✍️ Structured Questions</h1>
-<p class="small">Use these questions for written examination practice.</p>
-
-<div id="structuredArea"></div>
-
-</section>
-
-<!-- PROGRESS -->
-<section id="progress" class="section">
-
-<h1>📊 My Progress</h1>
-
-<div class="card" style="margin-top:20px">
-<h3>MCQ Performance</h3>
-<p id="scoreText">0 questions answered</p>
-
-<div class="progressbar">
-<div id="progressFill" class="progressfill"></div>
-</div>
-
-<p id="accuracy">Accuracy: 0%</p>
-
-<button class="primary" onclick="resetProgress()">Reset Progress</button>
-</div>
-
-</section>
+<section id="app"></section>
 
 </main>
 
 <footer>
-<p><strong>CPH STUDY</strong></p>
-<p>Community Pharmacy Learning Platform</p>
-<p class="small" style="color:#cbd5e1">Study • Practise • Improve • Succeed</p>
+<b>⚕️ CPH STUDY</b>
+<br>
+Certificate in Pharmacy Learning Platform
+<br>
+Learn • Practice • Master
 </footer>
+
 
 <script>
 
-const courses = {
+/* =========================================================
+   CPH STUDY CURRICULUM
+========================================================= */
+
+const curriculum = {
 
 "CPH 1.1":[
 "Microbiology",
@@ -297,241 +347,901 @@ const courses = {
 "Pharmacognosy",
 "Pharmacology 1",
 "Medical Psychology",
-"Communication Skills"
+"Communication Skills",
+"Pharmaceutical Practicals"
+],
+
+"CPH 2.1":[
+"Pharmaceutics 1",
+"Pharmacy Laws & Regulations",
+"Pharmacy Practice 1",
+"Therapeutics 1",
+"Pharmacology 2",
+"Stores & Inventory Management"
+],
+
+"CPH 2.2":[
+"Pharmaceutics 2",
+"Quality Assurance of Pharmaceuticals",
+"Pharmacy Practice 2",
+"Therapeutics 2",
+"Entrepreneurship"
 ]
 
 };
 
-const notes = {
 
-"Microbiology":{
-intro:"Microbiology is the study of microorganisms, including bacteria, viruses, fungi and protozoa.",
-topics:[
-"Introduction to microbiology",
-"Classification of microorganisms",
+/* =========================================================
+   TOPICS
+========================================================= */
+
+const topics = {
+
+"Microbiology":[
+"Introduction and classification",
 "Bacterial structure",
-"Microbial growth",
-"Sterilisation and disinfection",
-"Infection and disease",
-"Laboratory safety"
-]
-},
+"Bacterial growth",
+"Pathogenesis",
+"Transmission of infection",
+"Virology",
+"Mycology",
+"Parasitology",
+"Immunity",
+"Vaccination",
+"Sterilization",
+"Disinfection",
+"Antimicrobial susceptibility",
+"Infection prevention",
+"Specimen collection",
+"Laboratory safety",
+"Normal flora",
+"Microbial diseases",
+"Microbiology in pharmacy",
+"Revision"
+],
 
-"Anatomy & Physiology 1":{
-intro:"Anatomy studies body structures while physiology explains how those structures function.",
-topics:[
-"Levels of organisation",
-"Cell structure and function",
+"Anatomy & Physiology 1":[
+"Anatomical terminology",
+"Cells",
 "Tissues",
+"Integumentary system",
 "Skeletal system",
+"Joints",
 "Muscular system",
-"Cardiovascular system",
-"Respiratory system"
-]
-},
-
-"Pharmaceutical Chemistry 1":{
-intro:"Pharmaceutical chemistry applies chemistry to substances used in medicines.",
-topics:[
-"Atoms and molecules",
-"Chemical bonding",
-"Acids and bases",
-"Solutions",
-"Chemical reactions",
-"Organic chemistry fundamentals",
-"Pharmaceutical substances"
-]
-},
-
-"First Aid":{
-intro:"First aid involves immediate basic care given to a person who is injured or suddenly ill before professional medical care is available.",
-topics:[
-"Principles of first aid",
-"Assessment of an emergency",
-"Wounds and bleeding",
-"Fractures",
-"Burns",
-"Shock",
-"Basic life support"
-]
-},
-
-"Primary Health Care (PHC)":{
-intro:"Primary health care provides essential health services that are accessible to individuals and communities.",
-topics:[
-"Concept of PHC",
-"Health promotion",
-"Disease prevention",
-"Community participation",
-"Maternal and child health",
-"Immunisation",
-"Health education"
-]
-},
-
-"Computer Applications":{
-intro:"Computer applications introduces the use of computers and digital tools in study and healthcare.",
-topics:[
-"Computer hardware",
-"Computer software",
-"Operating systems",
-"Word processing",
-"Spreadsheets",
-"Presentations",
-"Internet and information management"
-]
-},
-
-"Anatomy & Physiology 2":{
-intro:"This unit continues the study of body systems and their physiological functions.",
-topics:[
 "Nervous system",
 "Endocrine system",
+"Cardiovascular system",
+"Blood",
+"Respiratory system",
 "Digestive system",
 "Urinary system",
 "Reproductive system",
+"Homeostasis",
+"Body cavities",
+"Sense organs",
+"Physiological applications",
+"Revision"
+],
+
+"Pharmaceutical Chemistry 1":[
+"Introduction to pharmaceutical chemistry",
+"Chemical bonding",
+"Carbon chemistry",
+"Nomenclature",
+"Isomerism",
+"Alkanes",
+"Alkenes",
+"Alkynes",
+"Aromatic compounds",
+"Alcohols",
+"Aldehydes",
+"Ketones",
+"Carboxylic acids",
+"Esters",
+"Amines",
+"Organic reactions",
+"Inorganic pharmaceutical substances",
+"Acids bases and salts",
+"Chemical analysis",
+"Revision"
+],
+
+"First Aid":[
+"Principles of first aid",
+"Scene safety",
+"Primary survey",
+"Unconscious casualty",
+"Breathing emergencies",
+"Bleeding",
+"Shock",
+"Burns",
+"Fractures",
+"Sprains",
+"Head injuries",
+"Poisoning",
+"Choking",
+"Seizures",
+"Medical emergencies",
+"Emergency transport",
+"Infection prevention",
+"First aid kit",
+"Referral",
+"Revision"
+],
+
+"Primary Health Care (PHC)":[
+"Concept of PHC",
+"Principles of PHC",
+"Health promotion",
+"Disease prevention",
+"Community participation",
+"Environmental health",
+"Water and sanitation",
+"Nutrition",
+"Maternal health",
+"Child health",
+"Immunization",
+"Communicable diseases",
+"Non-communicable diseases",
+"Health education",
+"Community diagnosis",
+"Health services",
+"Essential medicines",
+"Referral systems",
+"Pharmacy contribution to PHC",
+"Revision"
+],
+
+"Computer Applications":[
+"Computer fundamentals",
+"Hardware",
+"Software",
+"Operating systems",
+"File management",
+"Word processing",
+"Spreadsheets",
+"Formulas",
+"Charts",
+"Presentations",
+"Internet",
+"Email",
+"Information searching",
+"Data management",
+"Cybersecurity",
+"Privacy",
+"Digital health records",
+"Pharmacy applications",
+"Troubleshooting",
+"Revision"
+],
+
+"Anatomy & Physiology 2":[
+"Nervous system",
+"Central nervous system",
+"Peripheral nervous system",
+"Autonomic nervous system",
 "Special senses",
-"Homeostasis"
-]
-},
+"Endocrine physiology",
+"Hormones",
+"Blood and immunity",
+"Cardiovascular regulation",
+"Respiratory physiology",
+"Digestive physiology",
+"Renal physiology",
+"Fluid balance",
+"Acid-base balance",
+"Reproductive physiology",
+"Menstrual cycle",
+"Pregnancy",
+"Metabolism",
+"Homeostasis",
+"Revision"
+],
 
-"Pharmaceutical Chemistry 2":{
-intro:"This unit develops chemical principles relevant to pharmaceutical substances and medicines.",
-topics:[
-"Organic functional groups",
-"Drug-related chemistry",
-"Chemical stability",
-"Oxidation and reduction",
-"Hydrolysis",
+"Pharmaceutical Chemistry 2":[
+"Functional groups",
+"Stereochemistry",
+"Heterocyclic chemistry",
+"Carbohydrates",
+"Proteins",
+"Amino acids",
+"Lipids",
+"Nucleic acids",
+"Acid-base chemistry",
+"Buffers",
 "Solubility",
-"Pharmaceutical analysis"
-]
-},
+"Partitioning",
+"Chemical stability",
+"Oxidation",
+"Reduction",
+"Hydrolysis",
+"Qualitative analysis",
+"Quantitative analysis",
+"Pharmaceutical applications",
+"Revision"
+],
 
-"Pharmaceutical Calculations":{
-intro:"Pharmaceutical calculations applies mathematics to safe preparation, dispensing and administration of medicines.",
-topics:[
-"Units and conversions",
-"Fractions and decimals",
+"Pharmaceutical Calculations":[
+"Basic arithmetic",
+"Fractions",
+"Ratios",
+"Proportions",
+"Decimals",
 "Percentages",
-"Ratio and proportion",
-"Dilution calculations",
+"Metric units",
+"Unit conversion",
+"Significant figures",
 "Concentration",
+"Percentage strength",
+"Ratio strength",
+"Dilution",
+"C1V1 = C2V2",
 "Alligation",
+"Parts per million",
+"Scaling",
 "Dose calculations",
-"Quantity calculations"
-]
-},
+"Reconstitution",
+"Revision"
+],
 
-"Pharmacognosy":{
-intro:"Pharmacognosy is the study of medicinal substances obtained from natural sources.",
-topics:[
-"Introduction to pharmacognosy",
-"Medicinal plants",
-"Plant identification",
-"Plant constituents",
-"Crude drugs",
-"Collection and storage",
-"Quality control"
-]
-},
+"Pharmacognosy":[
+"Introduction",
+"Sources of crude drugs",
+"Collection",
+"Cultivation",
+"Processing",
+"Storage",
+"Evaluation",
+"Microscopy",
+"Carbohydrates",
+"Glycosides",
+"Alkaloids",
+"Tannins",
+"Volatile oils",
+"Fixed oils",
+"Resins",
+"Proteins",
+"Enzymes",
+"Adulteration",
+"Quality control",
+"Revision"
+],
 
-"Pharmacology 1":{
-intro:"Pharmacology is the study of drugs, their actions, effects and interactions with living organisms.",
-topics:[
-"Introduction to pharmacology",
-"Drug sources",
-"Routes of administration",
-"Drug absorption",
-"Drug distribution",
-"Drug metabolism",
-"Drug excretion",
-"Adverse drug reactions"
-]
-},
+"Pharmacology 1":[
+"Introduction",
+"Pharmacokinetics",
+"Pharmacodynamics",
+"Drug receptors",
+"Absorption",
+"Distribution",
+"Metabolism",
+"Excretion",
+"Adverse drug reactions",
+"Drug interactions",
+"Autonomic nervous system",
+"Cholinergic drugs",
+"Adrenergic drugs",
+"Analgesics",
+"Anti-inflammatory drugs",
+"Antimicrobial principles",
+"Antibacterial drugs",
+"Antifungal drugs",
+"Medication safety",
+"Revision"
+],
 
-"Medical Psychology":{
-intro:"Medical psychology examines psychological factors affecting health, illness and healthcare interactions.",
-topics:[
-"Introduction to psychology",
+"Medical Psychology":[
+"Introduction",
 "Human behaviour",
 "Learning",
 "Memory",
+"Thinking",
 "Motivation",
+"Emotion",
+"Personality",
 "Stress",
-"Patient communication"
-]
-},
+"Anxiety",
+"Coping",
+"Mental health",
+"Patient behaviour",
+"Health beliefs",
+"Adherence",
+"Counselling",
+"Empathy",
+"Psychological support",
+"Professional boundaries",
+"Revision"
+],
 
-"Communication Skills":{
-intro:"Effective communication is essential for safe and professional healthcare practice.",
-topics:[
+"Communication Skills":[
 "Communication process",
 "Verbal communication",
 "Non-verbal communication",
-"Listening skills",
-"Barriers to communication",
+"Listening",
+"Questioning",
+"Feedback",
+"Communication barriers",
+"Professional communication",
 "Patient counselling",
-"Professional communication"
+"Health education",
+"Telephone communication",
+"Written communication",
+"Documentation",
+"Team communication",
+"Conflict management",
+"Cultural sensitivity",
+"Confidentiality",
+"Empathy",
+"Pharmacy counselling",
+"Revision"
+],
+
+"Pharmaceutical Practicals":[
+"Laboratory safety",
+"Measurements",
+"Balances",
+"Volumetric equipment",
+"Liquid handling",
+"Powder handling",
+"Mortars and pestles",
+"Filtration",
+"Mixing",
+"Preparation records",
+"Labelling",
+"Practical calculations",
+"Quality checks",
+"Cleaning equipment",
+"Storage",
+"Error prevention",
+"Documentation",
+"Observation",
+"Practical assessment",
+"Revision"
+],
+
+"Pharmaceutics 1":[
+"Introduction",
+"Dosage forms",
+"Pharmaceutical ingredients",
+"Solutions",
+"Solubility",
+"Suspensions",
+"Emulsions",
+"Powders",
+"Granules",
+"Tablets",
+"Capsules",
+"Liquid preparations",
+"Topical preparations",
+"Packaging",
+"Labelling",
+"Storage",
+"Stability",
+"Compounding",
+"Quality checks",
+"Revision"
+],
+
+"Pharmacy Laws & Regulations":[
+"Introduction to pharmacy law",
+"Regulatory authorities",
+"Pharmacy premises",
+"Licensing",
+"Registration",
+"Professional conduct",
+"Ethics",
+"Prescription requirements",
+"Controlled medicines",
+"Record keeping",
+"Labelling",
+"Storage",
+"Dispensing responsibilities",
+"Advertising",
+"Procurement",
+"Inspection",
+"Offences",
+"Patient rights",
+"Professional accountability",
+"Revision"
+],
+
+"Pharmacy Practice 1":[
+"Role of pharmacy personnel",
+"Prescription handling",
+"Dispensing",
+"Prescription interpretation",
+"Labelling",
+"Patient identification",
+"Patient counselling",
+"Medication safety",
+"Drug information",
+"Referral",
+"OTC service principles",
+"Communication",
+"Documentation",
+"Dispensing records",
+"Privacy",
+"Professional conduct",
+"Public health",
+"Medication adherence",
+"Practice cases",
+"Revision"
+],
+
+"Therapeutics 1":[
+"Principles of therapeutics",
+"Rational medicine use",
+"Pain management",
+"Fever",
+"Respiratory conditions",
+"Gastrointestinal conditions",
+"Cardiovascular conditions",
+"Hypertension",
+"Diabetes",
+"Infectious diseases",
+"Skin conditions",
+"Minor ailments",
+"Patient assessment",
+"Treatment goals",
+"Monitoring",
+"Referral",
+"Adherence",
+"Medicine safety",
+"Case-based therapeutics",
+"Revision"
+],
+
+"Pharmacology 2":[
+"Cardiovascular pharmacology",
+"Antihypertensives",
+"Antianginal drugs",
+"Diuretics",
+"Respiratory pharmacology",
+"Asthma medicines",
+"Gastrointestinal pharmacology",
+"Endocrine pharmacology",
+"Antidiabetic drugs",
+"CNS pharmacology",
+"Antiepileptic drugs",
+"Psychopharmacology",
+"Antimicrobial pharmacology",
+"Anticancer principles",
+"Hormonal medicines",
+"Special populations",
+"Adverse effects",
+"Drug interactions",
+"Medication safety",
+"Revision"
+],
+
+"Stores & Inventory Management":[
+"Pharmacy stores",
+"Inventory terminology",
+"Stock records",
+"Stock cards",
+"Ordering",
+"Supplier selection",
+"Receiving",
+"Inspection",
+"Storage conditions",
+"FEFO",
+"Expiry management",
+"Damaged stock",
+"Stock taking",
+"Inventory valuation",
+"Reorder levels",
+"Stock security",
+"Cold chain",
+"Documentation",
+"Inventory performance",
+"Revision"
+],
+
+"Pharmaceutics 2":[
+"Solutions",
+"Excipients",
+"Formulation",
+"Concentration",
+"Percentage strength",
+"Ratio strength",
+"Parts per million",
+"Scaling",
+"Posology",
+"Adult doses",
+"Child dose principles",
+"Reconstitution",
+"Mixing",
+"Storage",
+"Antiseptic dilution",
+"Disinfectant dilution",
+"Stability",
+"Packaging",
+"Quality control",
+"Revision"
+],
+
+"Quality Assurance of Pharmaceuticals":[
+"Quality assurance",
+"Quality control",
+"Good manufacturing practice",
+"Good storage practice",
+"Good distribution practice",
+"Quality systems",
+"Documentation",
+"Specifications",
+"Sampling",
+"Inspection",
+"Testing",
+"Supplier qualification",
+"Certification",
+"Storage controls",
+"Distribution controls",
+"Deviation management",
+"Complaints",
+"Recalls",
+"Quality improvement",
+"Revision"
+],
+
+"Pharmacy Practice 2":[
+"Advanced dispensing",
+"Medication review",
+"Patient counselling",
+"Drug information",
+"Medication safety",
+"Medication adherence",
+"Chronic disease support",
+"Public health pharmacy",
+"Referral",
+"Pharmacovigilance",
+"Documentation",
+"Teamwork",
+"Privacy",
+"Ethics",
+"Quality improvement",
+"Service evaluation",
+"Health promotion",
+"Community pharmacy services",
+"Case studies",
+"Revision"
+],
+
+"Therapeutics 2":[
+"Advanced therapeutics",
+"Chronic diseases",
+"Cardiovascular cases",
+"Respiratory cases",
+"Diabetes cases",
+"Gastrointestinal cases",
+"Infectious disease cases",
+"Maternal health",
+"Child health",
+"Older adults",
+"Mental health",
+"Pain management",
+"Skin conditions",
+"Referral",
+"Treatment monitoring",
+"Adherence",
+"Medicine safety",
+"Case interpretation",
+"Rational medicine selection",
+"Revision"
+],
+
+"Entrepreneurship":[
+"Entrepreneurship concepts",
+"Entrepreneurial skills",
+"Business ideas",
+"Opportunity identification",
+"Market research",
+"Customers",
+"Competition",
+"Business models",
+"Business planning",
+"Marketing",
+"Pricing",
+"Financial records",
+"Cash flow",
+"Budgeting",
+"Procurement",
+"Customer service",
+"Human resources",
+"Risk management",
+"Pharmacy entrepreneurship",
+"Revision"
 ]
-}
 
 };
 
-const mcqs = [
 
-{
-q:"Which branch of science studies microorganisms?",
-a:["Anatomy","Microbiology","Pharmacology","Psychology"],
-c:1
-},
+/* =========================================================
+   STATE
+========================================================= */
 
-{
-q:"Which organ pumps blood around the body?",
-a:["Lung","Kidney","Heart","Liver"],
-c:2
-},
+let currentCourse="";
+let currentPaper=0;
 
-{
-q:"What is the main purpose of pharmaceutical calculations?",
-a:["Entertainment","Safe and accurate medicine-related calculations","Plant identification","Communication"],
-c:1
-},
 
-{
-q:"Pharmacognosy mainly deals with medicinal substances obtained from:",
-a:["Natural sources","Computers","Machines","Buildings"],
-c:0
-},
+/* =========================================================
+   HOME
+========================================================= */
 
-{
-q:"Which process reduces or eliminates microorganisms from equipment?",
-a:["Sterilisation","Digestion","Absorption","Metabolism"],
-c:0
-},
+function home(){
 
-{
-q:"Which system is primarily responsible for transporting blood?",
-a:["Digestive system","Cardiovascular system","Skeletal system","Reproductive system"],
-c:1
-},
+let totalUnits=0;
 
-{
-q:"A medicine's route of administration describes:",
-a:["Its colour","How it enters the body","Its expiry date","Its packaging"],
-c:1
-},
+Object.values(curriculum).forEach(x=>totalUnits+=x.length);
 
-{
-q:"Alligation is particularly useful in pharmaceutical calculations involving:",
-a:["Mixing concentrations","Anatomy","Psychology","Computer hardware"],
-c:0
+app.innerHTML=`
+
+<div class="hero">
+
+<h1>⚕️ CPH STUDY</h1>
+
+<p>
+Your Certificate in Pharmacy digital learning platform.
+</p>
+
+<p>
+📚 ${totalUnits} Course Units
+<br>
+📝 20 Papers Per Course Unit
+<br>
+🎓 500 Examination Papers
+</p>
+
+</div>
+
+<input
+class="search"
+placeholder="🔎 Search course unit..."
+oninput="searchCourses(this.value)"
+>
+
+<div class="grid">
+
+${Object.keys(curriculum).map((semester,i)=>`
+
+<div class="card semester">
+
+<h2>${semester}</h2>
+
+<p>
+${curriculum[semester].length}
+course units
+</p>
+
+<button onclick="showSemester('${semester}')">
+Open Semester →
+</button>
+
+</div>
+
+`).join("")}
+
+</div>
+
+<div class="card">
+
+<h2>📌 Study System</h2>
+
+<p>
+Each course unit contains 20 revision papers.
+Every paper provides a topic, study notes, key revision
+points, MCQs and structured questions.
+</p>
+
+</div>
+
+`;
+
 }
 
-];
 
-const structured = [
+/* =========================================================
+   SEMESTER
+========================================================= */
 
-{
-q:"Define primary health care and state four of its important principles.",
-ans:"Primary health care is essential health care made accessible to individuals and families in the community. Important principles include accessibility, community participation, health
+function showSemester(semester){
+
+app.innerHTML=`
+
+<div class="card">
+
+<h2>📚 ${semester}</h2>
+
+<p>Select a course unit.</p>
+
+${curriculum[semester].map((course,i)=>`
+
+<div class="course"
+onclick="showCourse('${escapeJS(course)}')">
+
+<b>${i+1}. ${course}</b>
+
+<br>
+
+<span class="badge">
+20 Papers
+</span>
+
+<span class="badge">
+Study Notes
+</span>
+
+<span class="badge">
+MCQs
+</span>
+
+</div>
+
+`).join("")}
+
+<button onclick="home()">← Home</button>
+
+</div>
+
+`;
+
+}
+
+
+/* =========================================================
+   COURSE
+========================================================= */
+
+function showCourse(course){
+
+currentCourse=course;
+
+let list=topics[course] || [];
+
+app.innerHTML=`
+
+<div class="card">
+
+<h2>📖 ${course}</h2>
+
+<p>
+Select one of the 20 papers below.
+</p>
+
+${list.map((topic,i)=>`
+
+<div class="paper"
+onclick="openPaper(${i})">
+
+<b>Paper ${i+1}</b>
+
+<br>
+
+${topic}
+
+</div>
+
+`).join("")}
+
+<button onclick="home()">← Home</button>
+
+</div>
+
+`;
+
+}
+
+
+/* =========================================================
+   PAPER
+========================================================= */
+
+function openPaper(index){
+
+currentPaper=index;
+
+let topic=topics[currentCourse][index];
+
+let done=isComplete(currentCourse,index);
+
+app.innerHTML=`
+
+<div class="card">
+
+<span class="badge">${currentCourse}</span>
+
+<span class="badge">Paper ${index+1}/20</span>
+
+<h2>📝 Paper ${index+1}: ${topic}</h2>
+
+<div class="note">
+
+<b>Study focus</b>
+
+<p>
+This paper focuses on <b>${topic}</b>.
+Study the terminology, principles, classification,
+applications, practical relevance, safety considerations
+and examination points related to this topic.
+</p>
+
+</div>
+
+
+<h3>📖 Detailed Study Notes</h3>
+
+<p>
+<strong>Definition and concept:</strong>
+Begin by defining the major terms associated with
+${topic}. Understand what the concept means before
+memorising details.
+</p>
+
+<p>
+<strong>Core principles:</strong>
+Identify the major principles, classifications,
+characteristics, mechanisms, procedures or stages
+associated with ${topic}.
+</p>
+
+<p>
+<strong>Pharmacy relevance:</strong>
+Relate the topic to safe, effective and professional
+pharmacy practice. Consider how the knowledge may
+affect medicines, patients, dispensing, counselling,
+storage, calculations, public health or laboratory work,
+depending on the course.
+</p>
+
+<p>
+<strong>Examination approach:</strong>
+For a structured question, define the concept first,
+organise the answer under clear headings, explain each
+point and provide appropriate examples where required.
+</p>
+
+
+<h3>🔑 Key Revision Points</h3>
+
+<ul>
+
+<li>Know the important definitions.</li>
+
+<li>Know the major classifications.</li>
+
+<li>Understand the underlying principles.</li>
+
+<li>Know important examples and applications.</li>
+
+<li>Understand the relevance to pharmacy practice.</li>
+
+<li>Review safety and professional considerations.</li>
+
+<li>Practise explaining the topic without notes.</li>
+
+</ul>
+
+
+<h3>🧠 MCQ Practice</h3>
+
+<div class="question">
+
+<b>1. What should you do first when studying ${topic}?</b>
+
+<button class="option"
+onclick="answer(this,true)">
+A. Identify and understand the key concepts
+</button>
+
+<button class="option"
+onclick="answer(this,false)">
+B. Memorise unrelated information
+</button>
+
+<button class="option"
+onclick="answer(this,false)">
+C. Skip the definitions
+</button>
+
+<button class="option"
+onclick="answer(this,false)">
+D. Ignore its pharmacy
