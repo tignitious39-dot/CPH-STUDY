@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#0757a0">
+  <meta name="description" content="CPH STUDY — Learn, Practice, Master">
+  <title>CPH STUDY</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+  <header class="topbar">
+    <button class="icon-btn" id="menuBtn" aria-label="Menu">☰</button>
+    <div class="brand-mini">
+      <div class="brand-mark">✚</div>
+      <div><strong>CPH STUDY</strong><small>Learn • Practice • Master</small></div>
+    </div>
+    <div class="top-actions">
+      <button class="icon-btn" data-route="search">⌕</button>
+      <button class="icon-btn" data-route="notifications">🔔</button>
+    </div>
+  </header>
+
+  <main id="screen" class="screen"></main>
+
+  <nav class="bottom-nav">
+    <button data-route="home" class="nav-item active"><span>⌂</span><small>Home</small></button>
+    <button data-route="search" class="nav-item"><span>⌕</span><small>Search</small></button>
+    <button data-route="study" class="nav-item"><span>▣</span><small>Study</small></button>
+    <button data-route="activity" class="nav-item"><span>◒</span><small>Activity</small></button>
+    <button data-route="profile" class="nav-item"><span>♙</span><small>Profile</small></button>
+  </nav>
+
+  <aside id="drawer" class="drawer">
+    <div class="drawer-head">
+      <div class="brand-large"><div class="brand-logo">✚</div><div><b>CPH STUDY</b><span>Learn • Practice • Master</span></div></div>
+      <button class="icon-btn" id="closeDrawer">×</button>
+    </div>
+    <button data-route="home">⌂ Home</button>
+    <button data-route="levels">▣ CPH Levels</button>
+    <button data-route="notes">📖 Notes</button>
+    <button data-route="mcqs">☑ MCQs</button>
+    <button data-route="quizzes">✓ Quizzes</button>
+    <button data-route="calculations">▤ Calculations</button>
+    <button data-route="bookmarks">🔖 Bookmarks</button>
+    <button data-route="discussions">💬 Discussions</button>
+    <button data-route="notifications">🔔 Notifications</button>
+    <button data-route="progress">▥ My Progress</button>
+    <button data-route="profile">♙ Profile</button>
+  </aside>
+  <div id="overlay" class="overlay"></div>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
